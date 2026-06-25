@@ -12,12 +12,126 @@ datasource db {
   provider = "mysql"
 }
 
+enum Role {
+  ADMIN
+  PESERTA
+}
+
+model Review {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  mentorId    Int
+  classId     Int
+  rating      Int
+  comment     String?
+
+  user        User     @relation(fields: [userId], references: [id])
+  mentor      Mentor   @relation(fields: [mentorId], references: [id])
+  class        Class    @relation(fields: [classId], references: [id])
+
+  createdAt   DateTime @default(now()) @map("created_at")
+
+
+  @@map("reviews")
+}
+
 model User {
   id      Int @id @default(autoincrement())
   name    String
-  email   String
+  email   String @unique
   password String
+  role Role
+  reviews Review[]
+  enrollments Enrollment[]
+  examResults ExamResult[]
+
   createdAt DateTime @default(now()) @map("created_at")
 
-  @@map("user")
+  @@map("users")
+}
+
+model Mentor {
+  id                    Int      @id @default(autoincrement())
+  name                  String
+  email                 String   @unique
+  specialization        String
+  teachingExperience    Int
+  description           String?
+  classes               Class[]
+  reviews               Review[]
+
+  createdAt             DateTime @default(now()) @map("created_at")
+
+  @@map("mentors")
+}
+
+model Class {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  category    String
+  level       String
+  isActive    Boolean  @default(true)
+  mentorId    Int
+  mentor      Mentor   @relation(fields: [mentorId], references: [id])
+
+  materials   Material[]
+  enrollments Enrollment[]
+  reviews     Review[]
+  exams       Exam[]
+
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("classes")
+}
+
+model Material {
+  id          Int      @id @default(autoincrement())
+  title       String
+  content     String?
+  videoUrl    String?
+  classId     Int
+  class       Class    @relation(fields: [classId], references: [id])
+
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@map("materials")
+}
+
+model Enrollment {
+  id          Int      @id @default(autoincrement())
+  userId      Int
+  classId     Int
+  progress    Int      @default(0)
+  user        User     @relation(fields: [userId], references: [id])
+  class       Class    @relation(fields: [classId], references: [id])
+
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@unique([userId, classId])
+  @@map("enrollments")
+}
+model Exam {
+  id          Int      @id @default(autoincrement())
+  title       String
+  minimumScore Int     @default(75)
+  classId     Int
+  class       Class    @relation(fields: [classId], references: [id])
+  results     ExamResult[]
+
+  @@map("exams")
+}
+
+model ExamResult {
+  id          Int      @id @default(autoincrement())
+  examId      Int
+  userId      Int
+  score       Float
+  isPassed    Boolean
+
+  exam         Exam    @relation(fields: [examId], references: [id])
+  user         User    @relation(fields: [userId], references: [id])
+
+  @@unique([examId, userId])
+  @@map("exam_results")
 }
