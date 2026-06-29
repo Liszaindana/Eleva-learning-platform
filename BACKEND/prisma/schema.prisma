@@ -12,126 +12,133 @@ datasource db {
   provider = "mysql"
 }
 
-enum Role {
-  ADMIN
-  PESERTA
-}
+model Role {
+  role_id   Int    @id @default(autoincrement())
+  role_text String // Isinya: 'admin', 'mentor', atau 'user_biasa'
+  users     User[]
 
-model Review {
-  id          Int      @id @default(autoincrement())
-  userId      Int
-  mentorId    Int
-  classId     Int
-  rating      Int
-  comment     String?
-
-  user        User     @relation(fields: [userId], references: [id])
-  mentor      Mentor   @relation(fields: [mentorId], references: [id])
-  class        Class    @relation(fields: [classId], references: [id])
-
-  createdAt   DateTime @default(now()) @map("created_at")
-
-
-  @@map("reviews")
+  @@map("role")
 }
 
 model User {
-  id      Int @id @default(autoincrement())
-  name    String
-  email   String @unique
-  password String
-  role Role
-  reviews Review[]
-  enrollments Enrollment[]
-  examResults ExamResult[]
+  user_id   Int      @id @default(autoincrement())
+  role_id   Int
+  name      String
+  email     String   @unique
+  password  String
+  join_date DateTime @default(now()) @map("join_date")
 
-  createdAt DateTime @default(now()) @map("created_at")
-
-  @@map("users")
-}
-
-model Mentor {
-  id                    Int      @id @default(autoincrement())
-  name                  String
-  email                 String   @unique
-  specialization        String
-  teachingExperience    Int
-  description           String?
-  classes               Class[]
-  reviews               Review[]
-
-  createdAt             DateTime @default(now()) @map("created_at")
-
-  @@map("mentors")
-}
-
-model Class {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String
-  category    String
-  level       String
-  isActive    Boolean  @default(true)
-  mentorId    Int
-  mentor      Mentor   @relation(fields: [mentorId], references: [id])
-
-  materials   Material[]
+  role        Role         @relation(fields: [role_id], references: [role_id])
   enrollments Enrollment[]
   reviews     Review[]
   exams       Exam[]
+  classes     Class[]
 
-  createdAt   DateTime @default(now()) @map("created_at")
-
-  @@map("classes")
+  @@map("user")
 }
 
-model Material {
-  id          Int      @id @default(autoincrement())
+model Category {
+  category_id Int     @id @default(autoincrement())
+  categories  String
+  classes     Class[]
+
+  @@map("category")
+}
+
+model Periode {
+  periode_id Int     @id @default(autoincrement())
+  year       String
+  classes    Class[]
+
+  @@map("periode")
+}
+
+model Level {
+  level_id   Int     @id @default(autoincrement())
+  level_info String
+  classes    Class[]
+
+  @@map("level")
+}
+
+model Class {
+  class_id Int @id @default(autoincrement())
+
+  // 1. WAJIB DITAMBAHKAN: Kolom fisik penampung ID Relasi (semuanya pakai Int)
+  category_id Int
+  periode_id  Int
+  level_id    Int
+  user_id     Int
+
   title       String
-  content     String?
-  videoUrl    String?
-  classId     Int
-  class       Class    @relation(fields: [classId], references: [id])
+  description String  @db.Text
+  is_active   Boolean @default(true)
 
-  createdAt   DateTime @default(now()) @map("created_at")
+  // Relasi ke model User (Mentor)
+  mentor User @relation(fields: [user_id], references: [user_id])
 
-  @@map("materials")
+  // 2. Baris @relation di bawah ini sekarang sudah aman karena kolom di atas sudah ada & tipenya match
+  category Category @relation(fields: [category_id], references: [category_id])
+  periode  Periode  @relation(fields: [periode_id], references: [periode_id])
+  level    Level    @relation(fields: [level_id], references: [level_id])
+
+  materis    Materi[]
+  exams      Exam[]
+  reviews    Review[]
+  enrollment Enrollment[]
+
+  @@map("class")
 }
 
 model Enrollment {
-  id          Int      @id @default(autoincrement())
-  userId      Int
-  classId     Int
-  progress    Int      @default(0)
-  user        User     @relation(fields: [userId], references: [id])
-  class       Class    @relation(fields: [classId], references: [id])
+  enrollment_id Int    @id @default(autoincrement())
+  user_id       Int
+  class_id      Int
+  progress      Int    @default(0)
+  role_in_class String // Kunci penting: Isinya 'mentor' jika dia pengajar, dan 'student' jika dia murid
 
-  createdAt   DateTime @default(now()) @map("created_at")
+  user  User  @relation(fields: [user_id], references: [user_id])
+  class Class @relation(fields: [class_id], references: [class_id])
 
-  @@unique([userId, classId])
-  @@map("enrollments")
+  @@map("enrollment")
 }
+
+model Materi {
+  materi_id Int    @id @default(autoincrement())
+  class_id  Int
+  title     String
+  content   String @db.Text
+  video_url String
+
+  class Class @relation(fields: [class_id], references: [class_id])
+
+  @@map("materi")
+}
+
 model Exam {
-  id          Int      @id @default(autoincrement())
-  title       String
-  minimumScore Int     @default(75)
-  classId     Int
-  class       Class    @relation(fields: [classId], references: [id])
-  results     ExamResult[]
+  exam_id   Int     @id @default(autoincrement())
+  class_id  Int
+  user_id   Int
+  title     String
+  min_score Int     @default(60) @map("min_score")
+  score     Int     @default(0)
+  is_passed Boolean @default(false) @map("is_passed")
+
+  class Class @relation(fields: [class_id], references: [class_id])
+  user  User  @relation(fields: [user_id], references: [user_id])
 
   @@map("exams")
 }
 
-model ExamResult {
-  id          Int      @id @default(autoincrement())
-  examId      Int
-  userId      Int
-  score       Float
-  isPassed    Boolean
+model Review {
+  review_id Int    @id @default(autoincrement())
+  user_id   Int
+  class_id  Int
+  rating    Int
+  comment   String @db.Text
 
-  exam         Exam    @relation(fields: [examId], references: [id])
-  user         User    @relation(fields: [userId], references: [id])
+  user  User  @relation(fields: [user_id], references: [user_id])
+  class Class @relation(fields: [class_id], references: [class_id])
 
-  @@unique([examId, userId])
-  @@map("exam_results")
+  @@map("review")
 }

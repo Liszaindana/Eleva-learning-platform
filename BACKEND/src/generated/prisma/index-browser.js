@@ -120,17 +120,86 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
+exports.Prisma.RoleScalarFieldEnum = {
+  role_id: 'role_id',
+  role_text: 'role_text'
+};
+
 exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
+  user_id: 'user_id',
+  role_id: 'role_id',
   name: 'name',
   email: 'email',
   password: 'password',
-  createdAt: 'createdAt'
+  join_date: 'join_date'
+};
+
+exports.Prisma.CategoryScalarFieldEnum = {
+  category_id: 'category_id',
+  categories: 'categories'
+};
+
+exports.Prisma.PeriodeScalarFieldEnum = {
+  periode_id: 'periode_id',
+  year: 'year'
+};
+
+exports.Prisma.LevelScalarFieldEnum = {
+  level_id: 'level_id',
+  level_info: 'level_info'
+};
+
+exports.Prisma.ClassScalarFieldEnum = {
+  class_id: 'class_id',
+  category_id: 'category_id',
+  periode_id: 'periode_id',
+  level_id: 'level_id',
+  title: 'title',
+  description: 'description',
+  is_active: 'is_active'
+};
+
+exports.Prisma.EnrollmentScalarFieldEnum = {
+  enrollment_id: 'enrollment_id',
+  user_id: 'user_id',
+  class_id: 'class_id',
+  progress: 'progress',
+  role_in_class: 'role_in_class'
+};
+
+exports.Prisma.MateriScalarFieldEnum = {
+  materi_id: 'materi_id',
+  class_id: 'class_id',
+  title: 'title',
+  content: 'content',
+  video_url: 'video_url'
+};
+
+exports.Prisma.ExamScalarFieldEnum = {
+  exam_id: 'exam_id',
+  class_id: 'class_id',
+  user_id: 'user_id',
+  title: 'title',
+  min_score: 'min_score',
+  score: 'score',
+  is_passed: 'is_passed'
+};
+
+exports.Prisma.ReviewScalarFieldEnum = {
+  review_id: 'review_id',
+  user_id: 'user_id',
+  class_id: 'class_id',
+  rating: 'rating',
+  comment: 'comment'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.RoleOrderByRelevanceFieldEnum = {
+  role_text: 'role_text'
 };
 
 exports.Prisma.UserOrderByRelevanceFieldEnum = {
@@ -139,9 +208,53 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   password: 'password'
 };
 
+exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
+  categories: 'categories'
+};
+
+exports.Prisma.PeriodeOrderByRelevanceFieldEnum = {
+  year: 'year'
+};
+
+exports.Prisma.LevelOrderByRelevanceFieldEnum = {
+  level_info: 'level_info'
+};
+
+exports.Prisma.ClassOrderByRelevanceFieldEnum = {
+  title: 'title',
+  description: 'description'
+};
+
+exports.Prisma.EnrollmentOrderByRelevanceFieldEnum = {
+  role_in_class: 'role_in_class'
+};
+
+exports.Prisma.MateriOrderByRelevanceFieldEnum = {
+  title: 'title',
+  content: 'content',
+  video_url: 'video_url'
+};
+
+exports.Prisma.ExamOrderByRelevanceFieldEnum = {
+  title: 'title'
+};
+
+exports.Prisma.ReviewOrderByRelevanceFieldEnum = {
+  comment: 'comment'
+};
+
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  Role: 'Role',
+  User: 'User',
+  Category: 'Category',
+  Periode: 'Periode',
+  Level: 'Level',
+  Class: 'Class',
+  Enrollment: 'Enrollment',
+  Materi: 'Materi',
+  Exam: 'Exam',
+  Review: 'Review'
 };
 
 /**
