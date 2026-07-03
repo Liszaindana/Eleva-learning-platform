@@ -33,6 +33,9 @@ model User {
   reviews     Review[]
   exams       Exam[]
   classes     Class[]
+  recommendationRequests RecommendationRequest[]
+  recommendationResults RecommendationResult[]
+
 
   @@map("user")
 }
@@ -141,4 +144,75 @@ model Review {
   class Class @relation(fields: [class_id], references: [class_id])
 
   @@map("review")
+}
+
+model Kriteria {
+  id_kriteria Int @id @default(autoincrement())
+  kode   String @unique
+  nama   String
+  tipe   String // benefit / cost
+  bobot  Float
+
+  values KriteriaValue[]
+  weights RecommendationReqWeight[]
+
+  @@map("kriteria")
+}
+
+model KriteriaValue {
+  id_value Int @id @default(autoincrement())
+
+  id_kriteria Int
+  value       String
+  score       Int
+
+  kriteria Kriteria @relation(fields: [id_kriteria], references: [id_kriteria])
+
+  @@map("kriteria_value")
+}
+
+model RecommendationRequest {
+  id_request Int @id @default(autoincrement())
+  user_id Int
+  category_id Int
+  method String
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  user User @relation(fields: [user_id], references: [user_id])
+
+  category Category @relation(fields: [category_id], references: [category_id])
+
+  weights RecommendationReqWeight[]
+  results RecommendationResult[]
+
+  @@map("recommendation_request")
+}
+
+model RecommendationReqWeight {
+  id Int @id @default(autoincrement())
+  req_id Int
+  kriteria_id Int
+  bobot Float
+
+  request RecommendationRequest @relation(fields: [req_id], references: [id_request])
+
+  kriteria Kriteria @relation(fields: [kriteria_id], references: [id_kriteria])
+
+  @@map("recommendation_req_weight")
+}
+
+model RecommendationResult {
+  id Int @id @default(autoincrement())
+  req_id Int
+  user_id Int
+  score Float
+  pos Int
+
+  request RecommendationRequest @relation(fields: [req_id], references: [id_request])
+
+  user User @relation(fields: [user_id], references: [user_id])
+
+  @@map("req_result")
 }

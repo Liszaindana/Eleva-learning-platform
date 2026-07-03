@@ -48,39 +48,6 @@ export const getuserbyId = async (req: Request, res: Response) => {
     }
 };
 
-// 1. REGISTRASI SISWA (Halaman Awal - Publik)
-export const registerStudent = async (req: Request, res: Response) => {
-    try {
-        const { name, email, password } = req.body;
-
-        // TETAP panggil prisma.role (nama modelnya), tapi 'where' menggunakan kolom role_text
-        const studentRole = await prisma.role.findFirst({
-            where: {
-                role_text: 'siswa'
-            }
-        });
-
-        if (!studentRole) return res.status(500).json({ message: "Role siswa tidak ditemukan di sistem." });
-
-        // Hash password
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Simpan ke database
-        const newStudent = await prisma.user.create({
-            data: {
-                name,
-                email,
-                password: hashedPassword,
-                role_id: studentRole.role_id, // Mengambil properti role_id hasil temuan di atas
-            }
-        });
-
-        return res.status(201).json({ message: "Registrasi siswa berhasil!", data: newStudent });
-    } catch (error: any) {
-        return res.status(500).json({ message: error.message });
-    }
-};
-
 // 2. PEMBUATAN USER OLEH ADMIN (Untuk Daftarin Mentor / Admin Baru)
 export const createUserByAdmin = async (req: Request, res: Response) => {
     try {
@@ -155,7 +122,7 @@ export const updateUser = async (req: Request, res: Response) => {
         // 1. VALIDASI UTAMA: Jika bukan admin, langsung tolak
         if (actorRole !== 'admin') {
             return res.status(403).json({
-                message: "Forbidden: Hanya Admin atau Super Admin yang memiliki hak akses untuk mengubah data user!"
+                message: "Forbidden: Hanya Admin yang memiliki hak akses untuk mengubah data user!"
             });
         }
 
@@ -205,10 +172,10 @@ export const deleteUser = async (req: Request, res: Response) => {
         const actorRole = (req as any).user?.role;
 
         // 2. Validasi Hak Akses: Hanya Admin atau Super Admin yang boleh menghapus
-        if (actorRole !== 'admin' && actorRole !== 'super_admin') {
-            return res.status(403).json({
-                message: "Forbidden: Anda tidak memiliki hak akses untuk menghapus user!"
-            });
+        if (actorRole !== "admin") {
+         return res.status(403).json({
+        message: "Hanya admin yang dapat menghapus user."
+        });
         }
 
         // 3. Cek apakah user yang mau dihapus memang ada di database
