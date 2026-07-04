@@ -15,10 +15,10 @@ export default function LoadingState({ text = 'Memuat...', className }: LoadingS
     >
       {/* Animated spinner */}
       <div className="relative h-10 w-10">
-        <div className="absolute inset-0 rounded-full border-2 border-white/10" />
-        <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-indigo-500 animate-spin" />
+        <div className="absolute inset-0 rounded-full border-2 border-slate-200" />
+        <div className="absolute inset-0 rounded-full border-2 border-transparent border-t-blue-500 animate-spin" />
       </div>
-      <p className="text-sm text-slate-400 animate-pulse">{text}</p>
+      <p className="text-sm text-slate-500 animate-pulse">{text}</p>
     </div>
   );
 }

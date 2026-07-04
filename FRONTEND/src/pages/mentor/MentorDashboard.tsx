@@ -20,6 +20,7 @@ import {
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
 import { PATHS } from '../../routes/paths';
+import logo from '../../assets/Logo.png';
 
 export default function MentorDashboard() {
   const navigate = useNavigate();
@@ -118,8 +119,8 @@ export default function MentorDashboard() {
         <div className="p-6">
           {/* Logo / App Name */}
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
-              <span className="text-white font-black text-lg">E</span>
+            <div className="h-9 w-9 rounded-xl bg-white flex items-center justify-center shadow-lg">
+              <img src={logo} alt="Eleva Logo" className="h-7 w-7 object-contain" />
             </div>
             <span className="text-xl font-bold tracking-wider bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Eleva</span>
           </div>

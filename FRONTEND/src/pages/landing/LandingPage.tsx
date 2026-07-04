@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  GraduationCap,
   BookOpen,
   Users,
   Trophy,
   ArrowRight,
   Sparkles,
-  Zap,
   Star,
   Search,
   Code,
@@ -18,21 +16,22 @@ import {
   Camera,
   Quote,
 } from 'lucide-react';
-import Container from '../components/ui/Container';
-import Button from '../components/ui/Button';
-import Badge from '../components/ui/Badge';
-import { PATHS } from '../routes/paths';
+import Container from '../../components/ui/Container';
+import Button from '../../components/ui/Button';
+import Badge from '../../components/ui/Badge';
+import { PATHS } from '../../routes/paths';
+import logo from '../../assets/Logo.png';
 
-export default function Beranda() {
+export default function LandingPage() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const categories = [
-    { name: 'Programming', count: '125 Classes', icon: Code, color: 'from-blue-500 to-cyan-500' },
-    { name: 'Design', count: '84 Classes', icon: Palette, color: 'from-violet-500 to-purple-500' },
-    { name: 'Business', count: '92 Classes', icon: Briefcase, color: 'from-emerald-500 to-teal-500' },
-    { name: 'Marketing', count: '67 Classes', icon: Megaphone, color: 'from-rose-500 to-orange-500' },
-    { name: 'Soft Skills', count: '45 Classes', icon: UserCheck, color: 'from-amber-500 to-yellow-500' },
-    { name: 'Photography', count: '38 Classes', icon: Camera, color: 'from-pink-500 to-red-500' },
+    { name: 'Programming', count: '125 Classes', icon: Code, color: 'from-blue-600 to-cyan-500' },
+    { name: 'Design', count: '84 Classes', icon: Palette, color: 'from-blue-500 to-indigo-500' },
+    { name: 'Business', count: '92 Classes', icon: Briefcase, color: 'from-blue-400 to-sky-500' },
+    { name: 'Marketing', count: '67 Classes', icon: Megaphone, color: 'from-blue-600 to-blue-400' },
+    { name: 'Soft Skills', count: '45 Classes', icon: UserCheck, color: 'from-blue-500 to-cyan-400' },
+    { name: 'Photography', count: '38 Classes', icon: Camera, color: 'from-blue-400 to-blue-600' },
   ];
 
   const trendingCourses = [
@@ -126,7 +125,7 @@ export default function Beranda() {
       {/* ── HERO SECTION ─────────────────────────────────── */}
       <section className="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28">
         <div className="absolute inset-0 -z-10">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-to-br from-indigo-600/15 via-violet-600/10 to-transparent rounded-full blur-3xl" />
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-gradient-to-br from-blue-100 via-blue-50 to-transparent rounded-full blur-3xl" />
         </div>
 
         <Container>
@@ -134,26 +133,26 @@ export default function Beranda() {
             {/* Left Content */}
             <div className="flex-1 space-y-6 max-w-xl text-left">
               {/* Announcement badge */}
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold">
+              <div className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-semibold">
                 <Sparkles className="h-3 w-3" />
                 Platform Pembelajaran Online Terbaik
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-white">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] text-slate-900">
                 Learn New Skills with{' '}
-                <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-fuchsia-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">
                   Indonesia's Best Mentors
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-400 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
                 Kembangkan potensimu dengan materi berkualitas yang dirancang langsung oleh para profesional. Temukan pembelajaran yang sesuai untukmu.
               </p>
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <Link to={PATHS.KELAS}>
-                  <Button size="lg" className="shadow-lg shadow-indigo-600/20">
+                  <Button size="lg" className="shadow-md shadow-blue-500/20">
                     Temukan Kelas
                     <ArrowRight className="h-4 w-4" />
                   </Button>
@@ -166,7 +165,7 @@ export default function Beranda() {
               </div>
 
               {/* Stacked Users Badge */}
-              <div className="flex items-center gap-3 pt-6 border-t border-slate-900">
+              <div className="flex items-center gap-3 pt-6 border-t border-slate-200">
                 <div className="flex -space-x-3">
                   {[
                     'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=2&w=128&h=128&q=80',
@@ -178,34 +177,33 @@ export default function Beranda() {
                       key={i}
                       src={src}
                       alt="Student"
-                      className="h-9 w-9 rounded-full object-cover ring-2 ring-slate-950"
+                      className="h-9 w-9 rounded-full object-cover ring-2 ring-white"
                     />
                   ))}
                 </div>
                 <div className="text-sm">
-                  <span className="font-bold text-white">10,000+</span>{' '}
-                  <span className="text-slate-400">pelajar telah bergabung</span>
+                  <span className="font-bold text-slate-900">10,000+</span>{' '}
+                  <span className="text-slate-600">pelajar telah bergabung</span>
                 </div>
               </div>
             </div>
 
             {/* Right Media Graphic */}
             <div className="flex-1 relative w-full max-w-lg lg:max-w-none">
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40 aspect-[4/3] group">
+              <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl shadow-slate-200/50 aspect-[4/3] group">
                 <img
                   src="/hero_learning_scene.png"
                   alt="Students Studying"
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
                 {/* Floating pill badge */}
-                <div className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-md border border-white/10 rounded-xl px-3 py-1.5 flex items-center gap-1.5 shadow-lg">
-                  <span className="h-2.5 w-2.5 bg-emerald-500 rounded-full animate-pulse" />
-                  <span className="text-xs font-bold text-white uppercase tracking-wider">100% Online & Flexible</span>
+                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm border border-blue-200 rounded-xl px-3 py-1.5 flex items-center gap-1.5 shadow-md">
+                  <span className="h-2.5 w-2.5 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">100% Online & Flexible</span>
                 </div>
               </div>
               {/* Outer decorative glow blob */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-violet-600/10 rounded-full blur-2xl -z-10" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-100 rounded-full blur-2xl -z-10" />
             </div>
           </div>
         </Container>
@@ -214,11 +212,11 @@ export default function Beranda() {
       {/* ── SEARCH & DISCOVERY BAR ───────────────────────── */}
       <section className="px-4">
         <Container>
-          <div className="relative rounded-3xl border border-white/5 bg-white/[0.02] backdrop-blur-xl p-8 max-w-4xl mx-auto shadow-2xl shadow-black/10 overflow-hidden">
+          <div className="relative rounded-3xl border border-slate-200 bg-white p-8 max-w-4xl mx-auto shadow-lg shadow-slate-200/50 overflow-hidden">
             {/* Soft inner glow */}
-            <div className="absolute inset-0 bg-indigo-500/[0.01] -z-10" />
+            <div className="absolute inset-0 bg-blue-50/50 -z-10" />
             <div className="text-center space-y-5 max-w-xl mx-auto">
-              <h2 className="text-xl font-bold text-white">What do you need to learn today?</h2>
+              <h2 className="text-xl font-bold text-slate-900">What do you need to learn today?</h2>
 
               <div className="relative">
                 <input
@@ -226,9 +224,9 @@ export default function Beranda() {
                   placeholder="Cari materi, judul kelas, atau nama mentor..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full rounded-2xl border border-white/10 bg-white/5 px-5 py-3.5 pr-14 text-sm text-white placeholder:text-slate-500 focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/20 focus:outline-none transition-all"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-3.5 pr-14 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all"
                 />
-                <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl transition-all shadow-md shadow-indigo-600/10 cursor-pointer">
+                <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition-all shadow-sm shadow-blue-500/20 cursor-pointer">
                   <Search className="h-4.5 w-4.5" />
                 </button>
               </div>
@@ -240,7 +238,7 @@ export default function Beranda() {
                   <button
                     key={tag}
                     onClick={() => setSearchQuery(tag)}
-                    className="px-3.5 py-1.5 rounded-lg border border-white/5 bg-white/5 text-slate-300 hover:text-white hover:bg-white/10 hover:border-white/10 transition-all font-medium cursor-pointer"
+                    className="px-3.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:text-blue-700 hover:bg-blue-50 hover:border-blue-200 transition-all font-medium cursor-pointer"
                   >
                     {tag}
                   </button>
@@ -256,10 +254,10 @@ export default function Beranda() {
         <Container>
           <div className="flex items-center justify-between mb-10">
             <div>
-              <h2 className="text-2xl font-bold text-white tracking-tight">Top Learning Paths</h2>
-              <p className="text-xs text-slate-400 mt-1">Explore our most popular education categories</p>
+              <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Top Learning Paths</h2>
+              <p className="text-xs text-slate-600 mt-1">Explore our most popular education categories</p>
             </div>
-            <Link to={PATHS.KELAS} className="text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors">
+            <Link to={PATHS.KELAS} className="text-xs font-bold text-blue-600 hover:text-blue-500 transition-colors">
               View All
             </Link>
           </div>
@@ -270,12 +268,12 @@ export default function Beranda() {
               return (
                 <div
                   key={i}
-                  className="bg-slate-900/40 border border-slate-800/80 rounded-2xl p-5 text-center flex flex-col items-center justify-center group hover:border-slate-700/80 transition-all duration-300 cursor-pointer shadow-lg hover:-translate-y-1"
+                  className="bg-white border border-slate-200 rounded-2xl p-5 text-center flex flex-col items-center justify-center group hover:border-blue-300 transition-all duration-300 cursor-pointer shadow-md hover:-translate-y-1"
                 >
-                  <div className={`h-11 w-11 rounded-xl bg-gradient-to-br ${cat.color} flex items-center justify-center mb-4 shadow-lg shadow-indigo-500/5 group-hover:scale-105 transition-transform duration-300`}>
+                  <div className={`h-11 w-11 rounded-xl bg-gradient-to-br ${cat.color} flex items-center justify-center mb-4 shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon className="h-5 w-5 text-white" />
                   </div>
-                  <h3 className="text-xs font-bold text-white truncate w-full">{cat.name}</h3>
+                  <h3 className="text-xs font-bold text-slate-900 truncate w-full">{cat.name}</h3>
                   <p className="text-[10px] text-slate-500 mt-1">{cat.count}</p>
                 </div>
               );
@@ -289,10 +287,10 @@ export default function Beranda() {
         <Container>
           <div className="flex items-center justify-between mb-10">
             <div>
-              <h2 className="text-2xl font-bold text-white tracking-tight">Trending Classes</h2>
-              <p className="text-xs text-slate-400 mt-1">Join the most hot, in-demand courses right now</p>
+              <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Trending Classes</h2>
+              <p className="text-xs text-slate-600 mt-1">Join the most hot, in-demand courses right now</p>
             </div>
-            <Link to={PATHS.KELAS} className="text-xs font-bold text-indigo-400 hover:text-indigo-300 transition-colors">
+            <Link to={PATHS.KELAS} className="text-xs font-bold text-blue-600 hover:text-blue-500 transition-colors">
               View All
             </Link>
           </div>
@@ -301,7 +299,7 @@ export default function Beranda() {
             {trendingCourses.map((course) => (
               <div
                 key={course.id}
-                className="bg-slate-900/50 backdrop-blur-xl border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl hover:border-slate-700/80 transition-all duration-300 flex flex-col group"
+                className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-lg hover:border-blue-300 transition-all duration-300 flex flex-col group hover:-translate-y-1"
               >
                 {/* Course Image */}
                 <div className="h-48 w-full relative overflow-hidden">
@@ -311,7 +309,7 @@ export default function Beranda() {
                     className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">
-                    <Badge variant={course.category === 'Design' ? 'primary' : course.category === 'Business' ? 'warning' : 'success'}>
+                    <Badge variant="info">
                       {course.category}
                     </Badge>
                   </div>
@@ -320,25 +318,25 @@ export default function Beranda() {
                 {/* Course Body */}
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div className="space-y-2">
-                    <div className="flex items-center gap-1.5 text-xs text-amber-400 font-semibold">
-                      <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                    <div className="flex items-center gap-1.5 text-xs text-amber-600 font-semibold">
+                      <Star className="h-4 w-4 fill-amber-400 text-amber-500" />
                       <span>{course.rating}</span>
                       <span className="text-slate-500 font-normal">({course.reviewCount} ulasan)</span>
                     </div>
-                    <h3 className="text-lg font-bold text-white tracking-tight group-hover:text-indigo-400 transition-colors line-clamp-1">
+                    <h3 className="text-lg font-bold text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors line-clamp-1">
                       {course.title}
                     </h3>
                   </div>
 
                   {/* Mentor details */}
-                  <div className="mt-4 flex items-center gap-3 border-t border-slate-800/60 pt-4">
+                  <div className="mt-4 flex items-center gap-3 border-t border-slate-100 pt-4">
                     <img
                       src={course.mentorAvatar}
                       alt={course.mentorName}
-                      className="h-9 w-9 rounded-full object-cover ring-2 ring-indigo-500/10"
+                      className="h-9 w-9 rounded-full object-cover ring-2 ring-blue-100"
                     />
                     <div>
-                      <p className="text-xs font-semibold text-white">{course.mentorName}</p>
+                      <p className="text-xs font-semibold text-slate-900">{course.mentorName}</p>
                       <p className="text-[10px] text-slate-500">{course.mentorRole}</p>
                     </div>
                   </div>
@@ -347,7 +345,7 @@ export default function Beranda() {
                   <div className="mt-6 flex items-center justify-between gap-4">
                     <div>
                       <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Price</p>
-                      <p className="text-base font-bold text-indigo-400">{course.price}</p>
+                      <p className="text-base font-bold text-blue-600">{course.price}</p>
                     </div>
                     <Link to={PATHS.REGISTER}>
                       <Button size="sm">Daftar Kelas</Button>
@@ -364,8 +362,8 @@ export default function Beranda() {
       <section className="py-8">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="text-3xl font-extrabold text-white tracking-tight">Learn From Indonesia's Best</h2>
-            <p className="mt-2 text-sm text-slate-400 leading-relaxed">
+            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Learn From Indonesia's Best</h2>
+            <p className="mt-2 text-sm text-slate-600 leading-relaxed">
               Belajar langsung dari mentor terpilih dengan pengalaman industri bertahun-tahun.
             </p>
           </div>
@@ -373,7 +371,7 @@ export default function Beranda() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
             {mentors.map((mentor, i) => (
               <div key={i} className="text-center space-y-4 group">
-                <div className="relative mx-auto h-28 w-28 rounded-full overflow-hidden border-2 border-indigo-500/20 group-hover:border-indigo-500/50 shadow-xl transition-all duration-300">
+                <div className="relative mx-auto h-28 w-28 rounded-full overflow-hidden border-2 border-blue-200 group-hover:border-blue-400 shadow-lg transition-all duration-300">
                   <img
                     src={mentor.avatar}
                     alt={mentor.name}
@@ -381,7 +379,7 @@ export default function Beranda() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white group-hover:text-indigo-400 transition-colors">{mentor.name}</h3>
+                  <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{mentor.name}</h3>
                   <p className="text-xs text-slate-500 mt-1 leading-relaxed">{mentor.role}</p>
                 </div>
               </div>
@@ -397,8 +395,8 @@ export default function Beranda() {
             {/* Left Content Column */}
             <div className="flex-1 space-y-8 max-w-xl text-left">
               <div>
-                <h2 className="text-3xl font-extrabold text-white tracking-tight">Why Students Choose Eleva</h2>
-                <p className="text-xs text-slate-400 mt-1.5">Membantu mempercepat karir dan pembelajaran Anda</p>
+                <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Why Students Choose Eleva</h2>
+                <p className="text-xs text-slate-600 mt-1.5">Membantu mempercepat karir dan pembelajaran Anda</p>
               </div>
 
               {/* Benefit features */}
@@ -408,30 +406,30 @@ export default function Beranda() {
                     icon: BookOpen,
                     title: 'Curriculum Terupdate',
                     desc: 'Materi selalu disesuaikan dengan kebutuhan industri terkini.',
-                    color: 'text-indigo-400 bg-indigo-500/10',
+                    color: 'text-blue-600 bg-blue-100',
                   },
                   {
                     icon: Users,
                     title: 'Mentor Professional',
                     desc: 'Dibimbing langsung oleh praktisi yang berpengalaman di bidangnya.',
-                    color: 'text-violet-400 bg-violet-500/10',
+                    color: 'text-blue-600 bg-blue-100',
                   },
                   {
                     icon: Trophy,
                     title: 'Sertifikat Kompetensi',
                     desc: 'Dapatkan sertifikat kelulusan resmi untuk menunjang karirmu.',
-                    color: 'text-amber-400 bg-amber-500/10',
+                    color: 'text-blue-600 bg-blue-100',
                   },
                 ].map((item, i) => {
                   const Icon = item.icon;
                   return (
                     <div key={i} className="flex gap-4 group">
-                      <div className={`p-3.5 rounded-2xl ${item.color} h-12 w-12 flex items-center justify-center shrink-0 shadow-lg group-hover:scale-105 transition-transform duration-300`}>
+                      <div className={`p-3.5 rounded-2xl ${item.color} h-12 w-12 flex items-center justify-center shrink-0 shadow-md group-hover:scale-110 transition-transform duration-300`}>
                         <Icon className="h-5 w-5" />
                       </div>
                       <div>
-                        <h3 className="text-base font-bold text-white group-hover:text-indigo-400 transition-colors">{item.title}</h3>
-                        <p className="text-xs text-slate-400 mt-1.5 leading-relaxed">{item.desc}</p>
+                        <h3 className="text-base font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+                        <p className="text-xs text-slate-600 mt-1.5 leading-relaxed">{item.desc}</p>
                       </div>
                     </div>
                   );
@@ -441,15 +439,15 @@ export default function Beranda() {
 
             {/* Right Media Graphic */}
             <div className="flex-1 relative w-full max-w-lg lg:max-w-none">
-              <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/40 aspect-[16/10] bg-slate-900 group">
+              <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-lg shadow-slate-200/50 aspect-[16/10] bg-white group">
                 <img
                   src="/why_choose_us_dashboard.png"
                   alt="Analytics Dashboard"
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/10 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-50/50 to-transparent pointer-events-none" />
               </div>
-              <div className="absolute -top-6 -left-6 w-32 h-32 bg-indigo-600/10 rounded-full blur-2xl -z-10" />
+              <div className="absolute -top-6 -left-6 w-32 h-32 bg-blue-100 rounded-full blur-2xl -z-10" />
             </div>
           </div>
         </Container>
@@ -459,8 +457,8 @@ export default function Beranda() {
       <section className="py-8">
         <Container>
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="text-3xl font-extrabold text-white tracking-tight">Apa Kata Mereka tentang Eleva</h2>
-            <p className="mt-2 text-sm text-slate-400 leading-relaxed">
+            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">Apa Kata Mereka tentang Eleva</h2>
+            <p className="mt-2 text-sm text-slate-600 leading-relaxed">
               Testimoni jujur dari para alumni yang telah sukses mencapai impian mereka.
             </p>
           </div>
@@ -469,15 +467,15 @@ export default function Beranda() {
             {testimonials.map((test, i) => (
               <div
                 key={i}
-                className="bg-slate-900/50 border border-slate-800/80 rounded-2xl p-6 shadow-xl flex flex-col justify-between hover:border-slate-700/80 transition-all duration-300 group hover:-translate-y-1"
+                className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-blue-300 transition-all duration-300 group hover:-translate-y-1"
               >
                 <div>
                   {/* Quotes Icon */}
-                  <div className="mb-4 text-indigo-500/40">
+                  <div className="mb-4 text-blue-400">
                     <Quote className="h-8 w-8 stroke-[1.5]" />
                   </div>
                   {/* Text */}
-                  <p className="text-xs text-slate-400 leading-relaxed italic group-hover:text-slate-300 transition-colors">
+                  <p className="text-xs text-slate-600 leading-relaxed italic">
                     "{test.text}"
                   </p>
                 </div>
@@ -486,18 +484,18 @@ export default function Beranda() {
                   {/* Stars */}
                   <div className="flex items-center gap-0.5">
                     {Array.from({ length: test.stars }).map((_, s) => (
-                      <Star key={s} className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                      <Star key={s} className="h-3.5 w-3.5 fill-amber-400 text-amber-500" />
                     ))}
                   </div>
                   {/* User Profile */}
-                  <div className="flex items-center gap-3 border-t border-slate-800/60 pt-4">
+                  <div className="flex items-center gap-3 border-t border-slate-100 pt-4">
                     <img
                       src={test.userAvatar}
                       alt={test.userName}
-                      className="h-9 w-9 rounded-full object-cover ring-2 ring-indigo-500/10"
+                      className="h-9 w-9 rounded-full object-cover ring-2 ring-blue-100"
                     />
                     <div>
-                      <p className="text-xs font-bold text-white">{test.userName}</p>
+                      <p className="text-xs font-semibold text-slate-900">{test.userName}</p>
                       <p className="text-[10px] text-slate-500">{test.userRole}</p>
                     </div>
                   </div>
@@ -511,26 +509,26 @@ export default function Beranda() {
       {/* ── CTA BANNER ───────────────────────────────────── */}
       <section className="py-8">
         <Container>
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-950 border border-indigo-500/10 p-10 sm:p-16 text-center shadow-2xl">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-600 via-blue-700 to-slate-900 border border-blue-500/20 p-10 sm:p-16 text-center shadow-xl">
             {/* Glow blobs */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-indigo-500/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 right-0 w-[300px] h-[200px] bg-violet-500/5 rounded-full blur-3xl" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-400/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-0 w-[300px] h-[200px] bg-blue-300/10 rounded-full blur-3xl" />
 
             <div className="relative z-10 space-y-6">
               <div className="flex justify-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-500/10 border border-indigo-500/20 shadow-lg">
-                  <GraduationCap className="h-6 w-6 text-indigo-400" />
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 border border-white/20 shadow-lg">
+                  <img src={logo} alt="Eleva Logo" className="h-7 w-7 object-contain" />
                 </div>
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
                 Mulai Belajar Hari Ini
               </h2>
-              <p className="text-xs sm:text-sm text-slate-400 max-w-lg mx-auto leading-relaxed">
+              <p className="text-xs sm:text-sm text-blue-100 max-w-lg mx-auto leading-relaxed">
                 Bergabung dengan ribuan pelajar lainnya dan mulai perjalanan belajarmu sekarang.
               </p>
               <div className="pt-2">
                 <Link to={PATHS.REGISTER}>
-                  <Button size="lg" className="shadow-lg shadow-indigo-600/25">
+                  <Button variant="secondary" size="lg" className="shadow-lg shadow-blue-900/20">
                     Daftar Sekarang
                   </Button>
                 </Link>

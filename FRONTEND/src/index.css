@@ -18,23 +18,23 @@
 
   body {
     margin: 0;
-    background-color: #020617; /* slate-950 */
-    color: #e2e8f0;           /* slate-200 */
+    background-color: #f8fafc; /* slate-50 - bright & clean */
+    color: #0f172a;           /* slate-900 - dark text for contrast */
   }
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: transparent;
+    background: #f1f5f9; /* slate-100 */
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
+    background: #94a3b8; /* slate-400 */
+    border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: #64748b; /* slate-500 */
   }
 }
 

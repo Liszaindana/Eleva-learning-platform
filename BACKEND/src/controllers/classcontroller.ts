@@ -92,13 +92,16 @@ export const getallclass = async (
       },
 
       include: {
-        mentor: true,
         category: true,
         periode: true,
         level: true,
         materis: true,
         enrollment: true,
-        reviews: true,
+        reviews: {
+          include: {
+            user: true,
+          }
+        },
         exams: true,
       },
     });
@@ -135,13 +138,16 @@ export const getclassbyid = async (
       },
 
       include: {
-        mentor: true,
         category: true,
         periode: true,
         level: true,
         materis: true,
         enrollment: true,
-        reviews: true,
+        reviews: {
+          include: {
+            user: true,
+          }
+        },
         exams: true,
       },
     });

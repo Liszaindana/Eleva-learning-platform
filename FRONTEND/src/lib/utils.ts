@@ -9,11 +9,17 @@ export function cn(...classes: (string | boolean | undefined | null)[]): string 
  * Format a date string to Indonesian locale
  */
 export function formatDate(dateStr: string): string {
-  return new Date(dateStr).toLocaleDateString('id-ID', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  });
+  try {
+    const date = new Date(dateStr);
+    if (isNaN(date.getTime())) return '-';
+    return date.toLocaleDateString('id-ID', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+  } catch {
+    return '-';
+  }
 }
 
 /**
