@@ -1,11 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-
-import { PrismaMariaDb } from '@prisma/adapter-mariadb'; 
-
-import { PrismaClient } from './generated/prisma/index.js';
-
 import categoryRoute from "./routes/categoryRoute.js";
 import userRoute from "./routes/userRoute.js"
 import classRoute from './routes/classRoute.js';
@@ -17,7 +12,7 @@ import reviewRoute from './routes/reviewRoute.js';
 import roleRoute from './routes/roleRoute.js';
 import enrollmentRoute from './routes/enrollmentRoute.js';
 
-
+// App configuration
 dotenv.config();
 
 const app = express();
@@ -25,10 +20,6 @@ const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
-
-const adapter = new PrismaMariaDb(process.env.DATABASE_URL!);
-
-const prisma = new PrismaClient({ adapter });
 
 // Route testing
 app.get('/', async (req, res) => {
