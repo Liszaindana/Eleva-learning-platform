@@ -154,6 +154,7 @@ exports.Prisma.ClassScalarFieldEnum = {
   category_id: 'category_id',
   periode_id: 'periode_id',
   level_id: 'level_id',
+  user_id: 'user_id',
   title: 'title',
   description: 'description',
   is_active: 'is_active'
@@ -193,6 +194,45 @@ exports.Prisma.ReviewScalarFieldEnum = {
   comment: 'comment'
 };
 
+exports.Prisma.KriteriaScalarFieldEnum = {
+  id_kriteria: 'id_kriteria',
+  kode: 'kode',
+  nama: 'nama',
+  tipe: 'tipe',
+  bobot: 'bobot'
+};
+
+exports.Prisma.KriteriaValueScalarFieldEnum = {
+  id_value: 'id_value',
+  id_kriteria: 'id_kriteria',
+  value: 'value',
+  score: 'score'
+};
+
+exports.Prisma.RecommendationRequestScalarFieldEnum = {
+  id_recomen: 'id_recomen',
+  user_id: 'user_id',
+  category_id: 'category_id',
+  periode_id: 'periode_id',
+  method: 'method',
+  created_at: 'created_at'
+};
+
+exports.Prisma.RequestBobotScalarFieldEnum = {
+  id_bobot: 'id_bobot',
+  id_recomen: 'id_recomen',
+  id_kriteria: 'id_kriteria',
+  bobot_req: 'bobot_req'
+};
+
+exports.Prisma.RecommendationResultScalarFieldEnum = {
+  id_hasil: 'id_hasil',
+  id_recomen: 'id_recomen',
+  user_id: 'user_id',
+  score: 'score',
+  ranking: 'ranking'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -210,10 +250,6 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
 
 exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
   categories: 'categories'
-};
-
-exports.Prisma.PeriodeOrderByRelevanceFieldEnum = {
-  year: 'year'
 };
 
 exports.Prisma.LevelOrderByRelevanceFieldEnum = {
@@ -243,6 +279,20 @@ exports.Prisma.ReviewOrderByRelevanceFieldEnum = {
   comment: 'comment'
 };
 
+exports.Prisma.KriteriaOrderByRelevanceFieldEnum = {
+  kode: 'kode',
+  nama: 'nama',
+  tipe: 'tipe'
+};
+
+exports.Prisma.KriteriaValueOrderByRelevanceFieldEnum = {
+  value: 'value'
+};
+
+exports.Prisma.RecommendationRequestOrderByRelevanceFieldEnum = {
+  method: 'method'
+};
+
 
 exports.Prisma.ModelName = {
   Role: 'Role',
@@ -254,7 +304,12 @@ exports.Prisma.ModelName = {
   Enrollment: 'Enrollment',
   Materi: 'Materi',
   Exam: 'Exam',
-  Review: 'Review'
+  Review: 'Review',
+  Kriteria: 'Kriteria',
+  KriteriaValue: 'KriteriaValue',
+  RecommendationRequest: 'RecommendationRequest',
+  RequestBobot: 'RequestBobot',
+  RecommendationResult: 'RecommendationResult'
 };
 
 /**
