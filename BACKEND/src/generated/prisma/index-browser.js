@@ -154,6 +154,7 @@ exports.Prisma.ClassScalarFieldEnum = {
   category_id: 'category_id',
   periode_id: 'periode_id',
   level_id: 'level_id',
+  user_id: 'user_id',
   title: 'title',
   description: 'description',
   is_active: 'is_active'
@@ -191,6 +192,45 @@ exports.Prisma.ReviewScalarFieldEnum = {
   class_id: 'class_id',
   rating: 'rating',
   comment: 'comment'
+};
+
+exports.Prisma.KriteriaScalarFieldEnum = {
+  id_kriteria: 'id_kriteria',
+  kode: 'kode',
+  nama: 'nama',
+  tipe: 'tipe',
+  bobot: 'bobot'
+};
+
+exports.Prisma.KriteriaValueScalarFieldEnum = {
+  id_value: 'id_value',
+  id_kriteria: 'id_kriteria',
+  value: 'value',
+  score: 'score'
+};
+
+exports.Prisma.RecommendationRequestScalarFieldEnum = {
+  id_request: 'id_request',
+  user_id: 'user_id',
+  category_id: 'category_id',
+  method: 'method',
+  created_at: 'created_at',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.RecommendationReqWeightScalarFieldEnum = {
+  id: 'id',
+  req_id: 'req_id',
+  kriteria_id: 'kriteria_id',
+  bobot: 'bobot'
+};
+
+exports.Prisma.RecommendationResultScalarFieldEnum = {
+  id: 'id',
+  req_id: 'req_id',
+  user_id: 'user_id',
+  score: 'score',
+  pos: 'pos'
 };
 
 exports.Prisma.SortOrder = {
@@ -243,6 +283,20 @@ exports.Prisma.ReviewOrderByRelevanceFieldEnum = {
   comment: 'comment'
 };
 
+exports.Prisma.KriteriaOrderByRelevanceFieldEnum = {
+  kode: 'kode',
+  nama: 'nama',
+  tipe: 'tipe'
+};
+
+exports.Prisma.KriteriaValueOrderByRelevanceFieldEnum = {
+  value: 'value'
+};
+
+exports.Prisma.RecommendationRequestOrderByRelevanceFieldEnum = {
+  method: 'method'
+};
+
 
 exports.Prisma.ModelName = {
   Role: 'Role',
@@ -254,7 +308,12 @@ exports.Prisma.ModelName = {
   Enrollment: 'Enrollment',
   Materi: 'Materi',
   Exam: 'Exam',
-  Review: 'Review'
+  Review: 'Review',
+  Kriteria: 'Kriteria',
+  KriteriaValue: 'KriteriaValue',
+  RecommendationRequest: 'RecommendationRequest',
+  RecommendationReqWeight: 'RecommendationReqWeight',
+  RecommendationResult: 'RecommendationResult'
 };
 
 /**

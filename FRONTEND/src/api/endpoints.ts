@@ -26,6 +26,9 @@ export const classApi = {
 
   getById: (id: number) =>
     apiClient.get<Class>(`/class/${id}`).then((res) => res.data),
+
+  getCategories: () =>
+    apiClient.get<any[]>('/category').then((res) => res.data),
 };
 
 // ── User / Auth Endpoints ───────────────────────────────────
@@ -60,4 +63,26 @@ export const userApi = {
     apiClient
       .get<ApiResponse<User>>(`/users/${id}`)
       .then((res) => res.data),
+};
+
+
+// ── Category Endpoints ───────────────────────────────────
+
+export const categoryApi = {
+  // Ambil semua kategori (Ini yang akan menggantikan fungsi lama)
+  getAll: () => 
+    apiClient.get<any[]>('/category').then((res) => res.data),
+
+  // 💡 Bonus: Endpoint baru yang PASTI akan kamu butuhkan di Halaman Setting Category nanti:
+  getById: (id: number) => 
+    apiClient.get<any>(`/category/${id}`).then((res) => res.data),
+
+  create: (data: { categories: string }) => 
+    apiClient.post('/category', data).then((res) => res.data),
+
+  update: (id: number, data: { categories: string }) => 
+    apiClient.put(`/category/${id}`, data).then((res) => res.data),
+
+  delete: (id: number) => 
+    apiClient.delete(`/category/${id}`).then((res) => res.data),
 };

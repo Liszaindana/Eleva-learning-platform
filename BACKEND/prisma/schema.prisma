@@ -44,6 +44,7 @@ model Category {
   category_id Int     @id @default(autoincrement())
   categories  String
   classes     Class[]
+  recommendationRequests RecommendationRequest[]
 
   @@map("category")
 }

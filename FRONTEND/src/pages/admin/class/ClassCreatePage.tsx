@@ -3,6 +3,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import Button from '../../../components/ui/Button';
 import { PATHS } from '../../../routes/paths';
+import { userApi } from '../../../api/endpoints';
+import { categoryApi } from '../../../api/endpoints';
+import { useQuery } from '@tanstack/react-query';
 
 export default function ClassCreatePage() {
   const navigate = useNavigate();
@@ -10,6 +13,23 @@ export default function ClassCreatePage() {
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
   const [mentor, setMentor] = useState('');
+
+  // 1. Ambil semua kategori dari database ril
+  const { data: categories = [] } = useQuery({
+    queryKey: ['allCategories'],
+    queryFn: categoryApi.getAll,
+  });
+
+  // 3. Ambil semua user/mentor dari database, lalu filter yang rolenya = 2
+  const { data: mentors = [] } = useQuery({
+    queryKey: ['allMentors'],
+    queryFn: userApi.getAll,
+    // Fungsi select untuk memfilter data sebelum masuk ke komponen
+    select: (allUsers: any[]) => {
+      // Sesuaikan nama properti rolenya (apakah men.role_id === 2 atau men.role === '2' atau men.role === 2)
+      return allUsers.filter((user: any) => Number(user.role_id || user.role) === 2);
+    }
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,10 +94,13 @@ export default function ClassCreatePage() {
                   className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all"
                   required
                 >
-                  <option value="">Select a category</option>
-                  <option value="Programming">Programming</option>
-                  <option value="Design">Design</option>
-                  <option value="Business">Business</option>
+                  <option value="">Select Category</option>
+                  {/* ✨ PERBAIKAN: Menggunakan properti .categories sesuai isi phpMyAdmin */}
+                  {categories.map((cat: any) => (
+                    <option key={cat.category_id} value={cat.category_id}>
+                      {cat.categories}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -92,9 +115,13 @@ export default function ClassCreatePage() {
                   className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all"
                   required
                 >
-                  <option value="">Select a mentor</option>
-                  <option value="Budi Santoso">Budi Santoso</option>
-                  <option value="Sarah Amelia">Sarah Amelia</option>
+                  <option value="">Select Mentor</option>
+                  {/* ✨ LOOPING DATA MENTOR RIL DARI BACKEND */}
+                  {mentors.map((men: any) => (
+                    <option key={men.user_id} value={men.user_id}>
+                      {men.name}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>

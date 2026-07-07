@@ -63,6 +63,31 @@ export type Exam = $Result.DefaultSelection<Prisma.$ExamPayload>
  * 
  */
 export type Review = $Result.DefaultSelection<Prisma.$ReviewPayload>
+/**
+ * Model Kriteria
+ * 
+ */
+export type Kriteria = $Result.DefaultSelection<Prisma.$KriteriaPayload>
+/**
+ * Model KriteriaValue
+ * 
+ */
+export type KriteriaValue = $Result.DefaultSelection<Prisma.$KriteriaValuePayload>
+/**
+ * Model RecommendationRequest
+ * 
+ */
+export type RecommendationRequest = $Result.DefaultSelection<Prisma.$RecommendationRequestPayload>
+/**
+ * Model RecommendationReqWeight
+ * 
+ */
+export type RecommendationReqWeight = $Result.DefaultSelection<Prisma.$RecommendationReqWeightPayload>
+/**
+ * Model RecommendationResult
+ * 
+ */
+export type RecommendationResult = $Result.DefaultSelection<Prisma.$RecommendationResultPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -284,6 +309,56 @@ export class PrismaClient<
     * ```
     */
   get review(): Prisma.ReviewDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.kriteria`: Exposes CRUD operations for the **Kriteria** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Kriterias
+    * const kriterias = await prisma.kriteria.findMany()
+    * ```
+    */
+  get kriteria(): Prisma.KriteriaDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.kriteriaValue`: Exposes CRUD operations for the **KriteriaValue** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more KriteriaValues
+    * const kriteriaValues = await prisma.kriteriaValue.findMany()
+    * ```
+    */
+  get kriteriaValue(): Prisma.KriteriaValueDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.recommendationRequest`: Exposes CRUD operations for the **RecommendationRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RecommendationRequests
+    * const recommendationRequests = await prisma.recommendationRequest.findMany()
+    * ```
+    */
+  get recommendationRequest(): Prisma.RecommendationRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.recommendationReqWeight`: Exposes CRUD operations for the **RecommendationReqWeight** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RecommendationReqWeights
+    * const recommendationReqWeights = await prisma.recommendationReqWeight.findMany()
+    * ```
+    */
+  get recommendationReqWeight(): Prisma.RecommendationReqWeightDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.recommendationResult`: Exposes CRUD operations for the **RecommendationResult** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RecommendationResults
+    * const recommendationResults = await prisma.recommendationResult.findMany()
+    * ```
+    */
+  get recommendationResult(): Prisma.RecommendationResultDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -727,7 +802,12 @@ export namespace Prisma {
     Enrollment: 'Enrollment',
     Materi: 'Materi',
     Exam: 'Exam',
-    Review: 'Review'
+    Review: 'Review',
+    Kriteria: 'Kriteria',
+    KriteriaValue: 'KriteriaValue',
+    RecommendationRequest: 'RecommendationRequest',
+    RecommendationReqWeight: 'RecommendationReqWeight',
+    RecommendationResult: 'RecommendationResult'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -743,7 +823,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "role" | "user" | "category" | "periode" | "level" | "class" | "enrollment" | "materi" | "exam" | "review"
+      modelProps: "role" | "user" | "category" | "periode" | "level" | "class" | "enrollment" | "materi" | "exam" | "review" | "kriteria" | "kriteriaValue" | "recommendationRequest" | "recommendationReqWeight" | "recommendationResult"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1407,6 +1487,336 @@ export namespace Prisma {
           }
         }
       }
+      Kriteria: {
+        payload: Prisma.$KriteriaPayload<ExtArgs>
+        fields: Prisma.KriteriaFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.KriteriaFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.KriteriaFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaPayload>
+          }
+          findFirst: {
+            args: Prisma.KriteriaFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.KriteriaFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaPayload>
+          }
+          findMany: {
+            args: Prisma.KriteriaFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaPayload>[]
+          }
+          create: {
+            args: Prisma.KriteriaCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaPayload>
+          }
+          createMany: {
+            args: Prisma.KriteriaCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.KriteriaDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaPayload>
+          }
+          update: {
+            args: Prisma.KriteriaUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaPayload>
+          }
+          deleteMany: {
+            args: Prisma.KriteriaDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.KriteriaUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.KriteriaUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaPayload>
+          }
+          aggregate: {
+            args: Prisma.KriteriaAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateKriteria>
+          }
+          groupBy: {
+            args: Prisma.KriteriaGroupByArgs<ExtArgs>
+            result: $Utils.Optional<KriteriaGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.KriteriaCountArgs<ExtArgs>
+            result: $Utils.Optional<KriteriaCountAggregateOutputType> | number
+          }
+        }
+      }
+      KriteriaValue: {
+        payload: Prisma.$KriteriaValuePayload<ExtArgs>
+        fields: Prisma.KriteriaValueFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.KriteriaValueFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaValuePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.KriteriaValueFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaValuePayload>
+          }
+          findFirst: {
+            args: Prisma.KriteriaValueFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaValuePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.KriteriaValueFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaValuePayload>
+          }
+          findMany: {
+            args: Prisma.KriteriaValueFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaValuePayload>[]
+          }
+          create: {
+            args: Prisma.KriteriaValueCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaValuePayload>
+          }
+          createMany: {
+            args: Prisma.KriteriaValueCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.KriteriaValueDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaValuePayload>
+          }
+          update: {
+            args: Prisma.KriteriaValueUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaValuePayload>
+          }
+          deleteMany: {
+            args: Prisma.KriteriaValueDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.KriteriaValueUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.KriteriaValueUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$KriteriaValuePayload>
+          }
+          aggregate: {
+            args: Prisma.KriteriaValueAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateKriteriaValue>
+          }
+          groupBy: {
+            args: Prisma.KriteriaValueGroupByArgs<ExtArgs>
+            result: $Utils.Optional<KriteriaValueGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.KriteriaValueCountArgs<ExtArgs>
+            result: $Utils.Optional<KriteriaValueCountAggregateOutputType> | number
+          }
+        }
+      }
+      RecommendationRequest: {
+        payload: Prisma.$RecommendationRequestPayload<ExtArgs>
+        fields: Prisma.RecommendationRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RecommendationRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RecommendationRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.RecommendationRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RecommendationRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationRequestPayload>
+          }
+          findMany: {
+            args: Prisma.RecommendationRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationRequestPayload>[]
+          }
+          create: {
+            args: Prisma.RecommendationRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationRequestPayload>
+          }
+          createMany: {
+            args: Prisma.RecommendationRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.RecommendationRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationRequestPayload>
+          }
+          update: {
+            args: Prisma.RecommendationRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.RecommendationRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RecommendationRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.RecommendationRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.RecommendationRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRecommendationRequest>
+          }
+          groupBy: {
+            args: Prisma.RecommendationRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RecommendationRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RecommendationRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<RecommendationRequestCountAggregateOutputType> | number
+          }
+        }
+      }
+      RecommendationReqWeight: {
+        payload: Prisma.$RecommendationReqWeightPayload<ExtArgs>
+        fields: Prisma.RecommendationReqWeightFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RecommendationReqWeightFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationReqWeightPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RecommendationReqWeightFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationReqWeightPayload>
+          }
+          findFirst: {
+            args: Prisma.RecommendationReqWeightFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationReqWeightPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RecommendationReqWeightFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationReqWeightPayload>
+          }
+          findMany: {
+            args: Prisma.RecommendationReqWeightFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationReqWeightPayload>[]
+          }
+          create: {
+            args: Prisma.RecommendationReqWeightCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationReqWeightPayload>
+          }
+          createMany: {
+            args: Prisma.RecommendationReqWeightCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.RecommendationReqWeightDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationReqWeightPayload>
+          }
+          update: {
+            args: Prisma.RecommendationReqWeightUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationReqWeightPayload>
+          }
+          deleteMany: {
+            args: Prisma.RecommendationReqWeightDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RecommendationReqWeightUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.RecommendationReqWeightUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationReqWeightPayload>
+          }
+          aggregate: {
+            args: Prisma.RecommendationReqWeightAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRecommendationReqWeight>
+          }
+          groupBy: {
+            args: Prisma.RecommendationReqWeightGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RecommendationReqWeightGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RecommendationReqWeightCountArgs<ExtArgs>
+            result: $Utils.Optional<RecommendationReqWeightCountAggregateOutputType> | number
+          }
+        }
+      }
+      RecommendationResult: {
+        payload: Prisma.$RecommendationResultPayload<ExtArgs>
+        fields: Prisma.RecommendationResultFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RecommendationResultFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationResultPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RecommendationResultFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationResultPayload>
+          }
+          findFirst: {
+            args: Prisma.RecommendationResultFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationResultPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RecommendationResultFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationResultPayload>
+          }
+          findMany: {
+            args: Prisma.RecommendationResultFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationResultPayload>[]
+          }
+          create: {
+            args: Prisma.RecommendationResultCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationResultPayload>
+          }
+          createMany: {
+            args: Prisma.RecommendationResultCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.RecommendationResultDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationResultPayload>
+          }
+          update: {
+            args: Prisma.RecommendationResultUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationResultPayload>
+          }
+          deleteMany: {
+            args: Prisma.RecommendationResultDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RecommendationResultUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.RecommendationResultUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RecommendationResultPayload>
+          }
+          aggregate: {
+            args: Prisma.RecommendationResultAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRecommendationResult>
+          }
+          groupBy: {
+            args: Prisma.RecommendationResultGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RecommendationResultGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RecommendationResultCountArgs<ExtArgs>
+            result: $Utils.Optional<RecommendationResultCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -1525,6 +1935,11 @@ export namespace Prisma {
     materi?: MateriOmit
     exam?: ExamOmit
     review?: ReviewOmit
+    kriteria?: KriteriaOmit
+    kriteriaValue?: KriteriaValueOmit
+    recommendationRequest?: RecommendationRequestOmit
+    recommendationReqWeight?: RecommendationReqWeightOmit
+    recommendationResult?: RecommendationResultOmit
   }
 
   /* Types for Logging */
@@ -1639,12 +2054,18 @@ export namespace Prisma {
     enrollments: number
     reviews: number
     exams: number
+    classes: number
+    recommendationRequests: number
+    recommendationResults: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     enrollments?: boolean | UserCountOutputTypeCountEnrollmentsArgs
     reviews?: boolean | UserCountOutputTypeCountReviewsArgs
     exams?: boolean | UserCountOutputTypeCountExamsArgs
+    classes?: boolean | UserCountOutputTypeCountClassesArgs
+    recommendationRequests?: boolean | UserCountOutputTypeCountRecommendationRequestsArgs
+    recommendationResults?: boolean | UserCountOutputTypeCountRecommendationResultsArgs
   }
 
   // Custom InputTypes
@@ -1679,6 +2100,27 @@ export namespace Prisma {
     where?: ExamWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountClassesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClassWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRecommendationRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationRequestWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRecommendationResultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationResultWhereInput
+  }
+
 
   /**
    * Count Type CategoryCountOutputType
@@ -1686,10 +2128,12 @@ export namespace Prisma {
 
   export type CategoryCountOutputType = {
     classes: number
+    recommendationRequests: number
   }
 
   export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     classes?: boolean | CategoryCountOutputTypeCountClassesArgs
+    recommendationRequests?: boolean | CategoryCountOutputTypeCountRecommendationRequestsArgs
   }
 
   // Custom InputTypes
@@ -1708,6 +2152,13 @@ export namespace Prisma {
    */
   export type CategoryCountOutputTypeCountClassesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ClassWhereInput
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountRecommendationRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationRequestWhereInput
   }
 
 
@@ -1828,6 +2279,86 @@ export namespace Prisma {
    */
   export type ClassCountOutputTypeCountEnrollmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EnrollmentWhereInput
+  }
+
+
+  /**
+   * Count Type KriteriaCountOutputType
+   */
+
+  export type KriteriaCountOutputType = {
+    values: number
+    weights: number
+  }
+
+  export type KriteriaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    values?: boolean | KriteriaCountOutputTypeCountValuesArgs
+    weights?: boolean | KriteriaCountOutputTypeCountWeightsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * KriteriaCountOutputType without action
+   */
+  export type KriteriaCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaCountOutputType
+     */
+    select?: KriteriaCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * KriteriaCountOutputType without action
+   */
+  export type KriteriaCountOutputTypeCountValuesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KriteriaValueWhereInput
+  }
+
+  /**
+   * KriteriaCountOutputType without action
+   */
+  export type KriteriaCountOutputTypeCountWeightsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationReqWeightWhereInput
+  }
+
+
+  /**
+   * Count Type RecommendationRequestCountOutputType
+   */
+
+  export type RecommendationRequestCountOutputType = {
+    weights: number
+    results: number
+  }
+
+  export type RecommendationRequestCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    weights?: boolean | RecommendationRequestCountOutputTypeCountWeightsArgs
+    results?: boolean | RecommendationRequestCountOutputTypeCountResultsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * RecommendationRequestCountOutputType without action
+   */
+  export type RecommendationRequestCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequestCountOutputType
+     */
+    select?: RecommendationRequestCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * RecommendationRequestCountOutputType without action
+   */
+  export type RecommendationRequestCountOutputTypeCountWeightsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationReqWeightWhereInput
+  }
+
+  /**
+   * RecommendationRequestCountOutputType without action
+   */
+  export type RecommendationRequestCountOutputTypeCountResultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationResultWhereInput
   }
 
 
@@ -3010,6 +3541,9 @@ export namespace Prisma {
     enrollments?: boolean | User$enrollmentsArgs<ExtArgs>
     reviews?: boolean | User$reviewsArgs<ExtArgs>
     exams?: boolean | User$examsArgs<ExtArgs>
+    classes?: boolean | User$classesArgs<ExtArgs>
+    recommendationRequests?: boolean | User$recommendationRequestsArgs<ExtArgs>
+    recommendationResults?: boolean | User$recommendationResultsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3030,6 +3564,9 @@ export namespace Prisma {
     enrollments?: boolean | User$enrollmentsArgs<ExtArgs>
     reviews?: boolean | User$reviewsArgs<ExtArgs>
     exams?: boolean | User$examsArgs<ExtArgs>
+    classes?: boolean | User$classesArgs<ExtArgs>
+    recommendationRequests?: boolean | User$recommendationRequestsArgs<ExtArgs>
+    recommendationResults?: boolean | User$recommendationResultsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -3040,6 +3577,9 @@ export namespace Prisma {
       enrollments: Prisma.$EnrollmentPayload<ExtArgs>[]
       reviews: Prisma.$ReviewPayload<ExtArgs>[]
       exams: Prisma.$ExamPayload<ExtArgs>[]
+      classes: Prisma.$ClassPayload<ExtArgs>[]
+      recommendationRequests: Prisma.$RecommendationRequestPayload<ExtArgs>[]
+      recommendationResults: Prisma.$RecommendationResultPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       user_id: number
@@ -3392,6 +3932,9 @@ export namespace Prisma {
     enrollments<T extends User$enrollmentsArgs<ExtArgs> = {}>(args?: Subset<T, User$enrollmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnrollmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     exams<T extends User$examsArgs<ExtArgs> = {}>(args?: Subset<T, User$examsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    classes<T extends User$classesArgs<ExtArgs> = {}>(args?: Subset<T, User$classesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    recommendationRequests<T extends User$recommendationRequestsArgs<ExtArgs> = {}>(args?: Subset<T, User$recommendationRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    recommendationResults<T extends User$recommendationResultsArgs<ExtArgs> = {}>(args?: Subset<T, User$recommendationResultsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3847,6 +4390,78 @@ export namespace Prisma {
   }
 
   /**
+   * User.classes
+   */
+  export type User$classesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Class
+     */
+    select?: ClassSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Class
+     */
+    omit?: ClassOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassInclude<ExtArgs> | null
+    where?: ClassWhereInput
+    orderBy?: ClassOrderByWithRelationInput | ClassOrderByWithRelationInput[]
+    cursor?: ClassWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ClassScalarFieldEnum | ClassScalarFieldEnum[]
+  }
+
+  /**
+   * User.recommendationRequests
+   */
+  export type User$recommendationRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    where?: RecommendationRequestWhereInput
+    orderBy?: RecommendationRequestOrderByWithRelationInput | RecommendationRequestOrderByWithRelationInput[]
+    cursor?: RecommendationRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RecommendationRequestScalarFieldEnum | RecommendationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * User.recommendationResults
+   */
+  export type User$recommendationResultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    where?: RecommendationResultWhereInput
+    orderBy?: RecommendationResultOrderByWithRelationInput | RecommendationResultOrderByWithRelationInput[]
+    cursor?: RecommendationResultWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RecommendationResultScalarFieldEnum | RecommendationResultScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4040,6 +4655,7 @@ export namespace Prisma {
     category_id?: boolean
     categories?: boolean
     classes?: boolean | Category$classesArgs<ExtArgs>
+    recommendationRequests?: boolean | Category$recommendationRequestsArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
@@ -4053,6 +4669,7 @@ export namespace Prisma {
   export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"category_id" | "categories", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     classes?: boolean | Category$classesArgs<ExtArgs>
+    recommendationRequests?: boolean | Category$recommendationRequestsArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -4060,6 +4677,7 @@ export namespace Prisma {
     name: "Category"
     objects: {
       classes: Prisma.$ClassPayload<ExtArgs>[]
+      recommendationRequests: Prisma.$RecommendationRequestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       category_id: number
@@ -4405,6 +5023,7 @@ export namespace Prisma {
   export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     classes<T extends Category$classesArgs<ExtArgs> = {}>(args?: Subset<T, Category$classesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    recommendationRequests<T extends Category$recommendationRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Category$recommendationRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4805,6 +5424,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ClassScalarFieldEnum | ClassScalarFieldEnum[]
+  }
+
+  /**
+   * Category.recommendationRequests
+   */
+  export type Category$recommendationRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    where?: RecommendationRequestWhereInput
+    orderBy?: RecommendationRequestOrderByWithRelationInput | RecommendationRequestOrderByWithRelationInput[]
+    cursor?: RecommendationRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RecommendationRequestScalarFieldEnum | RecommendationRequestScalarFieldEnum[]
   }
 
   /**
@@ -6765,6 +7408,7 @@ export namespace Prisma {
     category_id: number | null
     periode_id: number | null
     level_id: number | null
+    user_id: number | null
   }
 
   export type ClassSumAggregateOutputType = {
@@ -6772,6 +7416,7 @@ export namespace Prisma {
     category_id: number | null
     periode_id: number | null
     level_id: number | null
+    user_id: number | null
   }
 
   export type ClassMinAggregateOutputType = {
@@ -6779,6 +7424,7 @@ export namespace Prisma {
     category_id: number | null
     periode_id: number | null
     level_id: number | null
+    user_id: number | null
     title: string | null
     description: string | null
     is_active: boolean | null
@@ -6789,6 +7435,7 @@ export namespace Prisma {
     category_id: number | null
     periode_id: number | null
     level_id: number | null
+    user_id: number | null
     title: string | null
     description: string | null
     is_active: boolean | null
@@ -6799,6 +7446,7 @@ export namespace Prisma {
     category_id: number
     periode_id: number
     level_id: number
+    user_id: number
     title: number
     description: number
     is_active: number
@@ -6811,6 +7459,7 @@ export namespace Prisma {
     category_id?: true
     periode_id?: true
     level_id?: true
+    user_id?: true
   }
 
   export type ClassSumAggregateInputType = {
@@ -6818,6 +7467,7 @@ export namespace Prisma {
     category_id?: true
     periode_id?: true
     level_id?: true
+    user_id?: true
   }
 
   export type ClassMinAggregateInputType = {
@@ -6825,6 +7475,7 @@ export namespace Prisma {
     category_id?: true
     periode_id?: true
     level_id?: true
+    user_id?: true
     title?: true
     description?: true
     is_active?: true
@@ -6835,6 +7486,7 @@ export namespace Prisma {
     category_id?: true
     periode_id?: true
     level_id?: true
+    user_id?: true
     title?: true
     description?: true
     is_active?: true
@@ -6845,6 +7497,7 @@ export namespace Prisma {
     category_id?: true
     periode_id?: true
     level_id?: true
+    user_id?: true
     title?: true
     description?: true
     is_active?: true
@@ -6942,6 +7595,7 @@ export namespace Prisma {
     category_id: number
     periode_id: number
     level_id: number
+    user_id: number
     title: string
     description: string
     is_active: boolean
@@ -6971,9 +7625,11 @@ export namespace Prisma {
     category_id?: boolean
     periode_id?: boolean
     level_id?: boolean
+    user_id?: boolean
     title?: boolean
     description?: boolean
     is_active?: boolean
+    mentor?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     periode?: boolean | PeriodeDefaultArgs<ExtArgs>
     level?: boolean | LevelDefaultArgs<ExtArgs>
@@ -6991,13 +7647,15 @@ export namespace Prisma {
     category_id?: boolean
     periode_id?: boolean
     level_id?: boolean
+    user_id?: boolean
     title?: boolean
     description?: boolean
     is_active?: boolean
   }
 
-  export type ClassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"class_id" | "category_id" | "periode_id" | "level_id" | "title" | "description" | "is_active", ExtArgs["result"]["class"]>
+  export type ClassOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"class_id" | "category_id" | "periode_id" | "level_id" | "user_id" | "title" | "description" | "is_active", ExtArgs["result"]["class"]>
   export type ClassInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    mentor?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
     periode?: boolean | PeriodeDefaultArgs<ExtArgs>
     level?: boolean | LevelDefaultArgs<ExtArgs>
@@ -7011,6 +7669,7 @@ export namespace Prisma {
   export type $ClassPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Class"
     objects: {
+      mentor: Prisma.$UserPayload<ExtArgs>
       category: Prisma.$CategoryPayload<ExtArgs>
       periode: Prisma.$PeriodePayload<ExtArgs>
       level: Prisma.$LevelPayload<ExtArgs>
@@ -7024,6 +7683,7 @@ export namespace Prisma {
       category_id: number
       periode_id: number
       level_id: number
+      user_id: number
       title: string
       description: string
       is_active: boolean
@@ -7367,6 +8027,7 @@ export namespace Prisma {
    */
   export interface Prisma__ClassClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    mentor<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     periode<T extends PeriodeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PeriodeDefaultArgs<ExtArgs>>): Prisma__PeriodeClient<$Result.GetResult<Prisma.$PeriodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     level<T extends LevelDefaultArgs<ExtArgs> = {}>(args?: Subset<T, LevelDefaultArgs<ExtArgs>>): Prisma__LevelClient<$Result.GetResult<Prisma.$LevelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -7407,6 +8068,7 @@ export namespace Prisma {
     readonly category_id: FieldRef<"Class", 'Int'>
     readonly periode_id: FieldRef<"Class", 'Int'>
     readonly level_id: FieldRef<"Class", 'Int'>
+    readonly user_id: FieldRef<"Class", 'Int'>
     readonly title: FieldRef<"Class", 'String'>
     readonly description: FieldRef<"Class", 'String'>
     readonly is_active: FieldRef<"Class", 'Boolean'>
@@ -11823,6 +12485,5007 @@ export namespace Prisma {
 
 
   /**
+   * Model Kriteria
+   */
+
+  export type AggregateKriteria = {
+    _count: KriteriaCountAggregateOutputType | null
+    _avg: KriteriaAvgAggregateOutputType | null
+    _sum: KriteriaSumAggregateOutputType | null
+    _min: KriteriaMinAggregateOutputType | null
+    _max: KriteriaMaxAggregateOutputType | null
+  }
+
+  export type KriteriaAvgAggregateOutputType = {
+    id_kriteria: number | null
+    bobot: number | null
+  }
+
+  export type KriteriaSumAggregateOutputType = {
+    id_kriteria: number | null
+    bobot: number | null
+  }
+
+  export type KriteriaMinAggregateOutputType = {
+    id_kriteria: number | null
+    kode: string | null
+    nama: string | null
+    tipe: string | null
+    bobot: number | null
+  }
+
+  export type KriteriaMaxAggregateOutputType = {
+    id_kriteria: number | null
+    kode: string | null
+    nama: string | null
+    tipe: string | null
+    bobot: number | null
+  }
+
+  export type KriteriaCountAggregateOutputType = {
+    id_kriteria: number
+    kode: number
+    nama: number
+    tipe: number
+    bobot: number
+    _all: number
+  }
+
+
+  export type KriteriaAvgAggregateInputType = {
+    id_kriteria?: true
+    bobot?: true
+  }
+
+  export type KriteriaSumAggregateInputType = {
+    id_kriteria?: true
+    bobot?: true
+  }
+
+  export type KriteriaMinAggregateInputType = {
+    id_kriteria?: true
+    kode?: true
+    nama?: true
+    tipe?: true
+    bobot?: true
+  }
+
+  export type KriteriaMaxAggregateInputType = {
+    id_kriteria?: true
+    kode?: true
+    nama?: true
+    tipe?: true
+    bobot?: true
+  }
+
+  export type KriteriaCountAggregateInputType = {
+    id_kriteria?: true
+    kode?: true
+    nama?: true
+    tipe?: true
+    bobot?: true
+    _all?: true
+  }
+
+  export type KriteriaAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Kriteria to aggregate.
+     */
+    where?: KriteriaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kriterias to fetch.
+     */
+    orderBy?: KriteriaOrderByWithRelationInput | KriteriaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: KriteriaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kriterias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kriterias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Kriterias
+    **/
+    _count?: true | KriteriaCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: KriteriaAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: KriteriaSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: KriteriaMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: KriteriaMaxAggregateInputType
+  }
+
+  export type GetKriteriaAggregateType<T extends KriteriaAggregateArgs> = {
+        [P in keyof T & keyof AggregateKriteria]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateKriteria[P]>
+      : GetScalarType<T[P], AggregateKriteria[P]>
+  }
+
+
+
+
+  export type KriteriaGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KriteriaWhereInput
+    orderBy?: KriteriaOrderByWithAggregationInput | KriteriaOrderByWithAggregationInput[]
+    by: KriteriaScalarFieldEnum[] | KriteriaScalarFieldEnum
+    having?: KriteriaScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: KriteriaCountAggregateInputType | true
+    _avg?: KriteriaAvgAggregateInputType
+    _sum?: KriteriaSumAggregateInputType
+    _min?: KriteriaMinAggregateInputType
+    _max?: KriteriaMaxAggregateInputType
+  }
+
+  export type KriteriaGroupByOutputType = {
+    id_kriteria: number
+    kode: string
+    nama: string
+    tipe: string
+    bobot: number
+    _count: KriteriaCountAggregateOutputType | null
+    _avg: KriteriaAvgAggregateOutputType | null
+    _sum: KriteriaSumAggregateOutputType | null
+    _min: KriteriaMinAggregateOutputType | null
+    _max: KriteriaMaxAggregateOutputType | null
+  }
+
+  type GetKriteriaGroupByPayload<T extends KriteriaGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<KriteriaGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof KriteriaGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], KriteriaGroupByOutputType[P]>
+            : GetScalarType<T[P], KriteriaGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type KriteriaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_kriteria?: boolean
+    kode?: boolean
+    nama?: boolean
+    tipe?: boolean
+    bobot?: boolean
+    values?: boolean | Kriteria$valuesArgs<ExtArgs>
+    weights?: boolean | Kriteria$weightsArgs<ExtArgs>
+    _count?: boolean | KriteriaCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["kriteria"]>
+
+
+
+  export type KriteriaSelectScalar = {
+    id_kriteria?: boolean
+    kode?: boolean
+    nama?: boolean
+    tipe?: boolean
+    bobot?: boolean
+  }
+
+  export type KriteriaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_kriteria" | "kode" | "nama" | "tipe" | "bobot", ExtArgs["result"]["kriteria"]>
+  export type KriteriaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    values?: boolean | Kriteria$valuesArgs<ExtArgs>
+    weights?: boolean | Kriteria$weightsArgs<ExtArgs>
+    _count?: boolean | KriteriaCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $KriteriaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Kriteria"
+    objects: {
+      values: Prisma.$KriteriaValuePayload<ExtArgs>[]
+      weights: Prisma.$RecommendationReqWeightPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_kriteria: number
+      kode: string
+      nama: string
+      tipe: string
+      bobot: number
+    }, ExtArgs["result"]["kriteria"]>
+    composites: {}
+  }
+
+  type KriteriaGetPayload<S extends boolean | null | undefined | KriteriaDefaultArgs> = $Result.GetResult<Prisma.$KriteriaPayload, S>
+
+  type KriteriaCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<KriteriaFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: KriteriaCountAggregateInputType | true
+    }
+
+  export interface KriteriaDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Kriteria'], meta: { name: 'Kriteria' } }
+    /**
+     * Find zero or one Kriteria that matches the filter.
+     * @param {KriteriaFindUniqueArgs} args - Arguments to find a Kriteria
+     * @example
+     * // Get one Kriteria
+     * const kriteria = await prisma.kriteria.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends KriteriaFindUniqueArgs>(args: SelectSubset<T, KriteriaFindUniqueArgs<ExtArgs>>): Prisma__KriteriaClient<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Kriteria that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {KriteriaFindUniqueOrThrowArgs} args - Arguments to find a Kriteria
+     * @example
+     * // Get one Kriteria
+     * const kriteria = await prisma.kriteria.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends KriteriaFindUniqueOrThrowArgs>(args: SelectSubset<T, KriteriaFindUniqueOrThrowArgs<ExtArgs>>): Prisma__KriteriaClient<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Kriteria that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaFindFirstArgs} args - Arguments to find a Kriteria
+     * @example
+     * // Get one Kriteria
+     * const kriteria = await prisma.kriteria.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends KriteriaFindFirstArgs>(args?: SelectSubset<T, KriteriaFindFirstArgs<ExtArgs>>): Prisma__KriteriaClient<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Kriteria that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaFindFirstOrThrowArgs} args - Arguments to find a Kriteria
+     * @example
+     * // Get one Kriteria
+     * const kriteria = await prisma.kriteria.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends KriteriaFindFirstOrThrowArgs>(args?: SelectSubset<T, KriteriaFindFirstOrThrowArgs<ExtArgs>>): Prisma__KriteriaClient<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Kriterias that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Kriterias
+     * const kriterias = await prisma.kriteria.findMany()
+     * 
+     * // Get first 10 Kriterias
+     * const kriterias = await prisma.kriteria.findMany({ take: 10 })
+     * 
+     * // Only select the `id_kriteria`
+     * const kriteriaWithId_kriteriaOnly = await prisma.kriteria.findMany({ select: { id_kriteria: true } })
+     * 
+     */
+    findMany<T extends KriteriaFindManyArgs>(args?: SelectSubset<T, KriteriaFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Kriteria.
+     * @param {KriteriaCreateArgs} args - Arguments to create a Kriteria.
+     * @example
+     * // Create one Kriteria
+     * const Kriteria = await prisma.kriteria.create({
+     *   data: {
+     *     // ... data to create a Kriteria
+     *   }
+     * })
+     * 
+     */
+    create<T extends KriteriaCreateArgs>(args: SelectSubset<T, KriteriaCreateArgs<ExtArgs>>): Prisma__KriteriaClient<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Kriterias.
+     * @param {KriteriaCreateManyArgs} args - Arguments to create many Kriterias.
+     * @example
+     * // Create many Kriterias
+     * const kriteria = await prisma.kriteria.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends KriteriaCreateManyArgs>(args?: SelectSubset<T, KriteriaCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Kriteria.
+     * @param {KriteriaDeleteArgs} args - Arguments to delete one Kriteria.
+     * @example
+     * // Delete one Kriteria
+     * const Kriteria = await prisma.kriteria.delete({
+     *   where: {
+     *     // ... filter to delete one Kriteria
+     *   }
+     * })
+     * 
+     */
+    delete<T extends KriteriaDeleteArgs>(args: SelectSubset<T, KriteriaDeleteArgs<ExtArgs>>): Prisma__KriteriaClient<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Kriteria.
+     * @param {KriteriaUpdateArgs} args - Arguments to update one Kriteria.
+     * @example
+     * // Update one Kriteria
+     * const kriteria = await prisma.kriteria.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends KriteriaUpdateArgs>(args: SelectSubset<T, KriteriaUpdateArgs<ExtArgs>>): Prisma__KriteriaClient<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Kriterias.
+     * @param {KriteriaDeleteManyArgs} args - Arguments to filter Kriterias to delete.
+     * @example
+     * // Delete a few Kriterias
+     * const { count } = await prisma.kriteria.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends KriteriaDeleteManyArgs>(args?: SelectSubset<T, KriteriaDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Kriterias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Kriterias
+     * const kriteria = await prisma.kriteria.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends KriteriaUpdateManyArgs>(args: SelectSubset<T, KriteriaUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Kriteria.
+     * @param {KriteriaUpsertArgs} args - Arguments to update or create a Kriteria.
+     * @example
+     * // Update or create a Kriteria
+     * const kriteria = await prisma.kriteria.upsert({
+     *   create: {
+     *     // ... data to create a Kriteria
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Kriteria we want to update
+     *   }
+     * })
+     */
+    upsert<T extends KriteriaUpsertArgs>(args: SelectSubset<T, KriteriaUpsertArgs<ExtArgs>>): Prisma__KriteriaClient<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Kriterias.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaCountArgs} args - Arguments to filter Kriterias to count.
+     * @example
+     * // Count the number of Kriterias
+     * const count = await prisma.kriteria.count({
+     *   where: {
+     *     // ... the filter for the Kriterias we want to count
+     *   }
+     * })
+    **/
+    count<T extends KriteriaCountArgs>(
+      args?: Subset<T, KriteriaCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], KriteriaCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Kriteria.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends KriteriaAggregateArgs>(args: Subset<T, KriteriaAggregateArgs>): Prisma.PrismaPromise<GetKriteriaAggregateType<T>>
+
+    /**
+     * Group by Kriteria.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends KriteriaGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: KriteriaGroupByArgs['orderBy'] }
+        : { orderBy?: KriteriaGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, KriteriaGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKriteriaGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Kriteria model
+   */
+  readonly fields: KriteriaFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Kriteria.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__KriteriaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    values<T extends Kriteria$valuesArgs<ExtArgs> = {}>(args?: Subset<T, Kriteria$valuesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KriteriaValuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    weights<T extends Kriteria$weightsArgs<ExtArgs> = {}>(args?: Subset<T, Kriteria$weightsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Kriteria model
+   */
+  interface KriteriaFieldRefs {
+    readonly id_kriteria: FieldRef<"Kriteria", 'Int'>
+    readonly kode: FieldRef<"Kriteria", 'String'>
+    readonly nama: FieldRef<"Kriteria", 'String'>
+    readonly tipe: FieldRef<"Kriteria", 'String'>
+    readonly bobot: FieldRef<"Kriteria", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Kriteria findUnique
+   */
+  export type KriteriaFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kriteria
+     */
+    select?: KriteriaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kriteria
+     */
+    omit?: KriteriaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaInclude<ExtArgs> | null
+    /**
+     * Filter, which Kriteria to fetch.
+     */
+    where: KriteriaWhereUniqueInput
+  }
+
+  /**
+   * Kriteria findUniqueOrThrow
+   */
+  export type KriteriaFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kriteria
+     */
+    select?: KriteriaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kriteria
+     */
+    omit?: KriteriaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaInclude<ExtArgs> | null
+    /**
+     * Filter, which Kriteria to fetch.
+     */
+    where: KriteriaWhereUniqueInput
+  }
+
+  /**
+   * Kriteria findFirst
+   */
+  export type KriteriaFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kriteria
+     */
+    select?: KriteriaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kriteria
+     */
+    omit?: KriteriaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaInclude<ExtArgs> | null
+    /**
+     * Filter, which Kriteria to fetch.
+     */
+    where?: KriteriaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kriterias to fetch.
+     */
+    orderBy?: KriteriaOrderByWithRelationInput | KriteriaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Kriterias.
+     */
+    cursor?: KriteriaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kriterias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kriterias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Kriterias.
+     */
+    distinct?: KriteriaScalarFieldEnum | KriteriaScalarFieldEnum[]
+  }
+
+  /**
+   * Kriteria findFirstOrThrow
+   */
+  export type KriteriaFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kriteria
+     */
+    select?: KriteriaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kriteria
+     */
+    omit?: KriteriaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaInclude<ExtArgs> | null
+    /**
+     * Filter, which Kriteria to fetch.
+     */
+    where?: KriteriaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kriterias to fetch.
+     */
+    orderBy?: KriteriaOrderByWithRelationInput | KriteriaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Kriterias.
+     */
+    cursor?: KriteriaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kriterias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kriterias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Kriterias.
+     */
+    distinct?: KriteriaScalarFieldEnum | KriteriaScalarFieldEnum[]
+  }
+
+  /**
+   * Kriteria findMany
+   */
+  export type KriteriaFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kriteria
+     */
+    select?: KriteriaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kriteria
+     */
+    omit?: KriteriaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaInclude<ExtArgs> | null
+    /**
+     * Filter, which Kriterias to fetch.
+     */
+    where?: KriteriaWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Kriterias to fetch.
+     */
+    orderBy?: KriteriaOrderByWithRelationInput | KriteriaOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Kriterias.
+     */
+    cursor?: KriteriaWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Kriterias from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Kriterias.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Kriterias.
+     */
+    distinct?: KriteriaScalarFieldEnum | KriteriaScalarFieldEnum[]
+  }
+
+  /**
+   * Kriteria create
+   */
+  export type KriteriaCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kriteria
+     */
+    select?: KriteriaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kriteria
+     */
+    omit?: KriteriaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Kriteria.
+     */
+    data: XOR<KriteriaCreateInput, KriteriaUncheckedCreateInput>
+  }
+
+  /**
+   * Kriteria createMany
+   */
+  export type KriteriaCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Kriterias.
+     */
+    data: KriteriaCreateManyInput | KriteriaCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Kriteria update
+   */
+  export type KriteriaUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kriteria
+     */
+    select?: KriteriaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kriteria
+     */
+    omit?: KriteriaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Kriteria.
+     */
+    data: XOR<KriteriaUpdateInput, KriteriaUncheckedUpdateInput>
+    /**
+     * Choose, which Kriteria to update.
+     */
+    where: KriteriaWhereUniqueInput
+  }
+
+  /**
+   * Kriteria updateMany
+   */
+  export type KriteriaUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Kriterias.
+     */
+    data: XOR<KriteriaUpdateManyMutationInput, KriteriaUncheckedUpdateManyInput>
+    /**
+     * Filter which Kriterias to update
+     */
+    where?: KriteriaWhereInput
+    /**
+     * Limit how many Kriterias to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Kriteria upsert
+   */
+  export type KriteriaUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kriteria
+     */
+    select?: KriteriaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kriteria
+     */
+    omit?: KriteriaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Kriteria to update in case it exists.
+     */
+    where: KriteriaWhereUniqueInput
+    /**
+     * In case the Kriteria found by the `where` argument doesn't exist, create a new Kriteria with this data.
+     */
+    create: XOR<KriteriaCreateInput, KriteriaUncheckedCreateInput>
+    /**
+     * In case the Kriteria was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<KriteriaUpdateInput, KriteriaUncheckedUpdateInput>
+  }
+
+  /**
+   * Kriteria delete
+   */
+  export type KriteriaDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kriteria
+     */
+    select?: KriteriaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kriteria
+     */
+    omit?: KriteriaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaInclude<ExtArgs> | null
+    /**
+     * Filter which Kriteria to delete.
+     */
+    where: KriteriaWhereUniqueInput
+  }
+
+  /**
+   * Kriteria deleteMany
+   */
+  export type KriteriaDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Kriterias to delete
+     */
+    where?: KriteriaWhereInput
+    /**
+     * Limit how many Kriterias to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Kriteria.values
+   */
+  export type Kriteria$valuesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaValue
+     */
+    select?: KriteriaValueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KriteriaValue
+     */
+    omit?: KriteriaValueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaValueInclude<ExtArgs> | null
+    where?: KriteriaValueWhereInput
+    orderBy?: KriteriaValueOrderByWithRelationInput | KriteriaValueOrderByWithRelationInput[]
+    cursor?: KriteriaValueWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: KriteriaValueScalarFieldEnum | KriteriaValueScalarFieldEnum[]
+  }
+
+  /**
+   * Kriteria.weights
+   */
+  export type Kriteria$weightsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+    where?: RecommendationReqWeightWhereInput
+    orderBy?: RecommendationReqWeightOrderByWithRelationInput | RecommendationReqWeightOrderByWithRelationInput[]
+    cursor?: RecommendationReqWeightWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RecommendationReqWeightScalarFieldEnum | RecommendationReqWeightScalarFieldEnum[]
+  }
+
+  /**
+   * Kriteria without action
+   */
+  export type KriteriaDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Kriteria
+     */
+    select?: KriteriaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Kriteria
+     */
+    omit?: KriteriaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model KriteriaValue
+   */
+
+  export type AggregateKriteriaValue = {
+    _count: KriteriaValueCountAggregateOutputType | null
+    _avg: KriteriaValueAvgAggregateOutputType | null
+    _sum: KriteriaValueSumAggregateOutputType | null
+    _min: KriteriaValueMinAggregateOutputType | null
+    _max: KriteriaValueMaxAggregateOutputType | null
+  }
+
+  export type KriteriaValueAvgAggregateOutputType = {
+    id_value: number | null
+    id_kriteria: number | null
+    score: number | null
+  }
+
+  export type KriteriaValueSumAggregateOutputType = {
+    id_value: number | null
+    id_kriteria: number | null
+    score: number | null
+  }
+
+  export type KriteriaValueMinAggregateOutputType = {
+    id_value: number | null
+    id_kriteria: number | null
+    value: string | null
+    score: number | null
+  }
+
+  export type KriteriaValueMaxAggregateOutputType = {
+    id_value: number | null
+    id_kriteria: number | null
+    value: string | null
+    score: number | null
+  }
+
+  export type KriteriaValueCountAggregateOutputType = {
+    id_value: number
+    id_kriteria: number
+    value: number
+    score: number
+    _all: number
+  }
+
+
+  export type KriteriaValueAvgAggregateInputType = {
+    id_value?: true
+    id_kriteria?: true
+    score?: true
+  }
+
+  export type KriteriaValueSumAggregateInputType = {
+    id_value?: true
+    id_kriteria?: true
+    score?: true
+  }
+
+  export type KriteriaValueMinAggregateInputType = {
+    id_value?: true
+    id_kriteria?: true
+    value?: true
+    score?: true
+  }
+
+  export type KriteriaValueMaxAggregateInputType = {
+    id_value?: true
+    id_kriteria?: true
+    value?: true
+    score?: true
+  }
+
+  export type KriteriaValueCountAggregateInputType = {
+    id_value?: true
+    id_kriteria?: true
+    value?: true
+    score?: true
+    _all?: true
+  }
+
+  export type KriteriaValueAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which KriteriaValue to aggregate.
+     */
+    where?: KriteriaValueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KriteriaValues to fetch.
+     */
+    orderBy?: KriteriaValueOrderByWithRelationInput | KriteriaValueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: KriteriaValueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KriteriaValues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KriteriaValues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned KriteriaValues
+    **/
+    _count?: true | KriteriaValueCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: KriteriaValueAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: KriteriaValueSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: KriteriaValueMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: KriteriaValueMaxAggregateInputType
+  }
+
+  export type GetKriteriaValueAggregateType<T extends KriteriaValueAggregateArgs> = {
+        [P in keyof T & keyof AggregateKriteriaValue]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateKriteriaValue[P]>
+      : GetScalarType<T[P], AggregateKriteriaValue[P]>
+  }
+
+
+
+
+  export type KriteriaValueGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: KriteriaValueWhereInput
+    orderBy?: KriteriaValueOrderByWithAggregationInput | KriteriaValueOrderByWithAggregationInput[]
+    by: KriteriaValueScalarFieldEnum[] | KriteriaValueScalarFieldEnum
+    having?: KriteriaValueScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: KriteriaValueCountAggregateInputType | true
+    _avg?: KriteriaValueAvgAggregateInputType
+    _sum?: KriteriaValueSumAggregateInputType
+    _min?: KriteriaValueMinAggregateInputType
+    _max?: KriteriaValueMaxAggregateInputType
+  }
+
+  export type KriteriaValueGroupByOutputType = {
+    id_value: number
+    id_kriteria: number
+    value: string
+    score: number
+    _count: KriteriaValueCountAggregateOutputType | null
+    _avg: KriteriaValueAvgAggregateOutputType | null
+    _sum: KriteriaValueSumAggregateOutputType | null
+    _min: KriteriaValueMinAggregateOutputType | null
+    _max: KriteriaValueMaxAggregateOutputType | null
+  }
+
+  type GetKriteriaValueGroupByPayload<T extends KriteriaValueGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<KriteriaValueGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof KriteriaValueGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], KriteriaValueGroupByOutputType[P]>
+            : GetScalarType<T[P], KriteriaValueGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type KriteriaValueSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_value?: boolean
+    id_kriteria?: boolean
+    value?: boolean
+    score?: boolean
+    kriteria?: boolean | KriteriaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["kriteriaValue"]>
+
+
+
+  export type KriteriaValueSelectScalar = {
+    id_value?: boolean
+    id_kriteria?: boolean
+    value?: boolean
+    score?: boolean
+  }
+
+  export type KriteriaValueOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_value" | "id_kriteria" | "value" | "score", ExtArgs["result"]["kriteriaValue"]>
+  export type KriteriaValueInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    kriteria?: boolean | KriteriaDefaultArgs<ExtArgs>
+  }
+
+  export type $KriteriaValuePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "KriteriaValue"
+    objects: {
+      kriteria: Prisma.$KriteriaPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_value: number
+      id_kriteria: number
+      value: string
+      score: number
+    }, ExtArgs["result"]["kriteriaValue"]>
+    composites: {}
+  }
+
+  type KriteriaValueGetPayload<S extends boolean | null | undefined | KriteriaValueDefaultArgs> = $Result.GetResult<Prisma.$KriteriaValuePayload, S>
+
+  type KriteriaValueCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<KriteriaValueFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: KriteriaValueCountAggregateInputType | true
+    }
+
+  export interface KriteriaValueDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['KriteriaValue'], meta: { name: 'KriteriaValue' } }
+    /**
+     * Find zero or one KriteriaValue that matches the filter.
+     * @param {KriteriaValueFindUniqueArgs} args - Arguments to find a KriteriaValue
+     * @example
+     * // Get one KriteriaValue
+     * const kriteriaValue = await prisma.kriteriaValue.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends KriteriaValueFindUniqueArgs>(args: SelectSubset<T, KriteriaValueFindUniqueArgs<ExtArgs>>): Prisma__KriteriaValueClient<$Result.GetResult<Prisma.$KriteriaValuePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one KriteriaValue that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {KriteriaValueFindUniqueOrThrowArgs} args - Arguments to find a KriteriaValue
+     * @example
+     * // Get one KriteriaValue
+     * const kriteriaValue = await prisma.kriteriaValue.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends KriteriaValueFindUniqueOrThrowArgs>(args: SelectSubset<T, KriteriaValueFindUniqueOrThrowArgs<ExtArgs>>): Prisma__KriteriaValueClient<$Result.GetResult<Prisma.$KriteriaValuePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first KriteriaValue that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaValueFindFirstArgs} args - Arguments to find a KriteriaValue
+     * @example
+     * // Get one KriteriaValue
+     * const kriteriaValue = await prisma.kriteriaValue.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends KriteriaValueFindFirstArgs>(args?: SelectSubset<T, KriteriaValueFindFirstArgs<ExtArgs>>): Prisma__KriteriaValueClient<$Result.GetResult<Prisma.$KriteriaValuePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first KriteriaValue that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaValueFindFirstOrThrowArgs} args - Arguments to find a KriteriaValue
+     * @example
+     * // Get one KriteriaValue
+     * const kriteriaValue = await prisma.kriteriaValue.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends KriteriaValueFindFirstOrThrowArgs>(args?: SelectSubset<T, KriteriaValueFindFirstOrThrowArgs<ExtArgs>>): Prisma__KriteriaValueClient<$Result.GetResult<Prisma.$KriteriaValuePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more KriteriaValues that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaValueFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all KriteriaValues
+     * const kriteriaValues = await prisma.kriteriaValue.findMany()
+     * 
+     * // Get first 10 KriteriaValues
+     * const kriteriaValues = await prisma.kriteriaValue.findMany({ take: 10 })
+     * 
+     * // Only select the `id_value`
+     * const kriteriaValueWithId_valueOnly = await prisma.kriteriaValue.findMany({ select: { id_value: true } })
+     * 
+     */
+    findMany<T extends KriteriaValueFindManyArgs>(args?: SelectSubset<T, KriteriaValueFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KriteriaValuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a KriteriaValue.
+     * @param {KriteriaValueCreateArgs} args - Arguments to create a KriteriaValue.
+     * @example
+     * // Create one KriteriaValue
+     * const KriteriaValue = await prisma.kriteriaValue.create({
+     *   data: {
+     *     // ... data to create a KriteriaValue
+     *   }
+     * })
+     * 
+     */
+    create<T extends KriteriaValueCreateArgs>(args: SelectSubset<T, KriteriaValueCreateArgs<ExtArgs>>): Prisma__KriteriaValueClient<$Result.GetResult<Prisma.$KriteriaValuePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many KriteriaValues.
+     * @param {KriteriaValueCreateManyArgs} args - Arguments to create many KriteriaValues.
+     * @example
+     * // Create many KriteriaValues
+     * const kriteriaValue = await prisma.kriteriaValue.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends KriteriaValueCreateManyArgs>(args?: SelectSubset<T, KriteriaValueCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a KriteriaValue.
+     * @param {KriteriaValueDeleteArgs} args - Arguments to delete one KriteriaValue.
+     * @example
+     * // Delete one KriteriaValue
+     * const KriteriaValue = await prisma.kriteriaValue.delete({
+     *   where: {
+     *     // ... filter to delete one KriteriaValue
+     *   }
+     * })
+     * 
+     */
+    delete<T extends KriteriaValueDeleteArgs>(args: SelectSubset<T, KriteriaValueDeleteArgs<ExtArgs>>): Prisma__KriteriaValueClient<$Result.GetResult<Prisma.$KriteriaValuePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one KriteriaValue.
+     * @param {KriteriaValueUpdateArgs} args - Arguments to update one KriteriaValue.
+     * @example
+     * // Update one KriteriaValue
+     * const kriteriaValue = await prisma.kriteriaValue.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends KriteriaValueUpdateArgs>(args: SelectSubset<T, KriteriaValueUpdateArgs<ExtArgs>>): Prisma__KriteriaValueClient<$Result.GetResult<Prisma.$KriteriaValuePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more KriteriaValues.
+     * @param {KriteriaValueDeleteManyArgs} args - Arguments to filter KriteriaValues to delete.
+     * @example
+     * // Delete a few KriteriaValues
+     * const { count } = await prisma.kriteriaValue.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends KriteriaValueDeleteManyArgs>(args?: SelectSubset<T, KriteriaValueDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more KriteriaValues.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaValueUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many KriteriaValues
+     * const kriteriaValue = await prisma.kriteriaValue.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends KriteriaValueUpdateManyArgs>(args: SelectSubset<T, KriteriaValueUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one KriteriaValue.
+     * @param {KriteriaValueUpsertArgs} args - Arguments to update or create a KriteriaValue.
+     * @example
+     * // Update or create a KriteriaValue
+     * const kriteriaValue = await prisma.kriteriaValue.upsert({
+     *   create: {
+     *     // ... data to create a KriteriaValue
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the KriteriaValue we want to update
+     *   }
+     * })
+     */
+    upsert<T extends KriteriaValueUpsertArgs>(args: SelectSubset<T, KriteriaValueUpsertArgs<ExtArgs>>): Prisma__KriteriaValueClient<$Result.GetResult<Prisma.$KriteriaValuePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of KriteriaValues.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaValueCountArgs} args - Arguments to filter KriteriaValues to count.
+     * @example
+     * // Count the number of KriteriaValues
+     * const count = await prisma.kriteriaValue.count({
+     *   where: {
+     *     // ... the filter for the KriteriaValues we want to count
+     *   }
+     * })
+    **/
+    count<T extends KriteriaValueCountArgs>(
+      args?: Subset<T, KriteriaValueCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], KriteriaValueCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a KriteriaValue.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaValueAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends KriteriaValueAggregateArgs>(args: Subset<T, KriteriaValueAggregateArgs>): Prisma.PrismaPromise<GetKriteriaValueAggregateType<T>>
+
+    /**
+     * Group by KriteriaValue.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {KriteriaValueGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends KriteriaValueGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: KriteriaValueGroupByArgs['orderBy'] }
+        : { orderBy?: KriteriaValueGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, KriteriaValueGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKriteriaValueGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the KriteriaValue model
+   */
+  readonly fields: KriteriaValueFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for KriteriaValue.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__KriteriaValueClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    kriteria<T extends KriteriaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, KriteriaDefaultArgs<ExtArgs>>): Prisma__KriteriaClient<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the KriteriaValue model
+   */
+  interface KriteriaValueFieldRefs {
+    readonly id_value: FieldRef<"KriteriaValue", 'Int'>
+    readonly id_kriteria: FieldRef<"KriteriaValue", 'Int'>
+    readonly value: FieldRef<"KriteriaValue", 'String'>
+    readonly score: FieldRef<"KriteriaValue", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * KriteriaValue findUnique
+   */
+  export type KriteriaValueFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaValue
+     */
+    select?: KriteriaValueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KriteriaValue
+     */
+    omit?: KriteriaValueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaValueInclude<ExtArgs> | null
+    /**
+     * Filter, which KriteriaValue to fetch.
+     */
+    where: KriteriaValueWhereUniqueInput
+  }
+
+  /**
+   * KriteriaValue findUniqueOrThrow
+   */
+  export type KriteriaValueFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaValue
+     */
+    select?: KriteriaValueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KriteriaValue
+     */
+    omit?: KriteriaValueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaValueInclude<ExtArgs> | null
+    /**
+     * Filter, which KriteriaValue to fetch.
+     */
+    where: KriteriaValueWhereUniqueInput
+  }
+
+  /**
+   * KriteriaValue findFirst
+   */
+  export type KriteriaValueFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaValue
+     */
+    select?: KriteriaValueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KriteriaValue
+     */
+    omit?: KriteriaValueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaValueInclude<ExtArgs> | null
+    /**
+     * Filter, which KriteriaValue to fetch.
+     */
+    where?: KriteriaValueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KriteriaValues to fetch.
+     */
+    orderBy?: KriteriaValueOrderByWithRelationInput | KriteriaValueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for KriteriaValues.
+     */
+    cursor?: KriteriaValueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KriteriaValues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KriteriaValues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of KriteriaValues.
+     */
+    distinct?: KriteriaValueScalarFieldEnum | KriteriaValueScalarFieldEnum[]
+  }
+
+  /**
+   * KriteriaValue findFirstOrThrow
+   */
+  export type KriteriaValueFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaValue
+     */
+    select?: KriteriaValueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KriteriaValue
+     */
+    omit?: KriteriaValueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaValueInclude<ExtArgs> | null
+    /**
+     * Filter, which KriteriaValue to fetch.
+     */
+    where?: KriteriaValueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KriteriaValues to fetch.
+     */
+    orderBy?: KriteriaValueOrderByWithRelationInput | KriteriaValueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for KriteriaValues.
+     */
+    cursor?: KriteriaValueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KriteriaValues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KriteriaValues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of KriteriaValues.
+     */
+    distinct?: KriteriaValueScalarFieldEnum | KriteriaValueScalarFieldEnum[]
+  }
+
+  /**
+   * KriteriaValue findMany
+   */
+  export type KriteriaValueFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaValue
+     */
+    select?: KriteriaValueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KriteriaValue
+     */
+    omit?: KriteriaValueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaValueInclude<ExtArgs> | null
+    /**
+     * Filter, which KriteriaValues to fetch.
+     */
+    where?: KriteriaValueWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of KriteriaValues to fetch.
+     */
+    orderBy?: KriteriaValueOrderByWithRelationInput | KriteriaValueOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing KriteriaValues.
+     */
+    cursor?: KriteriaValueWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` KriteriaValues from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` KriteriaValues.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of KriteriaValues.
+     */
+    distinct?: KriteriaValueScalarFieldEnum | KriteriaValueScalarFieldEnum[]
+  }
+
+  /**
+   * KriteriaValue create
+   */
+  export type KriteriaValueCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaValue
+     */
+    select?: KriteriaValueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KriteriaValue
+     */
+    omit?: KriteriaValueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaValueInclude<ExtArgs> | null
+    /**
+     * The data needed to create a KriteriaValue.
+     */
+    data: XOR<KriteriaValueCreateInput, KriteriaValueUncheckedCreateInput>
+  }
+
+  /**
+   * KriteriaValue createMany
+   */
+  export type KriteriaValueCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many KriteriaValues.
+     */
+    data: KriteriaValueCreateManyInput | KriteriaValueCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * KriteriaValue update
+   */
+  export type KriteriaValueUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaValue
+     */
+    select?: KriteriaValueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KriteriaValue
+     */
+    omit?: KriteriaValueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaValueInclude<ExtArgs> | null
+    /**
+     * The data needed to update a KriteriaValue.
+     */
+    data: XOR<KriteriaValueUpdateInput, KriteriaValueUncheckedUpdateInput>
+    /**
+     * Choose, which KriteriaValue to update.
+     */
+    where: KriteriaValueWhereUniqueInput
+  }
+
+  /**
+   * KriteriaValue updateMany
+   */
+  export type KriteriaValueUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update KriteriaValues.
+     */
+    data: XOR<KriteriaValueUpdateManyMutationInput, KriteriaValueUncheckedUpdateManyInput>
+    /**
+     * Filter which KriteriaValues to update
+     */
+    where?: KriteriaValueWhereInput
+    /**
+     * Limit how many KriteriaValues to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * KriteriaValue upsert
+   */
+  export type KriteriaValueUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaValue
+     */
+    select?: KriteriaValueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KriteriaValue
+     */
+    omit?: KriteriaValueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaValueInclude<ExtArgs> | null
+    /**
+     * The filter to search for the KriteriaValue to update in case it exists.
+     */
+    where: KriteriaValueWhereUniqueInput
+    /**
+     * In case the KriteriaValue found by the `where` argument doesn't exist, create a new KriteriaValue with this data.
+     */
+    create: XOR<KriteriaValueCreateInput, KriteriaValueUncheckedCreateInput>
+    /**
+     * In case the KriteriaValue was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<KriteriaValueUpdateInput, KriteriaValueUncheckedUpdateInput>
+  }
+
+  /**
+   * KriteriaValue delete
+   */
+  export type KriteriaValueDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaValue
+     */
+    select?: KriteriaValueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KriteriaValue
+     */
+    omit?: KriteriaValueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaValueInclude<ExtArgs> | null
+    /**
+     * Filter which KriteriaValue to delete.
+     */
+    where: KriteriaValueWhereUniqueInput
+  }
+
+  /**
+   * KriteriaValue deleteMany
+   */
+  export type KriteriaValueDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which KriteriaValues to delete
+     */
+    where?: KriteriaValueWhereInput
+    /**
+     * Limit how many KriteriaValues to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * KriteriaValue without action
+   */
+  export type KriteriaValueDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the KriteriaValue
+     */
+    select?: KriteriaValueSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the KriteriaValue
+     */
+    omit?: KriteriaValueOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: KriteriaValueInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RecommendationRequest
+   */
+
+  export type AggregateRecommendationRequest = {
+    _count: RecommendationRequestCountAggregateOutputType | null
+    _avg: RecommendationRequestAvgAggregateOutputType | null
+    _sum: RecommendationRequestSumAggregateOutputType | null
+    _min: RecommendationRequestMinAggregateOutputType | null
+    _max: RecommendationRequestMaxAggregateOutputType | null
+  }
+
+  export type RecommendationRequestAvgAggregateOutputType = {
+    id_request: number | null
+    user_id: number | null
+    category_id: number | null
+  }
+
+  export type RecommendationRequestSumAggregateOutputType = {
+    id_request: number | null
+    user_id: number | null
+    category_id: number | null
+  }
+
+  export type RecommendationRequestMinAggregateOutputType = {
+    id_request: number | null
+    user_id: number | null
+    category_id: number | null
+    method: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type RecommendationRequestMaxAggregateOutputType = {
+    id_request: number | null
+    user_id: number | null
+    category_id: number | null
+    method: string | null
+    created_at: Date | null
+    updated_at: Date | null
+  }
+
+  export type RecommendationRequestCountAggregateOutputType = {
+    id_request: number
+    user_id: number
+    category_id: number
+    method: number
+    created_at: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type RecommendationRequestAvgAggregateInputType = {
+    id_request?: true
+    user_id?: true
+    category_id?: true
+  }
+
+  export type RecommendationRequestSumAggregateInputType = {
+    id_request?: true
+    user_id?: true
+    category_id?: true
+  }
+
+  export type RecommendationRequestMinAggregateInputType = {
+    id_request?: true
+    user_id?: true
+    category_id?: true
+    method?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type RecommendationRequestMaxAggregateInputType = {
+    id_request?: true
+    user_id?: true
+    category_id?: true
+    method?: true
+    created_at?: true
+    updated_at?: true
+  }
+
+  export type RecommendationRequestCountAggregateInputType = {
+    id_request?: true
+    user_id?: true
+    category_id?: true
+    method?: true
+    created_at?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type RecommendationRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RecommendationRequest to aggregate.
+     */
+    where?: RecommendationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationRequests to fetch.
+     */
+    orderBy?: RecommendationRequestOrderByWithRelationInput | RecommendationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RecommendationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RecommendationRequests
+    **/
+    _count?: true | RecommendationRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RecommendationRequestAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RecommendationRequestSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RecommendationRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RecommendationRequestMaxAggregateInputType
+  }
+
+  export type GetRecommendationRequestAggregateType<T extends RecommendationRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateRecommendationRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRecommendationRequest[P]>
+      : GetScalarType<T[P], AggregateRecommendationRequest[P]>
+  }
+
+
+
+
+  export type RecommendationRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationRequestWhereInput
+    orderBy?: RecommendationRequestOrderByWithAggregationInput | RecommendationRequestOrderByWithAggregationInput[]
+    by: RecommendationRequestScalarFieldEnum[] | RecommendationRequestScalarFieldEnum
+    having?: RecommendationRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RecommendationRequestCountAggregateInputType | true
+    _avg?: RecommendationRequestAvgAggregateInputType
+    _sum?: RecommendationRequestSumAggregateInputType
+    _min?: RecommendationRequestMinAggregateInputType
+    _max?: RecommendationRequestMaxAggregateInputType
+  }
+
+  export type RecommendationRequestGroupByOutputType = {
+    id_request: number
+    user_id: number
+    category_id: number
+    method: string
+    created_at: Date
+    updated_at: Date
+    _count: RecommendationRequestCountAggregateOutputType | null
+    _avg: RecommendationRequestAvgAggregateOutputType | null
+    _sum: RecommendationRequestSumAggregateOutputType | null
+    _min: RecommendationRequestMinAggregateOutputType | null
+    _max: RecommendationRequestMaxAggregateOutputType | null
+  }
+
+  type GetRecommendationRequestGroupByPayload<T extends RecommendationRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RecommendationRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RecommendationRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RecommendationRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], RecommendationRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RecommendationRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_request?: boolean
+    user_id?: boolean
+    category_id?: boolean
+    method?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    weights?: boolean | RecommendationRequest$weightsArgs<ExtArgs>
+    results?: boolean | RecommendationRequest$resultsArgs<ExtArgs>
+    _count?: boolean | RecommendationRequestCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["recommendationRequest"]>
+
+
+
+  export type RecommendationRequestSelectScalar = {
+    id_request?: boolean
+    user_id?: boolean
+    category_id?: boolean
+    method?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+  }
+
+  export type RecommendationRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_request" | "user_id" | "category_id" | "method" | "created_at" | "updated_at", ExtArgs["result"]["recommendationRequest"]>
+  export type RecommendationRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    weights?: boolean | RecommendationRequest$weightsArgs<ExtArgs>
+    results?: boolean | RecommendationRequest$resultsArgs<ExtArgs>
+    _count?: boolean | RecommendationRequestCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $RecommendationRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RecommendationRequest"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      category: Prisma.$CategoryPayload<ExtArgs>
+      weights: Prisma.$RecommendationReqWeightPayload<ExtArgs>[]
+      results: Prisma.$RecommendationResultPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_request: number
+      user_id: number
+      category_id: number
+      method: string
+      created_at: Date
+      updated_at: Date
+    }, ExtArgs["result"]["recommendationRequest"]>
+    composites: {}
+  }
+
+  type RecommendationRequestGetPayload<S extends boolean | null | undefined | RecommendationRequestDefaultArgs> = $Result.GetResult<Prisma.$RecommendationRequestPayload, S>
+
+  type RecommendationRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RecommendationRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RecommendationRequestCountAggregateInputType | true
+    }
+
+  export interface RecommendationRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RecommendationRequest'], meta: { name: 'RecommendationRequest' } }
+    /**
+     * Find zero or one RecommendationRequest that matches the filter.
+     * @param {RecommendationRequestFindUniqueArgs} args - Arguments to find a RecommendationRequest
+     * @example
+     * // Get one RecommendationRequest
+     * const recommendationRequest = await prisma.recommendationRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RecommendationRequestFindUniqueArgs>(args: SelectSubset<T, RecommendationRequestFindUniqueArgs<ExtArgs>>): Prisma__RecommendationRequestClient<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RecommendationRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RecommendationRequestFindUniqueOrThrowArgs} args - Arguments to find a RecommendationRequest
+     * @example
+     * // Get one RecommendationRequest
+     * const recommendationRequest = await prisma.recommendationRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RecommendationRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, RecommendationRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RecommendationRequestClient<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RecommendationRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationRequestFindFirstArgs} args - Arguments to find a RecommendationRequest
+     * @example
+     * // Get one RecommendationRequest
+     * const recommendationRequest = await prisma.recommendationRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RecommendationRequestFindFirstArgs>(args?: SelectSubset<T, RecommendationRequestFindFirstArgs<ExtArgs>>): Prisma__RecommendationRequestClient<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RecommendationRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationRequestFindFirstOrThrowArgs} args - Arguments to find a RecommendationRequest
+     * @example
+     * // Get one RecommendationRequest
+     * const recommendationRequest = await prisma.recommendationRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RecommendationRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, RecommendationRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__RecommendationRequestClient<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RecommendationRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RecommendationRequests
+     * const recommendationRequests = await prisma.recommendationRequest.findMany()
+     * 
+     * // Get first 10 RecommendationRequests
+     * const recommendationRequests = await prisma.recommendationRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id_request`
+     * const recommendationRequestWithId_requestOnly = await prisma.recommendationRequest.findMany({ select: { id_request: true } })
+     * 
+     */
+    findMany<T extends RecommendationRequestFindManyArgs>(args?: SelectSubset<T, RecommendationRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RecommendationRequest.
+     * @param {RecommendationRequestCreateArgs} args - Arguments to create a RecommendationRequest.
+     * @example
+     * // Create one RecommendationRequest
+     * const RecommendationRequest = await prisma.recommendationRequest.create({
+     *   data: {
+     *     // ... data to create a RecommendationRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends RecommendationRequestCreateArgs>(args: SelectSubset<T, RecommendationRequestCreateArgs<ExtArgs>>): Prisma__RecommendationRequestClient<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RecommendationRequests.
+     * @param {RecommendationRequestCreateManyArgs} args - Arguments to create many RecommendationRequests.
+     * @example
+     * // Create many RecommendationRequests
+     * const recommendationRequest = await prisma.recommendationRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RecommendationRequestCreateManyArgs>(args?: SelectSubset<T, RecommendationRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a RecommendationRequest.
+     * @param {RecommendationRequestDeleteArgs} args - Arguments to delete one RecommendationRequest.
+     * @example
+     * // Delete one RecommendationRequest
+     * const RecommendationRequest = await prisma.recommendationRequest.delete({
+     *   where: {
+     *     // ... filter to delete one RecommendationRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RecommendationRequestDeleteArgs>(args: SelectSubset<T, RecommendationRequestDeleteArgs<ExtArgs>>): Prisma__RecommendationRequestClient<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RecommendationRequest.
+     * @param {RecommendationRequestUpdateArgs} args - Arguments to update one RecommendationRequest.
+     * @example
+     * // Update one RecommendationRequest
+     * const recommendationRequest = await prisma.recommendationRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RecommendationRequestUpdateArgs>(args: SelectSubset<T, RecommendationRequestUpdateArgs<ExtArgs>>): Prisma__RecommendationRequestClient<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RecommendationRequests.
+     * @param {RecommendationRequestDeleteManyArgs} args - Arguments to filter RecommendationRequests to delete.
+     * @example
+     * // Delete a few RecommendationRequests
+     * const { count } = await prisma.recommendationRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RecommendationRequestDeleteManyArgs>(args?: SelectSubset<T, RecommendationRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RecommendationRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RecommendationRequests
+     * const recommendationRequest = await prisma.recommendationRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RecommendationRequestUpdateManyArgs>(args: SelectSubset<T, RecommendationRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one RecommendationRequest.
+     * @param {RecommendationRequestUpsertArgs} args - Arguments to update or create a RecommendationRequest.
+     * @example
+     * // Update or create a RecommendationRequest
+     * const recommendationRequest = await prisma.recommendationRequest.upsert({
+     *   create: {
+     *     // ... data to create a RecommendationRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RecommendationRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RecommendationRequestUpsertArgs>(args: SelectSubset<T, RecommendationRequestUpsertArgs<ExtArgs>>): Prisma__RecommendationRequestClient<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RecommendationRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationRequestCountArgs} args - Arguments to filter RecommendationRequests to count.
+     * @example
+     * // Count the number of RecommendationRequests
+     * const count = await prisma.recommendationRequest.count({
+     *   where: {
+     *     // ... the filter for the RecommendationRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends RecommendationRequestCountArgs>(
+      args?: Subset<T, RecommendationRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RecommendationRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RecommendationRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RecommendationRequestAggregateArgs>(args: Subset<T, RecommendationRequestAggregateArgs>): Prisma.PrismaPromise<GetRecommendationRequestAggregateType<T>>
+
+    /**
+     * Group by RecommendationRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RecommendationRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RecommendationRequestGroupByArgs['orderBy'] }
+        : { orderBy?: RecommendationRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RecommendationRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRecommendationRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RecommendationRequest model
+   */
+  readonly fields: RecommendationRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RecommendationRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RecommendationRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    weights<T extends RecommendationRequest$weightsArgs<ExtArgs> = {}>(args?: Subset<T, RecommendationRequest$weightsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    results<T extends RecommendationRequest$resultsArgs<ExtArgs> = {}>(args?: Subset<T, RecommendationRequest$resultsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RecommendationRequest model
+   */
+  interface RecommendationRequestFieldRefs {
+    readonly id_request: FieldRef<"RecommendationRequest", 'Int'>
+    readonly user_id: FieldRef<"RecommendationRequest", 'Int'>
+    readonly category_id: FieldRef<"RecommendationRequest", 'Int'>
+    readonly method: FieldRef<"RecommendationRequest", 'String'>
+    readonly created_at: FieldRef<"RecommendationRequest", 'DateTime'>
+    readonly updated_at: FieldRef<"RecommendationRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RecommendationRequest findUnique
+   */
+  export type RecommendationRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationRequest to fetch.
+     */
+    where: RecommendationRequestWhereUniqueInput
+  }
+
+  /**
+   * RecommendationRequest findUniqueOrThrow
+   */
+  export type RecommendationRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationRequest to fetch.
+     */
+    where: RecommendationRequestWhereUniqueInput
+  }
+
+  /**
+   * RecommendationRequest findFirst
+   */
+  export type RecommendationRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationRequest to fetch.
+     */
+    where?: RecommendationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationRequests to fetch.
+     */
+    orderBy?: RecommendationRequestOrderByWithRelationInput | RecommendationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RecommendationRequests.
+     */
+    cursor?: RecommendationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RecommendationRequests.
+     */
+    distinct?: RecommendationRequestScalarFieldEnum | RecommendationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * RecommendationRequest findFirstOrThrow
+   */
+  export type RecommendationRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationRequest to fetch.
+     */
+    where?: RecommendationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationRequests to fetch.
+     */
+    orderBy?: RecommendationRequestOrderByWithRelationInput | RecommendationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RecommendationRequests.
+     */
+    cursor?: RecommendationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RecommendationRequests.
+     */
+    distinct?: RecommendationRequestScalarFieldEnum | RecommendationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * RecommendationRequest findMany
+   */
+  export type RecommendationRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationRequests to fetch.
+     */
+    where?: RecommendationRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationRequests to fetch.
+     */
+    orderBy?: RecommendationRequestOrderByWithRelationInput | RecommendationRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RecommendationRequests.
+     */
+    cursor?: RecommendationRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RecommendationRequests.
+     */
+    distinct?: RecommendationRequestScalarFieldEnum | RecommendationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * RecommendationRequest create
+   */
+  export type RecommendationRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RecommendationRequest.
+     */
+    data: XOR<RecommendationRequestCreateInput, RecommendationRequestUncheckedCreateInput>
+  }
+
+  /**
+   * RecommendationRequest createMany
+   */
+  export type RecommendationRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RecommendationRequests.
+     */
+    data: RecommendationRequestCreateManyInput | RecommendationRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RecommendationRequest update
+   */
+  export type RecommendationRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RecommendationRequest.
+     */
+    data: XOR<RecommendationRequestUpdateInput, RecommendationRequestUncheckedUpdateInput>
+    /**
+     * Choose, which RecommendationRequest to update.
+     */
+    where: RecommendationRequestWhereUniqueInput
+  }
+
+  /**
+   * RecommendationRequest updateMany
+   */
+  export type RecommendationRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RecommendationRequests.
+     */
+    data: XOR<RecommendationRequestUpdateManyMutationInput, RecommendationRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which RecommendationRequests to update
+     */
+    where?: RecommendationRequestWhereInput
+    /**
+     * Limit how many RecommendationRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RecommendationRequest upsert
+   */
+  export type RecommendationRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RecommendationRequest to update in case it exists.
+     */
+    where: RecommendationRequestWhereUniqueInput
+    /**
+     * In case the RecommendationRequest found by the `where` argument doesn't exist, create a new RecommendationRequest with this data.
+     */
+    create: XOR<RecommendationRequestCreateInput, RecommendationRequestUncheckedCreateInput>
+    /**
+     * In case the RecommendationRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RecommendationRequestUpdateInput, RecommendationRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * RecommendationRequest delete
+   */
+  export type RecommendationRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    /**
+     * Filter which RecommendationRequest to delete.
+     */
+    where: RecommendationRequestWhereUniqueInput
+  }
+
+  /**
+   * RecommendationRequest deleteMany
+   */
+  export type RecommendationRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RecommendationRequests to delete
+     */
+    where?: RecommendationRequestWhereInput
+    /**
+     * Limit how many RecommendationRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RecommendationRequest.weights
+   */
+  export type RecommendationRequest$weightsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+    where?: RecommendationReqWeightWhereInput
+    orderBy?: RecommendationReqWeightOrderByWithRelationInput | RecommendationReqWeightOrderByWithRelationInput[]
+    cursor?: RecommendationReqWeightWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RecommendationReqWeightScalarFieldEnum | RecommendationReqWeightScalarFieldEnum[]
+  }
+
+  /**
+   * RecommendationRequest.results
+   */
+  export type RecommendationRequest$resultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    where?: RecommendationResultWhereInput
+    orderBy?: RecommendationResultOrderByWithRelationInput | RecommendationResultOrderByWithRelationInput[]
+    cursor?: RecommendationResultWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RecommendationResultScalarFieldEnum | RecommendationResultScalarFieldEnum[]
+  }
+
+  /**
+   * RecommendationRequest without action
+   */
+  export type RecommendationRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RecommendationReqWeight
+   */
+
+  export type AggregateRecommendationReqWeight = {
+    _count: RecommendationReqWeightCountAggregateOutputType | null
+    _avg: RecommendationReqWeightAvgAggregateOutputType | null
+    _sum: RecommendationReqWeightSumAggregateOutputType | null
+    _min: RecommendationReqWeightMinAggregateOutputType | null
+    _max: RecommendationReqWeightMaxAggregateOutputType | null
+  }
+
+  export type RecommendationReqWeightAvgAggregateOutputType = {
+    id: number | null
+    req_id: number | null
+    kriteria_id: number | null
+    bobot: number | null
+  }
+
+  export type RecommendationReqWeightSumAggregateOutputType = {
+    id: number | null
+    req_id: number | null
+    kriteria_id: number | null
+    bobot: number | null
+  }
+
+  export type RecommendationReqWeightMinAggregateOutputType = {
+    id: number | null
+    req_id: number | null
+    kriteria_id: number | null
+    bobot: number | null
+  }
+
+  export type RecommendationReqWeightMaxAggregateOutputType = {
+    id: number | null
+    req_id: number | null
+    kriteria_id: number | null
+    bobot: number | null
+  }
+
+  export type RecommendationReqWeightCountAggregateOutputType = {
+    id: number
+    req_id: number
+    kriteria_id: number
+    bobot: number
+    _all: number
+  }
+
+
+  export type RecommendationReqWeightAvgAggregateInputType = {
+    id?: true
+    req_id?: true
+    kriteria_id?: true
+    bobot?: true
+  }
+
+  export type RecommendationReqWeightSumAggregateInputType = {
+    id?: true
+    req_id?: true
+    kriteria_id?: true
+    bobot?: true
+  }
+
+  export type RecommendationReqWeightMinAggregateInputType = {
+    id?: true
+    req_id?: true
+    kriteria_id?: true
+    bobot?: true
+  }
+
+  export type RecommendationReqWeightMaxAggregateInputType = {
+    id?: true
+    req_id?: true
+    kriteria_id?: true
+    bobot?: true
+  }
+
+  export type RecommendationReqWeightCountAggregateInputType = {
+    id?: true
+    req_id?: true
+    kriteria_id?: true
+    bobot?: true
+    _all?: true
+  }
+
+  export type RecommendationReqWeightAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RecommendationReqWeight to aggregate.
+     */
+    where?: RecommendationReqWeightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationReqWeights to fetch.
+     */
+    orderBy?: RecommendationReqWeightOrderByWithRelationInput | RecommendationReqWeightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RecommendationReqWeightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationReqWeights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationReqWeights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RecommendationReqWeights
+    **/
+    _count?: true | RecommendationReqWeightCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RecommendationReqWeightAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RecommendationReqWeightSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RecommendationReqWeightMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RecommendationReqWeightMaxAggregateInputType
+  }
+
+  export type GetRecommendationReqWeightAggregateType<T extends RecommendationReqWeightAggregateArgs> = {
+        [P in keyof T & keyof AggregateRecommendationReqWeight]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRecommendationReqWeight[P]>
+      : GetScalarType<T[P], AggregateRecommendationReqWeight[P]>
+  }
+
+
+
+
+  export type RecommendationReqWeightGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationReqWeightWhereInput
+    orderBy?: RecommendationReqWeightOrderByWithAggregationInput | RecommendationReqWeightOrderByWithAggregationInput[]
+    by: RecommendationReqWeightScalarFieldEnum[] | RecommendationReqWeightScalarFieldEnum
+    having?: RecommendationReqWeightScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RecommendationReqWeightCountAggregateInputType | true
+    _avg?: RecommendationReqWeightAvgAggregateInputType
+    _sum?: RecommendationReqWeightSumAggregateInputType
+    _min?: RecommendationReqWeightMinAggregateInputType
+    _max?: RecommendationReqWeightMaxAggregateInputType
+  }
+
+  export type RecommendationReqWeightGroupByOutputType = {
+    id: number
+    req_id: number
+    kriteria_id: number
+    bobot: number
+    _count: RecommendationReqWeightCountAggregateOutputType | null
+    _avg: RecommendationReqWeightAvgAggregateOutputType | null
+    _sum: RecommendationReqWeightSumAggregateOutputType | null
+    _min: RecommendationReqWeightMinAggregateOutputType | null
+    _max: RecommendationReqWeightMaxAggregateOutputType | null
+  }
+
+  type GetRecommendationReqWeightGroupByPayload<T extends RecommendationReqWeightGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RecommendationReqWeightGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RecommendationReqWeightGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RecommendationReqWeightGroupByOutputType[P]>
+            : GetScalarType<T[P], RecommendationReqWeightGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RecommendationReqWeightSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    req_id?: boolean
+    kriteria_id?: boolean
+    bobot?: boolean
+    request?: boolean | RecommendationRequestDefaultArgs<ExtArgs>
+    kriteria?: boolean | KriteriaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["recommendationReqWeight"]>
+
+
+
+  export type RecommendationReqWeightSelectScalar = {
+    id?: boolean
+    req_id?: boolean
+    kriteria_id?: boolean
+    bobot?: boolean
+  }
+
+  export type RecommendationReqWeightOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "req_id" | "kriteria_id" | "bobot", ExtArgs["result"]["recommendationReqWeight"]>
+  export type RecommendationReqWeightInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    request?: boolean | RecommendationRequestDefaultArgs<ExtArgs>
+    kriteria?: boolean | KriteriaDefaultArgs<ExtArgs>
+  }
+
+  export type $RecommendationReqWeightPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RecommendationReqWeight"
+    objects: {
+      request: Prisma.$RecommendationRequestPayload<ExtArgs>
+      kriteria: Prisma.$KriteriaPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      req_id: number
+      kriteria_id: number
+      bobot: number
+    }, ExtArgs["result"]["recommendationReqWeight"]>
+    composites: {}
+  }
+
+  type RecommendationReqWeightGetPayload<S extends boolean | null | undefined | RecommendationReqWeightDefaultArgs> = $Result.GetResult<Prisma.$RecommendationReqWeightPayload, S>
+
+  type RecommendationReqWeightCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RecommendationReqWeightFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RecommendationReqWeightCountAggregateInputType | true
+    }
+
+  export interface RecommendationReqWeightDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RecommendationReqWeight'], meta: { name: 'RecommendationReqWeight' } }
+    /**
+     * Find zero or one RecommendationReqWeight that matches the filter.
+     * @param {RecommendationReqWeightFindUniqueArgs} args - Arguments to find a RecommendationReqWeight
+     * @example
+     * // Get one RecommendationReqWeight
+     * const recommendationReqWeight = await prisma.recommendationReqWeight.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RecommendationReqWeightFindUniqueArgs>(args: SelectSubset<T, RecommendationReqWeightFindUniqueArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RecommendationReqWeight that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RecommendationReqWeightFindUniqueOrThrowArgs} args - Arguments to find a RecommendationReqWeight
+     * @example
+     * // Get one RecommendationReqWeight
+     * const recommendationReqWeight = await prisma.recommendationReqWeight.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RecommendationReqWeightFindUniqueOrThrowArgs>(args: SelectSubset<T, RecommendationReqWeightFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RecommendationReqWeight that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationReqWeightFindFirstArgs} args - Arguments to find a RecommendationReqWeight
+     * @example
+     * // Get one RecommendationReqWeight
+     * const recommendationReqWeight = await prisma.recommendationReqWeight.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RecommendationReqWeightFindFirstArgs>(args?: SelectSubset<T, RecommendationReqWeightFindFirstArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RecommendationReqWeight that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationReqWeightFindFirstOrThrowArgs} args - Arguments to find a RecommendationReqWeight
+     * @example
+     * // Get one RecommendationReqWeight
+     * const recommendationReqWeight = await prisma.recommendationReqWeight.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RecommendationReqWeightFindFirstOrThrowArgs>(args?: SelectSubset<T, RecommendationReqWeightFindFirstOrThrowArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RecommendationReqWeights that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationReqWeightFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RecommendationReqWeights
+     * const recommendationReqWeights = await prisma.recommendationReqWeight.findMany()
+     * 
+     * // Get first 10 RecommendationReqWeights
+     * const recommendationReqWeights = await prisma.recommendationReqWeight.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const recommendationReqWeightWithIdOnly = await prisma.recommendationReqWeight.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RecommendationReqWeightFindManyArgs>(args?: SelectSubset<T, RecommendationReqWeightFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RecommendationReqWeight.
+     * @param {RecommendationReqWeightCreateArgs} args - Arguments to create a RecommendationReqWeight.
+     * @example
+     * // Create one RecommendationReqWeight
+     * const RecommendationReqWeight = await prisma.recommendationReqWeight.create({
+     *   data: {
+     *     // ... data to create a RecommendationReqWeight
+     *   }
+     * })
+     * 
+     */
+    create<T extends RecommendationReqWeightCreateArgs>(args: SelectSubset<T, RecommendationReqWeightCreateArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RecommendationReqWeights.
+     * @param {RecommendationReqWeightCreateManyArgs} args - Arguments to create many RecommendationReqWeights.
+     * @example
+     * // Create many RecommendationReqWeights
+     * const recommendationReqWeight = await prisma.recommendationReqWeight.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RecommendationReqWeightCreateManyArgs>(args?: SelectSubset<T, RecommendationReqWeightCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a RecommendationReqWeight.
+     * @param {RecommendationReqWeightDeleteArgs} args - Arguments to delete one RecommendationReqWeight.
+     * @example
+     * // Delete one RecommendationReqWeight
+     * const RecommendationReqWeight = await prisma.recommendationReqWeight.delete({
+     *   where: {
+     *     // ... filter to delete one RecommendationReqWeight
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RecommendationReqWeightDeleteArgs>(args: SelectSubset<T, RecommendationReqWeightDeleteArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RecommendationReqWeight.
+     * @param {RecommendationReqWeightUpdateArgs} args - Arguments to update one RecommendationReqWeight.
+     * @example
+     * // Update one RecommendationReqWeight
+     * const recommendationReqWeight = await prisma.recommendationReqWeight.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RecommendationReqWeightUpdateArgs>(args: SelectSubset<T, RecommendationReqWeightUpdateArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RecommendationReqWeights.
+     * @param {RecommendationReqWeightDeleteManyArgs} args - Arguments to filter RecommendationReqWeights to delete.
+     * @example
+     * // Delete a few RecommendationReqWeights
+     * const { count } = await prisma.recommendationReqWeight.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RecommendationReqWeightDeleteManyArgs>(args?: SelectSubset<T, RecommendationReqWeightDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RecommendationReqWeights.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationReqWeightUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RecommendationReqWeights
+     * const recommendationReqWeight = await prisma.recommendationReqWeight.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RecommendationReqWeightUpdateManyArgs>(args: SelectSubset<T, RecommendationReqWeightUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one RecommendationReqWeight.
+     * @param {RecommendationReqWeightUpsertArgs} args - Arguments to update or create a RecommendationReqWeight.
+     * @example
+     * // Update or create a RecommendationReqWeight
+     * const recommendationReqWeight = await prisma.recommendationReqWeight.upsert({
+     *   create: {
+     *     // ... data to create a RecommendationReqWeight
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RecommendationReqWeight we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RecommendationReqWeightUpsertArgs>(args: SelectSubset<T, RecommendationReqWeightUpsertArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RecommendationReqWeights.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationReqWeightCountArgs} args - Arguments to filter RecommendationReqWeights to count.
+     * @example
+     * // Count the number of RecommendationReqWeights
+     * const count = await prisma.recommendationReqWeight.count({
+     *   where: {
+     *     // ... the filter for the RecommendationReqWeights we want to count
+     *   }
+     * })
+    **/
+    count<T extends RecommendationReqWeightCountArgs>(
+      args?: Subset<T, RecommendationReqWeightCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RecommendationReqWeightCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RecommendationReqWeight.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationReqWeightAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RecommendationReqWeightAggregateArgs>(args: Subset<T, RecommendationReqWeightAggregateArgs>): Prisma.PrismaPromise<GetRecommendationReqWeightAggregateType<T>>
+
+    /**
+     * Group by RecommendationReqWeight.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationReqWeightGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RecommendationReqWeightGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RecommendationReqWeightGroupByArgs['orderBy'] }
+        : { orderBy?: RecommendationReqWeightGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RecommendationReqWeightGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRecommendationReqWeightGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RecommendationReqWeight model
+   */
+  readonly fields: RecommendationReqWeightFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RecommendationReqWeight.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RecommendationReqWeightClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    request<T extends RecommendationRequestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RecommendationRequestDefaultArgs<ExtArgs>>): Prisma__RecommendationRequestClient<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    kriteria<T extends KriteriaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, KriteriaDefaultArgs<ExtArgs>>): Prisma__KriteriaClient<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RecommendationReqWeight model
+   */
+  interface RecommendationReqWeightFieldRefs {
+    readonly id: FieldRef<"RecommendationReqWeight", 'Int'>
+    readonly req_id: FieldRef<"RecommendationReqWeight", 'Int'>
+    readonly kriteria_id: FieldRef<"RecommendationReqWeight", 'Int'>
+    readonly bobot: FieldRef<"RecommendationReqWeight", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RecommendationReqWeight findUnique
+   */
+  export type RecommendationReqWeightFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationReqWeight to fetch.
+     */
+    where: RecommendationReqWeightWhereUniqueInput
+  }
+
+  /**
+   * RecommendationReqWeight findUniqueOrThrow
+   */
+  export type RecommendationReqWeightFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationReqWeight to fetch.
+     */
+    where: RecommendationReqWeightWhereUniqueInput
+  }
+
+  /**
+   * RecommendationReqWeight findFirst
+   */
+  export type RecommendationReqWeightFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationReqWeight to fetch.
+     */
+    where?: RecommendationReqWeightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationReqWeights to fetch.
+     */
+    orderBy?: RecommendationReqWeightOrderByWithRelationInput | RecommendationReqWeightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RecommendationReqWeights.
+     */
+    cursor?: RecommendationReqWeightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationReqWeights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationReqWeights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RecommendationReqWeights.
+     */
+    distinct?: RecommendationReqWeightScalarFieldEnum | RecommendationReqWeightScalarFieldEnum[]
+  }
+
+  /**
+   * RecommendationReqWeight findFirstOrThrow
+   */
+  export type RecommendationReqWeightFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationReqWeight to fetch.
+     */
+    where?: RecommendationReqWeightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationReqWeights to fetch.
+     */
+    orderBy?: RecommendationReqWeightOrderByWithRelationInput | RecommendationReqWeightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RecommendationReqWeights.
+     */
+    cursor?: RecommendationReqWeightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationReqWeights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationReqWeights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RecommendationReqWeights.
+     */
+    distinct?: RecommendationReqWeightScalarFieldEnum | RecommendationReqWeightScalarFieldEnum[]
+  }
+
+  /**
+   * RecommendationReqWeight findMany
+   */
+  export type RecommendationReqWeightFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationReqWeights to fetch.
+     */
+    where?: RecommendationReqWeightWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationReqWeights to fetch.
+     */
+    orderBy?: RecommendationReqWeightOrderByWithRelationInput | RecommendationReqWeightOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RecommendationReqWeights.
+     */
+    cursor?: RecommendationReqWeightWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationReqWeights from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationReqWeights.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RecommendationReqWeights.
+     */
+    distinct?: RecommendationReqWeightScalarFieldEnum | RecommendationReqWeightScalarFieldEnum[]
+  }
+
+  /**
+   * RecommendationReqWeight create
+   */
+  export type RecommendationReqWeightCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RecommendationReqWeight.
+     */
+    data: XOR<RecommendationReqWeightCreateInput, RecommendationReqWeightUncheckedCreateInput>
+  }
+
+  /**
+   * RecommendationReqWeight createMany
+   */
+  export type RecommendationReqWeightCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RecommendationReqWeights.
+     */
+    data: RecommendationReqWeightCreateManyInput | RecommendationReqWeightCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RecommendationReqWeight update
+   */
+  export type RecommendationReqWeightUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RecommendationReqWeight.
+     */
+    data: XOR<RecommendationReqWeightUpdateInput, RecommendationReqWeightUncheckedUpdateInput>
+    /**
+     * Choose, which RecommendationReqWeight to update.
+     */
+    where: RecommendationReqWeightWhereUniqueInput
+  }
+
+  /**
+   * RecommendationReqWeight updateMany
+   */
+  export type RecommendationReqWeightUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RecommendationReqWeights.
+     */
+    data: XOR<RecommendationReqWeightUpdateManyMutationInput, RecommendationReqWeightUncheckedUpdateManyInput>
+    /**
+     * Filter which RecommendationReqWeights to update
+     */
+    where?: RecommendationReqWeightWhereInput
+    /**
+     * Limit how many RecommendationReqWeights to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RecommendationReqWeight upsert
+   */
+  export type RecommendationReqWeightUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RecommendationReqWeight to update in case it exists.
+     */
+    where: RecommendationReqWeightWhereUniqueInput
+    /**
+     * In case the RecommendationReqWeight found by the `where` argument doesn't exist, create a new RecommendationReqWeight with this data.
+     */
+    create: XOR<RecommendationReqWeightCreateInput, RecommendationReqWeightUncheckedCreateInput>
+    /**
+     * In case the RecommendationReqWeight was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RecommendationReqWeightUpdateInput, RecommendationReqWeightUncheckedUpdateInput>
+  }
+
+  /**
+   * RecommendationReqWeight delete
+   */
+  export type RecommendationReqWeightDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+    /**
+     * Filter which RecommendationReqWeight to delete.
+     */
+    where: RecommendationReqWeightWhereUniqueInput
+  }
+
+  /**
+   * RecommendationReqWeight deleteMany
+   */
+  export type RecommendationReqWeightDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RecommendationReqWeights to delete
+     */
+    where?: RecommendationReqWeightWhereInput
+    /**
+     * Limit how many RecommendationReqWeights to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RecommendationReqWeight without action
+   */
+  export type RecommendationReqWeightDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationReqWeight
+     */
+    select?: RecommendationReqWeightSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationReqWeight
+     */
+    omit?: RecommendationReqWeightOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationReqWeightInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model RecommendationResult
+   */
+
+  export type AggregateRecommendationResult = {
+    _count: RecommendationResultCountAggregateOutputType | null
+    _avg: RecommendationResultAvgAggregateOutputType | null
+    _sum: RecommendationResultSumAggregateOutputType | null
+    _min: RecommendationResultMinAggregateOutputType | null
+    _max: RecommendationResultMaxAggregateOutputType | null
+  }
+
+  export type RecommendationResultAvgAggregateOutputType = {
+    id: number | null
+    req_id: number | null
+    user_id: number | null
+    score: number | null
+    pos: number | null
+  }
+
+  export type RecommendationResultSumAggregateOutputType = {
+    id: number | null
+    req_id: number | null
+    user_id: number | null
+    score: number | null
+    pos: number | null
+  }
+
+  export type RecommendationResultMinAggregateOutputType = {
+    id: number | null
+    req_id: number | null
+    user_id: number | null
+    score: number | null
+    pos: number | null
+  }
+
+  export type RecommendationResultMaxAggregateOutputType = {
+    id: number | null
+    req_id: number | null
+    user_id: number | null
+    score: number | null
+    pos: number | null
+  }
+
+  export type RecommendationResultCountAggregateOutputType = {
+    id: number
+    req_id: number
+    user_id: number
+    score: number
+    pos: number
+    _all: number
+  }
+
+
+  export type RecommendationResultAvgAggregateInputType = {
+    id?: true
+    req_id?: true
+    user_id?: true
+    score?: true
+    pos?: true
+  }
+
+  export type RecommendationResultSumAggregateInputType = {
+    id?: true
+    req_id?: true
+    user_id?: true
+    score?: true
+    pos?: true
+  }
+
+  export type RecommendationResultMinAggregateInputType = {
+    id?: true
+    req_id?: true
+    user_id?: true
+    score?: true
+    pos?: true
+  }
+
+  export type RecommendationResultMaxAggregateInputType = {
+    id?: true
+    req_id?: true
+    user_id?: true
+    score?: true
+    pos?: true
+  }
+
+  export type RecommendationResultCountAggregateInputType = {
+    id?: true
+    req_id?: true
+    user_id?: true
+    score?: true
+    pos?: true
+    _all?: true
+  }
+
+  export type RecommendationResultAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RecommendationResult to aggregate.
+     */
+    where?: RecommendationResultWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationResults to fetch.
+     */
+    orderBy?: RecommendationResultOrderByWithRelationInput | RecommendationResultOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: RecommendationResultWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationResults from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationResults.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned RecommendationResults
+    **/
+    _count?: true | RecommendationResultCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: RecommendationResultAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: RecommendationResultSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: RecommendationResultMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: RecommendationResultMaxAggregateInputType
+  }
+
+  export type GetRecommendationResultAggregateType<T extends RecommendationResultAggregateArgs> = {
+        [P in keyof T & keyof AggregateRecommendationResult]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRecommendationResult[P]>
+      : GetScalarType<T[P], AggregateRecommendationResult[P]>
+  }
+
+
+
+
+  export type RecommendationResultGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationResultWhereInput
+    orderBy?: RecommendationResultOrderByWithAggregationInput | RecommendationResultOrderByWithAggregationInput[]
+    by: RecommendationResultScalarFieldEnum[] | RecommendationResultScalarFieldEnum
+    having?: RecommendationResultScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RecommendationResultCountAggregateInputType | true
+    _avg?: RecommendationResultAvgAggregateInputType
+    _sum?: RecommendationResultSumAggregateInputType
+    _min?: RecommendationResultMinAggregateInputType
+    _max?: RecommendationResultMaxAggregateInputType
+  }
+
+  export type RecommendationResultGroupByOutputType = {
+    id: number
+    req_id: number
+    user_id: number
+    score: number
+    pos: number
+    _count: RecommendationResultCountAggregateOutputType | null
+    _avg: RecommendationResultAvgAggregateOutputType | null
+    _sum: RecommendationResultSumAggregateOutputType | null
+    _min: RecommendationResultMinAggregateOutputType | null
+    _max: RecommendationResultMaxAggregateOutputType | null
+  }
+
+  type GetRecommendationResultGroupByPayload<T extends RecommendationResultGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RecommendationResultGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RecommendationResultGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RecommendationResultGroupByOutputType[P]>
+            : GetScalarType<T[P], RecommendationResultGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type RecommendationResultSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    req_id?: boolean
+    user_id?: boolean
+    score?: boolean
+    pos?: boolean
+    request?: boolean | RecommendationRequestDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["recommendationResult"]>
+
+
+
+  export type RecommendationResultSelectScalar = {
+    id?: boolean
+    req_id?: boolean
+    user_id?: boolean
+    score?: boolean
+    pos?: boolean
+  }
+
+  export type RecommendationResultOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "req_id" | "user_id" | "score" | "pos", ExtArgs["result"]["recommendationResult"]>
+  export type RecommendationResultInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    request?: boolean | RecommendationRequestDefaultArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $RecommendationResultPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RecommendationResult"
+    objects: {
+      request: Prisma.$RecommendationRequestPayload<ExtArgs>
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      req_id: number
+      user_id: number
+      score: number
+      pos: number
+    }, ExtArgs["result"]["recommendationResult"]>
+    composites: {}
+  }
+
+  type RecommendationResultGetPayload<S extends boolean | null | undefined | RecommendationResultDefaultArgs> = $Result.GetResult<Prisma.$RecommendationResultPayload, S>
+
+  type RecommendationResultCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RecommendationResultFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RecommendationResultCountAggregateInputType | true
+    }
+
+  export interface RecommendationResultDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RecommendationResult'], meta: { name: 'RecommendationResult' } }
+    /**
+     * Find zero or one RecommendationResult that matches the filter.
+     * @param {RecommendationResultFindUniqueArgs} args - Arguments to find a RecommendationResult
+     * @example
+     * // Get one RecommendationResult
+     * const recommendationResult = await prisma.recommendationResult.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RecommendationResultFindUniqueArgs>(args: SelectSubset<T, RecommendationResultFindUniqueArgs<ExtArgs>>): Prisma__RecommendationResultClient<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RecommendationResult that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RecommendationResultFindUniqueOrThrowArgs} args - Arguments to find a RecommendationResult
+     * @example
+     * // Get one RecommendationResult
+     * const recommendationResult = await prisma.recommendationResult.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RecommendationResultFindUniqueOrThrowArgs>(args: SelectSubset<T, RecommendationResultFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RecommendationResultClient<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RecommendationResult that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationResultFindFirstArgs} args - Arguments to find a RecommendationResult
+     * @example
+     * // Get one RecommendationResult
+     * const recommendationResult = await prisma.recommendationResult.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RecommendationResultFindFirstArgs>(args?: SelectSubset<T, RecommendationResultFindFirstArgs<ExtArgs>>): Prisma__RecommendationResultClient<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RecommendationResult that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationResultFindFirstOrThrowArgs} args - Arguments to find a RecommendationResult
+     * @example
+     * // Get one RecommendationResult
+     * const recommendationResult = await prisma.recommendationResult.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RecommendationResultFindFirstOrThrowArgs>(args?: SelectSubset<T, RecommendationResultFindFirstOrThrowArgs<ExtArgs>>): Prisma__RecommendationResultClient<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RecommendationResults that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationResultFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RecommendationResults
+     * const recommendationResults = await prisma.recommendationResult.findMany()
+     * 
+     * // Get first 10 RecommendationResults
+     * const recommendationResults = await prisma.recommendationResult.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const recommendationResultWithIdOnly = await prisma.recommendationResult.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends RecommendationResultFindManyArgs>(args?: SelectSubset<T, RecommendationResultFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RecommendationResult.
+     * @param {RecommendationResultCreateArgs} args - Arguments to create a RecommendationResult.
+     * @example
+     * // Create one RecommendationResult
+     * const RecommendationResult = await prisma.recommendationResult.create({
+     *   data: {
+     *     // ... data to create a RecommendationResult
+     *   }
+     * })
+     * 
+     */
+    create<T extends RecommendationResultCreateArgs>(args: SelectSubset<T, RecommendationResultCreateArgs<ExtArgs>>): Prisma__RecommendationResultClient<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RecommendationResults.
+     * @param {RecommendationResultCreateManyArgs} args - Arguments to create many RecommendationResults.
+     * @example
+     * // Create many RecommendationResults
+     * const recommendationResult = await prisma.recommendationResult.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends RecommendationResultCreateManyArgs>(args?: SelectSubset<T, RecommendationResultCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a RecommendationResult.
+     * @param {RecommendationResultDeleteArgs} args - Arguments to delete one RecommendationResult.
+     * @example
+     * // Delete one RecommendationResult
+     * const RecommendationResult = await prisma.recommendationResult.delete({
+     *   where: {
+     *     // ... filter to delete one RecommendationResult
+     *   }
+     * })
+     * 
+     */
+    delete<T extends RecommendationResultDeleteArgs>(args: SelectSubset<T, RecommendationResultDeleteArgs<ExtArgs>>): Prisma__RecommendationResultClient<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RecommendationResult.
+     * @param {RecommendationResultUpdateArgs} args - Arguments to update one RecommendationResult.
+     * @example
+     * // Update one RecommendationResult
+     * const recommendationResult = await prisma.recommendationResult.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends RecommendationResultUpdateArgs>(args: SelectSubset<T, RecommendationResultUpdateArgs<ExtArgs>>): Prisma__RecommendationResultClient<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RecommendationResults.
+     * @param {RecommendationResultDeleteManyArgs} args - Arguments to filter RecommendationResults to delete.
+     * @example
+     * // Delete a few RecommendationResults
+     * const { count } = await prisma.recommendationResult.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends RecommendationResultDeleteManyArgs>(args?: SelectSubset<T, RecommendationResultDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RecommendationResults.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationResultUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RecommendationResults
+     * const recommendationResult = await prisma.recommendationResult.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends RecommendationResultUpdateManyArgs>(args: SelectSubset<T, RecommendationResultUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one RecommendationResult.
+     * @param {RecommendationResultUpsertArgs} args - Arguments to update or create a RecommendationResult.
+     * @example
+     * // Update or create a RecommendationResult
+     * const recommendationResult = await prisma.recommendationResult.upsert({
+     *   create: {
+     *     // ... data to create a RecommendationResult
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the RecommendationResult we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RecommendationResultUpsertArgs>(args: SelectSubset<T, RecommendationResultUpsertArgs<ExtArgs>>): Prisma__RecommendationResultClient<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RecommendationResults.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationResultCountArgs} args - Arguments to filter RecommendationResults to count.
+     * @example
+     * // Count the number of RecommendationResults
+     * const count = await prisma.recommendationResult.count({
+     *   where: {
+     *     // ... the filter for the RecommendationResults we want to count
+     *   }
+     * })
+    **/
+    count<T extends RecommendationResultCountArgs>(
+      args?: Subset<T, RecommendationResultCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RecommendationResultCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a RecommendationResult.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationResultAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends RecommendationResultAggregateArgs>(args: Subset<T, RecommendationResultAggregateArgs>): Prisma.PrismaPromise<GetRecommendationResultAggregateType<T>>
+
+    /**
+     * Group by RecommendationResult.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RecommendationResultGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends RecommendationResultGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RecommendationResultGroupByArgs['orderBy'] }
+        : { orderBy?: RecommendationResultGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, RecommendationResultGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRecommendationResultGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RecommendationResult model
+   */
+  readonly fields: RecommendationResultFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RecommendationResult.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RecommendationResultClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    request<T extends RecommendationRequestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RecommendationRequestDefaultArgs<ExtArgs>>): Prisma__RecommendationRequestClient<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the RecommendationResult model
+   */
+  interface RecommendationResultFieldRefs {
+    readonly id: FieldRef<"RecommendationResult", 'Int'>
+    readonly req_id: FieldRef<"RecommendationResult", 'Int'>
+    readonly user_id: FieldRef<"RecommendationResult", 'Int'>
+    readonly score: FieldRef<"RecommendationResult", 'Float'>
+    readonly pos: FieldRef<"RecommendationResult", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * RecommendationResult findUnique
+   */
+  export type RecommendationResultFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationResult to fetch.
+     */
+    where: RecommendationResultWhereUniqueInput
+  }
+
+  /**
+   * RecommendationResult findUniqueOrThrow
+   */
+  export type RecommendationResultFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationResult to fetch.
+     */
+    where: RecommendationResultWhereUniqueInput
+  }
+
+  /**
+   * RecommendationResult findFirst
+   */
+  export type RecommendationResultFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationResult to fetch.
+     */
+    where?: RecommendationResultWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationResults to fetch.
+     */
+    orderBy?: RecommendationResultOrderByWithRelationInput | RecommendationResultOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RecommendationResults.
+     */
+    cursor?: RecommendationResultWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationResults from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationResults.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RecommendationResults.
+     */
+    distinct?: RecommendationResultScalarFieldEnum | RecommendationResultScalarFieldEnum[]
+  }
+
+  /**
+   * RecommendationResult findFirstOrThrow
+   */
+  export type RecommendationResultFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationResult to fetch.
+     */
+    where?: RecommendationResultWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationResults to fetch.
+     */
+    orderBy?: RecommendationResultOrderByWithRelationInput | RecommendationResultOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RecommendationResults.
+     */
+    cursor?: RecommendationResultWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationResults from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationResults.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RecommendationResults.
+     */
+    distinct?: RecommendationResultScalarFieldEnum | RecommendationResultScalarFieldEnum[]
+  }
+
+  /**
+   * RecommendationResult findMany
+   */
+  export type RecommendationResultFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    /**
+     * Filter, which RecommendationResults to fetch.
+     */
+    where?: RecommendationResultWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RecommendationResults to fetch.
+     */
+    orderBy?: RecommendationResultOrderByWithRelationInput | RecommendationResultOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RecommendationResults.
+     */
+    cursor?: RecommendationResultWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RecommendationResults from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` RecommendationResults.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of RecommendationResults.
+     */
+    distinct?: RecommendationResultScalarFieldEnum | RecommendationResultScalarFieldEnum[]
+  }
+
+  /**
+   * RecommendationResult create
+   */
+  export type RecommendationResultCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RecommendationResult.
+     */
+    data: XOR<RecommendationResultCreateInput, RecommendationResultUncheckedCreateInput>
+  }
+
+  /**
+   * RecommendationResult createMany
+   */
+  export type RecommendationResultCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RecommendationResults.
+     */
+    data: RecommendationResultCreateManyInput | RecommendationResultCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * RecommendationResult update
+   */
+  export type RecommendationResultUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RecommendationResult.
+     */
+    data: XOR<RecommendationResultUpdateInput, RecommendationResultUncheckedUpdateInput>
+    /**
+     * Choose, which RecommendationResult to update.
+     */
+    where: RecommendationResultWhereUniqueInput
+  }
+
+  /**
+   * RecommendationResult updateMany
+   */
+  export type RecommendationResultUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RecommendationResults.
+     */
+    data: XOR<RecommendationResultUpdateManyMutationInput, RecommendationResultUncheckedUpdateManyInput>
+    /**
+     * Filter which RecommendationResults to update
+     */
+    where?: RecommendationResultWhereInput
+    /**
+     * Limit how many RecommendationResults to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * RecommendationResult upsert
+   */
+  export type RecommendationResultUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RecommendationResult to update in case it exists.
+     */
+    where: RecommendationResultWhereUniqueInput
+    /**
+     * In case the RecommendationResult found by the `where` argument doesn't exist, create a new RecommendationResult with this data.
+     */
+    create: XOR<RecommendationResultCreateInput, RecommendationResultUncheckedCreateInput>
+    /**
+     * In case the RecommendationResult was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RecommendationResultUpdateInput, RecommendationResultUncheckedUpdateInput>
+  }
+
+  /**
+   * RecommendationResult delete
+   */
+  export type RecommendationResultDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    /**
+     * Filter which RecommendationResult to delete.
+     */
+    where: RecommendationResultWhereUniqueInput
+  }
+
+  /**
+   * RecommendationResult deleteMany
+   */
+  export type RecommendationResultDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RecommendationResults to delete
+     */
+    where?: RecommendationResultWhereInput
+    /**
+     * Limit how many RecommendationResults to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * RecommendationResult without action
+   */
+  export type RecommendationResultDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -11885,6 +17548,7 @@ export namespace Prisma {
     category_id: 'category_id',
     periode_id: 'periode_id',
     level_id: 'level_id',
+    user_id: 'user_id',
     title: 'title',
     description: 'description',
     is_active: 'is_active'
@@ -11937,6 +17601,60 @@ export namespace Prisma {
   };
 
   export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+  export const KriteriaScalarFieldEnum: {
+    id_kriteria: 'id_kriteria',
+    kode: 'kode',
+    nama: 'nama',
+    tipe: 'tipe',
+    bobot: 'bobot'
+  };
+
+  export type KriteriaScalarFieldEnum = (typeof KriteriaScalarFieldEnum)[keyof typeof KriteriaScalarFieldEnum]
+
+
+  export const KriteriaValueScalarFieldEnum: {
+    id_value: 'id_value',
+    id_kriteria: 'id_kriteria',
+    value: 'value',
+    score: 'score'
+  };
+
+  export type KriteriaValueScalarFieldEnum = (typeof KriteriaValueScalarFieldEnum)[keyof typeof KriteriaValueScalarFieldEnum]
+
+
+  export const RecommendationRequestScalarFieldEnum: {
+    id_request: 'id_request',
+    user_id: 'user_id',
+    category_id: 'category_id',
+    method: 'method',
+    created_at: 'created_at',
+    updated_at: 'updated_at'
+  };
+
+  export type RecommendationRequestScalarFieldEnum = (typeof RecommendationRequestScalarFieldEnum)[keyof typeof RecommendationRequestScalarFieldEnum]
+
+
+  export const RecommendationReqWeightScalarFieldEnum: {
+    id: 'id',
+    req_id: 'req_id',
+    kriteria_id: 'kriteria_id',
+    bobot: 'bobot'
+  };
+
+  export type RecommendationReqWeightScalarFieldEnum = (typeof RecommendationReqWeightScalarFieldEnum)[keyof typeof RecommendationReqWeightScalarFieldEnum]
+
+
+  export const RecommendationResultScalarFieldEnum: {
+    id: 'id',
+    req_id: 'req_id',
+    user_id: 'user_id',
+    score: 'score',
+    pos: 'pos'
+  };
+
+  export type RecommendationResultScalarFieldEnum = (typeof RecommendationResultScalarFieldEnum)[keyof typeof RecommendationResultScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -12020,6 +17738,29 @@ export namespace Prisma {
   };
 
   export type ReviewOrderByRelevanceFieldEnum = (typeof ReviewOrderByRelevanceFieldEnum)[keyof typeof ReviewOrderByRelevanceFieldEnum]
+
+
+  export const KriteriaOrderByRelevanceFieldEnum: {
+    kode: 'kode',
+    nama: 'nama',
+    tipe: 'tipe'
+  };
+
+  export type KriteriaOrderByRelevanceFieldEnum = (typeof KriteriaOrderByRelevanceFieldEnum)[keyof typeof KriteriaOrderByRelevanceFieldEnum]
+
+
+  export const KriteriaValueOrderByRelevanceFieldEnum: {
+    value: 'value'
+  };
+
+  export type KriteriaValueOrderByRelevanceFieldEnum = (typeof KriteriaValueOrderByRelevanceFieldEnum)[keyof typeof KriteriaValueOrderByRelevanceFieldEnum]
+
+
+  export const RecommendationRequestOrderByRelevanceFieldEnum: {
+    method: 'method'
+  };
+
+  export type RecommendationRequestOrderByRelevanceFieldEnum = (typeof RecommendationRequestOrderByRelevanceFieldEnum)[keyof typeof RecommendationRequestOrderByRelevanceFieldEnum]
 
 
   /**
@@ -12122,6 +17863,9 @@ export namespace Prisma {
     enrollments?: EnrollmentListRelationFilter
     reviews?: ReviewListRelationFilter
     exams?: ExamListRelationFilter
+    classes?: ClassListRelationFilter
+    recommendationRequests?: RecommendationRequestListRelationFilter
+    recommendationResults?: RecommendationResultListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -12135,6 +17879,9 @@ export namespace Prisma {
     enrollments?: EnrollmentOrderByRelationAggregateInput
     reviews?: ReviewOrderByRelationAggregateInput
     exams?: ExamOrderByRelationAggregateInput
+    classes?: ClassOrderByRelationAggregateInput
+    recommendationRequests?: RecommendationRequestOrderByRelationAggregateInput
+    recommendationResults?: RecommendationResultOrderByRelationAggregateInput
     _relevance?: UserOrderByRelevanceInput
   }
 
@@ -12152,6 +17899,9 @@ export namespace Prisma {
     enrollments?: EnrollmentListRelationFilter
     reviews?: ReviewListRelationFilter
     exams?: ExamListRelationFilter
+    classes?: ClassListRelationFilter
+    recommendationRequests?: RecommendationRequestListRelationFilter
+    recommendationResults?: RecommendationResultListRelationFilter
   }, "user_id" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -12187,12 +17937,14 @@ export namespace Prisma {
     category_id?: IntFilter<"Category"> | number
     categories?: StringFilter<"Category"> | string
     classes?: ClassListRelationFilter
+    recommendationRequests?: RecommendationRequestListRelationFilter
   }
 
   export type CategoryOrderByWithRelationInput = {
     category_id?: SortOrder
     categories?: SortOrder
     classes?: ClassOrderByRelationAggregateInput
+    recommendationRequests?: RecommendationRequestOrderByRelationAggregateInput
     _relevance?: CategoryOrderByRelevanceInput
   }
 
@@ -12203,6 +17955,7 @@ export namespace Prisma {
     NOT?: CategoryWhereInput | CategoryWhereInput[]
     categories?: StringFilter<"Category"> | string
     classes?: ClassListRelationFilter
+    recommendationRequests?: RecommendationRequestListRelationFilter
   }, "category_id">
 
   export type CategoryOrderByWithAggregationInput = {
@@ -12317,9 +18070,11 @@ export namespace Prisma {
     category_id?: IntFilter<"Class"> | number
     periode_id?: IntFilter<"Class"> | number
     level_id?: IntFilter<"Class"> | number
+    user_id?: IntFilter<"Class"> | number
     title?: StringFilter<"Class"> | string
     description?: StringFilter<"Class"> | string
     is_active?: BoolFilter<"Class"> | boolean
+    mentor?: XOR<UserScalarRelationFilter, UserWhereInput>
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     periode?: XOR<PeriodeScalarRelationFilter, PeriodeWhereInput>
     level?: XOR<LevelScalarRelationFilter, LevelWhereInput>
@@ -12334,9 +18089,11 @@ export namespace Prisma {
     category_id?: SortOrder
     periode_id?: SortOrder
     level_id?: SortOrder
+    user_id?: SortOrder
     title?: SortOrder
     description?: SortOrder
     is_active?: SortOrder
+    mentor?: UserOrderByWithRelationInput
     category?: CategoryOrderByWithRelationInput
     periode?: PeriodeOrderByWithRelationInput
     level?: LevelOrderByWithRelationInput
@@ -12355,9 +18112,11 @@ export namespace Prisma {
     category_id?: IntFilter<"Class"> | number
     periode_id?: IntFilter<"Class"> | number
     level_id?: IntFilter<"Class"> | number
+    user_id?: IntFilter<"Class"> | number
     title?: StringFilter<"Class"> | string
     description?: StringFilter<"Class"> | string
     is_active?: BoolFilter<"Class"> | boolean
+    mentor?: XOR<UserScalarRelationFilter, UserWhereInput>
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     periode?: XOR<PeriodeScalarRelationFilter, PeriodeWhereInput>
     level?: XOR<LevelScalarRelationFilter, LevelWhereInput>
@@ -12372,6 +18131,7 @@ export namespace Prisma {
     category_id?: SortOrder
     periode_id?: SortOrder
     level_id?: SortOrder
+    user_id?: SortOrder
     title?: SortOrder
     description?: SortOrder
     is_active?: SortOrder
@@ -12390,6 +18150,7 @@ export namespace Prisma {
     category_id?: IntWithAggregatesFilter<"Class"> | number
     periode_id?: IntWithAggregatesFilter<"Class"> | number
     level_id?: IntWithAggregatesFilter<"Class"> | number
+    user_id?: IntWithAggregatesFilter<"Class"> | number
     title?: StringWithAggregatesFilter<"Class"> | string
     description?: StringWithAggregatesFilter<"Class"> | string
     is_active?: BoolWithAggregatesFilter<"Class"> | boolean
@@ -12646,6 +18407,307 @@ export namespace Prisma {
     comment?: StringWithAggregatesFilter<"Review"> | string
   }
 
+  export type KriteriaWhereInput = {
+    AND?: KriteriaWhereInput | KriteriaWhereInput[]
+    OR?: KriteriaWhereInput[]
+    NOT?: KriteriaWhereInput | KriteriaWhereInput[]
+    id_kriteria?: IntFilter<"Kriteria"> | number
+    kode?: StringFilter<"Kriteria"> | string
+    nama?: StringFilter<"Kriteria"> | string
+    tipe?: StringFilter<"Kriteria"> | string
+    bobot?: FloatFilter<"Kriteria"> | number
+    values?: KriteriaValueListRelationFilter
+    weights?: RecommendationReqWeightListRelationFilter
+  }
+
+  export type KriteriaOrderByWithRelationInput = {
+    id_kriteria?: SortOrder
+    kode?: SortOrder
+    nama?: SortOrder
+    tipe?: SortOrder
+    bobot?: SortOrder
+    values?: KriteriaValueOrderByRelationAggregateInput
+    weights?: RecommendationReqWeightOrderByRelationAggregateInput
+    _relevance?: KriteriaOrderByRelevanceInput
+  }
+
+  export type KriteriaWhereUniqueInput = Prisma.AtLeast<{
+    id_kriteria?: number
+    kode?: string
+    AND?: KriteriaWhereInput | KriteriaWhereInput[]
+    OR?: KriteriaWhereInput[]
+    NOT?: KriteriaWhereInput | KriteriaWhereInput[]
+    nama?: StringFilter<"Kriteria"> | string
+    tipe?: StringFilter<"Kriteria"> | string
+    bobot?: FloatFilter<"Kriteria"> | number
+    values?: KriteriaValueListRelationFilter
+    weights?: RecommendationReqWeightListRelationFilter
+  }, "id_kriteria" | "kode">
+
+  export type KriteriaOrderByWithAggregationInput = {
+    id_kriteria?: SortOrder
+    kode?: SortOrder
+    nama?: SortOrder
+    tipe?: SortOrder
+    bobot?: SortOrder
+    _count?: KriteriaCountOrderByAggregateInput
+    _avg?: KriteriaAvgOrderByAggregateInput
+    _max?: KriteriaMaxOrderByAggregateInput
+    _min?: KriteriaMinOrderByAggregateInput
+    _sum?: KriteriaSumOrderByAggregateInput
+  }
+
+  export type KriteriaScalarWhereWithAggregatesInput = {
+    AND?: KriteriaScalarWhereWithAggregatesInput | KriteriaScalarWhereWithAggregatesInput[]
+    OR?: KriteriaScalarWhereWithAggregatesInput[]
+    NOT?: KriteriaScalarWhereWithAggregatesInput | KriteriaScalarWhereWithAggregatesInput[]
+    id_kriteria?: IntWithAggregatesFilter<"Kriteria"> | number
+    kode?: StringWithAggregatesFilter<"Kriteria"> | string
+    nama?: StringWithAggregatesFilter<"Kriteria"> | string
+    tipe?: StringWithAggregatesFilter<"Kriteria"> | string
+    bobot?: FloatWithAggregatesFilter<"Kriteria"> | number
+  }
+
+  export type KriteriaValueWhereInput = {
+    AND?: KriteriaValueWhereInput | KriteriaValueWhereInput[]
+    OR?: KriteriaValueWhereInput[]
+    NOT?: KriteriaValueWhereInput | KriteriaValueWhereInput[]
+    id_value?: IntFilter<"KriteriaValue"> | number
+    id_kriteria?: IntFilter<"KriteriaValue"> | number
+    value?: StringFilter<"KriteriaValue"> | string
+    score?: IntFilter<"KriteriaValue"> | number
+    kriteria?: XOR<KriteriaScalarRelationFilter, KriteriaWhereInput>
+  }
+
+  export type KriteriaValueOrderByWithRelationInput = {
+    id_value?: SortOrder
+    id_kriteria?: SortOrder
+    value?: SortOrder
+    score?: SortOrder
+    kriteria?: KriteriaOrderByWithRelationInput
+    _relevance?: KriteriaValueOrderByRelevanceInput
+  }
+
+  export type KriteriaValueWhereUniqueInput = Prisma.AtLeast<{
+    id_value?: number
+    AND?: KriteriaValueWhereInput | KriteriaValueWhereInput[]
+    OR?: KriteriaValueWhereInput[]
+    NOT?: KriteriaValueWhereInput | KriteriaValueWhereInput[]
+    id_kriteria?: IntFilter<"KriteriaValue"> | number
+    value?: StringFilter<"KriteriaValue"> | string
+    score?: IntFilter<"KriteriaValue"> | number
+    kriteria?: XOR<KriteriaScalarRelationFilter, KriteriaWhereInput>
+  }, "id_value">
+
+  export type KriteriaValueOrderByWithAggregationInput = {
+    id_value?: SortOrder
+    id_kriteria?: SortOrder
+    value?: SortOrder
+    score?: SortOrder
+    _count?: KriteriaValueCountOrderByAggregateInput
+    _avg?: KriteriaValueAvgOrderByAggregateInput
+    _max?: KriteriaValueMaxOrderByAggregateInput
+    _min?: KriteriaValueMinOrderByAggregateInput
+    _sum?: KriteriaValueSumOrderByAggregateInput
+  }
+
+  export type KriteriaValueScalarWhereWithAggregatesInput = {
+    AND?: KriteriaValueScalarWhereWithAggregatesInput | KriteriaValueScalarWhereWithAggregatesInput[]
+    OR?: KriteriaValueScalarWhereWithAggregatesInput[]
+    NOT?: KriteriaValueScalarWhereWithAggregatesInput | KriteriaValueScalarWhereWithAggregatesInput[]
+    id_value?: IntWithAggregatesFilter<"KriteriaValue"> | number
+    id_kriteria?: IntWithAggregatesFilter<"KriteriaValue"> | number
+    value?: StringWithAggregatesFilter<"KriteriaValue"> | string
+    score?: IntWithAggregatesFilter<"KriteriaValue"> | number
+  }
+
+  export type RecommendationRequestWhereInput = {
+    AND?: RecommendationRequestWhereInput | RecommendationRequestWhereInput[]
+    OR?: RecommendationRequestWhereInput[]
+    NOT?: RecommendationRequestWhereInput | RecommendationRequestWhereInput[]
+    id_request?: IntFilter<"RecommendationRequest"> | number
+    user_id?: IntFilter<"RecommendationRequest"> | number
+    category_id?: IntFilter<"RecommendationRequest"> | number
+    method?: StringFilter<"RecommendationRequest"> | string
+    created_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
+    updated_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    weights?: RecommendationReqWeightListRelationFilter
+    results?: RecommendationResultListRelationFilter
+  }
+
+  export type RecommendationRequestOrderByWithRelationInput = {
+    id_request?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    method?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    user?: UserOrderByWithRelationInput
+    category?: CategoryOrderByWithRelationInput
+    weights?: RecommendationReqWeightOrderByRelationAggregateInput
+    results?: RecommendationResultOrderByRelationAggregateInput
+    _relevance?: RecommendationRequestOrderByRelevanceInput
+  }
+
+  export type RecommendationRequestWhereUniqueInput = Prisma.AtLeast<{
+    id_request?: number
+    AND?: RecommendationRequestWhereInput | RecommendationRequestWhereInput[]
+    OR?: RecommendationRequestWhereInput[]
+    NOT?: RecommendationRequestWhereInput | RecommendationRequestWhereInput[]
+    user_id?: IntFilter<"RecommendationRequest"> | number
+    category_id?: IntFilter<"RecommendationRequest"> | number
+    method?: StringFilter<"RecommendationRequest"> | string
+    created_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
+    updated_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    weights?: RecommendationReqWeightListRelationFilter
+    results?: RecommendationResultListRelationFilter
+  }, "id_request">
+
+  export type RecommendationRequestOrderByWithAggregationInput = {
+    id_request?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    method?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    _count?: RecommendationRequestCountOrderByAggregateInput
+    _avg?: RecommendationRequestAvgOrderByAggregateInput
+    _max?: RecommendationRequestMaxOrderByAggregateInput
+    _min?: RecommendationRequestMinOrderByAggregateInput
+    _sum?: RecommendationRequestSumOrderByAggregateInput
+  }
+
+  export type RecommendationRequestScalarWhereWithAggregatesInput = {
+    AND?: RecommendationRequestScalarWhereWithAggregatesInput | RecommendationRequestScalarWhereWithAggregatesInput[]
+    OR?: RecommendationRequestScalarWhereWithAggregatesInput[]
+    NOT?: RecommendationRequestScalarWhereWithAggregatesInput | RecommendationRequestScalarWhereWithAggregatesInput[]
+    id_request?: IntWithAggregatesFilter<"RecommendationRequest"> | number
+    user_id?: IntWithAggregatesFilter<"RecommendationRequest"> | number
+    category_id?: IntWithAggregatesFilter<"RecommendationRequest"> | number
+    method?: StringWithAggregatesFilter<"RecommendationRequest"> | string
+    created_at?: DateTimeWithAggregatesFilter<"RecommendationRequest"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"RecommendationRequest"> | Date | string
+  }
+
+  export type RecommendationReqWeightWhereInput = {
+    AND?: RecommendationReqWeightWhereInput | RecommendationReqWeightWhereInput[]
+    OR?: RecommendationReqWeightWhereInput[]
+    NOT?: RecommendationReqWeightWhereInput | RecommendationReqWeightWhereInput[]
+    id?: IntFilter<"RecommendationReqWeight"> | number
+    req_id?: IntFilter<"RecommendationReqWeight"> | number
+    kriteria_id?: IntFilter<"RecommendationReqWeight"> | number
+    bobot?: FloatFilter<"RecommendationReqWeight"> | number
+    request?: XOR<RecommendationRequestScalarRelationFilter, RecommendationRequestWhereInput>
+    kriteria?: XOR<KriteriaScalarRelationFilter, KriteriaWhereInput>
+  }
+
+  export type RecommendationReqWeightOrderByWithRelationInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    kriteria_id?: SortOrder
+    bobot?: SortOrder
+    request?: RecommendationRequestOrderByWithRelationInput
+    kriteria?: KriteriaOrderByWithRelationInput
+  }
+
+  export type RecommendationReqWeightWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: RecommendationReqWeightWhereInput | RecommendationReqWeightWhereInput[]
+    OR?: RecommendationReqWeightWhereInput[]
+    NOT?: RecommendationReqWeightWhereInput | RecommendationReqWeightWhereInput[]
+    req_id?: IntFilter<"RecommendationReqWeight"> | number
+    kriteria_id?: IntFilter<"RecommendationReqWeight"> | number
+    bobot?: FloatFilter<"RecommendationReqWeight"> | number
+    request?: XOR<RecommendationRequestScalarRelationFilter, RecommendationRequestWhereInput>
+    kriteria?: XOR<KriteriaScalarRelationFilter, KriteriaWhereInput>
+  }, "id">
+
+  export type RecommendationReqWeightOrderByWithAggregationInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    kriteria_id?: SortOrder
+    bobot?: SortOrder
+    _count?: RecommendationReqWeightCountOrderByAggregateInput
+    _avg?: RecommendationReqWeightAvgOrderByAggregateInput
+    _max?: RecommendationReqWeightMaxOrderByAggregateInput
+    _min?: RecommendationReqWeightMinOrderByAggregateInput
+    _sum?: RecommendationReqWeightSumOrderByAggregateInput
+  }
+
+  export type RecommendationReqWeightScalarWhereWithAggregatesInput = {
+    AND?: RecommendationReqWeightScalarWhereWithAggregatesInput | RecommendationReqWeightScalarWhereWithAggregatesInput[]
+    OR?: RecommendationReqWeightScalarWhereWithAggregatesInput[]
+    NOT?: RecommendationReqWeightScalarWhereWithAggregatesInput | RecommendationReqWeightScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"RecommendationReqWeight"> | number
+    req_id?: IntWithAggregatesFilter<"RecommendationReqWeight"> | number
+    kriteria_id?: IntWithAggregatesFilter<"RecommendationReqWeight"> | number
+    bobot?: FloatWithAggregatesFilter<"RecommendationReqWeight"> | number
+  }
+
+  export type RecommendationResultWhereInput = {
+    AND?: RecommendationResultWhereInput | RecommendationResultWhereInput[]
+    OR?: RecommendationResultWhereInput[]
+    NOT?: RecommendationResultWhereInput | RecommendationResultWhereInput[]
+    id?: IntFilter<"RecommendationResult"> | number
+    req_id?: IntFilter<"RecommendationResult"> | number
+    user_id?: IntFilter<"RecommendationResult"> | number
+    score?: FloatFilter<"RecommendationResult"> | number
+    pos?: IntFilter<"RecommendationResult"> | number
+    request?: XOR<RecommendationRequestScalarRelationFilter, RecommendationRequestWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type RecommendationResultOrderByWithRelationInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    pos?: SortOrder
+    request?: RecommendationRequestOrderByWithRelationInput
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type RecommendationResultWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: RecommendationResultWhereInput | RecommendationResultWhereInput[]
+    OR?: RecommendationResultWhereInput[]
+    NOT?: RecommendationResultWhereInput | RecommendationResultWhereInput[]
+    req_id?: IntFilter<"RecommendationResult"> | number
+    user_id?: IntFilter<"RecommendationResult"> | number
+    score?: FloatFilter<"RecommendationResult"> | number
+    pos?: IntFilter<"RecommendationResult"> | number
+    request?: XOR<RecommendationRequestScalarRelationFilter, RecommendationRequestWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type RecommendationResultOrderByWithAggregationInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    pos?: SortOrder
+    _count?: RecommendationResultCountOrderByAggregateInput
+    _avg?: RecommendationResultAvgOrderByAggregateInput
+    _max?: RecommendationResultMaxOrderByAggregateInput
+    _min?: RecommendationResultMinOrderByAggregateInput
+    _sum?: RecommendationResultSumOrderByAggregateInput
+  }
+
+  export type RecommendationResultScalarWhereWithAggregatesInput = {
+    AND?: RecommendationResultScalarWhereWithAggregatesInput | RecommendationResultScalarWhereWithAggregatesInput[]
+    OR?: RecommendationResultScalarWhereWithAggregatesInput[]
+    NOT?: RecommendationResultScalarWhereWithAggregatesInput | RecommendationResultScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"RecommendationResult"> | number
+    req_id?: IntWithAggregatesFilter<"RecommendationResult"> | number
+    user_id?: IntWithAggregatesFilter<"RecommendationResult"> | number
+    score?: FloatWithAggregatesFilter<"RecommendationResult"> | number
+    pos?: IntWithAggregatesFilter<"RecommendationResult"> | number
+  }
+
   export type RoleCreateInput = {
     role_text: string
     users?: UserCreateNestedManyWithoutRoleInput
@@ -12691,6 +18753,9 @@ export namespace Prisma {
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     exams?: ExamCreateNestedManyWithoutUserInput
+    classes?: ClassCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -12703,6 +18768,9 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -12714,6 +18782,9 @@ export namespace Prisma {
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     exams?: ExamUpdateManyWithoutUserNestedInput
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -12726,6 +18797,9 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -12756,23 +18830,27 @@ export namespace Prisma {
   export type CategoryCreateInput = {
     categories: string
     classes?: ClassCreateNestedManyWithoutCategoryInput
+    recommendationRequests?: RecommendationRequestCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateInput = {
     category_id?: number
     categories: string
     classes?: ClassUncheckedCreateNestedManyWithoutCategoryInput
+    recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUpdateInput = {
     categories?: StringFieldUpdateOperationsInput | string
     classes?: ClassUpdateManyWithoutCategoryNestedInput
+    recommendationRequests?: RecommendationRequestUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateInput = {
     category_id?: IntFieldUpdateOperationsInput | number
     categories?: StringFieldUpdateOperationsInput | string
     classes?: ClassUncheckedUpdateManyWithoutCategoryNestedInput
+    recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryCreateManyInput = {
@@ -12865,6 +18943,7 @@ export namespace Prisma {
     title: string
     description: string
     is_active?: boolean
+    mentor: UserCreateNestedOneWithoutClassesInput
     category: CategoryCreateNestedOneWithoutClassesInput
     periode: PeriodeCreateNestedOneWithoutClassesInput
     level: LevelCreateNestedOneWithoutClassesInput
@@ -12879,6 +18958,7 @@ export namespace Prisma {
     category_id: number
     periode_id: number
     level_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
@@ -12892,6 +18972,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    mentor?: UserUpdateOneRequiredWithoutClassesNestedInput
     category?: CategoryUpdateOneRequiredWithoutClassesNestedInput
     periode?: PeriodeUpdateOneRequiredWithoutClassesNestedInput
     level?: LevelUpdateOneRequiredWithoutClassesNestedInput
@@ -12906,6 +18987,7 @@ export namespace Prisma {
     category_id?: IntFieldUpdateOperationsInput | number
     periode_id?: IntFieldUpdateOperationsInput | number
     level_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
@@ -12920,6 +19002,7 @@ export namespace Prisma {
     category_id: number
     periode_id: number
     level_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
@@ -12936,6 +19019,7 @@ export namespace Prisma {
     category_id?: IntFieldUpdateOperationsInput | number
     periode_id?: IntFieldUpdateOperationsInput | number
     level_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
@@ -13160,6 +19244,273 @@ export namespace Prisma {
     comment?: StringFieldUpdateOperationsInput | string
   }
 
+  export type KriteriaCreateInput = {
+    kode: string
+    nama: string
+    tipe: string
+    bobot: number
+    values?: KriteriaValueCreateNestedManyWithoutKriteriaInput
+    weights?: RecommendationReqWeightCreateNestedManyWithoutKriteriaInput
+  }
+
+  export type KriteriaUncheckedCreateInput = {
+    id_kriteria?: number
+    kode: string
+    nama: string
+    tipe: string
+    bobot: number
+    values?: KriteriaValueUncheckedCreateNestedManyWithoutKriteriaInput
+    weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutKriteriaInput
+  }
+
+  export type KriteriaUpdateInput = {
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    tipe?: StringFieldUpdateOperationsInput | string
+    bobot?: FloatFieldUpdateOperationsInput | number
+    values?: KriteriaValueUpdateManyWithoutKriteriaNestedInput
+    weights?: RecommendationReqWeightUpdateManyWithoutKriteriaNestedInput
+  }
+
+  export type KriteriaUncheckedUpdateInput = {
+    id_kriteria?: IntFieldUpdateOperationsInput | number
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    tipe?: StringFieldUpdateOperationsInput | string
+    bobot?: FloatFieldUpdateOperationsInput | number
+    values?: KriteriaValueUncheckedUpdateManyWithoutKriteriaNestedInput
+    weights?: RecommendationReqWeightUncheckedUpdateManyWithoutKriteriaNestedInput
+  }
+
+  export type KriteriaCreateManyInput = {
+    id_kriteria?: number
+    kode: string
+    nama: string
+    tipe: string
+    bobot: number
+  }
+
+  export type KriteriaUpdateManyMutationInput = {
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    tipe?: StringFieldUpdateOperationsInput | string
+    bobot?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type KriteriaUncheckedUpdateManyInput = {
+    id_kriteria?: IntFieldUpdateOperationsInput | number
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    tipe?: StringFieldUpdateOperationsInput | string
+    bobot?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type KriteriaValueCreateInput = {
+    value: string
+    score: number
+    kriteria: KriteriaCreateNestedOneWithoutValuesInput
+  }
+
+  export type KriteriaValueUncheckedCreateInput = {
+    id_value?: number
+    id_kriteria: number
+    value: string
+    score: number
+  }
+
+  export type KriteriaValueUpdateInput = {
+    value?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+    kriteria?: KriteriaUpdateOneRequiredWithoutValuesNestedInput
+  }
+
+  export type KriteriaValueUncheckedUpdateInput = {
+    id_value?: IntFieldUpdateOperationsInput | number
+    id_kriteria?: IntFieldUpdateOperationsInput | number
+    value?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type KriteriaValueCreateManyInput = {
+    id_value?: number
+    id_kriteria: number
+    value: string
+    score: number
+  }
+
+  export type KriteriaValueUpdateManyMutationInput = {
+    value?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type KriteriaValueUncheckedUpdateManyInput = {
+    id_value?: IntFieldUpdateOperationsInput | number
+    id_kriteria?: IntFieldUpdateOperationsInput | number
+    value?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationRequestCreateInput = {
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    user: UserCreateNestedOneWithoutRecommendationRequestsInput
+    category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
+    weights?: RecommendationReqWeightCreateNestedManyWithoutRequestInput
+    results?: RecommendationResultCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestUncheckedCreateInput = {
+    id_request?: number
+    user_id: number
+    category_id: number
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutRequestInput
+    results?: RecommendationResultUncheckedCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestUpdateInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    weights?: RecommendationReqWeightUpdateManyWithoutRequestNestedInput
+    results?: RecommendationResultUpdateManyWithoutRequestNestedInput
+  }
+
+  export type RecommendationRequestUncheckedUpdateInput = {
+    id_request?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    weights?: RecommendationReqWeightUncheckedUpdateManyWithoutRequestNestedInput
+    results?: RecommendationResultUncheckedUpdateManyWithoutRequestNestedInput
+  }
+
+  export type RecommendationRequestCreateManyInput = {
+    id_request?: number
+    user_id: number
+    category_id: number
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type RecommendationRequestUpdateManyMutationInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RecommendationRequestUncheckedUpdateManyInput = {
+    id_request?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RecommendationReqWeightCreateInput = {
+    bobot: number
+    request: RecommendationRequestCreateNestedOneWithoutWeightsInput
+    kriteria: KriteriaCreateNestedOneWithoutWeightsInput
+  }
+
+  export type RecommendationReqWeightUncheckedCreateInput = {
+    id?: number
+    req_id: number
+    kriteria_id: number
+    bobot: number
+  }
+
+  export type RecommendationReqWeightUpdateInput = {
+    bobot?: FloatFieldUpdateOperationsInput | number
+    request?: RecommendationRequestUpdateOneRequiredWithoutWeightsNestedInput
+    kriteria?: KriteriaUpdateOneRequiredWithoutWeightsNestedInput
+  }
+
+  export type RecommendationReqWeightUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    req_id?: IntFieldUpdateOperationsInput | number
+    kriteria_id?: IntFieldUpdateOperationsInput | number
+    bobot?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationReqWeightCreateManyInput = {
+    id?: number
+    req_id: number
+    kriteria_id: number
+    bobot: number
+  }
+
+  export type RecommendationReqWeightUpdateManyMutationInput = {
+    bobot?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationReqWeightUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    req_id?: IntFieldUpdateOperationsInput | number
+    kriteria_id?: IntFieldUpdateOperationsInput | number
+    bobot?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationResultCreateInput = {
+    score: number
+    pos: number
+    request: RecommendationRequestCreateNestedOneWithoutResultsInput
+    user: UserCreateNestedOneWithoutRecommendationResultsInput
+  }
+
+  export type RecommendationResultUncheckedCreateInput = {
+    id?: number
+    req_id: number
+    user_id: number
+    score: number
+    pos: number
+  }
+
+  export type RecommendationResultUpdateInput = {
+    score?: FloatFieldUpdateOperationsInput | number
+    pos?: IntFieldUpdateOperationsInput | number
+    request?: RecommendationRequestUpdateOneRequiredWithoutResultsNestedInput
+    user?: UserUpdateOneRequiredWithoutRecommendationResultsNestedInput
+  }
+
+  export type RecommendationResultUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    req_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    pos?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationResultCreateManyInput = {
+    id?: number
+    req_id: number
+    user_id: number
+    score: number
+    pos: number
+  }
+
+  export type RecommendationResultUpdateManyMutationInput = {
+    score?: FloatFieldUpdateOperationsInput | number
+    pos?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationResultUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    req_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    pos?: IntFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -13293,6 +19644,24 @@ export namespace Prisma {
     none?: ExamWhereInput
   }
 
+  export type ClassListRelationFilter = {
+    every?: ClassWhereInput
+    some?: ClassWhereInput
+    none?: ClassWhereInput
+  }
+
+  export type RecommendationRequestListRelationFilter = {
+    every?: RecommendationRequestWhereInput
+    some?: RecommendationRequestWhereInput
+    none?: RecommendationRequestWhereInput
+  }
+
+  export type RecommendationResultListRelationFilter = {
+    every?: RecommendationResultWhereInput
+    some?: RecommendationResultWhereInput
+    none?: RecommendationResultWhereInput
+  }
+
   export type EnrollmentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -13302,6 +19671,18 @@ export namespace Prisma {
   }
 
   export type ExamOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ClassOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RecommendationRequestOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RecommendationResultOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -13360,16 +19741,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type ClassListRelationFilter = {
-    every?: ClassWhereInput
-    some?: ClassWhereInput
-    none?: ClassWhereInput
-  }
-
-  export type ClassOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type CategoryOrderByRelevanceInput = {
@@ -13464,6 +19835,11 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
   export type CategoryScalarRelationFilter = {
     is?: CategoryWhereInput
     isNot?: CategoryWhereInput
@@ -13500,6 +19876,7 @@ export namespace Prisma {
     category_id?: SortOrder
     periode_id?: SortOrder
     level_id?: SortOrder
+    user_id?: SortOrder
     title?: SortOrder
     description?: SortOrder
     is_active?: SortOrder
@@ -13510,6 +19887,7 @@ export namespace Prisma {
     category_id?: SortOrder
     periode_id?: SortOrder
     level_id?: SortOrder
+    user_id?: SortOrder
   }
 
   export type ClassMaxOrderByAggregateInput = {
@@ -13517,6 +19895,7 @@ export namespace Prisma {
     category_id?: SortOrder
     periode_id?: SortOrder
     level_id?: SortOrder
+    user_id?: SortOrder
     title?: SortOrder
     description?: SortOrder
     is_active?: SortOrder
@@ -13527,6 +19906,7 @@ export namespace Prisma {
     category_id?: SortOrder
     periode_id?: SortOrder
     level_id?: SortOrder
+    user_id?: SortOrder
     title?: SortOrder
     description?: SortOrder
     is_active?: SortOrder
@@ -13537,6 +19917,7 @@ export namespace Prisma {
     category_id?: SortOrder
     periode_id?: SortOrder
     level_id?: SortOrder
+    user_id?: SortOrder
   }
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -13545,11 +19926,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
   }
 
   export type ClassScalarRelationFilter = {
@@ -13737,6 +20113,262 @@ export namespace Prisma {
     rating?: SortOrder
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type KriteriaValueListRelationFilter = {
+    every?: KriteriaValueWhereInput
+    some?: KriteriaValueWhereInput
+    none?: KriteriaValueWhereInput
+  }
+
+  export type RecommendationReqWeightListRelationFilter = {
+    every?: RecommendationReqWeightWhereInput
+    some?: RecommendationReqWeightWhereInput
+    none?: RecommendationReqWeightWhereInput
+  }
+
+  export type KriteriaValueOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RecommendationReqWeightOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type KriteriaOrderByRelevanceInput = {
+    fields: KriteriaOrderByRelevanceFieldEnum | KriteriaOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type KriteriaCountOrderByAggregateInput = {
+    id_kriteria?: SortOrder
+    kode?: SortOrder
+    nama?: SortOrder
+    tipe?: SortOrder
+    bobot?: SortOrder
+  }
+
+  export type KriteriaAvgOrderByAggregateInput = {
+    id_kriteria?: SortOrder
+    bobot?: SortOrder
+  }
+
+  export type KriteriaMaxOrderByAggregateInput = {
+    id_kriteria?: SortOrder
+    kode?: SortOrder
+    nama?: SortOrder
+    tipe?: SortOrder
+    bobot?: SortOrder
+  }
+
+  export type KriteriaMinOrderByAggregateInput = {
+    id_kriteria?: SortOrder
+    kode?: SortOrder
+    nama?: SortOrder
+    tipe?: SortOrder
+    bobot?: SortOrder
+  }
+
+  export type KriteriaSumOrderByAggregateInput = {
+    id_kriteria?: SortOrder
+    bobot?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type KriteriaScalarRelationFilter = {
+    is?: KriteriaWhereInput
+    isNot?: KriteriaWhereInput
+  }
+
+  export type KriteriaValueOrderByRelevanceInput = {
+    fields: KriteriaValueOrderByRelevanceFieldEnum | KriteriaValueOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type KriteriaValueCountOrderByAggregateInput = {
+    id_value?: SortOrder
+    id_kriteria?: SortOrder
+    value?: SortOrder
+    score?: SortOrder
+  }
+
+  export type KriteriaValueAvgOrderByAggregateInput = {
+    id_value?: SortOrder
+    id_kriteria?: SortOrder
+    score?: SortOrder
+  }
+
+  export type KriteriaValueMaxOrderByAggregateInput = {
+    id_value?: SortOrder
+    id_kriteria?: SortOrder
+    value?: SortOrder
+    score?: SortOrder
+  }
+
+  export type KriteriaValueMinOrderByAggregateInput = {
+    id_value?: SortOrder
+    id_kriteria?: SortOrder
+    value?: SortOrder
+    score?: SortOrder
+  }
+
+  export type KriteriaValueSumOrderByAggregateInput = {
+    id_value?: SortOrder
+    id_kriteria?: SortOrder
+    score?: SortOrder
+  }
+
+  export type RecommendationRequestOrderByRelevanceInput = {
+    fields: RecommendationRequestOrderByRelevanceFieldEnum | RecommendationRequestOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type RecommendationRequestCountOrderByAggregateInput = {
+    id_request?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    method?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type RecommendationRequestAvgOrderByAggregateInput = {
+    id_request?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+  }
+
+  export type RecommendationRequestMaxOrderByAggregateInput = {
+    id_request?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    method?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type RecommendationRequestMinOrderByAggregateInput = {
+    id_request?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    method?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+  }
+
+  export type RecommendationRequestSumOrderByAggregateInput = {
+    id_request?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+  }
+
+  export type RecommendationRequestScalarRelationFilter = {
+    is?: RecommendationRequestWhereInput
+    isNot?: RecommendationRequestWhereInput
+  }
+
+  export type RecommendationReqWeightCountOrderByAggregateInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    kriteria_id?: SortOrder
+    bobot?: SortOrder
+  }
+
+  export type RecommendationReqWeightAvgOrderByAggregateInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    kriteria_id?: SortOrder
+    bobot?: SortOrder
+  }
+
+  export type RecommendationReqWeightMaxOrderByAggregateInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    kriteria_id?: SortOrder
+    bobot?: SortOrder
+  }
+
+  export type RecommendationReqWeightMinOrderByAggregateInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    kriteria_id?: SortOrder
+    bobot?: SortOrder
+  }
+
+  export type RecommendationReqWeightSumOrderByAggregateInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    kriteria_id?: SortOrder
+    bobot?: SortOrder
+  }
+
+  export type RecommendationResultCountOrderByAggregateInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    pos?: SortOrder
+  }
+
+  export type RecommendationResultAvgOrderByAggregateInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    pos?: SortOrder
+  }
+
+  export type RecommendationResultMaxOrderByAggregateInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    pos?: SortOrder
+  }
+
+  export type RecommendationResultMinOrderByAggregateInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    pos?: SortOrder
+  }
+
+  export type RecommendationResultSumOrderByAggregateInput = {
+    id?: SortOrder
+    req_id?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    pos?: SortOrder
+  }
+
   export type UserCreateNestedManyWithoutRoleInput = {
     create?: XOR<UserCreateWithoutRoleInput, UserUncheckedCreateWithoutRoleInput> | UserCreateWithoutRoleInput[] | UserUncheckedCreateWithoutRoleInput[]
     connectOrCreate?: UserCreateOrConnectWithoutRoleInput | UserCreateOrConnectWithoutRoleInput[]
@@ -13818,6 +20450,27 @@ export namespace Prisma {
     connect?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
   }
 
+  export type ClassCreateNestedManyWithoutMentorInput = {
+    create?: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput> | ClassCreateWithoutMentorInput[] | ClassUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: ClassCreateOrConnectWithoutMentorInput | ClassCreateOrConnectWithoutMentorInput[]
+    createMany?: ClassCreateManyMentorInputEnvelope
+    connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+  }
+
+  export type RecommendationRequestCreateNestedManyWithoutUserInput = {
+    create?: XOR<RecommendationRequestCreateWithoutUserInput, RecommendationRequestUncheckedCreateWithoutUserInput> | RecommendationRequestCreateWithoutUserInput[] | RecommendationRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutUserInput | RecommendationRequestCreateOrConnectWithoutUserInput[]
+    createMany?: RecommendationRequestCreateManyUserInputEnvelope
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+  }
+
+  export type RecommendationResultCreateNestedManyWithoutUserInput = {
+    create?: XOR<RecommendationResultCreateWithoutUserInput, RecommendationResultUncheckedCreateWithoutUserInput> | RecommendationResultCreateWithoutUserInput[] | RecommendationResultUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationResultCreateOrConnectWithoutUserInput | RecommendationResultCreateOrConnectWithoutUserInput[]
+    createMany?: RecommendationResultCreateManyUserInputEnvelope
+    connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+  }
+
   export type EnrollmentUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<EnrollmentCreateWithoutUserInput, EnrollmentUncheckedCreateWithoutUserInput> | EnrollmentCreateWithoutUserInput[] | EnrollmentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: EnrollmentCreateOrConnectWithoutUserInput | EnrollmentCreateOrConnectWithoutUserInput[]
@@ -13837,6 +20490,27 @@ export namespace Prisma {
     connectOrCreate?: ExamCreateOrConnectWithoutUserInput | ExamCreateOrConnectWithoutUserInput[]
     createMany?: ExamCreateManyUserInputEnvelope
     connect?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
+  }
+
+  export type ClassUncheckedCreateNestedManyWithoutMentorInput = {
+    create?: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput> | ClassCreateWithoutMentorInput[] | ClassUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: ClassCreateOrConnectWithoutMentorInput | ClassCreateOrConnectWithoutMentorInput[]
+    createMany?: ClassCreateManyMentorInputEnvelope
+    connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+  }
+
+  export type RecommendationRequestUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<RecommendationRequestCreateWithoutUserInput, RecommendationRequestUncheckedCreateWithoutUserInput> | RecommendationRequestCreateWithoutUserInput[] | RecommendationRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutUserInput | RecommendationRequestCreateOrConnectWithoutUserInput[]
+    createMany?: RecommendationRequestCreateManyUserInputEnvelope
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+  }
+
+  export type RecommendationResultUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<RecommendationResultCreateWithoutUserInput, RecommendationResultUncheckedCreateWithoutUserInput> | RecommendationResultCreateWithoutUserInput[] | RecommendationResultUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationResultCreateOrConnectWithoutUserInput | RecommendationResultCreateOrConnectWithoutUserInput[]
+    createMany?: RecommendationResultCreateManyUserInputEnvelope
+    connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -13893,6 +20567,48 @@ export namespace Prisma {
     deleteMany?: ExamScalarWhereInput | ExamScalarWhereInput[]
   }
 
+  export type ClassUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput> | ClassCreateWithoutMentorInput[] | ClassUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: ClassCreateOrConnectWithoutMentorInput | ClassCreateOrConnectWithoutMentorInput[]
+    upsert?: ClassUpsertWithWhereUniqueWithoutMentorInput | ClassUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: ClassCreateManyMentorInputEnvelope
+    set?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    disconnect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    delete?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    update?: ClassUpdateWithWhereUniqueWithoutMentorInput | ClassUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: ClassUpdateManyWithWhereWithoutMentorInput | ClassUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: ClassScalarWhereInput | ClassScalarWhereInput[]
+  }
+
+  export type RecommendationRequestUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RecommendationRequestCreateWithoutUserInput, RecommendationRequestUncheckedCreateWithoutUserInput> | RecommendationRequestCreateWithoutUserInput[] | RecommendationRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutUserInput | RecommendationRequestCreateOrConnectWithoutUserInput[]
+    upsert?: RecommendationRequestUpsertWithWhereUniqueWithoutUserInput | RecommendationRequestUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RecommendationRequestCreateManyUserInputEnvelope
+    set?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    disconnect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    delete?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    update?: RecommendationRequestUpdateWithWhereUniqueWithoutUserInput | RecommendationRequestUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RecommendationRequestUpdateManyWithWhereWithoutUserInput | RecommendationRequestUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RecommendationRequestScalarWhereInput | RecommendationRequestScalarWhereInput[]
+  }
+
+  export type RecommendationResultUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RecommendationResultCreateWithoutUserInput, RecommendationResultUncheckedCreateWithoutUserInput> | RecommendationResultCreateWithoutUserInput[] | RecommendationResultUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationResultCreateOrConnectWithoutUserInput | RecommendationResultCreateOrConnectWithoutUserInput[]
+    upsert?: RecommendationResultUpsertWithWhereUniqueWithoutUserInput | RecommendationResultUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RecommendationResultCreateManyUserInputEnvelope
+    set?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    disconnect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    delete?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    update?: RecommendationResultUpdateWithWhereUniqueWithoutUserInput | RecommendationResultUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RecommendationResultUpdateManyWithWhereWithoutUserInput | RecommendationResultUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RecommendationResultScalarWhereInput | RecommendationResultScalarWhereInput[]
+  }
+
   export type EnrollmentUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<EnrollmentCreateWithoutUserInput, EnrollmentUncheckedCreateWithoutUserInput> | EnrollmentCreateWithoutUserInput[] | EnrollmentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: EnrollmentCreateOrConnectWithoutUserInput | EnrollmentCreateOrConnectWithoutUserInput[]
@@ -13935,6 +20651,48 @@ export namespace Prisma {
     deleteMany?: ExamScalarWhereInput | ExamScalarWhereInput[]
   }
 
+  export type ClassUncheckedUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput> | ClassCreateWithoutMentorInput[] | ClassUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: ClassCreateOrConnectWithoutMentorInput | ClassCreateOrConnectWithoutMentorInput[]
+    upsert?: ClassUpsertWithWhereUniqueWithoutMentorInput | ClassUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: ClassCreateManyMentorInputEnvelope
+    set?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    disconnect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    delete?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    update?: ClassUpdateWithWhereUniqueWithoutMentorInput | ClassUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: ClassUpdateManyWithWhereWithoutMentorInput | ClassUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: ClassScalarWhereInput | ClassScalarWhereInput[]
+  }
+
+  export type RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RecommendationRequestCreateWithoutUserInput, RecommendationRequestUncheckedCreateWithoutUserInput> | RecommendationRequestCreateWithoutUserInput[] | RecommendationRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutUserInput | RecommendationRequestCreateOrConnectWithoutUserInput[]
+    upsert?: RecommendationRequestUpsertWithWhereUniqueWithoutUserInput | RecommendationRequestUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RecommendationRequestCreateManyUserInputEnvelope
+    set?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    disconnect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    delete?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    update?: RecommendationRequestUpdateWithWhereUniqueWithoutUserInput | RecommendationRequestUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RecommendationRequestUpdateManyWithWhereWithoutUserInput | RecommendationRequestUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RecommendationRequestScalarWhereInput | RecommendationRequestScalarWhereInput[]
+  }
+
+  export type RecommendationResultUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RecommendationResultCreateWithoutUserInput, RecommendationResultUncheckedCreateWithoutUserInput> | RecommendationResultCreateWithoutUserInput[] | RecommendationResultUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationResultCreateOrConnectWithoutUserInput | RecommendationResultCreateOrConnectWithoutUserInput[]
+    upsert?: RecommendationResultUpsertWithWhereUniqueWithoutUserInput | RecommendationResultUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RecommendationResultCreateManyUserInputEnvelope
+    set?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    disconnect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    delete?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    update?: RecommendationResultUpdateWithWhereUniqueWithoutUserInput | RecommendationResultUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RecommendationResultUpdateManyWithWhereWithoutUserInput | RecommendationResultUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RecommendationResultScalarWhereInput | RecommendationResultScalarWhereInput[]
+  }
+
   export type ClassCreateNestedManyWithoutCategoryInput = {
     create?: XOR<ClassCreateWithoutCategoryInput, ClassUncheckedCreateWithoutCategoryInput> | ClassCreateWithoutCategoryInput[] | ClassUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: ClassCreateOrConnectWithoutCategoryInput | ClassCreateOrConnectWithoutCategoryInput[]
@@ -13942,11 +20700,25 @@ export namespace Prisma {
     connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
   }
 
+  export type RecommendationRequestCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<RecommendationRequestCreateWithoutCategoryInput, RecommendationRequestUncheckedCreateWithoutCategoryInput> | RecommendationRequestCreateWithoutCategoryInput[] | RecommendationRequestUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutCategoryInput | RecommendationRequestCreateOrConnectWithoutCategoryInput[]
+    createMany?: RecommendationRequestCreateManyCategoryInputEnvelope
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+  }
+
   export type ClassUncheckedCreateNestedManyWithoutCategoryInput = {
     create?: XOR<ClassCreateWithoutCategoryInput, ClassUncheckedCreateWithoutCategoryInput> | ClassCreateWithoutCategoryInput[] | ClassUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: ClassCreateOrConnectWithoutCategoryInput | ClassCreateOrConnectWithoutCategoryInput[]
     createMany?: ClassCreateManyCategoryInputEnvelope
     connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+  }
+
+  export type RecommendationRequestUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<RecommendationRequestCreateWithoutCategoryInput, RecommendationRequestUncheckedCreateWithoutCategoryInput> | RecommendationRequestCreateWithoutCategoryInput[] | RecommendationRequestUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutCategoryInput | RecommendationRequestCreateOrConnectWithoutCategoryInput[]
+    createMany?: RecommendationRequestCreateManyCategoryInputEnvelope
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
   }
 
   export type ClassUpdateManyWithoutCategoryNestedInput = {
@@ -13963,6 +20735,20 @@ export namespace Prisma {
     deleteMany?: ClassScalarWhereInput | ClassScalarWhereInput[]
   }
 
+  export type RecommendationRequestUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<RecommendationRequestCreateWithoutCategoryInput, RecommendationRequestUncheckedCreateWithoutCategoryInput> | RecommendationRequestCreateWithoutCategoryInput[] | RecommendationRequestUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutCategoryInput | RecommendationRequestCreateOrConnectWithoutCategoryInput[]
+    upsert?: RecommendationRequestUpsertWithWhereUniqueWithoutCategoryInput | RecommendationRequestUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: RecommendationRequestCreateManyCategoryInputEnvelope
+    set?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    disconnect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    delete?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    update?: RecommendationRequestUpdateWithWhereUniqueWithoutCategoryInput | RecommendationRequestUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: RecommendationRequestUpdateManyWithWhereWithoutCategoryInput | RecommendationRequestUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: RecommendationRequestScalarWhereInput | RecommendationRequestScalarWhereInput[]
+  }
+
   export type ClassUncheckedUpdateManyWithoutCategoryNestedInput = {
     create?: XOR<ClassCreateWithoutCategoryInput, ClassUncheckedCreateWithoutCategoryInput> | ClassCreateWithoutCategoryInput[] | ClassUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: ClassCreateOrConnectWithoutCategoryInput | ClassCreateOrConnectWithoutCategoryInput[]
@@ -13975,6 +20761,20 @@ export namespace Prisma {
     update?: ClassUpdateWithWhereUniqueWithoutCategoryInput | ClassUpdateWithWhereUniqueWithoutCategoryInput[]
     updateMany?: ClassUpdateManyWithWhereWithoutCategoryInput | ClassUpdateManyWithWhereWithoutCategoryInput[]
     deleteMany?: ClassScalarWhereInput | ClassScalarWhereInput[]
+  }
+
+  export type RecommendationRequestUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<RecommendationRequestCreateWithoutCategoryInput, RecommendationRequestUncheckedCreateWithoutCategoryInput> | RecommendationRequestCreateWithoutCategoryInput[] | RecommendationRequestUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutCategoryInput | RecommendationRequestCreateOrConnectWithoutCategoryInput[]
+    upsert?: RecommendationRequestUpsertWithWhereUniqueWithoutCategoryInput | RecommendationRequestUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: RecommendationRequestCreateManyCategoryInputEnvelope
+    set?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    disconnect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    delete?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    update?: RecommendationRequestUpdateWithWhereUniqueWithoutCategoryInput | RecommendationRequestUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: RecommendationRequestUpdateManyWithWhereWithoutCategoryInput | RecommendationRequestUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: RecommendationRequestScalarWhereInput | RecommendationRequestScalarWhereInput[]
   }
 
   export type ClassCreateNestedManyWithoutPeriodeInput = {
@@ -14061,6 +20861,12 @@ export namespace Prisma {
     deleteMany?: ClassScalarWhereInput | ClassScalarWhereInput[]
   }
 
+  export type UserCreateNestedOneWithoutClassesInput = {
+    create?: XOR<UserCreateWithoutClassesInput, UserUncheckedCreateWithoutClassesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutClassesInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type CategoryCreateNestedOneWithoutClassesInput = {
     create?: XOR<CategoryCreateWithoutClassesInput, CategoryUncheckedCreateWithoutClassesInput>
     connectOrCreate?: CategoryCreateOrConnectWithoutClassesInput
@@ -14137,6 +20943,14 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type UserUpdateOneRequiredWithoutClassesNestedInput = {
+    create?: XOR<UserCreateWithoutClassesInput, UserUncheckedCreateWithoutClassesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutClassesInput
+    upsert?: UserUpsertWithoutClassesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutClassesInput, UserUpdateWithoutClassesInput>, UserUncheckedUpdateWithoutClassesInput>
   }
 
   export type CategoryUpdateOneRequiredWithoutClassesNestedInput = {
@@ -14373,6 +21187,280 @@ export namespace Prisma {
     update?: XOR<XOR<ClassUpdateToOneWithWhereWithoutReviewsInput, ClassUpdateWithoutReviewsInput>, ClassUncheckedUpdateWithoutReviewsInput>
   }
 
+  export type KriteriaValueCreateNestedManyWithoutKriteriaInput = {
+    create?: XOR<KriteriaValueCreateWithoutKriteriaInput, KriteriaValueUncheckedCreateWithoutKriteriaInput> | KriteriaValueCreateWithoutKriteriaInput[] | KriteriaValueUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: KriteriaValueCreateOrConnectWithoutKriteriaInput | KriteriaValueCreateOrConnectWithoutKriteriaInput[]
+    createMany?: KriteriaValueCreateManyKriteriaInputEnvelope
+    connect?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
+  }
+
+  export type RecommendationReqWeightCreateNestedManyWithoutKriteriaInput = {
+    create?: XOR<RecommendationReqWeightCreateWithoutKriteriaInput, RecommendationReqWeightUncheckedCreateWithoutKriteriaInput> | RecommendationReqWeightCreateWithoutKriteriaInput[] | RecommendationReqWeightUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutKriteriaInput | RecommendationReqWeightCreateOrConnectWithoutKriteriaInput[]
+    createMany?: RecommendationReqWeightCreateManyKriteriaInputEnvelope
+    connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+  }
+
+  export type KriteriaValueUncheckedCreateNestedManyWithoutKriteriaInput = {
+    create?: XOR<KriteriaValueCreateWithoutKriteriaInput, KriteriaValueUncheckedCreateWithoutKriteriaInput> | KriteriaValueCreateWithoutKriteriaInput[] | KriteriaValueUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: KriteriaValueCreateOrConnectWithoutKriteriaInput | KriteriaValueCreateOrConnectWithoutKriteriaInput[]
+    createMany?: KriteriaValueCreateManyKriteriaInputEnvelope
+    connect?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
+  }
+
+  export type RecommendationReqWeightUncheckedCreateNestedManyWithoutKriteriaInput = {
+    create?: XOR<RecommendationReqWeightCreateWithoutKriteriaInput, RecommendationReqWeightUncheckedCreateWithoutKriteriaInput> | RecommendationReqWeightCreateWithoutKriteriaInput[] | RecommendationReqWeightUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutKriteriaInput | RecommendationReqWeightCreateOrConnectWithoutKriteriaInput[]
+    createMany?: RecommendationReqWeightCreateManyKriteriaInputEnvelope
+    connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type KriteriaValueUpdateManyWithoutKriteriaNestedInput = {
+    create?: XOR<KriteriaValueCreateWithoutKriteriaInput, KriteriaValueUncheckedCreateWithoutKriteriaInput> | KriteriaValueCreateWithoutKriteriaInput[] | KriteriaValueUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: KriteriaValueCreateOrConnectWithoutKriteriaInput | KriteriaValueCreateOrConnectWithoutKriteriaInput[]
+    upsert?: KriteriaValueUpsertWithWhereUniqueWithoutKriteriaInput | KriteriaValueUpsertWithWhereUniqueWithoutKriteriaInput[]
+    createMany?: KriteriaValueCreateManyKriteriaInputEnvelope
+    set?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
+    disconnect?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
+    delete?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
+    connect?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
+    update?: KriteriaValueUpdateWithWhereUniqueWithoutKriteriaInput | KriteriaValueUpdateWithWhereUniqueWithoutKriteriaInput[]
+    updateMany?: KriteriaValueUpdateManyWithWhereWithoutKriteriaInput | KriteriaValueUpdateManyWithWhereWithoutKriteriaInput[]
+    deleteMany?: KriteriaValueScalarWhereInput | KriteriaValueScalarWhereInput[]
+  }
+
+  export type RecommendationReqWeightUpdateManyWithoutKriteriaNestedInput = {
+    create?: XOR<RecommendationReqWeightCreateWithoutKriteriaInput, RecommendationReqWeightUncheckedCreateWithoutKriteriaInput> | RecommendationReqWeightCreateWithoutKriteriaInput[] | RecommendationReqWeightUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutKriteriaInput | RecommendationReqWeightCreateOrConnectWithoutKriteriaInput[]
+    upsert?: RecommendationReqWeightUpsertWithWhereUniqueWithoutKriteriaInput | RecommendationReqWeightUpsertWithWhereUniqueWithoutKriteriaInput[]
+    createMany?: RecommendationReqWeightCreateManyKriteriaInputEnvelope
+    set?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    disconnect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    delete?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    update?: RecommendationReqWeightUpdateWithWhereUniqueWithoutKriteriaInput | RecommendationReqWeightUpdateWithWhereUniqueWithoutKriteriaInput[]
+    updateMany?: RecommendationReqWeightUpdateManyWithWhereWithoutKriteriaInput | RecommendationReqWeightUpdateManyWithWhereWithoutKriteriaInput[]
+    deleteMany?: RecommendationReqWeightScalarWhereInput | RecommendationReqWeightScalarWhereInput[]
+  }
+
+  export type KriteriaValueUncheckedUpdateManyWithoutKriteriaNestedInput = {
+    create?: XOR<KriteriaValueCreateWithoutKriteriaInput, KriteriaValueUncheckedCreateWithoutKriteriaInput> | KriteriaValueCreateWithoutKriteriaInput[] | KriteriaValueUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: KriteriaValueCreateOrConnectWithoutKriteriaInput | KriteriaValueCreateOrConnectWithoutKriteriaInput[]
+    upsert?: KriteriaValueUpsertWithWhereUniqueWithoutKriteriaInput | KriteriaValueUpsertWithWhereUniqueWithoutKriteriaInput[]
+    createMany?: KriteriaValueCreateManyKriteriaInputEnvelope
+    set?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
+    disconnect?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
+    delete?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
+    connect?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
+    update?: KriteriaValueUpdateWithWhereUniqueWithoutKriteriaInput | KriteriaValueUpdateWithWhereUniqueWithoutKriteriaInput[]
+    updateMany?: KriteriaValueUpdateManyWithWhereWithoutKriteriaInput | KriteriaValueUpdateManyWithWhereWithoutKriteriaInput[]
+    deleteMany?: KriteriaValueScalarWhereInput | KriteriaValueScalarWhereInput[]
+  }
+
+  export type RecommendationReqWeightUncheckedUpdateManyWithoutKriteriaNestedInput = {
+    create?: XOR<RecommendationReqWeightCreateWithoutKriteriaInput, RecommendationReqWeightUncheckedCreateWithoutKriteriaInput> | RecommendationReqWeightCreateWithoutKriteriaInput[] | RecommendationReqWeightUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutKriteriaInput | RecommendationReqWeightCreateOrConnectWithoutKriteriaInput[]
+    upsert?: RecommendationReqWeightUpsertWithWhereUniqueWithoutKriteriaInput | RecommendationReqWeightUpsertWithWhereUniqueWithoutKriteriaInput[]
+    createMany?: RecommendationReqWeightCreateManyKriteriaInputEnvelope
+    set?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    disconnect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    delete?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    update?: RecommendationReqWeightUpdateWithWhereUniqueWithoutKriteriaInput | RecommendationReqWeightUpdateWithWhereUniqueWithoutKriteriaInput[]
+    updateMany?: RecommendationReqWeightUpdateManyWithWhereWithoutKriteriaInput | RecommendationReqWeightUpdateManyWithWhereWithoutKriteriaInput[]
+    deleteMany?: RecommendationReqWeightScalarWhereInput | RecommendationReqWeightScalarWhereInput[]
+  }
+
+  export type KriteriaCreateNestedOneWithoutValuesInput = {
+    create?: XOR<KriteriaCreateWithoutValuesInput, KriteriaUncheckedCreateWithoutValuesInput>
+    connectOrCreate?: KriteriaCreateOrConnectWithoutValuesInput
+    connect?: KriteriaWhereUniqueInput
+  }
+
+  export type KriteriaUpdateOneRequiredWithoutValuesNestedInput = {
+    create?: XOR<KriteriaCreateWithoutValuesInput, KriteriaUncheckedCreateWithoutValuesInput>
+    connectOrCreate?: KriteriaCreateOrConnectWithoutValuesInput
+    upsert?: KriteriaUpsertWithoutValuesInput
+    connect?: KriteriaWhereUniqueInput
+    update?: XOR<XOR<KriteriaUpdateToOneWithWhereWithoutValuesInput, KriteriaUpdateWithoutValuesInput>, KriteriaUncheckedUpdateWithoutValuesInput>
+  }
+
+  export type UserCreateNestedOneWithoutRecommendationRequestsInput = {
+    create?: XOR<UserCreateWithoutRecommendationRequestsInput, UserUncheckedCreateWithoutRecommendationRequestsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRecommendationRequestsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CategoryCreateNestedOneWithoutRecommendationRequestsInput = {
+    create?: XOR<CategoryCreateWithoutRecommendationRequestsInput, CategoryUncheckedCreateWithoutRecommendationRequestsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutRecommendationRequestsInput
+    connect?: CategoryWhereUniqueInput
+  }
+
+  export type RecommendationReqWeightCreateNestedManyWithoutRequestInput = {
+    create?: XOR<RecommendationReqWeightCreateWithoutRequestInput, RecommendationReqWeightUncheckedCreateWithoutRequestInput> | RecommendationReqWeightCreateWithoutRequestInput[] | RecommendationReqWeightUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutRequestInput | RecommendationReqWeightCreateOrConnectWithoutRequestInput[]
+    createMany?: RecommendationReqWeightCreateManyRequestInputEnvelope
+    connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+  }
+
+  export type RecommendationResultCreateNestedManyWithoutRequestInput = {
+    create?: XOR<RecommendationResultCreateWithoutRequestInput, RecommendationResultUncheckedCreateWithoutRequestInput> | RecommendationResultCreateWithoutRequestInput[] | RecommendationResultUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RecommendationResultCreateOrConnectWithoutRequestInput | RecommendationResultCreateOrConnectWithoutRequestInput[]
+    createMany?: RecommendationResultCreateManyRequestInputEnvelope
+    connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+  }
+
+  export type RecommendationReqWeightUncheckedCreateNestedManyWithoutRequestInput = {
+    create?: XOR<RecommendationReqWeightCreateWithoutRequestInput, RecommendationReqWeightUncheckedCreateWithoutRequestInput> | RecommendationReqWeightCreateWithoutRequestInput[] | RecommendationReqWeightUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutRequestInput | RecommendationReqWeightCreateOrConnectWithoutRequestInput[]
+    createMany?: RecommendationReqWeightCreateManyRequestInputEnvelope
+    connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+  }
+
+  export type RecommendationResultUncheckedCreateNestedManyWithoutRequestInput = {
+    create?: XOR<RecommendationResultCreateWithoutRequestInput, RecommendationResultUncheckedCreateWithoutRequestInput> | RecommendationResultCreateWithoutRequestInput[] | RecommendationResultUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RecommendationResultCreateOrConnectWithoutRequestInput | RecommendationResultCreateOrConnectWithoutRequestInput[]
+    createMany?: RecommendationResultCreateManyRequestInputEnvelope
+    connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput = {
+    create?: XOR<UserCreateWithoutRecommendationRequestsInput, UserUncheckedCreateWithoutRecommendationRequestsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRecommendationRequestsInput
+    upsert?: UserUpsertWithoutRecommendationRequestsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRecommendationRequestsInput, UserUpdateWithoutRecommendationRequestsInput>, UserUncheckedUpdateWithoutRecommendationRequestsInput>
+  }
+
+  export type CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput = {
+    create?: XOR<CategoryCreateWithoutRecommendationRequestsInput, CategoryUncheckedCreateWithoutRecommendationRequestsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutRecommendationRequestsInput
+    upsert?: CategoryUpsertWithoutRecommendationRequestsInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutRecommendationRequestsInput, CategoryUpdateWithoutRecommendationRequestsInput>, CategoryUncheckedUpdateWithoutRecommendationRequestsInput>
+  }
+
+  export type RecommendationReqWeightUpdateManyWithoutRequestNestedInput = {
+    create?: XOR<RecommendationReqWeightCreateWithoutRequestInput, RecommendationReqWeightUncheckedCreateWithoutRequestInput> | RecommendationReqWeightCreateWithoutRequestInput[] | RecommendationReqWeightUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutRequestInput | RecommendationReqWeightCreateOrConnectWithoutRequestInput[]
+    upsert?: RecommendationReqWeightUpsertWithWhereUniqueWithoutRequestInput | RecommendationReqWeightUpsertWithWhereUniqueWithoutRequestInput[]
+    createMany?: RecommendationReqWeightCreateManyRequestInputEnvelope
+    set?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    disconnect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    delete?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    update?: RecommendationReqWeightUpdateWithWhereUniqueWithoutRequestInput | RecommendationReqWeightUpdateWithWhereUniqueWithoutRequestInput[]
+    updateMany?: RecommendationReqWeightUpdateManyWithWhereWithoutRequestInput | RecommendationReqWeightUpdateManyWithWhereWithoutRequestInput[]
+    deleteMany?: RecommendationReqWeightScalarWhereInput | RecommendationReqWeightScalarWhereInput[]
+  }
+
+  export type RecommendationResultUpdateManyWithoutRequestNestedInput = {
+    create?: XOR<RecommendationResultCreateWithoutRequestInput, RecommendationResultUncheckedCreateWithoutRequestInput> | RecommendationResultCreateWithoutRequestInput[] | RecommendationResultUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RecommendationResultCreateOrConnectWithoutRequestInput | RecommendationResultCreateOrConnectWithoutRequestInput[]
+    upsert?: RecommendationResultUpsertWithWhereUniqueWithoutRequestInput | RecommendationResultUpsertWithWhereUniqueWithoutRequestInput[]
+    createMany?: RecommendationResultCreateManyRequestInputEnvelope
+    set?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    disconnect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    delete?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    update?: RecommendationResultUpdateWithWhereUniqueWithoutRequestInput | RecommendationResultUpdateWithWhereUniqueWithoutRequestInput[]
+    updateMany?: RecommendationResultUpdateManyWithWhereWithoutRequestInput | RecommendationResultUpdateManyWithWhereWithoutRequestInput[]
+    deleteMany?: RecommendationResultScalarWhereInput | RecommendationResultScalarWhereInput[]
+  }
+
+  export type RecommendationReqWeightUncheckedUpdateManyWithoutRequestNestedInput = {
+    create?: XOR<RecommendationReqWeightCreateWithoutRequestInput, RecommendationReqWeightUncheckedCreateWithoutRequestInput> | RecommendationReqWeightCreateWithoutRequestInput[] | RecommendationReqWeightUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutRequestInput | RecommendationReqWeightCreateOrConnectWithoutRequestInput[]
+    upsert?: RecommendationReqWeightUpsertWithWhereUniqueWithoutRequestInput | RecommendationReqWeightUpsertWithWhereUniqueWithoutRequestInput[]
+    createMany?: RecommendationReqWeightCreateManyRequestInputEnvelope
+    set?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    disconnect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    delete?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+    update?: RecommendationReqWeightUpdateWithWhereUniqueWithoutRequestInput | RecommendationReqWeightUpdateWithWhereUniqueWithoutRequestInput[]
+    updateMany?: RecommendationReqWeightUpdateManyWithWhereWithoutRequestInput | RecommendationReqWeightUpdateManyWithWhereWithoutRequestInput[]
+    deleteMany?: RecommendationReqWeightScalarWhereInput | RecommendationReqWeightScalarWhereInput[]
+  }
+
+  export type RecommendationResultUncheckedUpdateManyWithoutRequestNestedInput = {
+    create?: XOR<RecommendationResultCreateWithoutRequestInput, RecommendationResultUncheckedCreateWithoutRequestInput> | RecommendationResultCreateWithoutRequestInput[] | RecommendationResultUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RecommendationResultCreateOrConnectWithoutRequestInput | RecommendationResultCreateOrConnectWithoutRequestInput[]
+    upsert?: RecommendationResultUpsertWithWhereUniqueWithoutRequestInput | RecommendationResultUpsertWithWhereUniqueWithoutRequestInput[]
+    createMany?: RecommendationResultCreateManyRequestInputEnvelope
+    set?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    disconnect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    delete?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    update?: RecommendationResultUpdateWithWhereUniqueWithoutRequestInput | RecommendationResultUpdateWithWhereUniqueWithoutRequestInput[]
+    updateMany?: RecommendationResultUpdateManyWithWhereWithoutRequestInput | RecommendationResultUpdateManyWithWhereWithoutRequestInput[]
+    deleteMany?: RecommendationResultScalarWhereInput | RecommendationResultScalarWhereInput[]
+  }
+
+  export type RecommendationRequestCreateNestedOneWithoutWeightsInput = {
+    create?: XOR<RecommendationRequestCreateWithoutWeightsInput, RecommendationRequestUncheckedCreateWithoutWeightsInput>
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutWeightsInput
+    connect?: RecommendationRequestWhereUniqueInput
+  }
+
+  export type KriteriaCreateNestedOneWithoutWeightsInput = {
+    create?: XOR<KriteriaCreateWithoutWeightsInput, KriteriaUncheckedCreateWithoutWeightsInput>
+    connectOrCreate?: KriteriaCreateOrConnectWithoutWeightsInput
+    connect?: KriteriaWhereUniqueInput
+  }
+
+  export type RecommendationRequestUpdateOneRequiredWithoutWeightsNestedInput = {
+    create?: XOR<RecommendationRequestCreateWithoutWeightsInput, RecommendationRequestUncheckedCreateWithoutWeightsInput>
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutWeightsInput
+    upsert?: RecommendationRequestUpsertWithoutWeightsInput
+    connect?: RecommendationRequestWhereUniqueInput
+    update?: XOR<XOR<RecommendationRequestUpdateToOneWithWhereWithoutWeightsInput, RecommendationRequestUpdateWithoutWeightsInput>, RecommendationRequestUncheckedUpdateWithoutWeightsInput>
+  }
+
+  export type KriteriaUpdateOneRequiredWithoutWeightsNestedInput = {
+    create?: XOR<KriteriaCreateWithoutWeightsInput, KriteriaUncheckedCreateWithoutWeightsInput>
+    connectOrCreate?: KriteriaCreateOrConnectWithoutWeightsInput
+    upsert?: KriteriaUpsertWithoutWeightsInput
+    connect?: KriteriaWhereUniqueInput
+    update?: XOR<XOR<KriteriaUpdateToOneWithWhereWithoutWeightsInput, KriteriaUpdateWithoutWeightsInput>, KriteriaUncheckedUpdateWithoutWeightsInput>
+  }
+
+  export type RecommendationRequestCreateNestedOneWithoutResultsInput = {
+    create?: XOR<RecommendationRequestCreateWithoutResultsInput, RecommendationRequestUncheckedCreateWithoutResultsInput>
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutResultsInput
+    connect?: RecommendationRequestWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutRecommendationResultsInput = {
+    create?: XOR<UserCreateWithoutRecommendationResultsInput, UserUncheckedCreateWithoutRecommendationResultsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRecommendationResultsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type RecommendationRequestUpdateOneRequiredWithoutResultsNestedInput = {
+    create?: XOR<RecommendationRequestCreateWithoutResultsInput, RecommendationRequestUncheckedCreateWithoutResultsInput>
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutResultsInput
+    upsert?: RecommendationRequestUpsertWithoutResultsInput
+    connect?: RecommendationRequestWhereUniqueInput
+    update?: XOR<XOR<RecommendationRequestUpdateToOneWithWhereWithoutResultsInput, RecommendationRequestUpdateWithoutResultsInput>, RecommendationRequestUncheckedUpdateWithoutResultsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutRecommendationResultsNestedInput = {
+    create?: XOR<UserCreateWithoutRecommendationResultsInput, UserUncheckedCreateWithoutRecommendationResultsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutRecommendationResultsInput
+    upsert?: UserUpsertWithoutRecommendationResultsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRecommendationResultsInput, UserUpdateWithoutRecommendationResultsInput>, UserUncheckedUpdateWithoutRecommendationResultsInput>
+  }
+
   export type NestedIntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -14482,6 +21570,22 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type UserCreateWithoutRoleInput = {
     name: string
     email: string
@@ -14490,6 +21594,9 @@ export namespace Prisma {
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     exams?: ExamCreateNestedManyWithoutUserInput
+    classes?: ClassCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRoleInput = {
@@ -14501,6 +21608,9 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRoleInput = {
@@ -14628,6 +21738,95 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ClassCreateWithoutMentorInput = {
+    title: string
+    description: string
+    is_active?: boolean
+    category: CategoryCreateNestedOneWithoutClassesInput
+    periode: PeriodeCreateNestedOneWithoutClassesInput
+    level: LevelCreateNestedOneWithoutClassesInput
+    materis?: MateriCreateNestedManyWithoutClassInput
+    exams?: ExamCreateNestedManyWithoutClassInput
+    reviews?: ReviewCreateNestedManyWithoutClassInput
+    enrollment?: EnrollmentCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassUncheckedCreateWithoutMentorInput = {
+    class_id?: number
+    category_id: number
+    periode_id: number
+    level_id: number
+    title: string
+    description: string
+    is_active?: boolean
+    materis?: MateriUncheckedCreateNestedManyWithoutClassInput
+    exams?: ExamUncheckedCreateNestedManyWithoutClassInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutClassInput
+    enrollment?: EnrollmentUncheckedCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassCreateOrConnectWithoutMentorInput = {
+    where: ClassWhereUniqueInput
+    create: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput>
+  }
+
+  export type ClassCreateManyMentorInputEnvelope = {
+    data: ClassCreateManyMentorInput | ClassCreateManyMentorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RecommendationRequestCreateWithoutUserInput = {
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
+    weights?: RecommendationReqWeightCreateNestedManyWithoutRequestInput
+    results?: RecommendationResultCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestUncheckedCreateWithoutUserInput = {
+    id_request?: number
+    category_id: number
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutRequestInput
+    results?: RecommendationResultUncheckedCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestCreateOrConnectWithoutUserInput = {
+    where: RecommendationRequestWhereUniqueInput
+    create: XOR<RecommendationRequestCreateWithoutUserInput, RecommendationRequestUncheckedCreateWithoutUserInput>
+  }
+
+  export type RecommendationRequestCreateManyUserInputEnvelope = {
+    data: RecommendationRequestCreateManyUserInput | RecommendationRequestCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RecommendationResultCreateWithoutUserInput = {
+    score: number
+    pos: number
+    request: RecommendationRequestCreateNestedOneWithoutResultsInput
+  }
+
+  export type RecommendationResultUncheckedCreateWithoutUserInput = {
+    id?: number
+    req_id: number
+    score: number
+    pos: number
+  }
+
+  export type RecommendationResultCreateOrConnectWithoutUserInput = {
+    where: RecommendationResultWhereUniqueInput
+    create: XOR<RecommendationResultCreateWithoutUserInput, RecommendationResultUncheckedCreateWithoutUserInput>
+  }
+
+  export type RecommendationResultCreateManyUserInputEnvelope = {
+    data: RecommendationResultCreateManyUserInput | RecommendationResultCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type RoleUpsertWithoutUsersInput = {
     update: XOR<RoleUpdateWithoutUsersInput, RoleUncheckedUpdateWithoutUsersInput>
     create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
@@ -14731,10 +21930,96 @@ export namespace Prisma {
     is_passed?: BoolFilter<"Exam"> | boolean
   }
 
+  export type ClassUpsertWithWhereUniqueWithoutMentorInput = {
+    where: ClassWhereUniqueInput
+    update: XOR<ClassUpdateWithoutMentorInput, ClassUncheckedUpdateWithoutMentorInput>
+    create: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput>
+  }
+
+  export type ClassUpdateWithWhereUniqueWithoutMentorInput = {
+    where: ClassWhereUniqueInput
+    data: XOR<ClassUpdateWithoutMentorInput, ClassUncheckedUpdateWithoutMentorInput>
+  }
+
+  export type ClassUpdateManyWithWhereWithoutMentorInput = {
+    where: ClassScalarWhereInput
+    data: XOR<ClassUpdateManyMutationInput, ClassUncheckedUpdateManyWithoutMentorInput>
+  }
+
+  export type ClassScalarWhereInput = {
+    AND?: ClassScalarWhereInput | ClassScalarWhereInput[]
+    OR?: ClassScalarWhereInput[]
+    NOT?: ClassScalarWhereInput | ClassScalarWhereInput[]
+    class_id?: IntFilter<"Class"> | number
+    category_id?: IntFilter<"Class"> | number
+    periode_id?: IntFilter<"Class"> | number
+    level_id?: IntFilter<"Class"> | number
+    user_id?: IntFilter<"Class"> | number
+    title?: StringFilter<"Class"> | string
+    description?: StringFilter<"Class"> | string
+    is_active?: BoolFilter<"Class"> | boolean
+  }
+
+  export type RecommendationRequestUpsertWithWhereUniqueWithoutUserInput = {
+    where: RecommendationRequestWhereUniqueInput
+    update: XOR<RecommendationRequestUpdateWithoutUserInput, RecommendationRequestUncheckedUpdateWithoutUserInput>
+    create: XOR<RecommendationRequestCreateWithoutUserInput, RecommendationRequestUncheckedCreateWithoutUserInput>
+  }
+
+  export type RecommendationRequestUpdateWithWhereUniqueWithoutUserInput = {
+    where: RecommendationRequestWhereUniqueInput
+    data: XOR<RecommendationRequestUpdateWithoutUserInput, RecommendationRequestUncheckedUpdateWithoutUserInput>
+  }
+
+  export type RecommendationRequestUpdateManyWithWhereWithoutUserInput = {
+    where: RecommendationRequestScalarWhereInput
+    data: XOR<RecommendationRequestUpdateManyMutationInput, RecommendationRequestUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type RecommendationRequestScalarWhereInput = {
+    AND?: RecommendationRequestScalarWhereInput | RecommendationRequestScalarWhereInput[]
+    OR?: RecommendationRequestScalarWhereInput[]
+    NOT?: RecommendationRequestScalarWhereInput | RecommendationRequestScalarWhereInput[]
+    id_request?: IntFilter<"RecommendationRequest"> | number
+    user_id?: IntFilter<"RecommendationRequest"> | number
+    category_id?: IntFilter<"RecommendationRequest"> | number
+    method?: StringFilter<"RecommendationRequest"> | string
+    created_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
+    updated_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
+  }
+
+  export type RecommendationResultUpsertWithWhereUniqueWithoutUserInput = {
+    where: RecommendationResultWhereUniqueInput
+    update: XOR<RecommendationResultUpdateWithoutUserInput, RecommendationResultUncheckedUpdateWithoutUserInput>
+    create: XOR<RecommendationResultCreateWithoutUserInput, RecommendationResultUncheckedCreateWithoutUserInput>
+  }
+
+  export type RecommendationResultUpdateWithWhereUniqueWithoutUserInput = {
+    where: RecommendationResultWhereUniqueInput
+    data: XOR<RecommendationResultUpdateWithoutUserInput, RecommendationResultUncheckedUpdateWithoutUserInput>
+  }
+
+  export type RecommendationResultUpdateManyWithWhereWithoutUserInput = {
+    where: RecommendationResultScalarWhereInput
+    data: XOR<RecommendationResultUpdateManyMutationInput, RecommendationResultUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type RecommendationResultScalarWhereInput = {
+    AND?: RecommendationResultScalarWhereInput | RecommendationResultScalarWhereInput[]
+    OR?: RecommendationResultScalarWhereInput[]
+    NOT?: RecommendationResultScalarWhereInput | RecommendationResultScalarWhereInput[]
+    id?: IntFilter<"RecommendationResult"> | number
+    req_id?: IntFilter<"RecommendationResult"> | number
+    user_id?: IntFilter<"RecommendationResult"> | number
+    score?: FloatFilter<"RecommendationResult"> | number
+    pos?: IntFilter<"RecommendationResult"> | number
+  }
+
   export type ClassCreateWithoutCategoryInput = {
     title: string
     description: string
     is_active?: boolean
+    mentor: UserCreateNestedOneWithoutClassesInput
     periode: PeriodeCreateNestedOneWithoutClassesInput
     level: LevelCreateNestedOneWithoutClassesInput
     materis?: MateriCreateNestedManyWithoutClassInput
@@ -14747,6 +22032,7 @@ export namespace Prisma {
     class_id?: number
     periode_id: number
     level_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
@@ -14766,6 +22052,35 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type RecommendationRequestCreateWithoutCategoryInput = {
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    user: UserCreateNestedOneWithoutRecommendationRequestsInput
+    weights?: RecommendationReqWeightCreateNestedManyWithoutRequestInput
+    results?: RecommendationResultCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestUncheckedCreateWithoutCategoryInput = {
+    id_request?: number
+    user_id: number
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutRequestInput
+    results?: RecommendationResultUncheckedCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestCreateOrConnectWithoutCategoryInput = {
+    where: RecommendationRequestWhereUniqueInput
+    create: XOR<RecommendationRequestCreateWithoutCategoryInput, RecommendationRequestUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type RecommendationRequestCreateManyCategoryInputEnvelope = {
+    data: RecommendationRequestCreateManyCategoryInput | RecommendationRequestCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ClassUpsertWithWhereUniqueWithoutCategoryInput = {
     where: ClassWhereUniqueInput
     update: XOR<ClassUpdateWithoutCategoryInput, ClassUncheckedUpdateWithoutCategoryInput>
@@ -14782,23 +22097,27 @@ export namespace Prisma {
     data: XOR<ClassUpdateManyMutationInput, ClassUncheckedUpdateManyWithoutCategoryInput>
   }
 
-  export type ClassScalarWhereInput = {
-    AND?: ClassScalarWhereInput | ClassScalarWhereInput[]
-    OR?: ClassScalarWhereInput[]
-    NOT?: ClassScalarWhereInput | ClassScalarWhereInput[]
-    class_id?: IntFilter<"Class"> | number
-    category_id?: IntFilter<"Class"> | number
-    periode_id?: IntFilter<"Class"> | number
-    level_id?: IntFilter<"Class"> | number
-    title?: StringFilter<"Class"> | string
-    description?: StringFilter<"Class"> | string
-    is_active?: BoolFilter<"Class"> | boolean
+  export type RecommendationRequestUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: RecommendationRequestWhereUniqueInput
+    update: XOR<RecommendationRequestUpdateWithoutCategoryInput, RecommendationRequestUncheckedUpdateWithoutCategoryInput>
+    create: XOR<RecommendationRequestCreateWithoutCategoryInput, RecommendationRequestUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type RecommendationRequestUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: RecommendationRequestWhereUniqueInput
+    data: XOR<RecommendationRequestUpdateWithoutCategoryInput, RecommendationRequestUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type RecommendationRequestUpdateManyWithWhereWithoutCategoryInput = {
+    where: RecommendationRequestScalarWhereInput
+    data: XOR<RecommendationRequestUpdateManyMutationInput, RecommendationRequestUncheckedUpdateManyWithoutCategoryInput>
   }
 
   export type ClassCreateWithoutPeriodeInput = {
     title: string
     description: string
     is_active?: boolean
+    mentor: UserCreateNestedOneWithoutClassesInput
     category: CategoryCreateNestedOneWithoutClassesInput
     level: LevelCreateNestedOneWithoutClassesInput
     materis?: MateriCreateNestedManyWithoutClassInput
@@ -14811,6 +22130,7 @@ export namespace Prisma {
     class_id?: number
     category_id: number
     level_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
@@ -14850,6 +22170,7 @@ export namespace Prisma {
     title: string
     description: string
     is_active?: boolean
+    mentor: UserCreateNestedOneWithoutClassesInput
     category: CategoryCreateNestedOneWithoutClassesInput
     periode: PeriodeCreateNestedOneWithoutClassesInput
     materis?: MateriCreateNestedManyWithoutClassInput
@@ -14862,6 +22183,7 @@ export namespace Prisma {
     class_id?: number
     category_id: number
     periode_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
@@ -14897,13 +22219,47 @@ export namespace Prisma {
     data: XOR<ClassUpdateManyMutationInput, ClassUncheckedUpdateManyWithoutLevelInput>
   }
 
+  export type UserCreateWithoutClassesInput = {
+    name: string
+    email: string
+    password: string
+    join_date?: Date | string
+    role: RoleCreateNestedOneWithoutUsersInput
+    enrollments?: EnrollmentCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    exams?: ExamCreateNestedManyWithoutUserInput
+    recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutClassesInput = {
+    user_id?: number
+    role_id: number
+    name: string
+    email: string
+    password: string
+    join_date?: Date | string
+    enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+    recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutClassesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutClassesInput, UserUncheckedCreateWithoutClassesInput>
+  }
+
   export type CategoryCreateWithoutClassesInput = {
     categories: string
+    recommendationRequests?: RecommendationRequestCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutClassesInput = {
     category_id?: number
     categories: string
+    recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryCreateOrConnectWithoutClassesInput = {
@@ -15035,6 +22391,44 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserUpsertWithoutClassesInput = {
+    update: XOR<UserUpdateWithoutClassesInput, UserUncheckedUpdateWithoutClassesInput>
+    create: XOR<UserCreateWithoutClassesInput, UserUncheckedCreateWithoutClassesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutClassesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutClassesInput, UserUncheckedUpdateWithoutClassesInput>
+  }
+
+  export type UserUpdateWithoutClassesInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    join_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    exams?: ExamUpdateManyWithoutUserNestedInput
+    recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutClassesInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
+    role_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    join_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+    recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type CategoryUpsertWithoutClassesInput = {
     update: XOR<CategoryUpdateWithoutClassesInput, CategoryUncheckedUpdateWithoutClassesInput>
     create: XOR<CategoryCreateWithoutClassesInput, CategoryUncheckedCreateWithoutClassesInput>
@@ -15048,11 +22442,13 @@ export namespace Prisma {
 
   export type CategoryUpdateWithoutClassesInput = {
     categories?: StringFieldUpdateOperationsInput | string
+    recommendationRequests?: RecommendationRequestUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutClassesInput = {
     category_id?: IntFieldUpdateOperationsInput | number
     categories?: StringFieldUpdateOperationsInput | string
+    recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type PeriodeUpsertWithoutClassesInput = {
@@ -15178,6 +22574,9 @@ export namespace Prisma {
     role: RoleCreateNestedOneWithoutUsersInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     exams?: ExamCreateNestedManyWithoutUserInput
+    classes?: ClassCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutEnrollmentsInput = {
@@ -15189,6 +22588,9 @@ export namespace Prisma {
     join_date?: Date | string
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutEnrollmentsInput = {
@@ -15200,6 +22602,7 @@ export namespace Prisma {
     title: string
     description: string
     is_active?: boolean
+    mentor: UserCreateNestedOneWithoutClassesInput
     category: CategoryCreateNestedOneWithoutClassesInput
     periode: PeriodeCreateNestedOneWithoutClassesInput
     level: LevelCreateNestedOneWithoutClassesInput
@@ -15213,6 +22616,7 @@ export namespace Prisma {
     category_id: number
     periode_id: number
     level_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
@@ -15245,6 +22649,9 @@ export namespace Prisma {
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     exams?: ExamUpdateManyWithoutUserNestedInput
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutEnrollmentsInput = {
@@ -15256,6 +22663,9 @@ export namespace Prisma {
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ClassUpsertWithoutEnrollmentInput = {
@@ -15273,6 +22683,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    mentor?: UserUpdateOneRequiredWithoutClassesNestedInput
     category?: CategoryUpdateOneRequiredWithoutClassesNestedInput
     periode?: PeriodeUpdateOneRequiredWithoutClassesNestedInput
     level?: LevelUpdateOneRequiredWithoutClassesNestedInput
@@ -15286,6 +22697,7 @@ export namespace Prisma {
     category_id?: IntFieldUpdateOperationsInput | number
     periode_id?: IntFieldUpdateOperationsInput | number
     level_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
@@ -15298,6 +22710,7 @@ export namespace Prisma {
     title: string
     description: string
     is_active?: boolean
+    mentor: UserCreateNestedOneWithoutClassesInput
     category: CategoryCreateNestedOneWithoutClassesInput
     periode: PeriodeCreateNestedOneWithoutClassesInput
     level: LevelCreateNestedOneWithoutClassesInput
@@ -15311,6 +22724,7 @@ export namespace Prisma {
     category_id: number
     periode_id: number
     level_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
@@ -15339,6 +22753,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    mentor?: UserUpdateOneRequiredWithoutClassesNestedInput
     category?: CategoryUpdateOneRequiredWithoutClassesNestedInput
     periode?: PeriodeUpdateOneRequiredWithoutClassesNestedInput
     level?: LevelUpdateOneRequiredWithoutClassesNestedInput
@@ -15352,6 +22767,7 @@ export namespace Prisma {
     category_id?: IntFieldUpdateOperationsInput | number
     periode_id?: IntFieldUpdateOperationsInput | number
     level_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
@@ -15364,6 +22780,7 @@ export namespace Prisma {
     title: string
     description: string
     is_active?: boolean
+    mentor: UserCreateNestedOneWithoutClassesInput
     category: CategoryCreateNestedOneWithoutClassesInput
     periode: PeriodeCreateNestedOneWithoutClassesInput
     level: LevelCreateNestedOneWithoutClassesInput
@@ -15377,6 +22794,7 @@ export namespace Prisma {
     category_id: number
     periode_id: number
     level_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
@@ -15398,6 +22816,9 @@ export namespace Prisma {
     role: RoleCreateNestedOneWithoutUsersInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
+    classes?: ClassCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutExamsInput = {
@@ -15409,6 +22830,9 @@ export namespace Prisma {
     join_date?: Date | string
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutExamsInput = {
@@ -15431,6 +22855,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    mentor?: UserUpdateOneRequiredWithoutClassesNestedInput
     category?: CategoryUpdateOneRequiredWithoutClassesNestedInput
     periode?: PeriodeUpdateOneRequiredWithoutClassesNestedInput
     level?: LevelUpdateOneRequiredWithoutClassesNestedInput
@@ -15444,6 +22869,7 @@ export namespace Prisma {
     category_id?: IntFieldUpdateOperationsInput | number
     periode_id?: IntFieldUpdateOperationsInput | number
     level_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
@@ -15471,6 +22897,9 @@ export namespace Prisma {
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutExamsInput = {
@@ -15482,6 +22911,9 @@ export namespace Prisma {
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutReviewsInput = {
@@ -15492,6 +22924,9 @@ export namespace Prisma {
     role: RoleCreateNestedOneWithoutUsersInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     exams?: ExamCreateNestedManyWithoutUserInput
+    classes?: ClassCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutReviewsInput = {
@@ -15503,6 +22938,9 @@ export namespace Prisma {
     join_date?: Date | string
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
+    recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutReviewsInput = {
@@ -15514,6 +22952,7 @@ export namespace Prisma {
     title: string
     description: string
     is_active?: boolean
+    mentor: UserCreateNestedOneWithoutClassesInput
     category: CategoryCreateNestedOneWithoutClassesInput
     periode: PeriodeCreateNestedOneWithoutClassesInput
     level: LevelCreateNestedOneWithoutClassesInput
@@ -15527,6 +22966,7 @@ export namespace Prisma {
     category_id: number
     periode_id: number
     level_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
@@ -15559,6 +22999,9 @@ export namespace Prisma {
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     exams?: ExamUpdateManyWithoutUserNestedInput
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReviewsInput = {
@@ -15570,6 +23013,9 @@ export namespace Prisma {
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type ClassUpsertWithoutReviewsInput = {
@@ -15587,6 +23033,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    mentor?: UserUpdateOneRequiredWithoutClassesNestedInput
     category?: CategoryUpdateOneRequiredWithoutClassesNestedInput
     periode?: PeriodeUpdateOneRequiredWithoutClassesNestedInput
     level?: LevelUpdateOneRequiredWithoutClassesNestedInput
@@ -15600,12 +23047,569 @@ export namespace Prisma {
     category_id?: IntFieldUpdateOperationsInput | number
     periode_id?: IntFieldUpdateOperationsInput | number
     level_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
     materis?: MateriUncheckedUpdateManyWithoutClassNestedInput
     exams?: ExamUncheckedUpdateManyWithoutClassNestedInput
     enrollment?: EnrollmentUncheckedUpdateManyWithoutClassNestedInput
+  }
+
+  export type KriteriaValueCreateWithoutKriteriaInput = {
+    value: string
+    score: number
+  }
+
+  export type KriteriaValueUncheckedCreateWithoutKriteriaInput = {
+    id_value?: number
+    value: string
+    score: number
+  }
+
+  export type KriteriaValueCreateOrConnectWithoutKriteriaInput = {
+    where: KriteriaValueWhereUniqueInput
+    create: XOR<KriteriaValueCreateWithoutKriteriaInput, KriteriaValueUncheckedCreateWithoutKriteriaInput>
+  }
+
+  export type KriteriaValueCreateManyKriteriaInputEnvelope = {
+    data: KriteriaValueCreateManyKriteriaInput | KriteriaValueCreateManyKriteriaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RecommendationReqWeightCreateWithoutKriteriaInput = {
+    bobot: number
+    request: RecommendationRequestCreateNestedOneWithoutWeightsInput
+  }
+
+  export type RecommendationReqWeightUncheckedCreateWithoutKriteriaInput = {
+    id?: number
+    req_id: number
+    bobot: number
+  }
+
+  export type RecommendationReqWeightCreateOrConnectWithoutKriteriaInput = {
+    where: RecommendationReqWeightWhereUniqueInput
+    create: XOR<RecommendationReqWeightCreateWithoutKriteriaInput, RecommendationReqWeightUncheckedCreateWithoutKriteriaInput>
+  }
+
+  export type RecommendationReqWeightCreateManyKriteriaInputEnvelope = {
+    data: RecommendationReqWeightCreateManyKriteriaInput | RecommendationReqWeightCreateManyKriteriaInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type KriteriaValueUpsertWithWhereUniqueWithoutKriteriaInput = {
+    where: KriteriaValueWhereUniqueInput
+    update: XOR<KriteriaValueUpdateWithoutKriteriaInput, KriteriaValueUncheckedUpdateWithoutKriteriaInput>
+    create: XOR<KriteriaValueCreateWithoutKriteriaInput, KriteriaValueUncheckedCreateWithoutKriteriaInput>
+  }
+
+  export type KriteriaValueUpdateWithWhereUniqueWithoutKriteriaInput = {
+    where: KriteriaValueWhereUniqueInput
+    data: XOR<KriteriaValueUpdateWithoutKriteriaInput, KriteriaValueUncheckedUpdateWithoutKriteriaInput>
+  }
+
+  export type KriteriaValueUpdateManyWithWhereWithoutKriteriaInput = {
+    where: KriteriaValueScalarWhereInput
+    data: XOR<KriteriaValueUpdateManyMutationInput, KriteriaValueUncheckedUpdateManyWithoutKriteriaInput>
+  }
+
+  export type KriteriaValueScalarWhereInput = {
+    AND?: KriteriaValueScalarWhereInput | KriteriaValueScalarWhereInput[]
+    OR?: KriteriaValueScalarWhereInput[]
+    NOT?: KriteriaValueScalarWhereInput | KriteriaValueScalarWhereInput[]
+    id_value?: IntFilter<"KriteriaValue"> | number
+    id_kriteria?: IntFilter<"KriteriaValue"> | number
+    value?: StringFilter<"KriteriaValue"> | string
+    score?: IntFilter<"KriteriaValue"> | number
+  }
+
+  export type RecommendationReqWeightUpsertWithWhereUniqueWithoutKriteriaInput = {
+    where: RecommendationReqWeightWhereUniqueInput
+    update: XOR<RecommendationReqWeightUpdateWithoutKriteriaInput, RecommendationReqWeightUncheckedUpdateWithoutKriteriaInput>
+    create: XOR<RecommendationReqWeightCreateWithoutKriteriaInput, RecommendationReqWeightUncheckedCreateWithoutKriteriaInput>
+  }
+
+  export type RecommendationReqWeightUpdateWithWhereUniqueWithoutKriteriaInput = {
+    where: RecommendationReqWeightWhereUniqueInput
+    data: XOR<RecommendationReqWeightUpdateWithoutKriteriaInput, RecommendationReqWeightUncheckedUpdateWithoutKriteriaInput>
+  }
+
+  export type RecommendationReqWeightUpdateManyWithWhereWithoutKriteriaInput = {
+    where: RecommendationReqWeightScalarWhereInput
+    data: XOR<RecommendationReqWeightUpdateManyMutationInput, RecommendationReqWeightUncheckedUpdateManyWithoutKriteriaInput>
+  }
+
+  export type RecommendationReqWeightScalarWhereInput = {
+    AND?: RecommendationReqWeightScalarWhereInput | RecommendationReqWeightScalarWhereInput[]
+    OR?: RecommendationReqWeightScalarWhereInput[]
+    NOT?: RecommendationReqWeightScalarWhereInput | RecommendationReqWeightScalarWhereInput[]
+    id?: IntFilter<"RecommendationReqWeight"> | number
+    req_id?: IntFilter<"RecommendationReqWeight"> | number
+    kriteria_id?: IntFilter<"RecommendationReqWeight"> | number
+    bobot?: FloatFilter<"RecommendationReqWeight"> | number
+  }
+
+  export type KriteriaCreateWithoutValuesInput = {
+    kode: string
+    nama: string
+    tipe: string
+    bobot: number
+    weights?: RecommendationReqWeightCreateNestedManyWithoutKriteriaInput
+  }
+
+  export type KriteriaUncheckedCreateWithoutValuesInput = {
+    id_kriteria?: number
+    kode: string
+    nama: string
+    tipe: string
+    bobot: number
+    weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutKriteriaInput
+  }
+
+  export type KriteriaCreateOrConnectWithoutValuesInput = {
+    where: KriteriaWhereUniqueInput
+    create: XOR<KriteriaCreateWithoutValuesInput, KriteriaUncheckedCreateWithoutValuesInput>
+  }
+
+  export type KriteriaUpsertWithoutValuesInput = {
+    update: XOR<KriteriaUpdateWithoutValuesInput, KriteriaUncheckedUpdateWithoutValuesInput>
+    create: XOR<KriteriaCreateWithoutValuesInput, KriteriaUncheckedCreateWithoutValuesInput>
+    where?: KriteriaWhereInput
+  }
+
+  export type KriteriaUpdateToOneWithWhereWithoutValuesInput = {
+    where?: KriteriaWhereInput
+    data: XOR<KriteriaUpdateWithoutValuesInput, KriteriaUncheckedUpdateWithoutValuesInput>
+  }
+
+  export type KriteriaUpdateWithoutValuesInput = {
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    tipe?: StringFieldUpdateOperationsInput | string
+    bobot?: FloatFieldUpdateOperationsInput | number
+    weights?: RecommendationReqWeightUpdateManyWithoutKriteriaNestedInput
+  }
+
+  export type KriteriaUncheckedUpdateWithoutValuesInput = {
+    id_kriteria?: IntFieldUpdateOperationsInput | number
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    tipe?: StringFieldUpdateOperationsInput | string
+    bobot?: FloatFieldUpdateOperationsInput | number
+    weights?: RecommendationReqWeightUncheckedUpdateManyWithoutKriteriaNestedInput
+  }
+
+  export type UserCreateWithoutRecommendationRequestsInput = {
+    name: string
+    email: string
+    password: string
+    join_date?: Date | string
+    role: RoleCreateNestedOneWithoutUsersInput
+    enrollments?: EnrollmentCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    exams?: ExamCreateNestedManyWithoutUserInput
+    classes?: ClassCreateNestedManyWithoutMentorInput
+    recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutRecommendationRequestsInput = {
+    user_id?: number
+    role_id: number
+    name: string
+    email: string
+    password: string
+    join_date?: Date | string
+    enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRecommendationRequestsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRecommendationRequestsInput, UserUncheckedCreateWithoutRecommendationRequestsInput>
+  }
+
+  export type CategoryCreateWithoutRecommendationRequestsInput = {
+    categories: string
+    classes?: ClassCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUncheckedCreateWithoutRecommendationRequestsInput = {
+    category_id?: number
+    categories: string
+    classes?: ClassUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryCreateOrConnectWithoutRecommendationRequestsInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutRecommendationRequestsInput, CategoryUncheckedCreateWithoutRecommendationRequestsInput>
+  }
+
+  export type RecommendationReqWeightCreateWithoutRequestInput = {
+    bobot: number
+    kriteria: KriteriaCreateNestedOneWithoutWeightsInput
+  }
+
+  export type RecommendationReqWeightUncheckedCreateWithoutRequestInput = {
+    id?: number
+    kriteria_id: number
+    bobot: number
+  }
+
+  export type RecommendationReqWeightCreateOrConnectWithoutRequestInput = {
+    where: RecommendationReqWeightWhereUniqueInput
+    create: XOR<RecommendationReqWeightCreateWithoutRequestInput, RecommendationReqWeightUncheckedCreateWithoutRequestInput>
+  }
+
+  export type RecommendationReqWeightCreateManyRequestInputEnvelope = {
+    data: RecommendationReqWeightCreateManyRequestInput | RecommendationReqWeightCreateManyRequestInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RecommendationResultCreateWithoutRequestInput = {
+    score: number
+    pos: number
+    user: UserCreateNestedOneWithoutRecommendationResultsInput
+  }
+
+  export type RecommendationResultUncheckedCreateWithoutRequestInput = {
+    id?: number
+    user_id: number
+    score: number
+    pos: number
+  }
+
+  export type RecommendationResultCreateOrConnectWithoutRequestInput = {
+    where: RecommendationResultWhereUniqueInput
+    create: XOR<RecommendationResultCreateWithoutRequestInput, RecommendationResultUncheckedCreateWithoutRequestInput>
+  }
+
+  export type RecommendationResultCreateManyRequestInputEnvelope = {
+    data: RecommendationResultCreateManyRequestInput | RecommendationResultCreateManyRequestInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutRecommendationRequestsInput = {
+    update: XOR<UserUpdateWithoutRecommendationRequestsInput, UserUncheckedUpdateWithoutRecommendationRequestsInput>
+    create: XOR<UserCreateWithoutRecommendationRequestsInput, UserUncheckedCreateWithoutRecommendationRequestsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRecommendationRequestsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRecommendationRequestsInput, UserUncheckedUpdateWithoutRecommendationRequestsInput>
+  }
+
+  export type UserUpdateWithoutRecommendationRequestsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    join_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    exams?: ExamUpdateManyWithoutUserNestedInput
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+    recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRecommendationRequestsInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
+    role_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    join_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type CategoryUpsertWithoutRecommendationRequestsInput = {
+    update: XOR<CategoryUpdateWithoutRecommendationRequestsInput, CategoryUncheckedUpdateWithoutRecommendationRequestsInput>
+    create: XOR<CategoryCreateWithoutRecommendationRequestsInput, CategoryUncheckedCreateWithoutRecommendationRequestsInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutRecommendationRequestsInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutRecommendationRequestsInput, CategoryUncheckedUpdateWithoutRecommendationRequestsInput>
+  }
+
+  export type CategoryUpdateWithoutRecommendationRequestsInput = {
+    categories?: StringFieldUpdateOperationsInput | string
+    classes?: ClassUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutRecommendationRequestsInput = {
+    category_id?: IntFieldUpdateOperationsInput | number
+    categories?: StringFieldUpdateOperationsInput | string
+    classes?: ClassUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type RecommendationReqWeightUpsertWithWhereUniqueWithoutRequestInput = {
+    where: RecommendationReqWeightWhereUniqueInput
+    update: XOR<RecommendationReqWeightUpdateWithoutRequestInput, RecommendationReqWeightUncheckedUpdateWithoutRequestInput>
+    create: XOR<RecommendationReqWeightCreateWithoutRequestInput, RecommendationReqWeightUncheckedCreateWithoutRequestInput>
+  }
+
+  export type RecommendationReqWeightUpdateWithWhereUniqueWithoutRequestInput = {
+    where: RecommendationReqWeightWhereUniqueInput
+    data: XOR<RecommendationReqWeightUpdateWithoutRequestInput, RecommendationReqWeightUncheckedUpdateWithoutRequestInput>
+  }
+
+  export type RecommendationReqWeightUpdateManyWithWhereWithoutRequestInput = {
+    where: RecommendationReqWeightScalarWhereInput
+    data: XOR<RecommendationReqWeightUpdateManyMutationInput, RecommendationReqWeightUncheckedUpdateManyWithoutRequestInput>
+  }
+
+  export type RecommendationResultUpsertWithWhereUniqueWithoutRequestInput = {
+    where: RecommendationResultWhereUniqueInput
+    update: XOR<RecommendationResultUpdateWithoutRequestInput, RecommendationResultUncheckedUpdateWithoutRequestInput>
+    create: XOR<RecommendationResultCreateWithoutRequestInput, RecommendationResultUncheckedCreateWithoutRequestInput>
+  }
+
+  export type RecommendationResultUpdateWithWhereUniqueWithoutRequestInput = {
+    where: RecommendationResultWhereUniqueInput
+    data: XOR<RecommendationResultUpdateWithoutRequestInput, RecommendationResultUncheckedUpdateWithoutRequestInput>
+  }
+
+  export type RecommendationResultUpdateManyWithWhereWithoutRequestInput = {
+    where: RecommendationResultScalarWhereInput
+    data: XOR<RecommendationResultUpdateManyMutationInput, RecommendationResultUncheckedUpdateManyWithoutRequestInput>
+  }
+
+  export type RecommendationRequestCreateWithoutWeightsInput = {
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    user: UserCreateNestedOneWithoutRecommendationRequestsInput
+    category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
+    results?: RecommendationResultCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestUncheckedCreateWithoutWeightsInput = {
+    id_request?: number
+    user_id: number
+    category_id: number
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    results?: RecommendationResultUncheckedCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestCreateOrConnectWithoutWeightsInput = {
+    where: RecommendationRequestWhereUniqueInput
+    create: XOR<RecommendationRequestCreateWithoutWeightsInput, RecommendationRequestUncheckedCreateWithoutWeightsInput>
+  }
+
+  export type KriteriaCreateWithoutWeightsInput = {
+    kode: string
+    nama: string
+    tipe: string
+    bobot: number
+    values?: KriteriaValueCreateNestedManyWithoutKriteriaInput
+  }
+
+  export type KriteriaUncheckedCreateWithoutWeightsInput = {
+    id_kriteria?: number
+    kode: string
+    nama: string
+    tipe: string
+    bobot: number
+    values?: KriteriaValueUncheckedCreateNestedManyWithoutKriteriaInput
+  }
+
+  export type KriteriaCreateOrConnectWithoutWeightsInput = {
+    where: KriteriaWhereUniqueInput
+    create: XOR<KriteriaCreateWithoutWeightsInput, KriteriaUncheckedCreateWithoutWeightsInput>
+  }
+
+  export type RecommendationRequestUpsertWithoutWeightsInput = {
+    update: XOR<RecommendationRequestUpdateWithoutWeightsInput, RecommendationRequestUncheckedUpdateWithoutWeightsInput>
+    create: XOR<RecommendationRequestCreateWithoutWeightsInput, RecommendationRequestUncheckedCreateWithoutWeightsInput>
+    where?: RecommendationRequestWhereInput
+  }
+
+  export type RecommendationRequestUpdateToOneWithWhereWithoutWeightsInput = {
+    where?: RecommendationRequestWhereInput
+    data: XOR<RecommendationRequestUpdateWithoutWeightsInput, RecommendationRequestUncheckedUpdateWithoutWeightsInput>
+  }
+
+  export type RecommendationRequestUpdateWithoutWeightsInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    results?: RecommendationResultUpdateManyWithoutRequestNestedInput
+  }
+
+  export type RecommendationRequestUncheckedUpdateWithoutWeightsInput = {
+    id_request?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    results?: RecommendationResultUncheckedUpdateManyWithoutRequestNestedInput
+  }
+
+  export type KriteriaUpsertWithoutWeightsInput = {
+    update: XOR<KriteriaUpdateWithoutWeightsInput, KriteriaUncheckedUpdateWithoutWeightsInput>
+    create: XOR<KriteriaCreateWithoutWeightsInput, KriteriaUncheckedCreateWithoutWeightsInput>
+    where?: KriteriaWhereInput
+  }
+
+  export type KriteriaUpdateToOneWithWhereWithoutWeightsInput = {
+    where?: KriteriaWhereInput
+    data: XOR<KriteriaUpdateWithoutWeightsInput, KriteriaUncheckedUpdateWithoutWeightsInput>
+  }
+
+  export type KriteriaUpdateWithoutWeightsInput = {
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    tipe?: StringFieldUpdateOperationsInput | string
+    bobot?: FloatFieldUpdateOperationsInput | number
+    values?: KriteriaValueUpdateManyWithoutKriteriaNestedInput
+  }
+
+  export type KriteriaUncheckedUpdateWithoutWeightsInput = {
+    id_kriteria?: IntFieldUpdateOperationsInput | number
+    kode?: StringFieldUpdateOperationsInput | string
+    nama?: StringFieldUpdateOperationsInput | string
+    tipe?: StringFieldUpdateOperationsInput | string
+    bobot?: FloatFieldUpdateOperationsInput | number
+    values?: KriteriaValueUncheckedUpdateManyWithoutKriteriaNestedInput
+  }
+
+  export type RecommendationRequestCreateWithoutResultsInput = {
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    user: UserCreateNestedOneWithoutRecommendationRequestsInput
+    category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
+    weights?: RecommendationReqWeightCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestUncheckedCreateWithoutResultsInput = {
+    id_request?: number
+    user_id: number
+    category_id: number
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestCreateOrConnectWithoutResultsInput = {
+    where: RecommendationRequestWhereUniqueInput
+    create: XOR<RecommendationRequestCreateWithoutResultsInput, RecommendationRequestUncheckedCreateWithoutResultsInput>
+  }
+
+  export type UserCreateWithoutRecommendationResultsInput = {
+    name: string
+    email: string
+    password: string
+    join_date?: Date | string
+    role: RoleCreateNestedOneWithoutUsersInput
+    enrollments?: EnrollmentCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+    exams?: ExamCreateNestedManyWithoutUserInput
+    classes?: ClassCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutRecommendationResultsInput = {
+    user_id?: number
+    role_id: number
+    name: string
+    email: string
+    password: string
+    join_date?: Date | string
+    enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRecommendationResultsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRecommendationResultsInput, UserUncheckedCreateWithoutRecommendationResultsInput>
+  }
+
+  export type RecommendationRequestUpsertWithoutResultsInput = {
+    update: XOR<RecommendationRequestUpdateWithoutResultsInput, RecommendationRequestUncheckedUpdateWithoutResultsInput>
+    create: XOR<RecommendationRequestCreateWithoutResultsInput, RecommendationRequestUncheckedCreateWithoutResultsInput>
+    where?: RecommendationRequestWhereInput
+  }
+
+  export type RecommendationRequestUpdateToOneWithWhereWithoutResultsInput = {
+    where?: RecommendationRequestWhereInput
+    data: XOR<RecommendationRequestUpdateWithoutResultsInput, RecommendationRequestUncheckedUpdateWithoutResultsInput>
+  }
+
+  export type RecommendationRequestUpdateWithoutResultsInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    weights?: RecommendationReqWeightUpdateManyWithoutRequestNestedInput
+  }
+
+  export type RecommendationRequestUncheckedUpdateWithoutResultsInput = {
+    id_request?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    weights?: RecommendationReqWeightUncheckedUpdateManyWithoutRequestNestedInput
+  }
+
+  export type UserUpsertWithoutRecommendationResultsInput = {
+    update: XOR<UserUpdateWithoutRecommendationResultsInput, UserUncheckedUpdateWithoutRecommendationResultsInput>
+    create: XOR<UserCreateWithoutRecommendationResultsInput, UserUncheckedCreateWithoutRecommendationResultsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRecommendationResultsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRecommendationResultsInput, UserUncheckedUpdateWithoutRecommendationResultsInput>
+  }
+
+  export type UserUpdateWithoutRecommendationResultsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    join_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+    exams?: ExamUpdateManyWithoutUserNestedInput
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRecommendationResultsInput = {
+    user_id?: IntFieldUpdateOperationsInput | number
+    role_id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    join_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyRoleInput = {
@@ -15624,6 +23628,9 @@ export namespace Prisma {
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     exams?: ExamUpdateManyWithoutUserNestedInput
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRoleInput = {
@@ -15635,6 +23642,9 @@ export namespace Prisma {
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
+    recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRoleInput = {
@@ -15666,6 +23676,31 @@ export namespace Prisma {
     min_score?: number
     score?: number
     is_passed?: boolean
+  }
+
+  export type ClassCreateManyMentorInput = {
+    class_id?: number
+    category_id: number
+    periode_id: number
+    level_id: number
+    title: string
+    description: string
+    is_active?: boolean
+  }
+
+  export type RecommendationRequestCreateManyUserInput = {
+    id_request?: number
+    category_id: number
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
+  }
+
+  export type RecommendationResultCreateManyUserInput = {
+    id?: number
+    req_id: number
+    score: number
+    pos: number
   }
 
   export type EnrollmentUpdateWithoutUserInput = {
@@ -15734,19 +23769,113 @@ export namespace Prisma {
     is_passed?: BoolFieldUpdateOperationsInput | boolean
   }
 
+  export type ClassUpdateWithoutMentorInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    category?: CategoryUpdateOneRequiredWithoutClassesNestedInput
+    periode?: PeriodeUpdateOneRequiredWithoutClassesNestedInput
+    level?: LevelUpdateOneRequiredWithoutClassesNestedInput
+    materis?: MateriUpdateManyWithoutClassNestedInput
+    exams?: ExamUpdateManyWithoutClassNestedInput
+    reviews?: ReviewUpdateManyWithoutClassNestedInput
+    enrollment?: EnrollmentUpdateManyWithoutClassNestedInput
+  }
+
+  export type ClassUncheckedUpdateWithoutMentorInput = {
+    class_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    level_id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    materis?: MateriUncheckedUpdateManyWithoutClassNestedInput
+    exams?: ExamUncheckedUpdateManyWithoutClassNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutClassNestedInput
+    enrollment?: EnrollmentUncheckedUpdateManyWithoutClassNestedInput
+  }
+
+  export type ClassUncheckedUpdateManyWithoutMentorInput = {
+    class_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    level_id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type RecommendationRequestUpdateWithoutUserInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    weights?: RecommendationReqWeightUpdateManyWithoutRequestNestedInput
+    results?: RecommendationResultUpdateManyWithoutRequestNestedInput
+  }
+
+  export type RecommendationRequestUncheckedUpdateWithoutUserInput = {
+    id_request?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    weights?: RecommendationReqWeightUncheckedUpdateManyWithoutRequestNestedInput
+    results?: RecommendationResultUncheckedUpdateManyWithoutRequestNestedInput
+  }
+
+  export type RecommendationRequestUncheckedUpdateManyWithoutUserInput = {
+    id_request?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RecommendationResultUpdateWithoutUserInput = {
+    score?: FloatFieldUpdateOperationsInput | number
+    pos?: IntFieldUpdateOperationsInput | number
+    request?: RecommendationRequestUpdateOneRequiredWithoutResultsNestedInput
+  }
+
+  export type RecommendationResultUncheckedUpdateWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    req_id?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    pos?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationResultUncheckedUpdateManyWithoutUserInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    req_id?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    pos?: IntFieldUpdateOperationsInput | number
+  }
+
   export type ClassCreateManyCategoryInput = {
     class_id?: number
     periode_id: number
     level_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
+  }
+
+  export type RecommendationRequestCreateManyCategoryInput = {
+    id_request?: number
+    user_id: number
+    method: string
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type ClassUpdateWithoutCategoryInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    mentor?: UserUpdateOneRequiredWithoutClassesNestedInput
     periode?: PeriodeUpdateOneRequiredWithoutClassesNestedInput
     level?: LevelUpdateOneRequiredWithoutClassesNestedInput
     materis?: MateriUpdateManyWithoutClassNestedInput
@@ -15759,6 +23888,7 @@ export namespace Prisma {
     class_id?: IntFieldUpdateOperationsInput | number
     periode_id?: IntFieldUpdateOperationsInput | number
     level_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
@@ -15772,15 +23902,44 @@ export namespace Prisma {
     class_id?: IntFieldUpdateOperationsInput | number
     periode_id?: IntFieldUpdateOperationsInput | number
     level_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type RecommendationRequestUpdateWithoutCategoryInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    weights?: RecommendationReqWeightUpdateManyWithoutRequestNestedInput
+    results?: RecommendationResultUpdateManyWithoutRequestNestedInput
+  }
+
+  export type RecommendationRequestUncheckedUpdateWithoutCategoryInput = {
+    id_request?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    weights?: RecommendationReqWeightUncheckedUpdateManyWithoutRequestNestedInput
+    results?: RecommendationResultUncheckedUpdateManyWithoutRequestNestedInput
+  }
+
+  export type RecommendationRequestUncheckedUpdateManyWithoutCategoryInput = {
+    id_request?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ClassCreateManyPeriodeInput = {
     class_id?: number
     category_id: number
     level_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
@@ -15790,6 +23949,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    mentor?: UserUpdateOneRequiredWithoutClassesNestedInput
     category?: CategoryUpdateOneRequiredWithoutClassesNestedInput
     level?: LevelUpdateOneRequiredWithoutClassesNestedInput
     materis?: MateriUpdateManyWithoutClassNestedInput
@@ -15802,6 +23962,7 @@ export namespace Prisma {
     class_id?: IntFieldUpdateOperationsInput | number
     category_id?: IntFieldUpdateOperationsInput | number
     level_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
@@ -15815,6 +23976,7 @@ export namespace Prisma {
     class_id?: IntFieldUpdateOperationsInput | number
     category_id?: IntFieldUpdateOperationsInput | number
     level_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
@@ -15824,6 +23986,7 @@ export namespace Prisma {
     class_id?: number
     category_id: number
     periode_id: number
+    user_id: number
     title: string
     description: string
     is_active?: boolean
@@ -15833,6 +23996,7 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
+    mentor?: UserUpdateOneRequiredWithoutClassesNestedInput
     category?: CategoryUpdateOneRequiredWithoutClassesNestedInput
     periode?: PeriodeUpdateOneRequiredWithoutClassesNestedInput
     materis?: MateriUpdateManyWithoutClassNestedInput
@@ -15845,6 +24009,7 @@ export namespace Prisma {
     class_id?: IntFieldUpdateOperationsInput | number
     category_id?: IntFieldUpdateOperationsInput | number
     periode_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
@@ -15858,6 +24023,7 @@ export namespace Prisma {
     class_id?: IntFieldUpdateOperationsInput | number
     category_id?: IntFieldUpdateOperationsInput | number
     periode_id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
@@ -15977,6 +24143,102 @@ export namespace Prisma {
     user_id?: IntFieldUpdateOperationsInput | number
     progress?: IntFieldUpdateOperationsInput | number
     role_in_class?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type KriteriaValueCreateManyKriteriaInput = {
+    id_value?: number
+    value: string
+    score: number
+  }
+
+  export type RecommendationReqWeightCreateManyKriteriaInput = {
+    id?: number
+    req_id: number
+    bobot: number
+  }
+
+  export type KriteriaValueUpdateWithoutKriteriaInput = {
+    value?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type KriteriaValueUncheckedUpdateWithoutKriteriaInput = {
+    id_value?: IntFieldUpdateOperationsInput | number
+    value?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type KriteriaValueUncheckedUpdateManyWithoutKriteriaInput = {
+    id_value?: IntFieldUpdateOperationsInput | number
+    value?: StringFieldUpdateOperationsInput | string
+    score?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationReqWeightUpdateWithoutKriteriaInput = {
+    bobot?: FloatFieldUpdateOperationsInput | number
+    request?: RecommendationRequestUpdateOneRequiredWithoutWeightsNestedInput
+  }
+
+  export type RecommendationReqWeightUncheckedUpdateWithoutKriteriaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    req_id?: IntFieldUpdateOperationsInput | number
+    bobot?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationReqWeightUncheckedUpdateManyWithoutKriteriaInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    req_id?: IntFieldUpdateOperationsInput | number
+    bobot?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationReqWeightCreateManyRequestInput = {
+    id?: number
+    kriteria_id: number
+    bobot: number
+  }
+
+  export type RecommendationResultCreateManyRequestInput = {
+    id?: number
+    user_id: number
+    score: number
+    pos: number
+  }
+
+  export type RecommendationReqWeightUpdateWithoutRequestInput = {
+    bobot?: FloatFieldUpdateOperationsInput | number
+    kriteria?: KriteriaUpdateOneRequiredWithoutWeightsNestedInput
+  }
+
+  export type RecommendationReqWeightUncheckedUpdateWithoutRequestInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kriteria_id?: IntFieldUpdateOperationsInput | number
+    bobot?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationReqWeightUncheckedUpdateManyWithoutRequestInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    kriteria_id?: IntFieldUpdateOperationsInput | number
+    bobot?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationResultUpdateWithoutRequestInput = {
+    score?: FloatFieldUpdateOperationsInput | number
+    pos?: IntFieldUpdateOperationsInput | number
+    user?: UserUpdateOneRequiredWithoutRecommendationResultsNestedInput
+  }
+
+  export type RecommendationResultUncheckedUpdateWithoutRequestInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    pos?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationResultUncheckedUpdateManyWithoutRequestInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    pos?: IntFieldUpdateOperationsInput | number
   }
 
 
