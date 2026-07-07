@@ -69,11 +69,9 @@ export const userApi = {
 // ── Category Endpoints ───────────────────────────────────
 
 export const categoryApi = {
-  // Ambil semua kategori (Ini yang akan menggantikan fungsi lama)
   getAll: () => 
     apiClient.get<any[]>('/category').then((res) => res.data),
 
-  // 💡 Bonus: Endpoint baru yang PASTI akan kamu butuhkan di Halaman Setting Category nanti:
   getById: (id: number) => 
     apiClient.get<any>(`/category/${id}`).then((res) => res.data),
 
@@ -85,4 +83,11 @@ export const categoryApi = {
 
   delete: (id: number) => 
     apiClient.delete(`/category/${id}`).then((res) => res.data),
+};
+
+// ── Review Endpoints ───────────────────────────────────
+
+export const reviewApi = {
+  getAll: () => 
+    apiClient.get<any[]>('/review').then((res) => res.data),
 };

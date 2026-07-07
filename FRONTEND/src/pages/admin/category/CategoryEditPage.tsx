@@ -7,7 +7,6 @@ import { PATHS } from '../../../routes/paths';
 export default function CategoryEditPage() {
   const navigate = useNavigate();
   const [name, setName] = useState('Programming');
-  const [description, setDescription] = useState('Learn coding and development');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,21 +40,6 @@ export default function CategoryEditPage() {
                 onChange={(e) => setName(e.target.value)}
                 className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all"
                 placeholder="e.g. Programming"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="description" className="block text-sm font-semibold text-slate-900 mb-2">
-                Description
-              </label>
-              <textarea
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                rows={4}
-                className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all resize-none"
-                placeholder="Brief description of the category"
                 required
               />
             </div>

@@ -13,6 +13,8 @@ import KelasDetailPage from '../pages/class/ClassDetailPage';
 import MentorDashboard from '../pages/mentor/MentorDashboard';
 import StudentDashboard from '../pages/student/StudentDashboard';
 import AdminDashboard from '../pages/admin/AdminDashboard';
+
+// --- HALAMAN ADMIN ---
 import CategoryListPage from '../pages/admin/category/CategoryListPage';
 import CategoryCreatePage from '../pages/admin/category/CategoryCreatePage';
 import CategoryEditPage from '../pages/admin/category/CategoryEditPage';
@@ -21,6 +23,12 @@ import ClassCreatePage from '../pages/admin/class/ClassCreatePage';
 import ClassEditPage from '../pages/admin/class/ClassEditPage';
 import UserListPage from '../pages/admin/user/UserListPage';
 import ReviewListPage from '../pages/admin/review/ReviewListPage';
+
+// --- IMPORT HALAMAN MENTOR  ---
+import MentorClassListPage from '../pages/mentor/class/ClassListPage';
+import MentorClassCreatePage from '../pages/mentor/class/ClassCreatePage';
+import MentorClassEditPage from '../pages/mentor/class/ClassEditPage';
+
 import { PATHS } from './paths';
 
 export default function AppRoutes() {
@@ -37,18 +45,27 @@ export default function AppRoutes() {
 
       {/* Protected Routes */}
       <Route element={<ProtectedRoute />}>
+        
+        {/* ROLE MENTOR */}
         <Route element={<RoleRoute allowedRoles={['mentor']} />}>
           <Route element={<MentorLayout />}>
             <Route path={PATHS.MENTOR_DASHBOARD} element={<MentorDashboard />} />
+            
+            {/* TAMBAHKAN RUTE MENTOR DI SINI ✨ */}
+            <Route path={PATHS.MENTOR_CLASS_LIST} element={<MentorClassListPage />} />
+            <Route path={PATHS.MENTOR_CLASS_CREATE} element={<MentorClassCreatePage />} />
+            <Route path={PATHS.MENTOR_CLASS_EDIT} element={<MentorClassEditPage />} />
           </Route>
         </Route>
 
+        {/* ROLE STUDENT */}
         <Route element={<RoleRoute allowedRoles={['student']} />}>
           <Route element={<StudentLayout />}>
             <Route path={PATHS.STUDENT_DASHBOARD} element={<StudentDashboard />} />
           </Route>
         </Route>
 
+        {/* ROLE ADMIN */}
         <Route element={<RoleRoute allowedRoles={['admin']} />}>
           <Route element={<AdminLayout />}>
             <Route path={PATHS.ADMIN_DASHBOARD} element={<AdminDashboard />} />

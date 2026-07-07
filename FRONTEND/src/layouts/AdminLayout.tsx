@@ -5,16 +5,19 @@ import {
   BookOpen,
   FileText,
   Star,
-  Settings,
   HelpCircle,
   LogOut,
 } from 'lucide-react';
-import { PATHS } from '../routes/paths'; // Sesuaikan folder path-mu jika garisnya kurang/kelebihan
+import { PATHS } from '../routes/paths';
 import logo from '../assets/Logo.png';
+import { authApi } from '../api/endpoints';
+import { useMutation } from '@tanstack/react-query';
+import { useAuthStore } from '../store/authStore';
 
 export default function AdminLayout() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { user, logout } = useAuthStore();
 
   // Daftarkan path asli dari PATHS rute kamu agar tombolnya tahu harus pindah ke mana
   const sidebarItems = [
@@ -23,11 +26,23 @@ export default function AdminLayout() {
     { id: 'courses', label: 'Courses', icon: BookOpen, path: PATHS.ADMIN_CLASS_LIST },
     { id: 'categories', label: 'Categories', icon: FileText, path: PATHS.ADMIN_CATEGORY_LIST },
     { id: 'reviews', label: 'Reviews', icon: Star, path: PATHS.ADMIN_REVIEW_LIST },
-    // { id: 'settings', label: 'Settings', icon: Settings, path: '/admin/settings' }, // nyalakan jika ada rutenya
   ];
 
+  const logoutMutation = useMutation({
+    mutationFn: authApi.logout,
+    onSuccess: () => {
+      logout(); 
+      navigate(PATHS.HOME);
+    },
+    onError: (error) => {
+      console.error("Gagal logout di backend, tetap bersihkan frontend:", error);
+      logout();
+      navigate(PATHS.HOME);
+    }
+  });
+
   const handleLogout = () => {
-    navigate(PATHS.HOME);
+    logoutMutation.mutate();
   };
 
   return (
@@ -47,16 +62,15 @@ export default function AdminLayout() {
               const Icon = item.icon;
               // OTOMATIS AKTIF: Membandingkan URL browser saat ini dengan target path menu
               const isActive = location.pathname === item.path;
-              
+
               return (
                 <button
                   key={item.id}
                   onClick={() => navigate(item.path)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                    isActive
-                      ? 'bg-slate-900 text-white'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                  }`}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive
+                    ? 'bg-slate-900 text-white'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                    }`}
                 >
                   <Icon className="h-5 w-5" />
                   {item.label}
@@ -74,7 +88,9 @@ export default function AdminLayout() {
               className="h-10 w-10 rounded-xl object-cover ring-2 ring-slate-200"
             />
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-slate-900 truncate">Admin User</p>
+              <p className="text-sm font-semibold text-slate-900 truncate">
+                {user?.name || "Admin User"}
+              </p>
               <p className="text-xs text-slate-500 truncate">Administrator</p>
             </div>
           </div>
