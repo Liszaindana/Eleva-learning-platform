@@ -1,4 +1,3 @@
-
 import { prisma } from './lib/db.js';
 import bcrypt from 'bcrypt';
 
