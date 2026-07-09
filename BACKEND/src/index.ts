@@ -14,6 +14,8 @@ import reviewRoute from './routes/reviewRoute.js';
 import roleRoute from './routes/roleRoute.js';
 import enrollmentRoute from './routes/enrollmentRoute.js';
 import authRoute from './routes/authRoute.js';
+import kriteriaRoute from "./routes/kriteriaRoute.js";
+import recommendationRoute from './routes/recommendationRoute.js';
 
 // App configuration
 dotenv.config();
@@ -40,6 +42,8 @@ app.use(reviewRoute);
 app.use(roleRoute);
 app.use(userRoute);
 app.use('/auth', authRoute);
+app.use(kriteriaRoute);
+app.use(recommendationRoute);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server Prisma 7 + Laragon sukses berjalan di http://localhost:${PORT}`);

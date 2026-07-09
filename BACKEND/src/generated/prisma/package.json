@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "prisma-client-aa05cf01d9d3d12f57b96411f79aacfcbbb7289bba165ba66504e60d0bb5b970",
+=======
+  "name": "prisma-client-23aaa943b43f384015743ce1f28e3bc96cde1b9603cb556062b00d633ee5b3e4",
+>>>>>>> origin/ayu
   "main": "index.js",
   "types": "index.d.ts",
   "browser": "default.js",

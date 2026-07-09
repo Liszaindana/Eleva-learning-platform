@@ -14,7 +14,7 @@ datasource db {
 
 model Role {
   role_id   Int    @id @default(autoincrement())
-  role_text String // Isinya: 'admin', 'mentor', atau 'user_biasa'
+  role_text String @unique
   users     User[]
 
   @@map("role")
@@ -26,13 +26,23 @@ model User {
   name      String
   email     String   @unique
   password  String
-  join_date DateTime @default(now()) @map("join_date")
+  join_date DateTime @default(now())
 
+<<<<<<< HEAD
   role                   Role                    @relation(fields: [role_id], references: [role_id])
   enrollments            Enrollment[]
   reviews                Review[]
   exams                  Exam[]
   classes                Class[]
+=======
+  role Role @relation(fields: [role_id], references: [role_id])
+
+  classes     Class[]
+  enrollments Enrollment[]
+  exams       Exam[]
+  reviews     Review[]
+
+>>>>>>> origin/ayu
   recommendationRequests RecommendationRequest[]
   recommendationResults  RecommendationResult[]
 
@@ -45,13 +55,17 @@ model Category {
   classes                Class[]
   recommendationRequests RecommendationRequest[]
 
+  recommendationRequests RecommendationRequest[]
+
   @@map("category")
 }
 
 model Periode {
   periode_id Int     @id @default(autoincrement())
-  year       String
+  year       Int
   classes    Class[]
+
+  recommendationRequests RecommendationRequest[]
 
   @@map("periode")
 }
@@ -67,16 +81,15 @@ model Level {
 model Class {
   class_id Int @id @default(autoincrement())
 
-  // 1. WAJIB DITAMBAHKAN: Kolom fisik penampung ID Relasi (semuanya pakai Int)
   category_id Int
   periode_id  Int
   level_id    Int
   user_id     Int
 
   title       String
-  description String  @db.Text
-  is_active   Boolean @default(true)
+  description String @db.Text
 
+<<<<<<< HEAD
   // Relasi ke model User (Mentor)
   mentor User @relation(fields: [user_id], references: [user_id])
 
@@ -84,6 +97,13 @@ model Class {
   category Category @relation(fields: [category_id], references: [category_id])
   periode  Periode  @relation(fields: [periode_id], references: [periode_id])
   level    Level    @relation(fields: [level_id], references: [level_id])
+=======
+  is_active Boolean  @default(true)
+  mentor    User     @relation(fields: [user_id], references: [user_id])
+  category  Category @relation(fields: [category_id], references: [category_id])
+  periode   Periode  @relation(fields: [periode_id], references: [periode_id])
+  level     Level    @relation(fields: [level_id], references: [level_id])
+>>>>>>> origin/ayu
 
   materis    Materi[]
   exams      Exam[]
@@ -98,7 +118,7 @@ model Enrollment {
   user_id       Int
   class_id      Int
   progress      Int    @default(0)
-  role_in_class String // Kunci penting: Isinya 'mentor' jika dia pengajar, dan 'student' jika dia murid
+  role_in_class String
 
   user  User  @relation(fields: [user_id], references: [user_id])
   class Class @relation(fields: [class_id], references: [class_id])
@@ -107,8 +127,10 @@ model Enrollment {
 }
 
 model Materi {
-  materi_id Int    @id @default(autoincrement())
-  class_id  Int
+  materi_id Int @id @default(autoincrement())
+
+  class_id Int
+
   title     String
   content   String @db.Text
   video_url String
@@ -123,22 +145,24 @@ model Exam {
   class_id  Int
   user_id   Int
   title     String
-  min_score Int     @default(60) @map("min_score")
+  min_score Int     @default(60)
   score     Int     @default(0)
-  is_passed Boolean @default(false) @map("is_passed")
+  is_passed Boolean @default(false)
 
   class Class @relation(fields: [class_id], references: [class_id])
   user  User  @relation(fields: [user_id], references: [user_id])
 
-  @@map("exams")
+  @@map("exam")
 }
 
 model Review {
-  review_id Int    @id @default(autoincrement())
-  user_id   Int
-  class_id  Int
-  rating    Int
-  comment   String @db.Text
+  review_id Int @id @default(autoincrement())
+
+  user_id  Int
+  class_id Int
+
+  rating  Int
+  comment String @db.Text
 
   user  User  @relation(fields: [user_id], references: [user_id])
   class Class @relation(fields: [class_id], references: [class_id])
@@ -153,18 +177,31 @@ model Kriteria {
   tipe        String // benefit / cost
   bobot       Float
 
+<<<<<<< HEAD
   values  KriteriaValue[]
   weights RecommendationReqWeight[]
+=======
+  values KriteriaValue[]
+
+  weights RequestBobot[]
+>>>>>>> origin/ayu
 
   @@map("kriteria")
 }
 
 model KriteriaValue {
+<<<<<<< HEAD
   id_value Int @id @default(autoincrement())
 
   id_kriteria Int
   value       String
   score       Int
+=======
+  id_value    Int    @id @default(autoincrement())
+  id_kriteria Int
+  value       String
+  score       Float
+>>>>>>> origin/ayu
 
   kriteria Kriteria @relation(fields: [id_kriteria], references: [id_kriteria])
 
@@ -172,6 +209,7 @@ model KriteriaValue {
 }
 
 model RecommendationRequest {
+<<<<<<< HEAD
   id_request  Int    @id @default(autoincrement())
   user_id     Int
   category_id Int
@@ -186,10 +224,25 @@ model RecommendationRequest {
 
   weights RecommendationReqWeight[]
   results RecommendationResult[]
+=======
+  id_recomen  Int      @id @default(autoincrement())
+  user_id     Int
+  category_id Int
+  periode_id  Int
+  method      String // SAW / WP / TOPSIS
+  created_at  DateTime @default(now())
+
+  user     User                   @relation(fields: [user_id], references: [user_id])
+  category Category               @relation(fields: [category_id], references: [category_id])
+  periode  Periode                @relation(fields: [periode_id], references: [periode_id])
+  weights  RequestBobot[]
+  results  RecommendationResult[]
+>>>>>>> origin/ayu
 
   @@map("recommendation_request")
 }
 
+<<<<<<< HEAD
 model RecommendationReqWeight {
   id          Int   @id @default(autoincrement())
   req_id      Int
@@ -215,4 +268,29 @@ model RecommendationResult {
   user User @relation(fields: [user_id], references: [user_id])
 
   @@map("req_result")
+=======
+model RequestBobot {
+  id_bobot    Int   @id @default(autoincrement())
+  id_recomen  Int
+  id_kriteria Int
+  bobot_req   Float
+
+  request  RecommendationRequest @relation(fields: [id_recomen], references: [id_recomen])
+  kriteria Kriteria              @relation(fields: [id_kriteria], references: [id_kriteria])
+
+  @@map("request_bobot")
+}
+
+model RecommendationResult {
+  id_hasil   Int   @id @default(autoincrement())
+  id_recomen Int
+  user_id    Int
+  score      Float
+  ranking    Int
+
+  request RecommendationRequest @relation(fields: [id_recomen], references: [id_recomen])
+  user    User                  @relation(fields: [user_id], references: [user_id])
+
+  @@map("recommendation_result")
+>>>>>>> origin/ayu
 }

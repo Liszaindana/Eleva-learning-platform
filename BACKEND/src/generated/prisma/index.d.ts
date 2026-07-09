@@ -79,10 +79,17 @@ export type KriteriaValue = $Result.DefaultSelection<Prisma.$KriteriaValuePayloa
  */
 export type RecommendationRequest = $Result.DefaultSelection<Prisma.$RecommendationRequestPayload>
 /**
+<<<<<<< HEAD
  * Model RecommendationReqWeight
  * 
  */
 export type RecommendationReqWeight = $Result.DefaultSelection<Prisma.$RecommendationReqWeightPayload>
+=======
+ * Model RequestBobot
+ * 
+ */
+export type RequestBobot = $Result.DefaultSelection<Prisma.$RequestBobotPayload>
+>>>>>>> origin/ayu
 /**
  * Model RecommendationResult
  * 
@@ -341,6 +348,7 @@ export class PrismaClient<
   get recommendationRequest(): Prisma.RecommendationRequestDelegate<ExtArgs, ClientOptions>;
 
   /**
+<<<<<<< HEAD
    * `prisma.recommendationReqWeight`: Exposes CRUD operations for the **RecommendationReqWeight** model.
     * Example usage:
     * ```ts
@@ -349,6 +357,16 @@ export class PrismaClient<
     * ```
     */
   get recommendationReqWeight(): Prisma.RecommendationReqWeightDelegate<ExtArgs, ClientOptions>;
+=======
+   * `prisma.requestBobot`: Exposes CRUD operations for the **RequestBobot** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more RequestBobots
+    * const requestBobots = await prisma.requestBobot.findMany()
+    * ```
+    */
+  get requestBobot(): Prisma.RequestBobotDelegate<ExtArgs, ClientOptions>;
+>>>>>>> origin/ayu
 
   /**
    * `prisma.recommendationResult`: Exposes CRUD operations for the **RecommendationResult** model.
@@ -806,7 +824,11 @@ export namespace Prisma {
     Kriteria: 'Kriteria',
     KriteriaValue: 'KriteriaValue',
     RecommendationRequest: 'RecommendationRequest',
+<<<<<<< HEAD
     RecommendationReqWeight: 'RecommendationReqWeight',
+=======
+    RequestBobot: 'RequestBobot',
+>>>>>>> origin/ayu
     RecommendationResult: 'RecommendationResult'
   };
 
@@ -823,7 +845,11 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
+<<<<<<< HEAD
       modelProps: "role" | "user" | "category" | "periode" | "level" | "class" | "enrollment" | "materi" | "exam" | "review" | "kriteria" | "kriteriaValue" | "recommendationRequest" | "recommendationReqWeight" | "recommendationResult"
+=======
+      modelProps: "role" | "user" | "category" | "periode" | "level" | "class" | "enrollment" | "materi" | "exam" | "review" | "kriteria" | "kriteriaValue" | "recommendationRequest" | "requestBobot" | "recommendationResult"
+>>>>>>> origin/ayu
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1685,6 +1711,7 @@ export namespace Prisma {
           }
         }
       }
+<<<<<<< HEAD
       RecommendationReqWeight: {
         payload: Prisma.$RecommendationReqWeightPayload<ExtArgs>
         fields: Prisma.RecommendationReqWeightFieldRefs
@@ -1748,6 +1775,71 @@ export namespace Prisma {
           count: {
             args: Prisma.RecommendationReqWeightCountArgs<ExtArgs>
             result: $Utils.Optional<RecommendationReqWeightCountAggregateOutputType> | number
+=======
+      RequestBobot: {
+        payload: Prisma.$RequestBobotPayload<ExtArgs>
+        fields: Prisma.RequestBobotFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.RequestBobotFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestBobotPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.RequestBobotFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestBobotPayload>
+          }
+          findFirst: {
+            args: Prisma.RequestBobotFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestBobotPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.RequestBobotFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestBobotPayload>
+          }
+          findMany: {
+            args: Prisma.RequestBobotFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestBobotPayload>[]
+          }
+          create: {
+            args: Prisma.RequestBobotCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestBobotPayload>
+          }
+          createMany: {
+            args: Prisma.RequestBobotCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.RequestBobotDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestBobotPayload>
+          }
+          update: {
+            args: Prisma.RequestBobotUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestBobotPayload>
+          }
+          deleteMany: {
+            args: Prisma.RequestBobotDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.RequestBobotUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.RequestBobotUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RequestBobotPayload>
+          }
+          aggregate: {
+            args: Prisma.RequestBobotAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRequestBobot>
+          }
+          groupBy: {
+            args: Prisma.RequestBobotGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RequestBobotGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.RequestBobotCountArgs<ExtArgs>
+            result: $Utils.Optional<RequestBobotCountAggregateOutputType> | number
+>>>>>>> origin/ayu
           }
         }
       }
@@ -1938,7 +2030,11 @@ export namespace Prisma {
     kriteria?: KriteriaOmit
     kriteriaValue?: KriteriaValueOmit
     recommendationRequest?: RecommendationRequestOmit
+<<<<<<< HEAD
     recommendationReqWeight?: RecommendationReqWeightOmit
+=======
+    requestBobot?: RequestBobotOmit
+>>>>>>> origin/ayu
     recommendationResult?: RecommendationResultOmit
   }
 
@@ -2051,19 +2147,27 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    enrollments: number
-    reviews: number
-    exams: number
     classes: number
+    enrollments: number
+    exams: number
+<<<<<<< HEAD
+    classes: number
+=======
+    reviews: number
+>>>>>>> origin/ayu
     recommendationRequests: number
     recommendationResults: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    enrollments?: boolean | UserCountOutputTypeCountEnrollmentsArgs
-    reviews?: boolean | UserCountOutputTypeCountReviewsArgs
-    exams?: boolean | UserCountOutputTypeCountExamsArgs
     classes?: boolean | UserCountOutputTypeCountClassesArgs
+    enrollments?: boolean | UserCountOutputTypeCountEnrollmentsArgs
+    exams?: boolean | UserCountOutputTypeCountExamsArgs
+<<<<<<< HEAD
+    classes?: boolean | UserCountOutputTypeCountClassesArgs
+=======
+    reviews?: boolean | UserCountOutputTypeCountReviewsArgs
+>>>>>>> origin/ayu
     recommendationRequests?: boolean | UserCountOutputTypeCountRecommendationRequestsArgs
     recommendationResults?: boolean | UserCountOutputTypeCountRecommendationResultsArgs
   }
@@ -2082,8 +2186,22 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
+  export type UserCountOutputTypeCountClassesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClassWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
   export type UserCountOutputTypeCountEnrollmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EnrollmentWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountExamsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExamWhereInput
   }
 
   /**
@@ -2096,8 +2214,15 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountExamsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ExamWhereInput
+  export type UserCountOutputTypeCountRecommendationRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationRequestWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRecommendationResultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationResultWhereInput
   }
 
   /**
@@ -2168,10 +2293,12 @@ export namespace Prisma {
 
   export type PeriodeCountOutputType = {
     classes: number
+    recommendationRequests: number
   }
 
   export type PeriodeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     classes?: boolean | PeriodeCountOutputTypeCountClassesArgs
+    recommendationRequests?: boolean | PeriodeCountOutputTypeCountRecommendationRequestsArgs
   }
 
   // Custom InputTypes
@@ -2190,6 +2317,13 @@ export namespace Prisma {
    */
   export type PeriodeCountOutputTypeCountClassesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ClassWhereInput
+  }
+
+  /**
+   * PeriodeCountOutputType without action
+   */
+  export type PeriodeCountOutputTypeCountRecommendationRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RecommendationRequestWhereInput
   }
 
 
@@ -2318,7 +2452,11 @@ export namespace Prisma {
    * KriteriaCountOutputType without action
    */
   export type KriteriaCountOutputTypeCountWeightsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+<<<<<<< HEAD
     where?: RecommendationReqWeightWhereInput
+=======
+    where?: RequestBobotWhereInput
+>>>>>>> origin/ayu
   }
 
 
@@ -2351,7 +2489,11 @@ export namespace Prisma {
    * RecommendationRequestCountOutputType without action
    */
   export type RecommendationRequestCountOutputTypeCountWeightsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+<<<<<<< HEAD
     where?: RecommendationReqWeightWhereInput
+=======
+    where?: RequestBobotWhereInput
+>>>>>>> origin/ayu
   }
 
   /**
@@ -3538,10 +3680,14 @@ export namespace Prisma {
     password?: boolean
     join_date?: boolean
     role?: boolean | RoleDefaultArgs<ExtArgs>
-    enrollments?: boolean | User$enrollmentsArgs<ExtArgs>
-    reviews?: boolean | User$reviewsArgs<ExtArgs>
-    exams?: boolean | User$examsArgs<ExtArgs>
     classes?: boolean | User$classesArgs<ExtArgs>
+    enrollments?: boolean | User$enrollmentsArgs<ExtArgs>
+    exams?: boolean | User$examsArgs<ExtArgs>
+<<<<<<< HEAD
+    classes?: boolean | User$classesArgs<ExtArgs>
+=======
+    reviews?: boolean | User$reviewsArgs<ExtArgs>
+>>>>>>> origin/ayu
     recommendationRequests?: boolean | User$recommendationRequestsArgs<ExtArgs>
     recommendationResults?: boolean | User$recommendationResultsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -3561,10 +3707,14 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"user_id" | "role_id" | "name" | "email" | "password" | "join_date", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     role?: boolean | RoleDefaultArgs<ExtArgs>
-    enrollments?: boolean | User$enrollmentsArgs<ExtArgs>
-    reviews?: boolean | User$reviewsArgs<ExtArgs>
-    exams?: boolean | User$examsArgs<ExtArgs>
     classes?: boolean | User$classesArgs<ExtArgs>
+    enrollments?: boolean | User$enrollmentsArgs<ExtArgs>
+    exams?: boolean | User$examsArgs<ExtArgs>
+<<<<<<< HEAD
+    classes?: boolean | User$classesArgs<ExtArgs>
+=======
+    reviews?: boolean | User$reviewsArgs<ExtArgs>
+>>>>>>> origin/ayu
     recommendationRequests?: boolean | User$recommendationRequestsArgs<ExtArgs>
     recommendationResults?: boolean | User$recommendationResultsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -3574,10 +3724,14 @@ export namespace Prisma {
     name: "User"
     objects: {
       role: Prisma.$RolePayload<ExtArgs>
-      enrollments: Prisma.$EnrollmentPayload<ExtArgs>[]
-      reviews: Prisma.$ReviewPayload<ExtArgs>[]
-      exams: Prisma.$ExamPayload<ExtArgs>[]
       classes: Prisma.$ClassPayload<ExtArgs>[]
+      enrollments: Prisma.$EnrollmentPayload<ExtArgs>[]
+      exams: Prisma.$ExamPayload<ExtArgs>[]
+<<<<<<< HEAD
+      classes: Prisma.$ClassPayload<ExtArgs>[]
+=======
+      reviews: Prisma.$ReviewPayload<ExtArgs>[]
+>>>>>>> origin/ayu
       recommendationRequests: Prisma.$RecommendationRequestPayload<ExtArgs>[]
       recommendationResults: Prisma.$RecommendationResultPayload<ExtArgs>[]
     }
@@ -3929,10 +4083,14 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    enrollments<T extends User$enrollmentsArgs<ExtArgs> = {}>(args?: Subset<T, User$enrollmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnrollmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    exams<T extends User$examsArgs<ExtArgs> = {}>(args?: Subset<T, User$examsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     classes<T extends User$classesArgs<ExtArgs> = {}>(args?: Subset<T, User$classesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    enrollments<T extends User$enrollmentsArgs<ExtArgs> = {}>(args?: Subset<T, User$enrollmentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnrollmentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    exams<T extends User$examsArgs<ExtArgs> = {}>(args?: Subset<T, User$examsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExamPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+<<<<<<< HEAD
+    classes<T extends User$classesArgs<ExtArgs> = {}>(args?: Subset<T, User$classesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+=======
+    reviews<T extends User$reviewsArgs<ExtArgs> = {}>(args?: Subset<T, User$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+>>>>>>> origin/ayu
     recommendationRequests<T extends User$recommendationRequestsArgs<ExtArgs> = {}>(args?: Subset<T, User$recommendationRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     recommendationResults<T extends User$recommendationResultsArgs<ExtArgs> = {}>(args?: Subset<T, User$recommendationResultsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -4318,6 +4476,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.classes
+   */
+  export type User$classesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Class
+     */
+    select?: ClassSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Class
+     */
+    omit?: ClassOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClassInclude<ExtArgs> | null
+    where?: ClassWhereInput
+    orderBy?: ClassOrderByWithRelationInput | ClassOrderByWithRelationInput[]
+    cursor?: ClassWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ClassScalarFieldEnum | ClassScalarFieldEnum[]
+  }
+
+  /**
    * User.enrollments
    */
   export type User$enrollmentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4339,6 +4521,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: EnrollmentScalarFieldEnum | EnrollmentScalarFieldEnum[]
+  }
+
+  /**
+   * User.exams
+   */
+  export type User$examsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Exam
+     */
+    select?: ExamSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Exam
+     */
+    omit?: ExamOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ExamInclude<ExtArgs> | null
+    where?: ExamWhereInput
+    orderBy?: ExamOrderByWithRelationInput | ExamOrderByWithRelationInput[]
+    cursor?: ExamWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ExamScalarFieldEnum | ExamScalarFieldEnum[]
   }
 
   /**
@@ -4366,27 +4572,51 @@ export namespace Prisma {
   }
 
   /**
-   * User.exams
+   * User.recommendationRequests
    */
-  export type User$examsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$recommendationRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Exam
+     * Select specific fields to fetch from the RecommendationRequest
      */
-    select?: ExamSelect<ExtArgs> | null
+    select?: RecommendationRequestSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Exam
+     * Omit specific fields from the RecommendationRequest
      */
-    omit?: ExamOmit<ExtArgs> | null
+    omit?: RecommendationRequestOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: ExamInclude<ExtArgs> | null
-    where?: ExamWhereInput
-    orderBy?: ExamOrderByWithRelationInput | ExamOrderByWithRelationInput[]
-    cursor?: ExamWhereUniqueInput
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    where?: RecommendationRequestWhereInput
+    orderBy?: RecommendationRequestOrderByWithRelationInput | RecommendationRequestOrderByWithRelationInput[]
+    cursor?: RecommendationRequestWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: ExamScalarFieldEnum | ExamScalarFieldEnum[]
+    distinct?: RecommendationRequestScalarFieldEnum | RecommendationRequestScalarFieldEnum[]
+  }
+
+  /**
+   * User.recommendationResults
+   */
+  export type User$recommendationResultsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationResult
+     */
+    select?: RecommendationResultSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationResult
+     */
+    omit?: RecommendationResultOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationResultInclude<ExtArgs> | null
+    where?: RecommendationResultWhereInput
+    orderBy?: RecommendationResultOrderByWithRelationInput | RecommendationResultOrderByWithRelationInput[]
+    cursor?: RecommendationResultWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RecommendationResultScalarFieldEnum | RecommendationResultScalarFieldEnum[]
   }
 
   /**
@@ -5483,20 +5713,22 @@ export namespace Prisma {
 
   export type PeriodeAvgAggregateOutputType = {
     periode_id: number | null
+    year: number | null
   }
 
   export type PeriodeSumAggregateOutputType = {
     periode_id: number | null
+    year: number | null
   }
 
   export type PeriodeMinAggregateOutputType = {
     periode_id: number | null
-    year: string | null
+    year: number | null
   }
 
   export type PeriodeMaxAggregateOutputType = {
     periode_id: number | null
-    year: string | null
+    year: number | null
   }
 
   export type PeriodeCountAggregateOutputType = {
@@ -5508,10 +5740,12 @@ export namespace Prisma {
 
   export type PeriodeAvgAggregateInputType = {
     periode_id?: true
+    year?: true
   }
 
   export type PeriodeSumAggregateInputType = {
     periode_id?: true
+    year?: true
   }
 
   export type PeriodeMinAggregateInputType = {
@@ -5618,7 +5852,7 @@ export namespace Prisma {
 
   export type PeriodeGroupByOutputType = {
     periode_id: number
-    year: string
+    year: number
     _count: PeriodeCountAggregateOutputType | null
     _avg: PeriodeAvgAggregateOutputType | null
     _sum: PeriodeSumAggregateOutputType | null
@@ -5644,6 +5878,7 @@ export namespace Prisma {
     periode_id?: boolean
     year?: boolean
     classes?: boolean | Periode$classesArgs<ExtArgs>
+    recommendationRequests?: boolean | Periode$recommendationRequestsArgs<ExtArgs>
     _count?: boolean | PeriodeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["periode"]>
 
@@ -5657,6 +5892,7 @@ export namespace Prisma {
   export type PeriodeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"periode_id" | "year", ExtArgs["result"]["periode"]>
   export type PeriodeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     classes?: boolean | Periode$classesArgs<ExtArgs>
+    recommendationRequests?: boolean | Periode$recommendationRequestsArgs<ExtArgs>
     _count?: boolean | PeriodeCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -5664,10 +5900,11 @@ export namespace Prisma {
     name: "Periode"
     objects: {
       classes: Prisma.$ClassPayload<ExtArgs>[]
+      recommendationRequests: Prisma.$RecommendationRequestPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       periode_id: number
-      year: string
+      year: number
     }, ExtArgs["result"]["periode"]>
     composites: {}
   }
@@ -6009,6 +6246,7 @@ export namespace Prisma {
   export interface Prisma__PeriodeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     classes<T extends Periode$classesArgs<ExtArgs> = {}>(args?: Subset<T, Periode$classesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    recommendationRequests<T extends Periode$recommendationRequestsArgs<ExtArgs> = {}>(args?: Subset<T, Periode$recommendationRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6039,7 +6277,7 @@ export namespace Prisma {
    */
   interface PeriodeFieldRefs {
     readonly periode_id: FieldRef<"Periode", 'Int'>
-    readonly year: FieldRef<"Periode", 'String'>
+    readonly year: FieldRef<"Periode", 'Int'>
   }
     
 
@@ -6409,6 +6647,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ClassScalarFieldEnum | ClassScalarFieldEnum[]
+  }
+
+  /**
+   * Periode.recommendationRequests
+   */
+  export type Periode$recommendationRequestsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RecommendationRequest
+     */
+    select?: RecommendationRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RecommendationRequest
+     */
+    omit?: RecommendationRequestOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RecommendationRequestInclude<ExtArgs> | null
+    where?: RecommendationRequestWhereInput
+    orderBy?: RecommendationRequestOrderByWithRelationInput | RecommendationRequestOrderByWithRelationInput[]
+    cursor?: RecommendationRequestWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RecommendationRequestScalarFieldEnum | RecommendationRequestScalarFieldEnum[]
   }
 
   /**
@@ -12712,7 +12974,11 @@ export namespace Prisma {
     name: "Kriteria"
     objects: {
       values: Prisma.$KriteriaValuePayload<ExtArgs>[]
+<<<<<<< HEAD
       weights: Prisma.$RecommendationReqWeightPayload<ExtArgs>[]
+=======
+      weights: Prisma.$RequestBobotPayload<ExtArgs>[]
+>>>>>>> origin/ayu
     }
     scalars: $Extensions.GetPayloadResult<{
       id_kriteria: number
@@ -13061,7 +13327,11 @@ export namespace Prisma {
   export interface Prisma__KriteriaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     values<T extends Kriteria$valuesArgs<ExtArgs> = {}>(args?: Subset<T, Kriteria$valuesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KriteriaValuePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+<<<<<<< HEAD
     weights<T extends Kriteria$weightsArgs<ExtArgs> = {}>(args?: Subset<T, Kriteria$weightsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+=======
+    weights<T extends Kriteria$weightsArgs<ExtArgs> = {}>(args?: Subset<T, Kriteria$weightsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RequestBobotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+>>>>>>> origin/ayu
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13472,6 +13742,7 @@ export namespace Prisma {
    */
   export type Kriteria$weightsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
+<<<<<<< HEAD
      * Select specific fields to fetch from the RecommendationReqWeight
      */
     select?: RecommendationReqWeightSelect<ExtArgs> | null
@@ -13489,6 +13760,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: RecommendationReqWeightScalarFieldEnum | RecommendationReqWeightScalarFieldEnum[]
+=======
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+    where?: RequestBobotWhereInput
+    orderBy?: RequestBobotOrderByWithRelationInput | RequestBobotOrderByWithRelationInput[]
+    cursor?: RequestBobotWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RequestBobotScalarFieldEnum | RequestBobotScalarFieldEnum[]
+>>>>>>> origin/ayu
   }
 
   /**
@@ -14108,7 +14398,11 @@ export namespace Prisma {
     readonly id_value: FieldRef<"KriteriaValue", 'Int'>
     readonly id_kriteria: FieldRef<"KriteriaValue", 'Int'>
     readonly value: FieldRef<"KriteriaValue", 'String'>
+<<<<<<< HEAD
     readonly score: FieldRef<"KriteriaValue", 'Int'>
+=======
+    readonly score: FieldRef<"KriteriaValue", 'Float'>
+>>>>>>> origin/ayu
   }
     
 
@@ -14488,6 +14782,7 @@ export namespace Prisma {
   }
 
   export type RecommendationRequestAvgAggregateOutputType = {
+<<<<<<< HEAD
     id_request: number | null
     user_id: number | null
     category_id: number | null
@@ -14524,11 +14819,52 @@ export namespace Prisma {
     method: number
     created_at: number
     updated_at: number
+=======
+    id_recomen: number | null
+    user_id: number | null
+    category_id: number | null
+    periode_id: number | null
+  }
+
+  export type RecommendationRequestSumAggregateOutputType = {
+    id_recomen: number | null
+    user_id: number | null
+    category_id: number | null
+    periode_id: number | null
+  }
+
+  export type RecommendationRequestMinAggregateOutputType = {
+    id_recomen: number | null
+    user_id: number | null
+    category_id: number | null
+    periode_id: number | null
+    method: string | null
+    created_at: Date | null
+  }
+
+  export type RecommendationRequestMaxAggregateOutputType = {
+    id_recomen: number | null
+    user_id: number | null
+    category_id: number | null
+    periode_id: number | null
+    method: string | null
+    created_at: Date | null
+  }
+
+  export type RecommendationRequestCountAggregateOutputType = {
+    id_recomen: number
+    user_id: number
+    category_id: number
+    periode_id: number
+    method: number
+    created_at: number
+>>>>>>> origin/ayu
     _all: number
   }
 
 
   export type RecommendationRequestAvgAggregateInputType = {
+<<<<<<< HEAD
     id_request?: true
     user_id?: true
     category_id?: true
@@ -14565,6 +14901,46 @@ export namespace Prisma {
     method?: true
     created_at?: true
     updated_at?: true
+=======
+    id_recomen?: true
+    user_id?: true
+    category_id?: true
+    periode_id?: true
+  }
+
+  export type RecommendationRequestSumAggregateInputType = {
+    id_recomen?: true
+    user_id?: true
+    category_id?: true
+    periode_id?: true
+  }
+
+  export type RecommendationRequestMinAggregateInputType = {
+    id_recomen?: true
+    user_id?: true
+    category_id?: true
+    periode_id?: true
+    method?: true
+    created_at?: true
+  }
+
+  export type RecommendationRequestMaxAggregateInputType = {
+    id_recomen?: true
+    user_id?: true
+    category_id?: true
+    periode_id?: true
+    method?: true
+    created_at?: true
+  }
+
+  export type RecommendationRequestCountAggregateInputType = {
+    id_recomen?: true
+    user_id?: true
+    category_id?: true
+    periode_id?: true
+    method?: true
+    created_at?: true
+>>>>>>> origin/ayu
     _all?: true
   }
 
@@ -14655,12 +15031,21 @@ export namespace Prisma {
   }
 
   export type RecommendationRequestGroupByOutputType = {
+<<<<<<< HEAD
     id_request: number
     user_id: number
     category_id: number
     method: string
     created_at: Date
     updated_at: Date
+=======
+    id_recomen: number
+    user_id: number
+    category_id: number
+    periode_id: number
+    method: string
+    created_at: Date
+>>>>>>> origin/ayu
     _count: RecommendationRequestCountAggregateOutputType | null
     _avg: RecommendationRequestAvgAggregateOutputType | null
     _sum: RecommendationRequestSumAggregateOutputType | null
@@ -14683,6 +15068,7 @@ export namespace Prisma {
 
 
   export type RecommendationRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+<<<<<<< HEAD
     id_request?: boolean
     user_id?: boolean
     category_id?: boolean
@@ -14691,6 +15077,17 @@ export namespace Prisma {
     updated_at?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+=======
+    id_recomen?: boolean
+    user_id?: boolean
+    category_id?: boolean
+    periode_id?: boolean
+    method?: boolean
+    created_at?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    periode?: boolean | PeriodeDefaultArgs<ExtArgs>
+>>>>>>> origin/ayu
     weights?: boolean | RecommendationRequest$weightsArgs<ExtArgs>
     results?: boolean | RecommendationRequest$resultsArgs<ExtArgs>
     _count?: boolean | RecommendationRequestCountOutputTypeDefaultArgs<ExtArgs>
@@ -14699,6 +15096,7 @@ export namespace Prisma {
 
 
   export type RecommendationRequestSelectScalar = {
+<<<<<<< HEAD
     id_request?: boolean
     user_id?: boolean
     category_id?: boolean
@@ -14711,6 +15109,21 @@ export namespace Prisma {
   export type RecommendationRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     category?: boolean | CategoryDefaultArgs<ExtArgs>
+=======
+    id_recomen?: boolean
+    user_id?: boolean
+    category_id?: boolean
+    periode_id?: boolean
+    method?: boolean
+    created_at?: boolean
+  }
+
+  export type RecommendationRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_recomen" | "user_id" | "category_id" | "periode_id" | "method" | "created_at", ExtArgs["result"]["recommendationRequest"]>
+  export type RecommendationRequestInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+    periode?: boolean | PeriodeDefaultArgs<ExtArgs>
+>>>>>>> origin/ayu
     weights?: boolean | RecommendationRequest$weightsArgs<ExtArgs>
     results?: boolean | RecommendationRequest$resultsArgs<ExtArgs>
     _count?: boolean | RecommendationRequestCountOutputTypeDefaultArgs<ExtArgs>
@@ -14721,6 +15134,7 @@ export namespace Prisma {
     objects: {
       user: Prisma.$UserPayload<ExtArgs>
       category: Prisma.$CategoryPayload<ExtArgs>
+<<<<<<< HEAD
       weights: Prisma.$RecommendationReqWeightPayload<ExtArgs>[]
       results: Prisma.$RecommendationResultPayload<ExtArgs>[]
     }
@@ -14731,6 +15145,19 @@ export namespace Prisma {
       method: string
       created_at: Date
       updated_at: Date
+=======
+      periode: Prisma.$PeriodePayload<ExtArgs>
+      weights: Prisma.$RequestBobotPayload<ExtArgs>[]
+      results: Prisma.$RecommendationResultPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id_recomen: number
+      user_id: number
+      category_id: number
+      periode_id: number
+      method: string
+      created_at: Date
+>>>>>>> origin/ayu
     }, ExtArgs["result"]["recommendationRequest"]>
     composites: {}
   }
@@ -14814,8 +15241,13 @@ export namespace Prisma {
      * // Get first 10 RecommendationRequests
      * const recommendationRequests = await prisma.recommendationRequest.findMany({ take: 10 })
      * 
+<<<<<<< HEAD
      * // Only select the `id_request`
      * const recommendationRequestWithId_requestOnly = await prisma.recommendationRequest.findMany({ select: { id_request: true } })
+=======
+     * // Only select the `id_recomen`
+     * const recommendationRequestWithId_recomenOnly = await prisma.recommendationRequest.findMany({ select: { id_recomen: true } })
+>>>>>>> origin/ayu
      * 
      */
     findMany<T extends RecommendationRequestFindManyArgs>(args?: SelectSubset<T, RecommendationRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -15073,7 +15505,12 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+<<<<<<< HEAD
     weights<T extends RecommendationRequest$weightsArgs<ExtArgs> = {}>(args?: Subset<T, RecommendationRequest$weightsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+=======
+    periode<T extends PeriodeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PeriodeDefaultArgs<ExtArgs>>): Prisma__PeriodeClient<$Result.GetResult<Prisma.$PeriodePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    weights<T extends RecommendationRequest$weightsArgs<ExtArgs> = {}>(args?: Subset<T, RecommendationRequest$weightsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RequestBobotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+>>>>>>> origin/ayu
     results<T extends RecommendationRequest$resultsArgs<ExtArgs> = {}>(args?: Subset<T, RecommendationRequest$resultsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -15104,12 +15541,21 @@ export namespace Prisma {
    * Fields of the RecommendationRequest model
    */
   interface RecommendationRequestFieldRefs {
+<<<<<<< HEAD
     readonly id_request: FieldRef<"RecommendationRequest", 'Int'>
     readonly user_id: FieldRef<"RecommendationRequest", 'Int'>
     readonly category_id: FieldRef<"RecommendationRequest", 'Int'>
     readonly method: FieldRef<"RecommendationRequest", 'String'>
     readonly created_at: FieldRef<"RecommendationRequest", 'DateTime'>
     readonly updated_at: FieldRef<"RecommendationRequest", 'DateTime'>
+=======
+    readonly id_recomen: FieldRef<"RecommendationRequest", 'Int'>
+    readonly user_id: FieldRef<"RecommendationRequest", 'Int'>
+    readonly category_id: FieldRef<"RecommendationRequest", 'Int'>
+    readonly periode_id: FieldRef<"RecommendationRequest", 'Int'>
+    readonly method: FieldRef<"RecommendationRequest", 'String'>
+    readonly created_at: FieldRef<"RecommendationRequest", 'DateTime'>
+>>>>>>> origin/ayu
   }
     
 
@@ -15462,6 +15908,7 @@ export namespace Prisma {
    */
   export type RecommendationRequest$weightsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
+<<<<<<< HEAD
      * Select specific fields to fetch from the RecommendationReqWeight
      */
     select?: RecommendationReqWeightSelect<ExtArgs> | null
@@ -15479,6 +15926,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: RecommendationReqWeightScalarFieldEnum | RecommendationReqWeightScalarFieldEnum[]
+=======
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+    where?: RequestBobotWhereInput
+    orderBy?: RequestBobotOrderByWithRelationInput | RequestBobotOrderByWithRelationInput[]
+    cursor?: RequestBobotWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RequestBobotScalarFieldEnum | RequestBobotScalarFieldEnum[]
+>>>>>>> origin/ayu
   }
 
   /**
@@ -15525,6 +15991,7 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
    * Model RecommendationReqWeight
    */
 
@@ -15569,10 +16036,57 @@ export namespace Prisma {
     req_id: number
     kriteria_id: number
     bobot: number
+=======
+   * Model RequestBobot
+   */
+
+  export type AggregateRequestBobot = {
+    _count: RequestBobotCountAggregateOutputType | null
+    _avg: RequestBobotAvgAggregateOutputType | null
+    _sum: RequestBobotSumAggregateOutputType | null
+    _min: RequestBobotMinAggregateOutputType | null
+    _max: RequestBobotMaxAggregateOutputType | null
+  }
+
+  export type RequestBobotAvgAggregateOutputType = {
+    id_bobot: number | null
+    id_recomen: number | null
+    id_kriteria: number | null
+    bobot_req: number | null
+  }
+
+  export type RequestBobotSumAggregateOutputType = {
+    id_bobot: number | null
+    id_recomen: number | null
+    id_kriteria: number | null
+    bobot_req: number | null
+  }
+
+  export type RequestBobotMinAggregateOutputType = {
+    id_bobot: number | null
+    id_recomen: number | null
+    id_kriteria: number | null
+    bobot_req: number | null
+  }
+
+  export type RequestBobotMaxAggregateOutputType = {
+    id_bobot: number | null
+    id_recomen: number | null
+    id_kriteria: number | null
+    bobot_req: number | null
+  }
+
+  export type RequestBobotCountAggregateOutputType = {
+    id_bobot: number
+    id_recomen: number
+    id_kriteria: number
+    bobot_req: number
+>>>>>>> origin/ayu
     _all: number
   }
 
 
+<<<<<<< HEAD
   export type RecommendationReqWeightAvgAggregateInputType = {
     id?: true
     req_id?: true
@@ -15620,53 +16134,133 @@ export namespace Prisma {
      * Determine the order of RecommendationReqWeights to fetch.
      */
     orderBy?: RecommendationReqWeightOrderByWithRelationInput | RecommendationReqWeightOrderByWithRelationInput[]
+=======
+  export type RequestBobotAvgAggregateInputType = {
+    id_bobot?: true
+    id_recomen?: true
+    id_kriteria?: true
+    bobot_req?: true
+  }
+
+  export type RequestBobotSumAggregateInputType = {
+    id_bobot?: true
+    id_recomen?: true
+    id_kriteria?: true
+    bobot_req?: true
+  }
+
+  export type RequestBobotMinAggregateInputType = {
+    id_bobot?: true
+    id_recomen?: true
+    id_kriteria?: true
+    bobot_req?: true
+  }
+
+  export type RequestBobotMaxAggregateInputType = {
+    id_bobot?: true
+    id_recomen?: true
+    id_kriteria?: true
+    bobot_req?: true
+  }
+
+  export type RequestBobotCountAggregateInputType = {
+    id_bobot?: true
+    id_recomen?: true
+    id_kriteria?: true
+    bobot_req?: true
+    _all?: true
+  }
+
+  export type RequestBobotAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RequestBobot to aggregate.
+     */
+    where?: RequestBobotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RequestBobots to fetch.
+     */
+    orderBy?: RequestBobotOrderByWithRelationInput | RequestBobotOrderByWithRelationInput[]
+>>>>>>> origin/ayu
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
+<<<<<<< HEAD
     cursor?: RecommendationReqWeightWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` RecommendationReqWeights from the position of the cursor.
+=======
+    cursor?: RequestBobotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RequestBobots from the position of the cursor.
+>>>>>>> origin/ayu
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` RecommendationReqWeights.
+=======
+     * Skip the first `n` RequestBobots.
+>>>>>>> origin/ayu
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+<<<<<<< HEAD
      * Count returned RecommendationReqWeights
     **/
     _count?: true | RecommendationReqWeightCountAggregateInputType
+=======
+     * Count returned RequestBobots
+    **/
+    _count?: true | RequestBobotCountAggregateInputType
+>>>>>>> origin/ayu
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
+<<<<<<< HEAD
     _avg?: RecommendationReqWeightAvgAggregateInputType
+=======
+    _avg?: RequestBobotAvgAggregateInputType
+>>>>>>> origin/ayu
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
+<<<<<<< HEAD
     _sum?: RecommendationReqWeightSumAggregateInputType
+=======
+    _sum?: RequestBobotSumAggregateInputType
+>>>>>>> origin/ayu
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
+<<<<<<< HEAD
     _min?: RecommendationReqWeightMinAggregateInputType
+=======
+    _min?: RequestBobotMinAggregateInputType
+>>>>>>> origin/ayu
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
+<<<<<<< HEAD
     _max?: RecommendationReqWeightMaxAggregateInputType
   }
 
@@ -15676,11 +16270,23 @@ export namespace Prisma {
         ? number
         : GetScalarType<T[P], AggregateRecommendationReqWeight[P]>
       : GetScalarType<T[P], AggregateRecommendationReqWeight[P]>
+=======
+    _max?: RequestBobotMaxAggregateInputType
+  }
+
+  export type GetRequestBobotAggregateType<T extends RequestBobotAggregateArgs> = {
+        [P in keyof T & keyof AggregateRequestBobot]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRequestBobot[P]>
+      : GetScalarType<T[P], AggregateRequestBobot[P]>
+>>>>>>> origin/ayu
   }
 
 
 
 
+<<<<<<< HEAD
   export type RecommendationReqWeightGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: RecommendationReqWeightWhereInput
     orderBy?: RecommendationReqWeightOrderByWithAggregationInput | RecommendationReqWeightOrderByWithAggregationInput[]
@@ -15716,11 +16322,49 @@ export namespace Prisma {
               ? number
               : GetScalarType<T[P], RecommendationReqWeightGroupByOutputType[P]>
             : GetScalarType<T[P], RecommendationReqWeightGroupByOutputType[P]>
+=======
+  export type RequestBobotGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RequestBobotWhereInput
+    orderBy?: RequestBobotOrderByWithAggregationInput | RequestBobotOrderByWithAggregationInput[]
+    by: RequestBobotScalarFieldEnum[] | RequestBobotScalarFieldEnum
+    having?: RequestBobotScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: RequestBobotCountAggregateInputType | true
+    _avg?: RequestBobotAvgAggregateInputType
+    _sum?: RequestBobotSumAggregateInputType
+    _min?: RequestBobotMinAggregateInputType
+    _max?: RequestBobotMaxAggregateInputType
+  }
+
+  export type RequestBobotGroupByOutputType = {
+    id_bobot: number
+    id_recomen: number
+    id_kriteria: number
+    bobot_req: number
+    _count: RequestBobotCountAggregateOutputType | null
+    _avg: RequestBobotAvgAggregateOutputType | null
+    _sum: RequestBobotSumAggregateOutputType | null
+    _min: RequestBobotMinAggregateOutputType | null
+    _max: RequestBobotMaxAggregateOutputType | null
+  }
+
+  type GetRequestBobotGroupByPayload<T extends RequestBobotGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RequestBobotGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof RequestBobotGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], RequestBobotGroupByOutputType[P]>
+            : GetScalarType<T[P], RequestBobotGroupByOutputType[P]>
+>>>>>>> origin/ayu
         }
       >
     >
 
 
+<<<<<<< HEAD
   export type RecommendationReqWeightSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     req_id?: boolean
@@ -15741,17 +16385,45 @@ export namespace Prisma {
 
   export type RecommendationReqWeightOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "req_id" | "kriteria_id" | "bobot", ExtArgs["result"]["recommendationReqWeight"]>
   export type RecommendationReqWeightInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+=======
+  export type RequestBobotSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id_bobot?: boolean
+    id_recomen?: boolean
+    id_kriteria?: boolean
+    bobot_req?: boolean
+    request?: boolean | RecommendationRequestDefaultArgs<ExtArgs>
+    kriteria?: boolean | KriteriaDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["requestBobot"]>
+
+
+
+  export type RequestBobotSelectScalar = {
+    id_bobot?: boolean
+    id_recomen?: boolean
+    id_kriteria?: boolean
+    bobot_req?: boolean
+  }
+
+  export type RequestBobotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_bobot" | "id_recomen" | "id_kriteria" | "bobot_req", ExtArgs["result"]["requestBobot"]>
+  export type RequestBobotInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+>>>>>>> origin/ayu
     request?: boolean | RecommendationRequestDefaultArgs<ExtArgs>
     kriteria?: boolean | KriteriaDefaultArgs<ExtArgs>
   }
 
+<<<<<<< HEAD
   export type $RecommendationReqWeightPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "RecommendationReqWeight"
+=======
+  export type $RequestBobotPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RequestBobot"
+>>>>>>> origin/ayu
     objects: {
       request: Prisma.$RecommendationRequestPayload<ExtArgs>
       kriteria: Prisma.$KriteriaPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
+<<<<<<< HEAD
       id: number
       req_id: number
       kriteria_id: number
@@ -15775,11 +16447,37 @@ export namespace Prisma {
      * @example
      * // Get one RecommendationReqWeight
      * const recommendationReqWeight = await prisma.recommendationReqWeight.findUnique({
+=======
+      id_bobot: number
+      id_recomen: number
+      id_kriteria: number
+      bobot_req: number
+    }, ExtArgs["result"]["requestBobot"]>
+    composites: {}
+  }
+
+  type RequestBobotGetPayload<S extends boolean | null | undefined | RequestBobotDefaultArgs> = $Result.GetResult<Prisma.$RequestBobotPayload, S>
+
+  type RequestBobotCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RequestBobotFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RequestBobotCountAggregateInputType | true
+    }
+
+  export interface RequestBobotDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RequestBobot'], meta: { name: 'RequestBobot' } }
+    /**
+     * Find zero or one RequestBobot that matches the filter.
+     * @param {RequestBobotFindUniqueArgs} args - Arguments to find a RequestBobot
+     * @example
+     * // Get one RequestBobot
+     * const requestBobot = await prisma.requestBobot.findUnique({
+>>>>>>> origin/ayu
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+<<<<<<< HEAD
     findUnique<T extends RecommendationReqWeightFindUniqueArgs>(args: SelectSubset<T, RecommendationReqWeightFindUniqueArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -15789,11 +16487,23 @@ export namespace Prisma {
      * @example
      * // Get one RecommendationReqWeight
      * const recommendationReqWeight = await prisma.recommendationReqWeight.findUniqueOrThrow({
+=======
+    findUnique<T extends RequestBobotFindUniqueArgs>(args: SelectSubset<T, RequestBobotFindUniqueArgs<ExtArgs>>): Prisma__RequestBobotClient<$Result.GetResult<Prisma.$RequestBobotPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one RequestBobot that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RequestBobotFindUniqueOrThrowArgs} args - Arguments to find a RequestBobot
+     * @example
+     * // Get one RequestBobot
+     * const requestBobot = await prisma.requestBobot.findUniqueOrThrow({
+>>>>>>> origin/ayu
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+<<<<<<< HEAD
     findUniqueOrThrow<T extends RecommendationReqWeightFindUniqueOrThrowArgs>(args: SelectSubset<T, RecommendationReqWeightFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -15804,11 +16514,24 @@ export namespace Prisma {
      * @example
      * // Get one RecommendationReqWeight
      * const recommendationReqWeight = await prisma.recommendationReqWeight.findFirst({
+=======
+    findUniqueOrThrow<T extends RequestBobotFindUniqueOrThrowArgs>(args: SelectSubset<T, RequestBobotFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RequestBobotClient<$Result.GetResult<Prisma.$RequestBobotPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RequestBobot that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestBobotFindFirstArgs} args - Arguments to find a RequestBobot
+     * @example
+     * // Get one RequestBobot
+     * const requestBobot = await prisma.requestBobot.findFirst({
+>>>>>>> origin/ayu
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+<<<<<<< HEAD
     findFirst<T extends RecommendationReqWeightFindFirstArgs>(args?: SelectSubset<T, RecommendationReqWeightFindFirstArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -15820,11 +16543,25 @@ export namespace Prisma {
      * @example
      * // Get one RecommendationReqWeight
      * const recommendationReqWeight = await prisma.recommendationReqWeight.findFirstOrThrow({
+=======
+    findFirst<T extends RequestBobotFindFirstArgs>(args?: SelectSubset<T, RequestBobotFindFirstArgs<ExtArgs>>): Prisma__RequestBobotClient<$Result.GetResult<Prisma.$RequestBobotPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first RequestBobot that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestBobotFindFirstOrThrowArgs} args - Arguments to find a RequestBobot
+     * @example
+     * // Get one RequestBobot
+     * const requestBobot = await prisma.requestBobot.findFirstOrThrow({
+>>>>>>> origin/ayu
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
+<<<<<<< HEAD
     findFirstOrThrow<T extends RecommendationReqWeightFindFirstOrThrowArgs>(args?: SelectSubset<T, RecommendationReqWeightFindFirstOrThrowArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -15853,10 +16590,41 @@ export namespace Prisma {
      * const RecommendationReqWeight = await prisma.recommendationReqWeight.create({
      *   data: {
      *     // ... data to create a RecommendationReqWeight
+=======
+    findFirstOrThrow<T extends RequestBobotFindFirstOrThrowArgs>(args?: SelectSubset<T, RequestBobotFindFirstOrThrowArgs<ExtArgs>>): Prisma__RequestBobotClient<$Result.GetResult<Prisma.$RequestBobotPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more RequestBobots that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestBobotFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all RequestBobots
+     * const requestBobots = await prisma.requestBobot.findMany()
+     * 
+     * // Get first 10 RequestBobots
+     * const requestBobots = await prisma.requestBobot.findMany({ take: 10 })
+     * 
+     * // Only select the `id_bobot`
+     * const requestBobotWithId_bobotOnly = await prisma.requestBobot.findMany({ select: { id_bobot: true } })
+     * 
+     */
+    findMany<T extends RequestBobotFindManyArgs>(args?: SelectSubset<T, RequestBobotFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RequestBobotPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a RequestBobot.
+     * @param {RequestBobotCreateArgs} args - Arguments to create a RequestBobot.
+     * @example
+     * // Create one RequestBobot
+     * const RequestBobot = await prisma.requestBobot.create({
+     *   data: {
+     *     // ... data to create a RequestBobot
+>>>>>>> origin/ayu
      *   }
      * })
      * 
      */
+<<<<<<< HEAD
     create<T extends RecommendationReqWeightCreateArgs>(args: SelectSubset<T, RecommendationReqWeightCreateArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -15865,12 +16633,23 @@ export namespace Prisma {
      * @example
      * // Create many RecommendationReqWeights
      * const recommendationReqWeight = await prisma.recommendationReqWeight.createMany({
+=======
+    create<T extends RequestBobotCreateArgs>(args: SelectSubset<T, RequestBobotCreateArgs<ExtArgs>>): Prisma__RequestBobotClient<$Result.GetResult<Prisma.$RequestBobotPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many RequestBobots.
+     * @param {RequestBobotCreateManyArgs} args - Arguments to create many RequestBobots.
+     * @example
+     * // Create many RequestBobots
+     * const requestBobot = await prisma.requestBobot.createMany({
+>>>>>>> origin/ayu
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
+<<<<<<< HEAD
     createMany<T extends RecommendationReqWeightCreateManyArgs>(args?: SelectSubset<T, RecommendationReqWeightCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -15881,10 +16660,23 @@ export namespace Prisma {
      * const RecommendationReqWeight = await prisma.recommendationReqWeight.delete({
      *   where: {
      *     // ... filter to delete one RecommendationReqWeight
+=======
+    createMany<T extends RequestBobotCreateManyArgs>(args?: SelectSubset<T, RequestBobotCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a RequestBobot.
+     * @param {RequestBobotDeleteArgs} args - Arguments to delete one RequestBobot.
+     * @example
+     * // Delete one RequestBobot
+     * const RequestBobot = await prisma.requestBobot.delete({
+     *   where: {
+     *     // ... filter to delete one RequestBobot
+>>>>>>> origin/ayu
      *   }
      * })
      * 
      */
+<<<<<<< HEAD
     delete<T extends RecommendationReqWeightDeleteArgs>(args: SelectSubset<T, RecommendationReqWeightDeleteArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -15893,6 +16685,16 @@ export namespace Prisma {
      * @example
      * // Update one RecommendationReqWeight
      * const recommendationReqWeight = await prisma.recommendationReqWeight.update({
+=======
+    delete<T extends RequestBobotDeleteArgs>(args: SelectSubset<T, RequestBobotDeleteArgs<ExtArgs>>): Prisma__RequestBobotClient<$Result.GetResult<Prisma.$RequestBobotPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one RequestBobot.
+     * @param {RequestBobotUpdateArgs} args - Arguments to update one RequestBobot.
+     * @example
+     * // Update one RequestBobot
+     * const requestBobot = await prisma.requestBobot.update({
+>>>>>>> origin/ayu
      *   where: {
      *     // ... provide filter here
      *   },
@@ -15902,6 +16704,7 @@ export namespace Prisma {
      * })
      * 
      */
+<<<<<<< HEAD
     update<T extends RecommendationReqWeightUpdateArgs>(args: SelectSubset<T, RecommendationReqWeightUpdateArgs<ExtArgs>>): Prisma__RecommendationReqWeightClient<$Result.GetResult<Prisma.$RecommendationReqWeightPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
@@ -15910,12 +16713,23 @@ export namespace Prisma {
      * @example
      * // Delete a few RecommendationReqWeights
      * const { count } = await prisma.recommendationReqWeight.deleteMany({
+=======
+    update<T extends RequestBobotUpdateArgs>(args: SelectSubset<T, RequestBobotUpdateArgs<ExtArgs>>): Prisma__RequestBobotClient<$Result.GetResult<Prisma.$RequestBobotPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more RequestBobots.
+     * @param {RequestBobotDeleteManyArgs} args - Arguments to filter RequestBobots to delete.
+     * @example
+     * // Delete a few RequestBobots
+     * const { count } = await prisma.requestBobot.deleteMany({
+>>>>>>> origin/ayu
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
+<<<<<<< HEAD
     deleteMany<T extends RecommendationReqWeightDeleteManyArgs>(args?: SelectSubset<T, RecommendationReqWeightDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -15926,6 +16740,18 @@ export namespace Prisma {
      * @example
      * // Update many RecommendationReqWeights
      * const recommendationReqWeight = await prisma.recommendationReqWeight.updateMany({
+=======
+    deleteMany<T extends RequestBobotDeleteManyArgs>(args?: SelectSubset<T, RequestBobotDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more RequestBobots.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestBobotUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many RequestBobots
+     * const requestBobot = await prisma.requestBobot.updateMany({
+>>>>>>> origin/ayu
      *   where: {
      *     // ... provide filter here
      *   },
@@ -15935,6 +16761,7 @@ export namespace Prisma {
      * })
      * 
      */
+<<<<<<< HEAD
     updateMany<T extends RecommendationReqWeightUpdateManyArgs>(args: SelectSubset<T, RecommendationReqWeightUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
@@ -15945,11 +16772,24 @@ export namespace Prisma {
      * const recommendationReqWeight = await prisma.recommendationReqWeight.upsert({
      *   create: {
      *     // ... data to create a RecommendationReqWeight
+=======
+    updateMany<T extends RequestBobotUpdateManyArgs>(args: SelectSubset<T, RequestBobotUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one RequestBobot.
+     * @param {RequestBobotUpsertArgs} args - Arguments to update or create a RequestBobot.
+     * @example
+     * // Update or create a RequestBobot
+     * const requestBobot = await prisma.requestBobot.upsert({
+     *   create: {
+     *     // ... data to create a RequestBobot
+>>>>>>> origin/ayu
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
+<<<<<<< HEAD
      *     // ... the filter for the RecommendationReqWeight we want to update
      *   }
      * })
@@ -15972,19 +16812,54 @@ export namespace Prisma {
     **/
     count<T extends RecommendationReqWeightCountArgs>(
       args?: Subset<T, RecommendationReqWeightCountArgs>,
+=======
+     *     // ... the filter for the RequestBobot we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RequestBobotUpsertArgs>(args: SelectSubset<T, RequestBobotUpsertArgs<ExtArgs>>): Prisma__RequestBobotClient<$Result.GetResult<Prisma.$RequestBobotPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of RequestBobots.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestBobotCountArgs} args - Arguments to filter RequestBobots to count.
+     * @example
+     * // Count the number of RequestBobots
+     * const count = await prisma.requestBobot.count({
+     *   where: {
+     *     // ... the filter for the RequestBobots we want to count
+     *   }
+     * })
+    **/
+    count<T extends RequestBobotCountArgs>(
+      args?: Subset<T, RequestBobotCountArgs>,
+>>>>>>> origin/ayu
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
+<<<<<<< HEAD
           : GetScalarType<T['select'], RecommendationReqWeightCountAggregateOutputType>
+=======
+          : GetScalarType<T['select'], RequestBobotCountAggregateOutputType>
+>>>>>>> origin/ayu
         : number
     >
 
     /**
+<<<<<<< HEAD
      * Allows you to perform aggregations operations on a RecommendationReqWeight.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {RecommendationReqWeightAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+=======
+     * Allows you to perform aggregations operations on a RequestBobot.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestBobotAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+>>>>>>> origin/ayu
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -16004,6 +16879,7 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
+<<<<<<< HEAD
     aggregate<T extends RecommendationReqWeightAggregateArgs>(args: Subset<T, RecommendationReqWeightAggregateArgs>): Prisma.PrismaPromise<GetRecommendationReqWeightAggregateType<T>>
 
     /**
@@ -16011,6 +16887,15 @@ export namespace Prisma {
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
      * @param {RecommendationReqWeightGroupByArgs} args - Group by arguments.
+=======
+    aggregate<T extends RequestBobotAggregateArgs>(args: Subset<T, RequestBobotAggregateArgs>): Prisma.PrismaPromise<GetRequestBobotAggregateType<T>>
+
+    /**
+     * Group by RequestBobot.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RequestBobotGroupByArgs} args - Group by arguments.
+>>>>>>> origin/ayu
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -16025,14 +16910,23 @@ export namespace Prisma {
      * 
     **/
     groupBy<
+<<<<<<< HEAD
       T extends RecommendationReqWeightGroupByArgs,
+=======
+      T extends RequestBobotGroupByArgs,
+>>>>>>> origin/ayu
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
+<<<<<<< HEAD
         ? { orderBy: RecommendationReqWeightGroupByArgs['orderBy'] }
         : { orderBy?: RecommendationReqWeightGroupByArgs['orderBy'] },
+=======
+        ? { orderBy: RequestBobotGroupByArgs['orderBy'] }
+        : { orderBy?: RequestBobotGroupByArgs['orderBy'] },
+>>>>>>> origin/ayu
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -16081,6 +16975,7 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
+<<<<<<< HEAD
     >(args: SubsetIntersection<T, RecommendationReqWeightGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRecommendationReqWeightGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
    * Fields of the RecommendationReqWeight model
@@ -16090,11 +16985,26 @@ export namespace Prisma {
 
   /**
    * The delegate class that acts as a "Promise-like" for RecommendationReqWeight.
+=======
+    >(args: SubsetIntersection<T, RequestBobotGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRequestBobotGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the RequestBobot model
+   */
+  readonly fields: RequestBobotFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for RequestBobot.
+>>>>>>> origin/ayu
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
+<<<<<<< HEAD
   export interface Prisma__RecommendationReqWeightClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+=======
+  export interface Prisma__RequestBobotClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+>>>>>>> origin/ayu
     readonly [Symbol.toStringTag]: "PrismaPromise"
     request<T extends RecommendationRequestDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RecommendationRequestDefaultArgs<ExtArgs>>): Prisma__RecommendationRequestClient<$Result.GetResult<Prisma.$RecommendationRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     kriteria<T extends KriteriaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, KriteriaDefaultArgs<ExtArgs>>): Prisma__KriteriaClient<$Result.GetResult<Prisma.$KriteriaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -16124,6 +17034,7 @@ export namespace Prisma {
 
 
   /**
+<<<<<<< HEAD
    * Fields of the RecommendationReqWeight model
    */
   interface RecommendationReqWeightFieldRefs {
@@ -16131,11 +17042,21 @@ export namespace Prisma {
     readonly req_id: FieldRef<"RecommendationReqWeight", 'Int'>
     readonly kriteria_id: FieldRef<"RecommendationReqWeight", 'Int'>
     readonly bobot: FieldRef<"RecommendationReqWeight", 'Float'>
+=======
+   * Fields of the RequestBobot model
+   */
+  interface RequestBobotFieldRefs {
+    readonly id_bobot: FieldRef<"RequestBobot", 'Int'>
+    readonly id_recomen: FieldRef<"RequestBobot", 'Int'>
+    readonly id_kriteria: FieldRef<"RequestBobot", 'Int'>
+    readonly bobot_req: FieldRef<"RequestBobot", 'Float'>
+>>>>>>> origin/ayu
   }
     
 
   // Custom InputTypes
   /**
+<<<<<<< HEAD
    * RecommendationReqWeight findUnique
    */
   export type RecommendationReqWeightFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -16215,17 +17136,103 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` RecommendationReqWeights from the position of the cursor.
+=======
+   * RequestBobot findUnique
+   */
+  export type RequestBobotFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+    /**
+     * Filter, which RequestBobot to fetch.
+     */
+    where: RequestBobotWhereUniqueInput
+  }
+
+  /**
+   * RequestBobot findUniqueOrThrow
+   */
+  export type RequestBobotFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+    /**
+     * Filter, which RequestBobot to fetch.
+     */
+    where: RequestBobotWhereUniqueInput
+  }
+
+  /**
+   * RequestBobot findFirst
+   */
+  export type RequestBobotFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+    /**
+     * Filter, which RequestBobot to fetch.
+     */
+    where?: RequestBobotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RequestBobots to fetch.
+     */
+    orderBy?: RequestBobotOrderByWithRelationInput | RequestBobotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RequestBobots.
+     */
+    cursor?: RequestBobotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RequestBobots from the position of the cursor.
+>>>>>>> origin/ayu
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` RecommendationReqWeights.
+=======
+     * Skip the first `n` RequestBobots.
+>>>>>>> origin/ayu
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
+<<<<<<< HEAD
      * Filter by unique combinations of RecommendationReqWeights.
      */
     distinct?: RecommendationReqWeightScalarFieldEnum | RecommendationReqWeightScalarFieldEnum[]
@@ -16267,17 +17274,65 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` RecommendationReqWeights from the position of the cursor.
+=======
+     * Filter by unique combinations of RequestBobots.
+     */
+    distinct?: RequestBobotScalarFieldEnum | RequestBobotScalarFieldEnum[]
+  }
+
+  /**
+   * RequestBobot findFirstOrThrow
+   */
+  export type RequestBobotFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+    /**
+     * Filter, which RequestBobot to fetch.
+     */
+    where?: RequestBobotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RequestBobots to fetch.
+     */
+    orderBy?: RequestBobotOrderByWithRelationInput | RequestBobotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for RequestBobots.
+     */
+    cursor?: RequestBobotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RequestBobots from the position of the cursor.
+>>>>>>> origin/ayu
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` RecommendationReqWeights.
+=======
+     * Skip the first `n` RequestBobots.
+>>>>>>> origin/ayu
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
+<<<<<<< HEAD
      * Filter by unique combinations of RecommendationReqWeights.
      */
     distinct?: RecommendationReqWeightScalarFieldEnum | RecommendationReqWeightScalarFieldEnum[]
@@ -16319,17 +17374,65 @@ export namespace Prisma {
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
      * Take `±n` RecommendationReqWeights from the position of the cursor.
+=======
+     * Filter by unique combinations of RequestBobots.
+     */
+    distinct?: RequestBobotScalarFieldEnum | RequestBobotScalarFieldEnum[]
+  }
+
+  /**
+   * RequestBobot findMany
+   */
+  export type RequestBobotFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+    /**
+     * Filter, which RequestBobots to fetch.
+     */
+    where?: RequestBobotWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of RequestBobots to fetch.
+     */
+    orderBy?: RequestBobotOrderByWithRelationInput | RequestBobotOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing RequestBobots.
+     */
+    cursor?: RequestBobotWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` RequestBobots from the position of the cursor.
+>>>>>>> origin/ayu
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
+<<<<<<< HEAD
      * Skip the first `n` RecommendationReqWeights.
+=======
+     * Skip the first `n` RequestBobots.
+>>>>>>> origin/ayu
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
+<<<<<<< HEAD
      * Filter by unique combinations of RecommendationReqWeights.
      */
     distinct?: RecommendationReqWeightScalarFieldEnum | RecommendationReqWeightScalarFieldEnum[]
@@ -16365,10 +17468,48 @@ export namespace Prisma {
      * The data used to create many RecommendationReqWeights.
      */
     data: RecommendationReqWeightCreateManyInput | RecommendationReqWeightCreateManyInput[]
+=======
+     * Filter by unique combinations of RequestBobots.
+     */
+    distinct?: RequestBobotScalarFieldEnum | RequestBobotScalarFieldEnum[]
+  }
+
+  /**
+   * RequestBobot create
+   */
+  export type RequestBobotCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+    /**
+     * The data needed to create a RequestBobot.
+     */
+    data: XOR<RequestBobotCreateInput, RequestBobotUncheckedCreateInput>
+  }
+
+  /**
+   * RequestBobot createMany
+   */
+  export type RequestBobotCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many RequestBobots.
+     */
+    data: RequestBobotCreateManyInput | RequestBobotCreateManyInput[]
+>>>>>>> origin/ayu
     skipDuplicates?: boolean
   }
 
   /**
+<<<<<<< HEAD
    * RecommendationReqWeight update
    */
   export type RecommendationReqWeightUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -16408,11 +17549,53 @@ export namespace Prisma {
     where?: RecommendationReqWeightWhereInput
     /**
      * Limit how many RecommendationReqWeights to update.
+=======
+   * RequestBobot update
+   */
+  export type RequestBobotUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+    /**
+     * The data needed to update a RequestBobot.
+     */
+    data: XOR<RequestBobotUpdateInput, RequestBobotUncheckedUpdateInput>
+    /**
+     * Choose, which RequestBobot to update.
+     */
+    where: RequestBobotWhereUniqueInput
+  }
+
+  /**
+   * RequestBobot updateMany
+   */
+  export type RequestBobotUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update RequestBobots.
+     */
+    data: XOR<RequestBobotUpdateManyMutationInput, RequestBobotUncheckedUpdateManyInput>
+    /**
+     * Filter which RequestBobots to update
+     */
+    where?: RequestBobotWhereInput
+    /**
+     * Limit how many RequestBobots to update.
+>>>>>>> origin/ayu
      */
     limit?: number
   }
 
   /**
+<<<<<<< HEAD
    * RecommendationReqWeight upsert
    */
   export type RecommendationReqWeightUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -16474,11 +17657,75 @@ export namespace Prisma {
     where?: RecommendationReqWeightWhereInput
     /**
      * Limit how many RecommendationReqWeights to delete.
+=======
+   * RequestBobot upsert
+   */
+  export type RequestBobotUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+    /**
+     * The filter to search for the RequestBobot to update in case it exists.
+     */
+    where: RequestBobotWhereUniqueInput
+    /**
+     * In case the RequestBobot found by the `where` argument doesn't exist, create a new RequestBobot with this data.
+     */
+    create: XOR<RequestBobotCreateInput, RequestBobotUncheckedCreateInput>
+    /**
+     * In case the RequestBobot was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<RequestBobotUpdateInput, RequestBobotUncheckedUpdateInput>
+  }
+
+  /**
+   * RequestBobot delete
+   */
+  export type RequestBobotDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+    /**
+     * Filter which RequestBobot to delete.
+     */
+    where: RequestBobotWhereUniqueInput
+  }
+
+  /**
+   * RequestBobot deleteMany
+   */
+  export type RequestBobotDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which RequestBobots to delete
+     */
+    where?: RequestBobotWhereInput
+    /**
+     * Limit how many RequestBobots to delete.
+>>>>>>> origin/ayu
      */
     limit?: number
   }
 
   /**
+<<<<<<< HEAD
    * RecommendationReqWeight without action
    */
   export type RecommendationReqWeightDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -16494,6 +17741,23 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: RecommendationReqWeightInclude<ExtArgs> | null
+=======
+   * RequestBobot without action
+   */
+  export type RequestBobotDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the RequestBobot
+     */
+    select?: RequestBobotSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the RequestBobot
+     */
+    omit?: RequestBobotOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RequestBobotInclude<ExtArgs> | null
+>>>>>>> origin/ayu
   }
 
 
@@ -16510,6 +17774,7 @@ export namespace Prisma {
   }
 
   export type RecommendationResultAvgAggregateOutputType = {
+<<<<<<< HEAD
     id: number | null
     req_id: number | null
     user_id: number | null
@@ -16547,11 +17812,51 @@ export namespace Prisma {
     user_id: number
     score: number
     pos: number
+=======
+    id_hasil: number | null
+    id_recomen: number | null
+    user_id: number | null
+    score: number | null
+    ranking: number | null
+  }
+
+  export type RecommendationResultSumAggregateOutputType = {
+    id_hasil: number | null
+    id_recomen: number | null
+    user_id: number | null
+    score: number | null
+    ranking: number | null
+  }
+
+  export type RecommendationResultMinAggregateOutputType = {
+    id_hasil: number | null
+    id_recomen: number | null
+    user_id: number | null
+    score: number | null
+    ranking: number | null
+  }
+
+  export type RecommendationResultMaxAggregateOutputType = {
+    id_hasil: number | null
+    id_recomen: number | null
+    user_id: number | null
+    score: number | null
+    ranking: number | null
+  }
+
+  export type RecommendationResultCountAggregateOutputType = {
+    id_hasil: number
+    id_recomen: number
+    user_id: number
+    score: number
+    ranking: number
+>>>>>>> origin/ayu
     _all: number
   }
 
 
   export type RecommendationResultAvgAggregateInputType = {
+<<<<<<< HEAD
     id?: true
     req_id?: true
     user_id?: true
@@ -16589,6 +17894,45 @@ export namespace Prisma {
     user_id?: true
     score?: true
     pos?: true
+=======
+    id_hasil?: true
+    id_recomen?: true
+    user_id?: true
+    score?: true
+    ranking?: true
+  }
+
+  export type RecommendationResultSumAggregateInputType = {
+    id_hasil?: true
+    id_recomen?: true
+    user_id?: true
+    score?: true
+    ranking?: true
+  }
+
+  export type RecommendationResultMinAggregateInputType = {
+    id_hasil?: true
+    id_recomen?: true
+    user_id?: true
+    score?: true
+    ranking?: true
+  }
+
+  export type RecommendationResultMaxAggregateInputType = {
+    id_hasil?: true
+    id_recomen?: true
+    user_id?: true
+    score?: true
+    ranking?: true
+  }
+
+  export type RecommendationResultCountAggregateInputType = {
+    id_hasil?: true
+    id_recomen?: true
+    user_id?: true
+    score?: true
+    ranking?: true
+>>>>>>> origin/ayu
     _all?: true
   }
 
@@ -16679,11 +18023,19 @@ export namespace Prisma {
   }
 
   export type RecommendationResultGroupByOutputType = {
+<<<<<<< HEAD
     id: number
     req_id: number
     user_id: number
     score: number
     pos: number
+=======
+    id_hasil: number
+    id_recomen: number
+    user_id: number
+    score: number
+    ranking: number
+>>>>>>> origin/ayu
     _count: RecommendationResultCountAggregateOutputType | null
     _avg: RecommendationResultAvgAggregateOutputType | null
     _sum: RecommendationResultSumAggregateOutputType | null
@@ -16706,11 +18058,19 @@ export namespace Prisma {
 
 
   export type RecommendationResultSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+<<<<<<< HEAD
     id?: boolean
     req_id?: boolean
     user_id?: boolean
     score?: boolean
     pos?: boolean
+=======
+    id_hasil?: boolean
+    id_recomen?: boolean
+    user_id?: boolean
+    score?: boolean
+    ranking?: boolean
+>>>>>>> origin/ayu
     request?: boolean | RecommendationRequestDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["recommendationResult"]>
@@ -16718,6 +18078,7 @@ export namespace Prisma {
 
 
   export type RecommendationResultSelectScalar = {
+<<<<<<< HEAD
     id?: boolean
     req_id?: boolean
     user_id?: boolean
@@ -16726,6 +18087,16 @@ export namespace Prisma {
   }
 
   export type RecommendationResultOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "req_id" | "user_id" | "score" | "pos", ExtArgs["result"]["recommendationResult"]>
+=======
+    id_hasil?: boolean
+    id_recomen?: boolean
+    user_id?: boolean
+    score?: boolean
+    ranking?: boolean
+  }
+
+  export type RecommendationResultOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_hasil" | "id_recomen" | "user_id" | "score" | "ranking", ExtArgs["result"]["recommendationResult"]>
+>>>>>>> origin/ayu
   export type RecommendationResultInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     request?: boolean | RecommendationRequestDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -16738,11 +18109,19 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
+<<<<<<< HEAD
       id: number
       req_id: number
       user_id: number
       score: number
       pos: number
+=======
+      id_hasil: number
+      id_recomen: number
+      user_id: number
+      score: number
+      ranking: number
+>>>>>>> origin/ayu
     }, ExtArgs["result"]["recommendationResult"]>
     composites: {}
   }
@@ -16826,8 +18205,13 @@ export namespace Prisma {
      * // Get first 10 RecommendationResults
      * const recommendationResults = await prisma.recommendationResult.findMany({ take: 10 })
      * 
+<<<<<<< HEAD
      * // Only select the `id`
      * const recommendationResultWithIdOnly = await prisma.recommendationResult.findMany({ select: { id: true } })
+=======
+     * // Only select the `id_hasil`
+     * const recommendationResultWithId_hasilOnly = await prisma.recommendationResult.findMany({ select: { id_hasil: true } })
+>>>>>>> origin/ayu
      * 
      */
     findMany<T extends RecommendationResultFindManyArgs>(args?: SelectSubset<T, RecommendationResultFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RecommendationResultPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -17114,11 +18498,19 @@ export namespace Prisma {
    * Fields of the RecommendationResult model
    */
   interface RecommendationResultFieldRefs {
+<<<<<<< HEAD
     readonly id: FieldRef<"RecommendationResult", 'Int'>
     readonly req_id: FieldRef<"RecommendationResult", 'Int'>
     readonly user_id: FieldRef<"RecommendationResult", 'Int'>
     readonly score: FieldRef<"RecommendationResult", 'Float'>
     readonly pos: FieldRef<"RecommendationResult", 'Int'>
+=======
+    readonly id_hasil: FieldRef<"RecommendationResult", 'Int'>
+    readonly id_recomen: FieldRef<"RecommendationResult", 'Int'>
+    readonly user_id: FieldRef<"RecommendationResult", 'Int'>
+    readonly score: FieldRef<"RecommendationResult", 'Float'>
+    readonly ranking: FieldRef<"RecommendationResult", 'Int'>
+>>>>>>> origin/ayu
   }
     
 
@@ -17625,17 +19017,27 @@ export namespace Prisma {
 
 
   export const RecommendationRequestScalarFieldEnum: {
+<<<<<<< HEAD
     id_request: 'id_request',
     user_id: 'user_id',
     category_id: 'category_id',
     method: 'method',
     created_at: 'created_at',
     updated_at: 'updated_at'
+=======
+    id_recomen: 'id_recomen',
+    user_id: 'user_id',
+    category_id: 'category_id',
+    periode_id: 'periode_id',
+    method: 'method',
+    created_at: 'created_at'
+>>>>>>> origin/ayu
   };
 
   export type RecommendationRequestScalarFieldEnum = (typeof RecommendationRequestScalarFieldEnum)[keyof typeof RecommendationRequestScalarFieldEnum]
 
 
+<<<<<<< HEAD
   export const RecommendationReqWeightScalarFieldEnum: {
     id: 'id',
     req_id: 'req_id',
@@ -17652,6 +19054,24 @@ export namespace Prisma {
     user_id: 'user_id',
     score: 'score',
     pos: 'pos'
+=======
+  export const RequestBobotScalarFieldEnum: {
+    id_bobot: 'id_bobot',
+    id_recomen: 'id_recomen',
+    id_kriteria: 'id_kriteria',
+    bobot_req: 'bobot_req'
+  };
+
+  export type RequestBobotScalarFieldEnum = (typeof RequestBobotScalarFieldEnum)[keyof typeof RequestBobotScalarFieldEnum]
+
+
+  export const RecommendationResultScalarFieldEnum: {
+    id_hasil: 'id_hasil',
+    id_recomen: 'id_recomen',
+    user_id: 'user_id',
+    score: 'score',
+    ranking: 'ranking'
+>>>>>>> origin/ayu
   };
 
   export type RecommendationResultScalarFieldEnum = (typeof RecommendationResultScalarFieldEnum)[keyof typeof RecommendationResultScalarFieldEnum]
@@ -17686,13 +19106,6 @@ export namespace Prisma {
   };
 
   export type CategoryOrderByRelevanceFieldEnum = (typeof CategoryOrderByRelevanceFieldEnum)[keyof typeof CategoryOrderByRelevanceFieldEnum]
-
-
-  export const PeriodeOrderByRelevanceFieldEnum: {
-    year: 'year'
-  };
-
-  export type PeriodeOrderByRelevanceFieldEnum = (typeof PeriodeOrderByRelevanceFieldEnum)[keyof typeof PeriodeOrderByRelevanceFieldEnum]
 
 
   export const LevelOrderByRelevanceFieldEnum: {
@@ -17824,12 +19237,12 @@ export namespace Prisma {
 
   export type RoleWhereUniqueInput = Prisma.AtLeast<{
     role_id?: number
+    role_text?: string
     AND?: RoleWhereInput | RoleWhereInput[]
     OR?: RoleWhereInput[]
     NOT?: RoleWhereInput | RoleWhereInput[]
-    role_text?: StringFilter<"Role"> | string
     users?: UserListRelationFilter
-  }, "role_id">
+  }, "role_id" | "role_text">
 
   export type RoleOrderByWithAggregationInput = {
     role_id?: SortOrder
@@ -17860,10 +19273,14 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     join_date?: DateTimeFilter<"User"> | Date | string
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
-    enrollments?: EnrollmentListRelationFilter
-    reviews?: ReviewListRelationFilter
-    exams?: ExamListRelationFilter
     classes?: ClassListRelationFilter
+    enrollments?: EnrollmentListRelationFilter
+    exams?: ExamListRelationFilter
+<<<<<<< HEAD
+    classes?: ClassListRelationFilter
+=======
+    reviews?: ReviewListRelationFilter
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestListRelationFilter
     recommendationResults?: RecommendationResultListRelationFilter
   }
@@ -17876,10 +19293,14 @@ export namespace Prisma {
     password?: SortOrder
     join_date?: SortOrder
     role?: RoleOrderByWithRelationInput
-    enrollments?: EnrollmentOrderByRelationAggregateInput
-    reviews?: ReviewOrderByRelationAggregateInput
-    exams?: ExamOrderByRelationAggregateInput
     classes?: ClassOrderByRelationAggregateInput
+    enrollments?: EnrollmentOrderByRelationAggregateInput
+    exams?: ExamOrderByRelationAggregateInput
+<<<<<<< HEAD
+    classes?: ClassOrderByRelationAggregateInput
+=======
+    reviews?: ReviewOrderByRelationAggregateInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestOrderByRelationAggregateInput
     recommendationResults?: RecommendationResultOrderByRelationAggregateInput
     _relevance?: UserOrderByRelevanceInput
@@ -17896,10 +19317,14 @@ export namespace Prisma {
     password?: StringFilter<"User"> | string
     join_date?: DateTimeFilter<"User"> | Date | string
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
-    enrollments?: EnrollmentListRelationFilter
-    reviews?: ReviewListRelationFilter
-    exams?: ExamListRelationFilter
     classes?: ClassListRelationFilter
+    enrollments?: EnrollmentListRelationFilter
+    exams?: ExamListRelationFilter
+<<<<<<< HEAD
+    classes?: ClassListRelationFilter
+=======
+    reviews?: ReviewListRelationFilter
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestListRelationFilter
     recommendationResults?: RecommendationResultListRelationFilter
   }, "user_id" | "email">
@@ -17981,15 +19406,16 @@ export namespace Prisma {
     OR?: PeriodeWhereInput[]
     NOT?: PeriodeWhereInput | PeriodeWhereInput[]
     periode_id?: IntFilter<"Periode"> | number
-    year?: StringFilter<"Periode"> | string
+    year?: IntFilter<"Periode"> | number
     classes?: ClassListRelationFilter
+    recommendationRequests?: RecommendationRequestListRelationFilter
   }
 
   export type PeriodeOrderByWithRelationInput = {
     periode_id?: SortOrder
     year?: SortOrder
     classes?: ClassOrderByRelationAggregateInput
-    _relevance?: PeriodeOrderByRelevanceInput
+    recommendationRequests?: RecommendationRequestOrderByRelationAggregateInput
   }
 
   export type PeriodeWhereUniqueInput = Prisma.AtLeast<{
@@ -17997,8 +19423,9 @@ export namespace Prisma {
     AND?: PeriodeWhereInput | PeriodeWhereInput[]
     OR?: PeriodeWhereInput[]
     NOT?: PeriodeWhereInput | PeriodeWhereInput[]
-    year?: StringFilter<"Periode"> | string
+    year?: IntFilter<"Periode"> | number
     classes?: ClassListRelationFilter
+    recommendationRequests?: RecommendationRequestListRelationFilter
   }, "periode_id">
 
   export type PeriodeOrderByWithAggregationInput = {
@@ -18016,7 +19443,7 @@ export namespace Prisma {
     OR?: PeriodeScalarWhereWithAggregatesInput[]
     NOT?: PeriodeScalarWhereWithAggregatesInput | PeriodeScalarWhereWithAggregatesInput[]
     periode_id?: IntWithAggregatesFilter<"Periode"> | number
-    year?: StringWithAggregatesFilter<"Periode"> | string
+    year?: IntWithAggregatesFilter<"Periode"> | number
   }
 
   export type LevelWhereInput = {
@@ -18417,7 +19844,11 @@ export namespace Prisma {
     tipe?: StringFilter<"Kriteria"> | string
     bobot?: FloatFilter<"Kriteria"> | number
     values?: KriteriaValueListRelationFilter
+<<<<<<< HEAD
     weights?: RecommendationReqWeightListRelationFilter
+=======
+    weights?: RequestBobotListRelationFilter
+>>>>>>> origin/ayu
   }
 
   export type KriteriaOrderByWithRelationInput = {
@@ -18427,7 +19858,11 @@ export namespace Prisma {
     tipe?: SortOrder
     bobot?: SortOrder
     values?: KriteriaValueOrderByRelationAggregateInput
+<<<<<<< HEAD
     weights?: RecommendationReqWeightOrderByRelationAggregateInput
+=======
+    weights?: RequestBobotOrderByRelationAggregateInput
+>>>>>>> origin/ayu
     _relevance?: KriteriaOrderByRelevanceInput
   }
 
@@ -18441,7 +19876,11 @@ export namespace Prisma {
     tipe?: StringFilter<"Kriteria"> | string
     bobot?: FloatFilter<"Kriteria"> | number
     values?: KriteriaValueListRelationFilter
+<<<<<<< HEAD
     weights?: RecommendationReqWeightListRelationFilter
+=======
+    weights?: RequestBobotListRelationFilter
+>>>>>>> origin/ayu
   }, "id_kriteria" | "kode">
 
   export type KriteriaOrderByWithAggregationInput = {
@@ -18475,7 +19914,11 @@ export namespace Prisma {
     id_value?: IntFilter<"KriteriaValue"> | number
     id_kriteria?: IntFilter<"KriteriaValue"> | number
     value?: StringFilter<"KriteriaValue"> | string
+<<<<<<< HEAD
     score?: IntFilter<"KriteriaValue"> | number
+=======
+    score?: FloatFilter<"KriteriaValue"> | number
+>>>>>>> origin/ayu
     kriteria?: XOR<KriteriaScalarRelationFilter, KriteriaWhereInput>
   }
 
@@ -18495,7 +19938,11 @@ export namespace Prisma {
     NOT?: KriteriaValueWhereInput | KriteriaValueWhereInput[]
     id_kriteria?: IntFilter<"KriteriaValue"> | number
     value?: StringFilter<"KriteriaValue"> | string
+<<<<<<< HEAD
     score?: IntFilter<"KriteriaValue"> | number
+=======
+    score?: FloatFilter<"KriteriaValue"> | number
+>>>>>>> origin/ayu
     kriteria?: XOR<KriteriaScalarRelationFilter, KriteriaWhereInput>
   }, "id_value">
 
@@ -18518,13 +19965,18 @@ export namespace Prisma {
     id_value?: IntWithAggregatesFilter<"KriteriaValue"> | number
     id_kriteria?: IntWithAggregatesFilter<"KriteriaValue"> | number
     value?: StringWithAggregatesFilter<"KriteriaValue"> | string
+<<<<<<< HEAD
     score?: IntWithAggregatesFilter<"KriteriaValue"> | number
+=======
+    score?: FloatWithAggregatesFilter<"KriteriaValue"> | number
+>>>>>>> origin/ayu
   }
 
   export type RecommendationRequestWhereInput = {
     AND?: RecommendationRequestWhereInput | RecommendationRequestWhereInput[]
     OR?: RecommendationRequestWhereInput[]
     NOT?: RecommendationRequestWhereInput | RecommendationRequestWhereInput[]
+<<<<<<< HEAD
     id_request?: IntFilter<"RecommendationRequest"> | number
     user_id?: IntFilter<"RecommendationRequest"> | number
     category_id?: IntFilter<"RecommendationRequest"> | number
@@ -18534,10 +19986,23 @@ export namespace Prisma {
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
     weights?: RecommendationReqWeightListRelationFilter
+=======
+    id_recomen?: IntFilter<"RecommendationRequest"> | number
+    user_id?: IntFilter<"RecommendationRequest"> | number
+    category_id?: IntFilter<"RecommendationRequest"> | number
+    periode_id?: IntFilter<"RecommendationRequest"> | number
+    method?: StringFilter<"RecommendationRequest"> | string
+    created_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    periode?: XOR<PeriodeScalarRelationFilter, PeriodeWhereInput>
+    weights?: RequestBobotListRelationFilter
+>>>>>>> origin/ayu
     results?: RecommendationResultListRelationFilter
   }
 
   export type RecommendationRequestOrderByWithRelationInput = {
+<<<<<<< HEAD
     id_request?: SortOrder
     user_id?: SortOrder
     category_id?: SortOrder
@@ -18547,17 +20012,34 @@ export namespace Prisma {
     user?: UserOrderByWithRelationInput
     category?: CategoryOrderByWithRelationInput
     weights?: RecommendationReqWeightOrderByRelationAggregateInput
+=======
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    periode_id?: SortOrder
+    method?: SortOrder
+    created_at?: SortOrder
+    user?: UserOrderByWithRelationInput
+    category?: CategoryOrderByWithRelationInput
+    periode?: PeriodeOrderByWithRelationInput
+    weights?: RequestBobotOrderByRelationAggregateInput
+>>>>>>> origin/ayu
     results?: RecommendationResultOrderByRelationAggregateInput
     _relevance?: RecommendationRequestOrderByRelevanceInput
   }
 
   export type RecommendationRequestWhereUniqueInput = Prisma.AtLeast<{
+<<<<<<< HEAD
     id_request?: number
+=======
+    id_recomen?: number
+>>>>>>> origin/ayu
     AND?: RecommendationRequestWhereInput | RecommendationRequestWhereInput[]
     OR?: RecommendationRequestWhereInput[]
     NOT?: RecommendationRequestWhereInput | RecommendationRequestWhereInput[]
     user_id?: IntFilter<"RecommendationRequest"> | number
     category_id?: IntFilter<"RecommendationRequest"> | number
+<<<<<<< HEAD
     method?: StringFilter<"RecommendationRequest"> | string
     created_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
     updated_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
@@ -18574,6 +20056,25 @@ export namespace Prisma {
     method?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
+=======
+    periode_id?: IntFilter<"RecommendationRequest"> | number
+    method?: StringFilter<"RecommendationRequest"> | string
+    created_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+    periode?: XOR<PeriodeScalarRelationFilter, PeriodeWhereInput>
+    weights?: RequestBobotListRelationFilter
+    results?: RecommendationResultListRelationFilter
+  }, "id_recomen">
+
+  export type RecommendationRequestOrderByWithAggregationInput = {
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    periode_id?: SortOrder
+    method?: SortOrder
+    created_at?: SortOrder
+>>>>>>> origin/ayu
     _count?: RecommendationRequestCountOrderByAggregateInput
     _avg?: RecommendationRequestAvgOrderByAggregateInput
     _max?: RecommendationRequestMaxOrderByAggregateInput
@@ -18585,6 +20086,7 @@ export namespace Prisma {
     AND?: RecommendationRequestScalarWhereWithAggregatesInput | RecommendationRequestScalarWhereWithAggregatesInput[]
     OR?: RecommendationRequestScalarWhereWithAggregatesInput[]
     NOT?: RecommendationRequestScalarWhereWithAggregatesInput | RecommendationRequestScalarWhereWithAggregatesInput[]
+<<<<<<< HEAD
     id_request?: IntWithAggregatesFilter<"RecommendationRequest"> | number
     user_id?: IntWithAggregatesFilter<"RecommendationRequest"> | number
     category_id?: IntWithAggregatesFilter<"RecommendationRequest"> | number
@@ -18601,19 +20103,46 @@ export namespace Prisma {
     req_id?: IntFilter<"RecommendationReqWeight"> | number
     kriteria_id?: IntFilter<"RecommendationReqWeight"> | number
     bobot?: FloatFilter<"RecommendationReqWeight"> | number
+=======
+    id_recomen?: IntWithAggregatesFilter<"RecommendationRequest"> | number
+    user_id?: IntWithAggregatesFilter<"RecommendationRequest"> | number
+    category_id?: IntWithAggregatesFilter<"RecommendationRequest"> | number
+    periode_id?: IntWithAggregatesFilter<"RecommendationRequest"> | number
+    method?: StringWithAggregatesFilter<"RecommendationRequest"> | string
+    created_at?: DateTimeWithAggregatesFilter<"RecommendationRequest"> | Date | string
+  }
+
+  export type RequestBobotWhereInput = {
+    AND?: RequestBobotWhereInput | RequestBobotWhereInput[]
+    OR?: RequestBobotWhereInput[]
+    NOT?: RequestBobotWhereInput | RequestBobotWhereInput[]
+    id_bobot?: IntFilter<"RequestBobot"> | number
+    id_recomen?: IntFilter<"RequestBobot"> | number
+    id_kriteria?: IntFilter<"RequestBobot"> | number
+    bobot_req?: FloatFilter<"RequestBobot"> | number
+>>>>>>> origin/ayu
     request?: XOR<RecommendationRequestScalarRelationFilter, RecommendationRequestWhereInput>
     kriteria?: XOR<KriteriaScalarRelationFilter, KriteriaWhereInput>
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightOrderByWithRelationInput = {
     id?: SortOrder
     req_id?: SortOrder
     kriteria_id?: SortOrder
     bobot?: SortOrder
+=======
+  export type RequestBobotOrderByWithRelationInput = {
+    id_bobot?: SortOrder
+    id_recomen?: SortOrder
+    id_kriteria?: SortOrder
+    bobot_req?: SortOrder
+>>>>>>> origin/ayu
     request?: RecommendationRequestOrderByWithRelationInput
     kriteria?: KriteriaOrderByWithRelationInput
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightWhereUniqueInput = Prisma.AtLeast<{
     id?: number
     AND?: RecommendationReqWeightWhereInput | RecommendationReqWeightWhereInput[]
@@ -18646,32 +20175,83 @@ export namespace Prisma {
     req_id?: IntWithAggregatesFilter<"RecommendationReqWeight"> | number
     kriteria_id?: IntWithAggregatesFilter<"RecommendationReqWeight"> | number
     bobot?: FloatWithAggregatesFilter<"RecommendationReqWeight"> | number
+=======
+  export type RequestBobotWhereUniqueInput = Prisma.AtLeast<{
+    id_bobot?: number
+    AND?: RequestBobotWhereInput | RequestBobotWhereInput[]
+    OR?: RequestBobotWhereInput[]
+    NOT?: RequestBobotWhereInput | RequestBobotWhereInput[]
+    id_recomen?: IntFilter<"RequestBobot"> | number
+    id_kriteria?: IntFilter<"RequestBobot"> | number
+    bobot_req?: FloatFilter<"RequestBobot"> | number
+    request?: XOR<RecommendationRequestScalarRelationFilter, RecommendationRequestWhereInput>
+    kriteria?: XOR<KriteriaScalarRelationFilter, KriteriaWhereInput>
+  }, "id_bobot">
+
+  export type RequestBobotOrderByWithAggregationInput = {
+    id_bobot?: SortOrder
+    id_recomen?: SortOrder
+    id_kriteria?: SortOrder
+    bobot_req?: SortOrder
+    _count?: RequestBobotCountOrderByAggregateInput
+    _avg?: RequestBobotAvgOrderByAggregateInput
+    _max?: RequestBobotMaxOrderByAggregateInput
+    _min?: RequestBobotMinOrderByAggregateInput
+    _sum?: RequestBobotSumOrderByAggregateInput
+  }
+
+  export type RequestBobotScalarWhereWithAggregatesInput = {
+    AND?: RequestBobotScalarWhereWithAggregatesInput | RequestBobotScalarWhereWithAggregatesInput[]
+    OR?: RequestBobotScalarWhereWithAggregatesInput[]
+    NOT?: RequestBobotScalarWhereWithAggregatesInput | RequestBobotScalarWhereWithAggregatesInput[]
+    id_bobot?: IntWithAggregatesFilter<"RequestBobot"> | number
+    id_recomen?: IntWithAggregatesFilter<"RequestBobot"> | number
+    id_kriteria?: IntWithAggregatesFilter<"RequestBobot"> | number
+    bobot_req?: FloatWithAggregatesFilter<"RequestBobot"> | number
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultWhereInput = {
     AND?: RecommendationResultWhereInput | RecommendationResultWhereInput[]
     OR?: RecommendationResultWhereInput[]
     NOT?: RecommendationResultWhereInput | RecommendationResultWhereInput[]
+<<<<<<< HEAD
     id?: IntFilter<"RecommendationResult"> | number
     req_id?: IntFilter<"RecommendationResult"> | number
     user_id?: IntFilter<"RecommendationResult"> | number
     score?: FloatFilter<"RecommendationResult"> | number
     pos?: IntFilter<"RecommendationResult"> | number
+=======
+    id_hasil?: IntFilter<"RecommendationResult"> | number
+    id_recomen?: IntFilter<"RecommendationResult"> | number
+    user_id?: IntFilter<"RecommendationResult"> | number
+    score?: FloatFilter<"RecommendationResult"> | number
+    ranking?: IntFilter<"RecommendationResult"> | number
+>>>>>>> origin/ayu
     request?: XOR<RecommendationRequestScalarRelationFilter, RecommendationRequestWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type RecommendationResultOrderByWithRelationInput = {
+<<<<<<< HEAD
     id?: SortOrder
     req_id?: SortOrder
     user_id?: SortOrder
     score?: SortOrder
     pos?: SortOrder
+=======
+    id_hasil?: SortOrder
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    ranking?: SortOrder
+>>>>>>> origin/ayu
     request?: RecommendationRequestOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
   }
 
   export type RecommendationResultWhereUniqueInput = Prisma.AtLeast<{
+<<<<<<< HEAD
     id?: number
     AND?: RecommendationResultWhereInput | RecommendationResultWhereInput[]
     OR?: RecommendationResultWhereInput[]
@@ -18690,6 +20270,26 @@ export namespace Prisma {
     user_id?: SortOrder
     score?: SortOrder
     pos?: SortOrder
+=======
+    id_hasil?: number
+    AND?: RecommendationResultWhereInput | RecommendationResultWhereInput[]
+    OR?: RecommendationResultWhereInput[]
+    NOT?: RecommendationResultWhereInput | RecommendationResultWhereInput[]
+    id_recomen?: IntFilter<"RecommendationResult"> | number
+    user_id?: IntFilter<"RecommendationResult"> | number
+    score?: FloatFilter<"RecommendationResult"> | number
+    ranking?: IntFilter<"RecommendationResult"> | number
+    request?: XOR<RecommendationRequestScalarRelationFilter, RecommendationRequestWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id_hasil">
+
+  export type RecommendationResultOrderByWithAggregationInput = {
+    id_hasil?: SortOrder
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    ranking?: SortOrder
+>>>>>>> origin/ayu
     _count?: RecommendationResultCountOrderByAggregateInput
     _avg?: RecommendationResultAvgOrderByAggregateInput
     _max?: RecommendationResultMaxOrderByAggregateInput
@@ -18701,11 +20301,19 @@ export namespace Prisma {
     AND?: RecommendationResultScalarWhereWithAggregatesInput | RecommendationResultScalarWhereWithAggregatesInput[]
     OR?: RecommendationResultScalarWhereWithAggregatesInput[]
     NOT?: RecommendationResultScalarWhereWithAggregatesInput | RecommendationResultScalarWhereWithAggregatesInput[]
+<<<<<<< HEAD
     id?: IntWithAggregatesFilter<"RecommendationResult"> | number
     req_id?: IntWithAggregatesFilter<"RecommendationResult"> | number
     user_id?: IntWithAggregatesFilter<"RecommendationResult"> | number
     score?: FloatWithAggregatesFilter<"RecommendationResult"> | number
     pos?: IntWithAggregatesFilter<"RecommendationResult"> | number
+=======
+    id_hasil?: IntWithAggregatesFilter<"RecommendationResult"> | number
+    id_recomen?: IntWithAggregatesFilter<"RecommendationResult"> | number
+    user_id?: IntWithAggregatesFilter<"RecommendationResult"> | number
+    score?: FloatWithAggregatesFilter<"RecommendationResult"> | number
+    ranking?: IntWithAggregatesFilter<"RecommendationResult"> | number
+>>>>>>> origin/ayu
   }
 
   export type RoleCreateInput = {
@@ -18750,10 +20358,14 @@ export namespace Prisma {
     password: string
     join_date?: Date | string
     role: RoleCreateNestedOneWithoutUsersInput
-    enrollments?: EnrollmentCreateNestedManyWithoutUserInput
-    reviews?: ReviewCreateNestedManyWithoutUserInput
-    exams?: ExamCreateNestedManyWithoutUserInput
     classes?: ClassCreateNestedManyWithoutMentorInput
+    enrollments?: EnrollmentCreateNestedManyWithoutUserInput
+    exams?: ExamCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+    classes?: ClassCreateNestedManyWithoutMentorInput
+=======
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
@@ -18765,10 +20377,14 @@ export namespace Prisma {
     email: string
     password: string
     join_date?: Date | string
-    enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
-    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
-    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
     classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
+    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+=======
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
@@ -18779,10 +20395,14 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
-    enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
-    reviews?: ReviewUpdateManyWithoutUserNestedInput
-    exams?: ExamUpdateManyWithoutUserNestedInput
     classes?: ClassUpdateManyWithoutMentorNestedInput
+    enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
+    exams?: ExamUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+=======
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
@@ -18794,10 +20414,14 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
-    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
-    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
     classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+=======
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -18868,39 +20492,43 @@ export namespace Prisma {
   }
 
   export type PeriodeCreateInput = {
-    year: string
+    year: number
     classes?: ClassCreateNestedManyWithoutPeriodeInput
+    recommendationRequests?: RecommendationRequestCreateNestedManyWithoutPeriodeInput
   }
 
   export type PeriodeUncheckedCreateInput = {
     periode_id?: number
-    year: string
+    year: number
     classes?: ClassUncheckedCreateNestedManyWithoutPeriodeInput
+    recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutPeriodeInput
   }
 
   export type PeriodeUpdateInput = {
-    year?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
     classes?: ClassUpdateManyWithoutPeriodeNestedInput
+    recommendationRequests?: RecommendationRequestUpdateManyWithoutPeriodeNestedInput
   }
 
   export type PeriodeUncheckedUpdateInput = {
     periode_id?: IntFieldUpdateOperationsInput | number
-    year?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
     classes?: ClassUncheckedUpdateManyWithoutPeriodeNestedInput
+    recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutPeriodeNestedInput
   }
 
   export type PeriodeCreateManyInput = {
     periode_id?: number
-    year: string
+    year: number
   }
 
   export type PeriodeUpdateManyMutationInput = {
-    year?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
   }
 
   export type PeriodeUncheckedUpdateManyInput = {
     periode_id?: IntFieldUpdateOperationsInput | number
-    year?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
   }
 
   export type LevelCreateInput = {
@@ -19250,7 +20878,11 @@ export namespace Prisma {
     tipe: string
     bobot: number
     values?: KriteriaValueCreateNestedManyWithoutKriteriaInput
+<<<<<<< HEAD
     weights?: RecommendationReqWeightCreateNestedManyWithoutKriteriaInput
+=======
+    weights?: RequestBobotCreateNestedManyWithoutKriteriaInput
+>>>>>>> origin/ayu
   }
 
   export type KriteriaUncheckedCreateInput = {
@@ -19260,7 +20892,11 @@ export namespace Prisma {
     tipe: string
     bobot: number
     values?: KriteriaValueUncheckedCreateNestedManyWithoutKriteriaInput
+<<<<<<< HEAD
     weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutKriteriaInput
+=======
+    weights?: RequestBobotUncheckedCreateNestedManyWithoutKriteriaInput
+>>>>>>> origin/ayu
   }
 
   export type KriteriaUpdateInput = {
@@ -19269,7 +20905,11 @@ export namespace Prisma {
     tipe?: StringFieldUpdateOperationsInput | string
     bobot?: FloatFieldUpdateOperationsInput | number
     values?: KriteriaValueUpdateManyWithoutKriteriaNestedInput
+<<<<<<< HEAD
     weights?: RecommendationReqWeightUpdateManyWithoutKriteriaNestedInput
+=======
+    weights?: RequestBobotUpdateManyWithoutKriteriaNestedInput
+>>>>>>> origin/ayu
   }
 
   export type KriteriaUncheckedUpdateInput = {
@@ -19279,7 +20919,11 @@ export namespace Prisma {
     tipe?: StringFieldUpdateOperationsInput | string
     bobot?: FloatFieldUpdateOperationsInput | number
     values?: KriteriaValueUncheckedUpdateManyWithoutKriteriaNestedInput
+<<<<<<< HEAD
     weights?: RecommendationReqWeightUncheckedUpdateManyWithoutKriteriaNestedInput
+=======
+    weights?: RequestBobotUncheckedUpdateManyWithoutKriteriaNestedInput
+>>>>>>> origin/ayu
   }
 
   export type KriteriaCreateManyInput = {
@@ -19320,7 +20964,11 @@ export namespace Prisma {
 
   export type KriteriaValueUpdateInput = {
     value?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     score?: IntFieldUpdateOperationsInput | number
+=======
+    score?: FloatFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
     kriteria?: KriteriaUpdateOneRequiredWithoutValuesNestedInput
   }
 
@@ -19328,7 +20976,11 @@ export namespace Prisma {
     id_value?: IntFieldUpdateOperationsInput | number
     id_kriteria?: IntFieldUpdateOperationsInput | number
     value?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     score?: IntFieldUpdateOperationsInput | number
+=======
+    score?: FloatFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
   }
 
   export type KriteriaValueCreateManyInput = {
@@ -19340,27 +20992,43 @@ export namespace Prisma {
 
   export type KriteriaValueUpdateManyMutationInput = {
     value?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     score?: IntFieldUpdateOperationsInput | number
+=======
+    score?: FloatFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
   }
 
   export type KriteriaValueUncheckedUpdateManyInput = {
     id_value?: IntFieldUpdateOperationsInput | number
     id_kriteria?: IntFieldUpdateOperationsInput | number
     value?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     score?: IntFieldUpdateOperationsInput | number
+=======
+    score?: FloatFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
   }
 
   export type RecommendationRequestCreateInput = {
     method: string
     created_at?: Date | string
+<<<<<<< HEAD
     updated_at?: Date | string
     user: UserCreateNestedOneWithoutRecommendationRequestsInput
     category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
     weights?: RecommendationReqWeightCreateNestedManyWithoutRequestInput
+=======
+    user: UserCreateNestedOneWithoutRecommendationRequestsInput
+    category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
+    periode: PeriodeCreateNestedOneWithoutRecommendationRequestsInput
+    weights?: RequestBobotCreateNestedManyWithoutRequestInput
+>>>>>>> origin/ayu
     results?: RecommendationResultCreateNestedManyWithoutRequestInput
   }
 
   export type RecommendationRequestUncheckedCreateInput = {
+<<<<<<< HEAD
     id_request?: number
     user_id: number
     category_id: number
@@ -19368,20 +21036,37 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutRequestInput
+=======
+    id_recomen?: number
+    user_id: number
+    category_id: number
+    periode_id: number
+    method: string
+    created_at?: Date | string
+    weights?: RequestBobotUncheckedCreateNestedManyWithoutRequestInput
+>>>>>>> origin/ayu
     results?: RecommendationResultUncheckedCreateNestedManyWithoutRequestInput
   }
 
   export type RecommendationRequestUpdateInput = {
     method?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+<<<<<<< HEAD
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
     category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
     weights?: RecommendationReqWeightUpdateManyWithoutRequestNestedInput
+=======
+    user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    periode?: PeriodeUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    weights?: RequestBobotUpdateManyWithoutRequestNestedInput
+>>>>>>> origin/ayu
     results?: RecommendationResultUpdateManyWithoutRequestNestedInput
   }
 
   export type RecommendationRequestUncheckedUpdateInput = {
+<<<<<<< HEAD
     id_request?: IntFieldUpdateOperationsInput | number
     user_id?: IntFieldUpdateOperationsInput | number
     category_id?: IntFieldUpdateOperationsInput | number
@@ -19389,21 +21074,40 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     weights?: RecommendationReqWeightUncheckedUpdateManyWithoutRequestNestedInput
+=======
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    weights?: RequestBobotUncheckedUpdateManyWithoutRequestNestedInput
+>>>>>>> origin/ayu
     results?: RecommendationResultUncheckedUpdateManyWithoutRequestNestedInput
   }
 
   export type RecommendationRequestCreateManyInput = {
+<<<<<<< HEAD
     id_request?: number
     user_id: number
     category_id: number
     method: string
     created_at?: Date | string
     updated_at?: Date | string
+=======
+    id_recomen?: number
+    user_id: number
+    category_id: number
+    periode_id: number
+    method: string
+    created_at?: Date | string
+>>>>>>> origin/ayu
   }
 
   export type RecommendationRequestUpdateManyMutationInput = {
     method?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+<<<<<<< HEAD
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -19418,10 +21122,26 @@ export namespace Prisma {
 
   export type RecommendationReqWeightCreateInput = {
     bobot: number
+=======
+  }
+
+  export type RecommendationRequestUncheckedUpdateManyInput = {
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RequestBobotCreateInput = {
+    bobot_req: number
+>>>>>>> origin/ayu
     request: RecommendationRequestCreateNestedOneWithoutWeightsInput
     kriteria: KriteriaCreateNestedOneWithoutWeightsInput
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightUncheckedCreateInput = {
     id?: number
     req_id: number
@@ -19431,10 +21151,22 @@ export namespace Prisma {
 
   export type RecommendationReqWeightUpdateInput = {
     bobot?: FloatFieldUpdateOperationsInput | number
+=======
+  export type RequestBobotUncheckedCreateInput = {
+    id_bobot?: number
+    id_recomen: number
+    id_kriteria: number
+    bobot_req: number
+  }
+
+  export type RequestBobotUpdateInput = {
+    bobot_req?: FloatFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
     request?: RecommendationRequestUpdateOneRequiredWithoutWeightsNestedInput
     kriteria?: KriteriaUpdateOneRequiredWithoutWeightsNestedInput
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     req_id?: IntFieldUpdateOperationsInput | number
@@ -19458,31 +21190,73 @@ export namespace Prisma {
     req_id?: IntFieldUpdateOperationsInput | number
     kriteria_id?: IntFieldUpdateOperationsInput | number
     bobot?: FloatFieldUpdateOperationsInput | number
+=======
+  export type RequestBobotUncheckedUpdateInput = {
+    id_bobot?: IntFieldUpdateOperationsInput | number
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    id_kriteria?: IntFieldUpdateOperationsInput | number
+    bobot_req?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RequestBobotCreateManyInput = {
+    id_bobot?: number
+    id_recomen: number
+    id_kriteria: number
+    bobot_req: number
+  }
+
+  export type RequestBobotUpdateManyMutationInput = {
+    bobot_req?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RequestBobotUncheckedUpdateManyInput = {
+    id_bobot?: IntFieldUpdateOperationsInput | number
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    id_kriteria?: IntFieldUpdateOperationsInput | number
+    bobot_req?: FloatFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultCreateInput = {
     score: number
+<<<<<<< HEAD
     pos: number
+=======
+    ranking: number
+>>>>>>> origin/ayu
     request: RecommendationRequestCreateNestedOneWithoutResultsInput
     user: UserCreateNestedOneWithoutRecommendationResultsInput
   }
 
   export type RecommendationResultUncheckedCreateInput = {
+<<<<<<< HEAD
     id?: number
     req_id: number
     user_id: number
     score: number
     pos: number
+=======
+    id_hasil?: number
+    id_recomen: number
+    user_id: number
+    score: number
+    ranking: number
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultUpdateInput = {
     score?: FloatFieldUpdateOperationsInput | number
+<<<<<<< HEAD
     pos?: IntFieldUpdateOperationsInput | number
+=======
+    ranking?: IntFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
     request?: RecommendationRequestUpdateOneRequiredWithoutResultsNestedInput
     user?: UserUpdateOneRequiredWithoutRecommendationResultsNestedInput
   }
 
   export type RecommendationResultUncheckedUpdateInput = {
+<<<<<<< HEAD
     id?: IntFieldUpdateOperationsInput | number
     req_id?: IntFieldUpdateOperationsInput | number
     user_id?: IntFieldUpdateOperationsInput | number
@@ -19496,10 +21270,26 @@ export namespace Prisma {
     user_id: number
     score: number
     pos: number
+=======
+    id_hasil?: IntFieldUpdateOperationsInput | number
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    ranking?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationResultCreateManyInput = {
+    id_hasil?: number
+    id_recomen: number
+    user_id: number
+    score: number
+    ranking: number
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultUpdateManyMutationInput = {
     score?: FloatFieldUpdateOperationsInput | number
+<<<<<<< HEAD
     pos?: IntFieldUpdateOperationsInput | number
   }
 
@@ -19509,6 +21299,17 @@ export namespace Prisma {
     user_id?: IntFieldUpdateOperationsInput | number
     score?: FloatFieldUpdateOperationsInput | number
     pos?: IntFieldUpdateOperationsInput | number
+=======
+    ranking?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationResultUncheckedUpdateManyInput = {
+    id_hasil?: IntFieldUpdateOperationsInput | number
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    ranking?: IntFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -19626,16 +21427,16 @@ export namespace Prisma {
     isNot?: RoleWhereInput
   }
 
+  export type ClassListRelationFilter = {
+    every?: ClassWhereInput
+    some?: ClassWhereInput
+    none?: ClassWhereInput
+  }
+
   export type EnrollmentListRelationFilter = {
     every?: EnrollmentWhereInput
     some?: EnrollmentWhereInput
     none?: EnrollmentWhereInput
-  }
-
-  export type ReviewListRelationFilter = {
-    every?: ReviewWhereInput
-    some?: ReviewWhereInput
-    none?: ReviewWhereInput
   }
 
   export type ExamListRelationFilter = {
@@ -19644,10 +21445,17 @@ export namespace Prisma {
     none?: ExamWhereInput
   }
 
+<<<<<<< HEAD
   export type ClassListRelationFilter = {
     every?: ClassWhereInput
     some?: ClassWhereInput
     none?: ClassWhereInput
+=======
+  export type ReviewListRelationFilter = {
+    every?: ReviewWhereInput
+    some?: ReviewWhereInput
+    none?: ReviewWhereInput
+>>>>>>> origin/ayu
   }
 
   export type RecommendationRequestListRelationFilter = {
@@ -19662,7 +21470,18 @@ export namespace Prisma {
     none?: RecommendationResultWhereInput
   }
 
+<<<<<<< HEAD
+=======
+  export type ClassOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+>>>>>>> origin/ayu
   export type EnrollmentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ExamOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19670,7 +21489,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type ExamOrderByRelationAggregateInput = {
+  export type RecommendationRequestOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RecommendationResultOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19772,12 +21595,6 @@ export namespace Prisma {
     category_id?: SortOrder
   }
 
-  export type PeriodeOrderByRelevanceInput = {
-    fields: PeriodeOrderByRelevanceFieldEnum | PeriodeOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
   export type PeriodeCountOrderByAggregateInput = {
     periode_id?: SortOrder
     year?: SortOrder
@@ -19785,6 +21602,7 @@ export namespace Prisma {
 
   export type PeriodeAvgOrderByAggregateInput = {
     periode_id?: SortOrder
+    year?: SortOrder
   }
 
   export type PeriodeMaxOrderByAggregateInput = {
@@ -19799,6 +21617,7 @@ export namespace Prisma {
 
   export type PeriodeSumOrderByAggregateInput = {
     periode_id?: SortOrder
+    year?: SortOrder
   }
 
   export type LevelOrderByRelevanceInput = {
@@ -20130,17 +21949,28 @@ export namespace Prisma {
     none?: KriteriaValueWhereInput
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightListRelationFilter = {
     every?: RecommendationReqWeightWhereInput
     some?: RecommendationReqWeightWhereInput
     none?: RecommendationReqWeightWhereInput
+=======
+  export type RequestBobotListRelationFilter = {
+    every?: RequestBobotWhereInput
+    some?: RequestBobotWhereInput
+    none?: RequestBobotWhereInput
+>>>>>>> origin/ayu
   }
 
   export type KriteriaValueOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightOrderByRelationAggregateInput = {
+=======
+  export type RequestBobotOrderByRelationAggregateInput = {
+>>>>>>> origin/ayu
     _count?: SortOrder
   }
 
@@ -20251,6 +22081,7 @@ export namespace Prisma {
   }
 
   export type RecommendationRequestCountOrderByAggregateInput = {
+<<<<<<< HEAD
     id_request?: SortOrder
     user_id?: SortOrder
     category_id?: SortOrder
@@ -20287,6 +22118,46 @@ export namespace Prisma {
     id_request?: SortOrder
     user_id?: SortOrder
     category_id?: SortOrder
+=======
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    periode_id?: SortOrder
+    method?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type RecommendationRequestAvgOrderByAggregateInput = {
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    periode_id?: SortOrder
+  }
+
+  export type RecommendationRequestMaxOrderByAggregateInput = {
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    periode_id?: SortOrder
+    method?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type RecommendationRequestMinOrderByAggregateInput = {
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    periode_id?: SortOrder
+    method?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type RecommendationRequestSumOrderByAggregateInput = {
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    category_id?: SortOrder
+    periode_id?: SortOrder
+>>>>>>> origin/ayu
   }
 
   export type RecommendationRequestScalarRelationFilter = {
@@ -20294,6 +22165,7 @@ export namespace Prisma {
     isNot?: RecommendationRequestWhereInput
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightCountOrderByAggregateInput = {
     id?: SortOrder
     req_id?: SortOrder
@@ -20367,6 +22239,81 @@ export namespace Prisma {
     user_id?: SortOrder
     score?: SortOrder
     pos?: SortOrder
+=======
+  export type RequestBobotCountOrderByAggregateInput = {
+    id_bobot?: SortOrder
+    id_recomen?: SortOrder
+    id_kriteria?: SortOrder
+    bobot_req?: SortOrder
+  }
+
+  export type RequestBobotAvgOrderByAggregateInput = {
+    id_bobot?: SortOrder
+    id_recomen?: SortOrder
+    id_kriteria?: SortOrder
+    bobot_req?: SortOrder
+  }
+
+  export type RequestBobotMaxOrderByAggregateInput = {
+    id_bobot?: SortOrder
+    id_recomen?: SortOrder
+    id_kriteria?: SortOrder
+    bobot_req?: SortOrder
+  }
+
+  export type RequestBobotMinOrderByAggregateInput = {
+    id_bobot?: SortOrder
+    id_recomen?: SortOrder
+    id_kriteria?: SortOrder
+    bobot_req?: SortOrder
+  }
+
+  export type RequestBobotSumOrderByAggregateInput = {
+    id_bobot?: SortOrder
+    id_recomen?: SortOrder
+    id_kriteria?: SortOrder
+    bobot_req?: SortOrder
+  }
+
+  export type RecommendationResultCountOrderByAggregateInput = {
+    id_hasil?: SortOrder
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    ranking?: SortOrder
+  }
+
+  export type RecommendationResultAvgOrderByAggregateInput = {
+    id_hasil?: SortOrder
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    ranking?: SortOrder
+  }
+
+  export type RecommendationResultMaxOrderByAggregateInput = {
+    id_hasil?: SortOrder
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    ranking?: SortOrder
+  }
+
+  export type RecommendationResultMinOrderByAggregateInput = {
+    id_hasil?: SortOrder
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    ranking?: SortOrder
+  }
+
+  export type RecommendationResultSumOrderByAggregateInput = {
+    id_hasil?: SortOrder
+    id_recomen?: SortOrder
+    user_id?: SortOrder
+    score?: SortOrder
+    ranking?: SortOrder
+>>>>>>> origin/ayu
   }
 
   export type UserCreateNestedManyWithoutRoleInput = {
@@ -20429,18 +22376,18 @@ export namespace Prisma {
     connect?: RoleWhereUniqueInput
   }
 
+  export type ClassCreateNestedManyWithoutMentorInput = {
+    create?: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput> | ClassCreateWithoutMentorInput[] | ClassUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: ClassCreateOrConnectWithoutMentorInput | ClassCreateOrConnectWithoutMentorInput[]
+    createMany?: ClassCreateManyMentorInputEnvelope
+    connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+  }
+
   export type EnrollmentCreateNestedManyWithoutUserInput = {
     create?: XOR<EnrollmentCreateWithoutUserInput, EnrollmentUncheckedCreateWithoutUserInput> | EnrollmentCreateWithoutUserInput[] | EnrollmentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: EnrollmentCreateOrConnectWithoutUserInput | EnrollmentCreateOrConnectWithoutUserInput[]
     createMany?: EnrollmentCreateManyUserInputEnvelope
     connect?: EnrollmentWhereUniqueInput | EnrollmentWhereUniqueInput[]
-  }
-
-  export type ReviewCreateNestedManyWithoutUserInput = {
-    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
-    createMany?: ReviewCreateManyUserInputEnvelope
-    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
   export type ExamCreateNestedManyWithoutUserInput = {
@@ -20450,11 +22397,19 @@ export namespace Prisma {
     connect?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
   }
 
+<<<<<<< HEAD
   export type ClassCreateNestedManyWithoutMentorInput = {
     create?: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput> | ClassCreateWithoutMentorInput[] | ClassUncheckedCreateWithoutMentorInput[]
     connectOrCreate?: ClassCreateOrConnectWithoutMentorInput | ClassCreateOrConnectWithoutMentorInput[]
     createMany?: ClassCreateManyMentorInputEnvelope
     connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+=======
+  export type ReviewCreateNestedManyWithoutUserInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+>>>>>>> origin/ayu
   }
 
   export type RecommendationRequestCreateNestedManyWithoutUserInput = {
@@ -20471,11 +22426,28 @@ export namespace Prisma {
     connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
   }
 
+<<<<<<< HEAD
+=======
+  export type ClassUncheckedCreateNestedManyWithoutMentorInput = {
+    create?: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput> | ClassCreateWithoutMentorInput[] | ClassUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: ClassCreateOrConnectWithoutMentorInput | ClassCreateOrConnectWithoutMentorInput[]
+    createMany?: ClassCreateManyMentorInputEnvelope
+    connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+  }
+
+>>>>>>> origin/ayu
   export type EnrollmentUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<EnrollmentCreateWithoutUserInput, EnrollmentUncheckedCreateWithoutUserInput> | EnrollmentCreateWithoutUserInput[] | EnrollmentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: EnrollmentCreateOrConnectWithoutUserInput | EnrollmentCreateOrConnectWithoutUserInput[]
     createMany?: EnrollmentCreateManyUserInputEnvelope
     connect?: EnrollmentWhereUniqueInput | EnrollmentWhereUniqueInput[]
+  }
+
+  export type ExamUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ExamCreateWithoutUserInput, ExamUncheckedCreateWithoutUserInput> | ExamCreateWithoutUserInput[] | ExamUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ExamCreateOrConnectWithoutUserInput | ExamCreateOrConnectWithoutUserInput[]
+    createMany?: ExamCreateManyUserInputEnvelope
+    connect?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
   }
 
   export type ReviewUncheckedCreateNestedManyWithoutUserInput = {
@@ -20485,11 +22457,18 @@ export namespace Prisma {
     connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
-  export type ExamUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<ExamCreateWithoutUserInput, ExamUncheckedCreateWithoutUserInput> | ExamCreateWithoutUserInput[] | ExamUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ExamCreateOrConnectWithoutUserInput | ExamCreateOrConnectWithoutUserInput[]
-    createMany?: ExamCreateManyUserInputEnvelope
-    connect?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
+  export type RecommendationRequestUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<RecommendationRequestCreateWithoutUserInput, RecommendationRequestUncheckedCreateWithoutUserInput> | RecommendationRequestCreateWithoutUserInput[] | RecommendationRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutUserInput | RecommendationRequestCreateOrConnectWithoutUserInput[]
+    createMany?: RecommendationRequestCreateManyUserInputEnvelope
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+  }
+
+  export type RecommendationResultUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<RecommendationResultCreateWithoutUserInput, RecommendationResultUncheckedCreateWithoutUserInput> | RecommendationResultCreateWithoutUserInput[] | RecommendationResultUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationResultCreateOrConnectWithoutUserInput | RecommendationResultCreateOrConnectWithoutUserInput[]
+    createMany?: RecommendationResultCreateManyUserInputEnvelope
+    connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
   }
 
   export type ClassUncheckedCreateNestedManyWithoutMentorInput = {
@@ -20525,6 +22504,20 @@ export namespace Prisma {
     update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUsersInput, RoleUpdateWithoutUsersInput>, RoleUncheckedUpdateWithoutUsersInput>
   }
 
+  export type ClassUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput> | ClassCreateWithoutMentorInput[] | ClassUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: ClassCreateOrConnectWithoutMentorInput | ClassCreateOrConnectWithoutMentorInput[]
+    upsert?: ClassUpsertWithWhereUniqueWithoutMentorInput | ClassUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: ClassCreateManyMentorInputEnvelope
+    set?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    disconnect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    delete?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    update?: ClassUpdateWithWhereUniqueWithoutMentorInput | ClassUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: ClassUpdateManyWithWhereWithoutMentorInput | ClassUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: ClassScalarWhereInput | ClassScalarWhereInput[]
+  }
+
   export type EnrollmentUpdateManyWithoutUserNestedInput = {
     create?: XOR<EnrollmentCreateWithoutUserInput, EnrollmentUncheckedCreateWithoutUserInput> | EnrollmentCreateWithoutUserInput[] | EnrollmentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: EnrollmentCreateOrConnectWithoutUserInput | EnrollmentCreateOrConnectWithoutUserInput[]
@@ -20537,6 +22530,20 @@ export namespace Prisma {
     update?: EnrollmentUpdateWithWhereUniqueWithoutUserInput | EnrollmentUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: EnrollmentUpdateManyWithWhereWithoutUserInput | EnrollmentUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: EnrollmentScalarWhereInput | EnrollmentScalarWhereInput[]
+  }
+
+  export type ExamUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ExamCreateWithoutUserInput, ExamUncheckedCreateWithoutUserInput> | ExamCreateWithoutUserInput[] | ExamUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ExamCreateOrConnectWithoutUserInput | ExamCreateOrConnectWithoutUserInput[]
+    upsert?: ExamUpsertWithWhereUniqueWithoutUserInput | ExamUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ExamCreateManyUserInputEnvelope
+    set?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
+    disconnect?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
+    delete?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
+    connect?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
+    update?: ExamUpdateWithWhereUniqueWithoutUserInput | ExamUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ExamUpdateManyWithWhereWithoutUserInput | ExamUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ExamScalarWhereInput | ExamScalarWhereInput[]
   }
 
   export type ReviewUpdateManyWithoutUserNestedInput = {
@@ -20553,18 +22560,46 @@ export namespace Prisma {
     deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
   }
 
-  export type ExamUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ExamCreateWithoutUserInput, ExamUncheckedCreateWithoutUserInput> | ExamCreateWithoutUserInput[] | ExamUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ExamCreateOrConnectWithoutUserInput | ExamCreateOrConnectWithoutUserInput[]
-    upsert?: ExamUpsertWithWhereUniqueWithoutUserInput | ExamUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ExamCreateManyUserInputEnvelope
-    set?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
-    disconnect?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
-    delete?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
-    connect?: ExamWhereUniqueInput | ExamWhereUniqueInput[]
-    update?: ExamUpdateWithWhereUniqueWithoutUserInput | ExamUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ExamUpdateManyWithWhereWithoutUserInput | ExamUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ExamScalarWhereInput | ExamScalarWhereInput[]
+  export type RecommendationRequestUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RecommendationRequestCreateWithoutUserInput, RecommendationRequestUncheckedCreateWithoutUserInput> | RecommendationRequestCreateWithoutUserInput[] | RecommendationRequestUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutUserInput | RecommendationRequestCreateOrConnectWithoutUserInput[]
+    upsert?: RecommendationRequestUpsertWithWhereUniqueWithoutUserInput | RecommendationRequestUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RecommendationRequestCreateManyUserInputEnvelope
+    set?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    disconnect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    delete?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    update?: RecommendationRequestUpdateWithWhereUniqueWithoutUserInput | RecommendationRequestUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RecommendationRequestUpdateManyWithWhereWithoutUserInput | RecommendationRequestUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RecommendationRequestScalarWhereInput | RecommendationRequestScalarWhereInput[]
+  }
+
+  export type RecommendationResultUpdateManyWithoutUserNestedInput = {
+    create?: XOR<RecommendationResultCreateWithoutUserInput, RecommendationResultUncheckedCreateWithoutUserInput> | RecommendationResultCreateWithoutUserInput[] | RecommendationResultUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: RecommendationResultCreateOrConnectWithoutUserInput | RecommendationResultCreateOrConnectWithoutUserInput[]
+    upsert?: RecommendationResultUpsertWithWhereUniqueWithoutUserInput | RecommendationResultUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: RecommendationResultCreateManyUserInputEnvelope
+    set?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    disconnect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    delete?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
+    update?: RecommendationResultUpdateWithWhereUniqueWithoutUserInput | RecommendationResultUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: RecommendationResultUpdateManyWithWhereWithoutUserInput | RecommendationResultUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: RecommendationResultScalarWhereInput | RecommendationResultScalarWhereInput[]
+  }
+
+  export type ClassUncheckedUpdateManyWithoutMentorNestedInput = {
+    create?: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput> | ClassCreateWithoutMentorInput[] | ClassUncheckedCreateWithoutMentorInput[]
+    connectOrCreate?: ClassCreateOrConnectWithoutMentorInput | ClassCreateOrConnectWithoutMentorInput[]
+    upsert?: ClassUpsertWithWhereUniqueWithoutMentorInput | ClassUpsertWithWhereUniqueWithoutMentorInput[]
+    createMany?: ClassCreateManyMentorInputEnvelope
+    set?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    disconnect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    delete?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+    update?: ClassUpdateWithWhereUniqueWithoutMentorInput | ClassUpdateWithWhereUniqueWithoutMentorInput[]
+    updateMany?: ClassUpdateManyWithWhereWithoutMentorInput | ClassUpdateManyWithWhereWithoutMentorInput[]
+    deleteMany?: ClassScalarWhereInput | ClassScalarWhereInput[]
   }
 
   export type ClassUpdateManyWithoutMentorNestedInput = {
@@ -20623,20 +22658,6 @@ export namespace Prisma {
     deleteMany?: EnrollmentScalarWhereInput | EnrollmentScalarWhereInput[]
   }
 
-  export type ReviewUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
-    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: ReviewCreateManyUserInputEnvelope
-    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
-    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
-    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
-    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
-    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
-  }
-
   export type ExamUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<ExamCreateWithoutUserInput, ExamUncheckedCreateWithoutUserInput> | ExamCreateWithoutUserInput[] | ExamUncheckedCreateWithoutUserInput[]
     connectOrCreate?: ExamCreateOrConnectWithoutUserInput | ExamCreateOrConnectWithoutUserInput[]
@@ -20651,6 +22672,7 @@ export namespace Prisma {
     deleteMany?: ExamScalarWhereInput | ExamScalarWhereInput[]
   }
 
+<<<<<<< HEAD
   export type ClassUncheckedUpdateManyWithoutMentorNestedInput = {
     create?: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput> | ClassCreateWithoutMentorInput[] | ClassUncheckedCreateWithoutMentorInput[]
     connectOrCreate?: ClassCreateOrConnectWithoutMentorInput | ClassCreateOrConnectWithoutMentorInput[]
@@ -20663,6 +22685,20 @@ export namespace Prisma {
     update?: ClassUpdateWithWhereUniqueWithoutMentorInput | ClassUpdateWithWhereUniqueWithoutMentorInput[]
     updateMany?: ClassUpdateManyWithWhereWithoutMentorInput | ClassUpdateManyWithWhereWithoutMentorInput[]
     deleteMany?: ClassScalarWhereInput | ClassScalarWhereInput[]
+=======
+  export type ReviewUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput> | ReviewCreateWithoutUserInput[] | ReviewUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ReviewCreateOrConnectWithoutUserInput | ReviewCreateOrConnectWithoutUserInput[]
+    upsert?: ReviewUpsertWithWhereUniqueWithoutUserInput | ReviewUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ReviewCreateManyUserInputEnvelope
+    set?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    disconnect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    delete?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
+    update?: ReviewUpdateWithWhereUniqueWithoutUserInput | ReviewUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ReviewUpdateManyWithWhereWithoutUserInput | ReviewUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+>>>>>>> origin/ayu
   }
 
   export type RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput = {
@@ -20784,11 +22820,25 @@ export namespace Prisma {
     connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
   }
 
+  export type RecommendationRequestCreateNestedManyWithoutPeriodeInput = {
+    create?: XOR<RecommendationRequestCreateWithoutPeriodeInput, RecommendationRequestUncheckedCreateWithoutPeriodeInput> | RecommendationRequestCreateWithoutPeriodeInput[] | RecommendationRequestUncheckedCreateWithoutPeriodeInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutPeriodeInput | RecommendationRequestCreateOrConnectWithoutPeriodeInput[]
+    createMany?: RecommendationRequestCreateManyPeriodeInputEnvelope
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+  }
+
   export type ClassUncheckedCreateNestedManyWithoutPeriodeInput = {
     create?: XOR<ClassCreateWithoutPeriodeInput, ClassUncheckedCreateWithoutPeriodeInput> | ClassCreateWithoutPeriodeInput[] | ClassUncheckedCreateWithoutPeriodeInput[]
     connectOrCreate?: ClassCreateOrConnectWithoutPeriodeInput | ClassCreateOrConnectWithoutPeriodeInput[]
     createMany?: ClassCreateManyPeriodeInputEnvelope
     connect?: ClassWhereUniqueInput | ClassWhereUniqueInput[]
+  }
+
+  export type RecommendationRequestUncheckedCreateNestedManyWithoutPeriodeInput = {
+    create?: XOR<RecommendationRequestCreateWithoutPeriodeInput, RecommendationRequestUncheckedCreateWithoutPeriodeInput> | RecommendationRequestCreateWithoutPeriodeInput[] | RecommendationRequestUncheckedCreateWithoutPeriodeInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutPeriodeInput | RecommendationRequestCreateOrConnectWithoutPeriodeInput[]
+    createMany?: RecommendationRequestCreateManyPeriodeInputEnvelope
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
   }
 
   export type ClassUpdateManyWithoutPeriodeNestedInput = {
@@ -20805,6 +22855,20 @@ export namespace Prisma {
     deleteMany?: ClassScalarWhereInput | ClassScalarWhereInput[]
   }
 
+  export type RecommendationRequestUpdateManyWithoutPeriodeNestedInput = {
+    create?: XOR<RecommendationRequestCreateWithoutPeriodeInput, RecommendationRequestUncheckedCreateWithoutPeriodeInput> | RecommendationRequestCreateWithoutPeriodeInput[] | RecommendationRequestUncheckedCreateWithoutPeriodeInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutPeriodeInput | RecommendationRequestCreateOrConnectWithoutPeriodeInput[]
+    upsert?: RecommendationRequestUpsertWithWhereUniqueWithoutPeriodeInput | RecommendationRequestUpsertWithWhereUniqueWithoutPeriodeInput[]
+    createMany?: RecommendationRequestCreateManyPeriodeInputEnvelope
+    set?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    disconnect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    delete?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    update?: RecommendationRequestUpdateWithWhereUniqueWithoutPeriodeInput | RecommendationRequestUpdateWithWhereUniqueWithoutPeriodeInput[]
+    updateMany?: RecommendationRequestUpdateManyWithWhereWithoutPeriodeInput | RecommendationRequestUpdateManyWithWhereWithoutPeriodeInput[]
+    deleteMany?: RecommendationRequestScalarWhereInput | RecommendationRequestScalarWhereInput[]
+  }
+
   export type ClassUncheckedUpdateManyWithoutPeriodeNestedInput = {
     create?: XOR<ClassCreateWithoutPeriodeInput, ClassUncheckedCreateWithoutPeriodeInput> | ClassCreateWithoutPeriodeInput[] | ClassUncheckedCreateWithoutPeriodeInput[]
     connectOrCreate?: ClassCreateOrConnectWithoutPeriodeInput | ClassCreateOrConnectWithoutPeriodeInput[]
@@ -20817,6 +22881,20 @@ export namespace Prisma {
     update?: ClassUpdateWithWhereUniqueWithoutPeriodeInput | ClassUpdateWithWhereUniqueWithoutPeriodeInput[]
     updateMany?: ClassUpdateManyWithWhereWithoutPeriodeInput | ClassUpdateManyWithWhereWithoutPeriodeInput[]
     deleteMany?: ClassScalarWhereInput | ClassScalarWhereInput[]
+  }
+
+  export type RecommendationRequestUncheckedUpdateManyWithoutPeriodeNestedInput = {
+    create?: XOR<RecommendationRequestCreateWithoutPeriodeInput, RecommendationRequestUncheckedCreateWithoutPeriodeInput> | RecommendationRequestCreateWithoutPeriodeInput[] | RecommendationRequestUncheckedCreateWithoutPeriodeInput[]
+    connectOrCreate?: RecommendationRequestCreateOrConnectWithoutPeriodeInput | RecommendationRequestCreateOrConnectWithoutPeriodeInput[]
+    upsert?: RecommendationRequestUpsertWithWhereUniqueWithoutPeriodeInput | RecommendationRequestUpsertWithWhereUniqueWithoutPeriodeInput[]
+    createMany?: RecommendationRequestCreateManyPeriodeInputEnvelope
+    set?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    disconnect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    delete?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    connect?: RecommendationRequestWhereUniqueInput | RecommendationRequestWhereUniqueInput[]
+    update?: RecommendationRequestUpdateWithWhereUniqueWithoutPeriodeInput | RecommendationRequestUpdateWithWhereUniqueWithoutPeriodeInput[]
+    updateMany?: RecommendationRequestUpdateManyWithWhereWithoutPeriodeInput | RecommendationRequestUpdateManyWithWhereWithoutPeriodeInput[]
+    deleteMany?: RecommendationRequestScalarWhereInput | RecommendationRequestScalarWhereInput[]
   }
 
   export type ClassCreateNestedManyWithoutLevelInput = {
@@ -21194,11 +23272,19 @@ export namespace Prisma {
     connect?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightCreateNestedManyWithoutKriteriaInput = {
     create?: XOR<RecommendationReqWeightCreateWithoutKriteriaInput, RecommendationReqWeightUncheckedCreateWithoutKriteriaInput> | RecommendationReqWeightCreateWithoutKriteriaInput[] | RecommendationReqWeightUncheckedCreateWithoutKriteriaInput[]
     connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutKriteriaInput | RecommendationReqWeightCreateOrConnectWithoutKriteriaInput[]
     createMany?: RecommendationReqWeightCreateManyKriteriaInputEnvelope
     connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+=======
+  export type RequestBobotCreateNestedManyWithoutKriteriaInput = {
+    create?: XOR<RequestBobotCreateWithoutKriteriaInput, RequestBobotUncheckedCreateWithoutKriteriaInput> | RequestBobotCreateWithoutKriteriaInput[] | RequestBobotUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: RequestBobotCreateOrConnectWithoutKriteriaInput | RequestBobotCreateOrConnectWithoutKriteriaInput[]
+    createMany?: RequestBobotCreateManyKriteriaInputEnvelope
+    connect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+>>>>>>> origin/ayu
   }
 
   export type KriteriaValueUncheckedCreateNestedManyWithoutKriteriaInput = {
@@ -21208,11 +23294,19 @@ export namespace Prisma {
     connect?: KriteriaValueWhereUniqueInput | KriteriaValueWhereUniqueInput[]
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightUncheckedCreateNestedManyWithoutKriteriaInput = {
     create?: XOR<RecommendationReqWeightCreateWithoutKriteriaInput, RecommendationReqWeightUncheckedCreateWithoutKriteriaInput> | RecommendationReqWeightCreateWithoutKriteriaInput[] | RecommendationReqWeightUncheckedCreateWithoutKriteriaInput[]
     connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutKriteriaInput | RecommendationReqWeightCreateOrConnectWithoutKriteriaInput[]
     createMany?: RecommendationReqWeightCreateManyKriteriaInputEnvelope
     connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+=======
+  export type RequestBobotUncheckedCreateNestedManyWithoutKriteriaInput = {
+    create?: XOR<RequestBobotCreateWithoutKriteriaInput, RequestBobotUncheckedCreateWithoutKriteriaInput> | RequestBobotCreateWithoutKriteriaInput[] | RequestBobotUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: RequestBobotCreateOrConnectWithoutKriteriaInput | RequestBobotCreateOrConnectWithoutKriteriaInput[]
+    createMany?: RequestBobotCreateManyKriteriaInputEnvelope
+    connect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+>>>>>>> origin/ayu
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -21237,6 +23331,7 @@ export namespace Prisma {
     deleteMany?: KriteriaValueScalarWhereInput | KriteriaValueScalarWhereInput[]
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightUpdateManyWithoutKriteriaNestedInput = {
     create?: XOR<RecommendationReqWeightCreateWithoutKriteriaInput, RecommendationReqWeightUncheckedCreateWithoutKriteriaInput> | RecommendationReqWeightCreateWithoutKriteriaInput[] | RecommendationReqWeightUncheckedCreateWithoutKriteriaInput[]
     connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutKriteriaInput | RecommendationReqWeightCreateOrConnectWithoutKriteriaInput[]
@@ -21249,6 +23344,20 @@ export namespace Prisma {
     update?: RecommendationReqWeightUpdateWithWhereUniqueWithoutKriteriaInput | RecommendationReqWeightUpdateWithWhereUniqueWithoutKriteriaInput[]
     updateMany?: RecommendationReqWeightUpdateManyWithWhereWithoutKriteriaInput | RecommendationReqWeightUpdateManyWithWhereWithoutKriteriaInput[]
     deleteMany?: RecommendationReqWeightScalarWhereInput | RecommendationReqWeightScalarWhereInput[]
+=======
+  export type RequestBobotUpdateManyWithoutKriteriaNestedInput = {
+    create?: XOR<RequestBobotCreateWithoutKriteriaInput, RequestBobotUncheckedCreateWithoutKriteriaInput> | RequestBobotCreateWithoutKriteriaInput[] | RequestBobotUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: RequestBobotCreateOrConnectWithoutKriteriaInput | RequestBobotCreateOrConnectWithoutKriteriaInput[]
+    upsert?: RequestBobotUpsertWithWhereUniqueWithoutKriteriaInput | RequestBobotUpsertWithWhereUniqueWithoutKriteriaInput[]
+    createMany?: RequestBobotCreateManyKriteriaInputEnvelope
+    set?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    disconnect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    delete?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    connect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    update?: RequestBobotUpdateWithWhereUniqueWithoutKriteriaInput | RequestBobotUpdateWithWhereUniqueWithoutKriteriaInput[]
+    updateMany?: RequestBobotUpdateManyWithWhereWithoutKriteriaInput | RequestBobotUpdateManyWithWhereWithoutKriteriaInput[]
+    deleteMany?: RequestBobotScalarWhereInput | RequestBobotScalarWhereInput[]
+>>>>>>> origin/ayu
   }
 
   export type KriteriaValueUncheckedUpdateManyWithoutKriteriaNestedInput = {
@@ -21265,6 +23374,7 @@ export namespace Prisma {
     deleteMany?: KriteriaValueScalarWhereInput | KriteriaValueScalarWhereInput[]
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightUncheckedUpdateManyWithoutKriteriaNestedInput = {
     create?: XOR<RecommendationReqWeightCreateWithoutKriteriaInput, RecommendationReqWeightUncheckedCreateWithoutKriteriaInput> | RecommendationReqWeightCreateWithoutKriteriaInput[] | RecommendationReqWeightUncheckedCreateWithoutKriteriaInput[]
     connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutKriteriaInput | RecommendationReqWeightCreateOrConnectWithoutKriteriaInput[]
@@ -21277,6 +23387,20 @@ export namespace Prisma {
     update?: RecommendationReqWeightUpdateWithWhereUniqueWithoutKriteriaInput | RecommendationReqWeightUpdateWithWhereUniqueWithoutKriteriaInput[]
     updateMany?: RecommendationReqWeightUpdateManyWithWhereWithoutKriteriaInput | RecommendationReqWeightUpdateManyWithWhereWithoutKriteriaInput[]
     deleteMany?: RecommendationReqWeightScalarWhereInput | RecommendationReqWeightScalarWhereInput[]
+=======
+  export type RequestBobotUncheckedUpdateManyWithoutKriteriaNestedInput = {
+    create?: XOR<RequestBobotCreateWithoutKriteriaInput, RequestBobotUncheckedCreateWithoutKriteriaInput> | RequestBobotCreateWithoutKriteriaInput[] | RequestBobotUncheckedCreateWithoutKriteriaInput[]
+    connectOrCreate?: RequestBobotCreateOrConnectWithoutKriteriaInput | RequestBobotCreateOrConnectWithoutKriteriaInput[]
+    upsert?: RequestBobotUpsertWithWhereUniqueWithoutKriteriaInput | RequestBobotUpsertWithWhereUniqueWithoutKriteriaInput[]
+    createMany?: RequestBobotCreateManyKriteriaInputEnvelope
+    set?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    disconnect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    delete?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    connect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    update?: RequestBobotUpdateWithWhereUniqueWithoutKriteriaInput | RequestBobotUpdateWithWhereUniqueWithoutKriteriaInput[]
+    updateMany?: RequestBobotUpdateManyWithWhereWithoutKriteriaInput | RequestBobotUpdateManyWithWhereWithoutKriteriaInput[]
+    deleteMany?: RequestBobotScalarWhereInput | RequestBobotScalarWhereInput[]
+>>>>>>> origin/ayu
   }
 
   export type KriteriaCreateNestedOneWithoutValuesInput = {
@@ -21305,11 +23429,25 @@ export namespace Prisma {
     connect?: CategoryWhereUniqueInput
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightCreateNestedManyWithoutRequestInput = {
     create?: XOR<RecommendationReqWeightCreateWithoutRequestInput, RecommendationReqWeightUncheckedCreateWithoutRequestInput> | RecommendationReqWeightCreateWithoutRequestInput[] | RecommendationReqWeightUncheckedCreateWithoutRequestInput[]
     connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutRequestInput | RecommendationReqWeightCreateOrConnectWithoutRequestInput[]
     createMany?: RecommendationReqWeightCreateManyRequestInputEnvelope
     connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+=======
+  export type PeriodeCreateNestedOneWithoutRecommendationRequestsInput = {
+    create?: XOR<PeriodeCreateWithoutRecommendationRequestsInput, PeriodeUncheckedCreateWithoutRecommendationRequestsInput>
+    connectOrCreate?: PeriodeCreateOrConnectWithoutRecommendationRequestsInput
+    connect?: PeriodeWhereUniqueInput
+  }
+
+  export type RequestBobotCreateNestedManyWithoutRequestInput = {
+    create?: XOR<RequestBobotCreateWithoutRequestInput, RequestBobotUncheckedCreateWithoutRequestInput> | RequestBobotCreateWithoutRequestInput[] | RequestBobotUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RequestBobotCreateOrConnectWithoutRequestInput | RequestBobotCreateOrConnectWithoutRequestInput[]
+    createMany?: RequestBobotCreateManyRequestInputEnvelope
+    connect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultCreateNestedManyWithoutRequestInput = {
@@ -21319,11 +23457,19 @@ export namespace Prisma {
     connect?: RecommendationResultWhereUniqueInput | RecommendationResultWhereUniqueInput[]
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightUncheckedCreateNestedManyWithoutRequestInput = {
     create?: XOR<RecommendationReqWeightCreateWithoutRequestInput, RecommendationReqWeightUncheckedCreateWithoutRequestInput> | RecommendationReqWeightCreateWithoutRequestInput[] | RecommendationReqWeightUncheckedCreateWithoutRequestInput[]
     connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutRequestInput | RecommendationReqWeightCreateOrConnectWithoutRequestInput[]
     createMany?: RecommendationReqWeightCreateManyRequestInputEnvelope
     connect?: RecommendationReqWeightWhereUniqueInput | RecommendationReqWeightWhereUniqueInput[]
+=======
+  export type RequestBobotUncheckedCreateNestedManyWithoutRequestInput = {
+    create?: XOR<RequestBobotCreateWithoutRequestInput, RequestBobotUncheckedCreateWithoutRequestInput> | RequestBobotCreateWithoutRequestInput[] | RequestBobotUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RequestBobotCreateOrConnectWithoutRequestInput | RequestBobotCreateOrConnectWithoutRequestInput[]
+    createMany?: RequestBobotCreateManyRequestInputEnvelope
+    connect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultUncheckedCreateNestedManyWithoutRequestInput = {
@@ -21349,6 +23495,7 @@ export namespace Prisma {
     update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutRecommendationRequestsInput, CategoryUpdateWithoutRecommendationRequestsInput>, CategoryUncheckedUpdateWithoutRecommendationRequestsInput>
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightUpdateManyWithoutRequestNestedInput = {
     create?: XOR<RecommendationReqWeightCreateWithoutRequestInput, RecommendationReqWeightUncheckedCreateWithoutRequestInput> | RecommendationReqWeightCreateWithoutRequestInput[] | RecommendationReqWeightUncheckedCreateWithoutRequestInput[]
     connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutRequestInput | RecommendationReqWeightCreateOrConnectWithoutRequestInput[]
@@ -21361,6 +23508,28 @@ export namespace Prisma {
     update?: RecommendationReqWeightUpdateWithWhereUniqueWithoutRequestInput | RecommendationReqWeightUpdateWithWhereUniqueWithoutRequestInput[]
     updateMany?: RecommendationReqWeightUpdateManyWithWhereWithoutRequestInput | RecommendationReqWeightUpdateManyWithWhereWithoutRequestInput[]
     deleteMany?: RecommendationReqWeightScalarWhereInput | RecommendationReqWeightScalarWhereInput[]
+=======
+  export type PeriodeUpdateOneRequiredWithoutRecommendationRequestsNestedInput = {
+    create?: XOR<PeriodeCreateWithoutRecommendationRequestsInput, PeriodeUncheckedCreateWithoutRecommendationRequestsInput>
+    connectOrCreate?: PeriodeCreateOrConnectWithoutRecommendationRequestsInput
+    upsert?: PeriodeUpsertWithoutRecommendationRequestsInput
+    connect?: PeriodeWhereUniqueInput
+    update?: XOR<XOR<PeriodeUpdateToOneWithWhereWithoutRecommendationRequestsInput, PeriodeUpdateWithoutRecommendationRequestsInput>, PeriodeUncheckedUpdateWithoutRecommendationRequestsInput>
+  }
+
+  export type RequestBobotUpdateManyWithoutRequestNestedInput = {
+    create?: XOR<RequestBobotCreateWithoutRequestInput, RequestBobotUncheckedCreateWithoutRequestInput> | RequestBobotCreateWithoutRequestInput[] | RequestBobotUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RequestBobotCreateOrConnectWithoutRequestInput | RequestBobotCreateOrConnectWithoutRequestInput[]
+    upsert?: RequestBobotUpsertWithWhereUniqueWithoutRequestInput | RequestBobotUpsertWithWhereUniqueWithoutRequestInput[]
+    createMany?: RequestBobotCreateManyRequestInputEnvelope
+    set?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    disconnect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    delete?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    connect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    update?: RequestBobotUpdateWithWhereUniqueWithoutRequestInput | RequestBobotUpdateWithWhereUniqueWithoutRequestInput[]
+    updateMany?: RequestBobotUpdateManyWithWhereWithoutRequestInput | RequestBobotUpdateManyWithWhereWithoutRequestInput[]
+    deleteMany?: RequestBobotScalarWhereInput | RequestBobotScalarWhereInput[]
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultUpdateManyWithoutRequestNestedInput = {
@@ -21377,6 +23546,7 @@ export namespace Prisma {
     deleteMany?: RecommendationResultScalarWhereInput | RecommendationResultScalarWhereInput[]
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightUncheckedUpdateManyWithoutRequestNestedInput = {
     create?: XOR<RecommendationReqWeightCreateWithoutRequestInput, RecommendationReqWeightUncheckedCreateWithoutRequestInput> | RecommendationReqWeightCreateWithoutRequestInput[] | RecommendationReqWeightUncheckedCreateWithoutRequestInput[]
     connectOrCreate?: RecommendationReqWeightCreateOrConnectWithoutRequestInput | RecommendationReqWeightCreateOrConnectWithoutRequestInput[]
@@ -21389,6 +23559,20 @@ export namespace Prisma {
     update?: RecommendationReqWeightUpdateWithWhereUniqueWithoutRequestInput | RecommendationReqWeightUpdateWithWhereUniqueWithoutRequestInput[]
     updateMany?: RecommendationReqWeightUpdateManyWithWhereWithoutRequestInput | RecommendationReqWeightUpdateManyWithWhereWithoutRequestInput[]
     deleteMany?: RecommendationReqWeightScalarWhereInput | RecommendationReqWeightScalarWhereInput[]
+=======
+  export type RequestBobotUncheckedUpdateManyWithoutRequestNestedInput = {
+    create?: XOR<RequestBobotCreateWithoutRequestInput, RequestBobotUncheckedCreateWithoutRequestInput> | RequestBobotCreateWithoutRequestInput[] | RequestBobotUncheckedCreateWithoutRequestInput[]
+    connectOrCreate?: RequestBobotCreateOrConnectWithoutRequestInput | RequestBobotCreateOrConnectWithoutRequestInput[]
+    upsert?: RequestBobotUpsertWithWhereUniqueWithoutRequestInput | RequestBobotUpsertWithWhereUniqueWithoutRequestInput[]
+    createMany?: RequestBobotCreateManyRequestInputEnvelope
+    set?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    disconnect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    delete?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    connect?: RequestBobotWhereUniqueInput | RequestBobotWhereUniqueInput[]
+    update?: RequestBobotUpdateWithWhereUniqueWithoutRequestInput | RequestBobotUpdateWithWhereUniqueWithoutRequestInput[]
+    updateMany?: RequestBobotUpdateManyWithWhereWithoutRequestInput | RequestBobotUpdateManyWithWhereWithoutRequestInput[]
+    deleteMany?: RequestBobotScalarWhereInput | RequestBobotScalarWhereInput[]
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultUncheckedUpdateManyWithoutRequestNestedInput = {
@@ -21591,10 +23775,14 @@ export namespace Prisma {
     email: string
     password: string
     join_date?: Date | string
-    enrollments?: EnrollmentCreateNestedManyWithoutUserInput
-    reviews?: ReviewCreateNestedManyWithoutUserInput
-    exams?: ExamCreateNestedManyWithoutUserInput
     classes?: ClassCreateNestedManyWithoutMentorInput
+    enrollments?: EnrollmentCreateNestedManyWithoutUserInput
+    exams?: ExamCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+    classes?: ClassCreateNestedManyWithoutMentorInput
+=======
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
@@ -21605,10 +23793,14 @@ export namespace Prisma {
     email: string
     password: string
     join_date?: Date | string
-    enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
-    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
-    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
     classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
+    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+=======
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
@@ -21665,79 +23857,6 @@ export namespace Prisma {
     create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
   }
 
-  export type EnrollmentCreateWithoutUserInput = {
-    progress?: number
-    role_in_class: string
-    class: ClassCreateNestedOneWithoutEnrollmentInput
-  }
-
-  export type EnrollmentUncheckedCreateWithoutUserInput = {
-    enrollment_id?: number
-    class_id: number
-    progress?: number
-    role_in_class: string
-  }
-
-  export type EnrollmentCreateOrConnectWithoutUserInput = {
-    where: EnrollmentWhereUniqueInput
-    create: XOR<EnrollmentCreateWithoutUserInput, EnrollmentUncheckedCreateWithoutUserInput>
-  }
-
-  export type EnrollmentCreateManyUserInputEnvelope = {
-    data: EnrollmentCreateManyUserInput | EnrollmentCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ReviewCreateWithoutUserInput = {
-    rating: number
-    comment: string
-    class: ClassCreateNestedOneWithoutReviewsInput
-  }
-
-  export type ReviewUncheckedCreateWithoutUserInput = {
-    review_id?: number
-    class_id: number
-    rating: number
-    comment: string
-  }
-
-  export type ReviewCreateOrConnectWithoutUserInput = {
-    where: ReviewWhereUniqueInput
-    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
-  }
-
-  export type ReviewCreateManyUserInputEnvelope = {
-    data: ReviewCreateManyUserInput | ReviewCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type ExamCreateWithoutUserInput = {
-    title: string
-    min_score?: number
-    score?: number
-    is_passed?: boolean
-    class: ClassCreateNestedOneWithoutExamsInput
-  }
-
-  export type ExamUncheckedCreateWithoutUserInput = {
-    exam_id?: number
-    class_id: number
-    title: string
-    min_score?: number
-    score?: number
-    is_passed?: boolean
-  }
-
-  export type ExamCreateOrConnectWithoutUserInput = {
-    where: ExamWhereUniqueInput
-    create: XOR<ExamCreateWithoutUserInput, ExamUncheckedCreateWithoutUserInput>
-  }
-
-  export type ExamCreateManyUserInputEnvelope = {
-    data: ExamCreateManyUserInput | ExamCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
   export type ClassCreateWithoutMentorInput = {
     title: string
     description: string
@@ -21775,22 +23894,147 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type EnrollmentCreateWithoutUserInput = {
+    progress?: number
+    role_in_class: string
+    class: ClassCreateNestedOneWithoutEnrollmentInput
+  }
+
+  export type EnrollmentUncheckedCreateWithoutUserInput = {
+    enrollment_id?: number
+    class_id: number
+    progress?: number
+    role_in_class: string
+  }
+
+  export type EnrollmentCreateOrConnectWithoutUserInput = {
+    where: EnrollmentWhereUniqueInput
+    create: XOR<EnrollmentCreateWithoutUserInput, EnrollmentUncheckedCreateWithoutUserInput>
+  }
+
+  export type EnrollmentCreateManyUserInputEnvelope = {
+    data: EnrollmentCreateManyUserInput | EnrollmentCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ExamCreateWithoutUserInput = {
+    title: string
+    min_score?: number
+    score?: number
+    is_passed?: boolean
+    class: ClassCreateNestedOneWithoutExamsInput
+  }
+
+  export type ExamUncheckedCreateWithoutUserInput = {
+    exam_id?: number
+    class_id: number
+    title: string
+    min_score?: number
+    score?: number
+    is_passed?: boolean
+  }
+
+  export type ExamCreateOrConnectWithoutUserInput = {
+    where: ExamWhereUniqueInput
+    create: XOR<ExamCreateWithoutUserInput, ExamUncheckedCreateWithoutUserInput>
+  }
+
+  export type ExamCreateManyUserInputEnvelope = {
+    data: ExamCreateManyUserInput | ExamCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+<<<<<<< HEAD
+  export type ClassCreateWithoutMentorInput = {
+    title: string
+    description: string
+    is_active?: boolean
+    category: CategoryCreateNestedOneWithoutClassesInput
+    periode: PeriodeCreateNestedOneWithoutClassesInput
+    level: LevelCreateNestedOneWithoutClassesInput
+    materis?: MateriCreateNestedManyWithoutClassInput
+    exams?: ExamCreateNestedManyWithoutClassInput
+    reviews?: ReviewCreateNestedManyWithoutClassInput
+    enrollment?: EnrollmentCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassUncheckedCreateWithoutMentorInput = {
+    class_id?: number
+    category_id: number
+    periode_id: number
+    level_id: number
+    title: string
+    description: string
+    is_active?: boolean
+    materis?: MateriUncheckedCreateNestedManyWithoutClassInput
+    exams?: ExamUncheckedCreateNestedManyWithoutClassInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutClassInput
+    enrollment?: EnrollmentUncheckedCreateNestedManyWithoutClassInput
+  }
+
+  export type ClassCreateOrConnectWithoutMentorInput = {
+    where: ClassWhereUniqueInput
+    create: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput>
+  }
+
+  export type ClassCreateManyMentorInputEnvelope = {
+    data: ClassCreateManyMentorInput | ClassCreateManyMentorInput[]
+=======
+  export type ReviewCreateWithoutUserInput = {
+    rating: number
+    comment: string
+    class: ClassCreateNestedOneWithoutReviewsInput
+  }
+
+  export type ReviewUncheckedCreateWithoutUserInput = {
+    review_id?: number
+    class_id: number
+    rating: number
+    comment: string
+  }
+
+  export type ReviewCreateOrConnectWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewCreateManyUserInputEnvelope = {
+    data: ReviewCreateManyUserInput | ReviewCreateManyUserInput[]
+>>>>>>> origin/ayu
+    skipDuplicates?: boolean
+  }
+
   export type RecommendationRequestCreateWithoutUserInput = {
     method: string
     created_at?: Date | string
+<<<<<<< HEAD
     updated_at?: Date | string
     category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
     weights?: RecommendationReqWeightCreateNestedManyWithoutRequestInput
+=======
+    category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
+    periode: PeriodeCreateNestedOneWithoutRecommendationRequestsInput
+    weights?: RequestBobotCreateNestedManyWithoutRequestInput
+>>>>>>> origin/ayu
     results?: RecommendationResultCreateNestedManyWithoutRequestInput
   }
 
   export type RecommendationRequestUncheckedCreateWithoutUserInput = {
+<<<<<<< HEAD
     id_request?: number
     category_id: number
     method: string
     created_at?: Date | string
     updated_at?: Date | string
     weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutRequestInput
+=======
+    id_recomen?: number
+    category_id: number
+    periode_id: number
+    method: string
+    created_at?: Date | string
+    weights?: RequestBobotUncheckedCreateNestedManyWithoutRequestInput
+>>>>>>> origin/ayu
     results?: RecommendationResultUncheckedCreateNestedManyWithoutRequestInput
   }
 
@@ -21806,15 +24050,26 @@ export namespace Prisma {
 
   export type RecommendationResultCreateWithoutUserInput = {
     score: number
+<<<<<<< HEAD
     pos: number
+=======
+    ranking: number
+>>>>>>> origin/ayu
     request: RecommendationRequestCreateNestedOneWithoutResultsInput
   }
 
   export type RecommendationResultUncheckedCreateWithoutUserInput = {
+<<<<<<< HEAD
     id?: number
     req_id: number
     score: number
     pos: number
+=======
+    id_hasil?: number
+    id_recomen: number
+    score: number
+    ranking: number
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultCreateOrConnectWithoutUserInput = {
@@ -21847,6 +24102,36 @@ export namespace Prisma {
     role_text?: StringFieldUpdateOperationsInput | string
   }
 
+  export type ClassUpsertWithWhereUniqueWithoutMentorInput = {
+    where: ClassWhereUniqueInput
+    update: XOR<ClassUpdateWithoutMentorInput, ClassUncheckedUpdateWithoutMentorInput>
+    create: XOR<ClassCreateWithoutMentorInput, ClassUncheckedCreateWithoutMentorInput>
+  }
+
+  export type ClassUpdateWithWhereUniqueWithoutMentorInput = {
+    where: ClassWhereUniqueInput
+    data: XOR<ClassUpdateWithoutMentorInput, ClassUncheckedUpdateWithoutMentorInput>
+  }
+
+  export type ClassUpdateManyWithWhereWithoutMentorInput = {
+    where: ClassScalarWhereInput
+    data: XOR<ClassUpdateManyMutationInput, ClassUncheckedUpdateManyWithoutMentorInput>
+  }
+
+  export type ClassScalarWhereInput = {
+    AND?: ClassScalarWhereInput | ClassScalarWhereInput[]
+    OR?: ClassScalarWhereInput[]
+    NOT?: ClassScalarWhereInput | ClassScalarWhereInput[]
+    class_id?: IntFilter<"Class"> | number
+    category_id?: IntFilter<"Class"> | number
+    periode_id?: IntFilter<"Class"> | number
+    level_id?: IntFilter<"Class"> | number
+    user_id?: IntFilter<"Class"> | number
+    title?: StringFilter<"Class"> | string
+    description?: StringFilter<"Class"> | string
+    is_active?: BoolFilter<"Class"> | boolean
+  }
+
   export type EnrollmentUpsertWithWhereUniqueWithoutUserInput = {
     where: EnrollmentWhereUniqueInput
     update: XOR<EnrollmentUpdateWithoutUserInput, EnrollmentUncheckedUpdateWithoutUserInput>
@@ -21872,33 +24157,6 @@ export namespace Prisma {
     class_id?: IntFilter<"Enrollment"> | number
     progress?: IntFilter<"Enrollment"> | number
     role_in_class?: StringFilter<"Enrollment"> | string
-  }
-
-  export type ReviewUpsertWithWhereUniqueWithoutUserInput = {
-    where: ReviewWhereUniqueInput
-    update: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
-    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
-  }
-
-  export type ReviewUpdateWithWhereUniqueWithoutUserInput = {
-    where: ReviewWhereUniqueInput
-    data: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
-  }
-
-  export type ReviewUpdateManyWithWhereWithoutUserInput = {
-    where: ReviewScalarWhereInput
-    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type ReviewScalarWhereInput = {
-    AND?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
-    OR?: ReviewScalarWhereInput[]
-    NOT?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
-    review_id?: IntFilter<"Review"> | number
-    user_id?: IntFilter<"Review"> | number
-    class_id?: IntFilter<"Review"> | number
-    rating?: IntFilter<"Review"> | number
-    comment?: StringFilter<"Review"> | string
   }
 
   export type ExamUpsertWithWhereUniqueWithoutUserInput = {
@@ -21930,6 +24188,7 @@ export namespace Prisma {
     is_passed?: BoolFilter<"Exam"> | boolean
   }
 
+<<<<<<< HEAD
   export type ClassUpsertWithWhereUniqueWithoutMentorInput = {
     where: ClassWhereUniqueInput
     update: XOR<ClassUpdateWithoutMentorInput, ClassUncheckedUpdateWithoutMentorInput>
@@ -21958,6 +24217,33 @@ export namespace Prisma {
     title?: StringFilter<"Class"> | string
     description?: StringFilter<"Class"> | string
     is_active?: BoolFilter<"Class"> | boolean
+=======
+  export type ReviewUpsertWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    update: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
+    create: XOR<ReviewCreateWithoutUserInput, ReviewUncheckedCreateWithoutUserInput>
+  }
+
+  export type ReviewUpdateWithWhereUniqueWithoutUserInput = {
+    where: ReviewWhereUniqueInput
+    data: XOR<ReviewUpdateWithoutUserInput, ReviewUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ReviewUpdateManyWithWhereWithoutUserInput = {
+    where: ReviewScalarWhereInput
+    data: XOR<ReviewUpdateManyMutationInput, ReviewUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ReviewScalarWhereInput = {
+    AND?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    OR?: ReviewScalarWhereInput[]
+    NOT?: ReviewScalarWhereInput | ReviewScalarWhereInput[]
+    review_id?: IntFilter<"Review"> | number
+    user_id?: IntFilter<"Review"> | number
+    class_id?: IntFilter<"Review"> | number
+    rating?: IntFilter<"Review"> | number
+    comment?: StringFilter<"Review"> | string
+>>>>>>> origin/ayu
   }
 
   export type RecommendationRequestUpsertWithWhereUniqueWithoutUserInput = {
@@ -21980,12 +24266,21 @@ export namespace Prisma {
     AND?: RecommendationRequestScalarWhereInput | RecommendationRequestScalarWhereInput[]
     OR?: RecommendationRequestScalarWhereInput[]
     NOT?: RecommendationRequestScalarWhereInput | RecommendationRequestScalarWhereInput[]
+<<<<<<< HEAD
     id_request?: IntFilter<"RecommendationRequest"> | number
     user_id?: IntFilter<"RecommendationRequest"> | number
     category_id?: IntFilter<"RecommendationRequest"> | number
     method?: StringFilter<"RecommendationRequest"> | string
     created_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
     updated_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
+=======
+    id_recomen?: IntFilter<"RecommendationRequest"> | number
+    user_id?: IntFilter<"RecommendationRequest"> | number
+    category_id?: IntFilter<"RecommendationRequest"> | number
+    periode_id?: IntFilter<"RecommendationRequest"> | number
+    method?: StringFilter<"RecommendationRequest"> | string
+    created_at?: DateTimeFilter<"RecommendationRequest"> | Date | string
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultUpsertWithWhereUniqueWithoutUserInput = {
@@ -22008,11 +24303,19 @@ export namespace Prisma {
     AND?: RecommendationResultScalarWhereInput | RecommendationResultScalarWhereInput[]
     OR?: RecommendationResultScalarWhereInput[]
     NOT?: RecommendationResultScalarWhereInput | RecommendationResultScalarWhereInput[]
+<<<<<<< HEAD
     id?: IntFilter<"RecommendationResult"> | number
     req_id?: IntFilter<"RecommendationResult"> | number
     user_id?: IntFilter<"RecommendationResult"> | number
     score?: FloatFilter<"RecommendationResult"> | number
     pos?: IntFilter<"RecommendationResult"> | number
+=======
+    id_hasil?: IntFilter<"RecommendationResult"> | number
+    id_recomen?: IntFilter<"RecommendationResult"> | number
+    user_id?: IntFilter<"RecommendationResult"> | number
+    score?: FloatFilter<"RecommendationResult"> | number
+    ranking?: IntFilter<"RecommendationResult"> | number
+>>>>>>> origin/ayu
   }
 
   export type ClassCreateWithoutCategoryInput = {
@@ -22055,19 +24358,34 @@ export namespace Prisma {
   export type RecommendationRequestCreateWithoutCategoryInput = {
     method: string
     created_at?: Date | string
+<<<<<<< HEAD
     updated_at?: Date | string
     user: UserCreateNestedOneWithoutRecommendationRequestsInput
     weights?: RecommendationReqWeightCreateNestedManyWithoutRequestInput
+=======
+    user: UserCreateNestedOneWithoutRecommendationRequestsInput
+    periode: PeriodeCreateNestedOneWithoutRecommendationRequestsInput
+    weights?: RequestBobotCreateNestedManyWithoutRequestInput
+>>>>>>> origin/ayu
     results?: RecommendationResultCreateNestedManyWithoutRequestInput
   }
 
   export type RecommendationRequestUncheckedCreateWithoutCategoryInput = {
+<<<<<<< HEAD
     id_request?: number
     user_id: number
     method: string
     created_at?: Date | string
     updated_at?: Date | string
     weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutRequestInput
+=======
+    id_recomen?: number
+    user_id: number
+    periode_id: number
+    method: string
+    created_at?: Date | string
+    weights?: RequestBobotUncheckedCreateNestedManyWithoutRequestInput
+>>>>>>> origin/ayu
     results?: RecommendationResultUncheckedCreateNestedManyWithoutRequestInput
   }
 
@@ -22150,6 +24468,35 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type RecommendationRequestCreateWithoutPeriodeInput = {
+    method: string
+    created_at?: Date | string
+    user: UserCreateNestedOneWithoutRecommendationRequestsInput
+    category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
+    weights?: RequestBobotCreateNestedManyWithoutRequestInput
+    results?: RecommendationResultCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestUncheckedCreateWithoutPeriodeInput = {
+    id_recomen?: number
+    user_id: number
+    category_id: number
+    method: string
+    created_at?: Date | string
+    weights?: RequestBobotUncheckedCreateNestedManyWithoutRequestInput
+    results?: RecommendationResultUncheckedCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestCreateOrConnectWithoutPeriodeInput = {
+    where: RecommendationRequestWhereUniqueInput
+    create: XOR<RecommendationRequestCreateWithoutPeriodeInput, RecommendationRequestUncheckedCreateWithoutPeriodeInput>
+  }
+
+  export type RecommendationRequestCreateManyPeriodeInputEnvelope = {
+    data: RecommendationRequestCreateManyPeriodeInput | RecommendationRequestCreateManyPeriodeInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ClassUpsertWithWhereUniqueWithoutPeriodeInput = {
     where: ClassWhereUniqueInput
     update: XOR<ClassUpdateWithoutPeriodeInput, ClassUncheckedUpdateWithoutPeriodeInput>
@@ -22164,6 +24511,22 @@ export namespace Prisma {
   export type ClassUpdateManyWithWhereWithoutPeriodeInput = {
     where: ClassScalarWhereInput
     data: XOR<ClassUpdateManyMutationInput, ClassUncheckedUpdateManyWithoutPeriodeInput>
+  }
+
+  export type RecommendationRequestUpsertWithWhereUniqueWithoutPeriodeInput = {
+    where: RecommendationRequestWhereUniqueInput
+    update: XOR<RecommendationRequestUpdateWithoutPeriodeInput, RecommendationRequestUncheckedUpdateWithoutPeriodeInput>
+    create: XOR<RecommendationRequestCreateWithoutPeriodeInput, RecommendationRequestUncheckedCreateWithoutPeriodeInput>
+  }
+
+  export type RecommendationRequestUpdateWithWhereUniqueWithoutPeriodeInput = {
+    where: RecommendationRequestWhereUniqueInput
+    data: XOR<RecommendationRequestUpdateWithoutPeriodeInput, RecommendationRequestUncheckedUpdateWithoutPeriodeInput>
+  }
+
+  export type RecommendationRequestUpdateManyWithWhereWithoutPeriodeInput = {
+    where: RecommendationRequestScalarWhereInput
+    data: XOR<RecommendationRequestUpdateManyMutationInput, RecommendationRequestUncheckedUpdateManyWithoutPeriodeInput>
   }
 
   export type ClassCreateWithoutLevelInput = {
@@ -22226,8 +24589,13 @@ export namespace Prisma {
     join_date?: Date | string
     role: RoleCreateNestedOneWithoutUsersInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
     reviews?: ReviewCreateNestedManyWithoutUserInput
     exams?: ExamCreateNestedManyWithoutUserInput
+=======
+    exams?: ExamCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
@@ -22240,8 +24608,13 @@ export namespace Prisma {
     password: string
     join_date?: Date | string
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+=======
+    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
@@ -22268,12 +24641,14 @@ export namespace Prisma {
   }
 
   export type PeriodeCreateWithoutClassesInput = {
-    year: string
+    year: number
+    recommendationRequests?: RecommendationRequestCreateNestedManyWithoutPeriodeInput
   }
 
   export type PeriodeUncheckedCreateWithoutClassesInput = {
     periode_id?: number
-    year: string
+    year: number
+    recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutPeriodeInput
   }
 
   export type PeriodeCreateOrConnectWithoutClassesInput = {
@@ -22409,8 +24784,13 @@ export namespace Prisma {
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     exams?: ExamUpdateManyWithoutUserNestedInput
+=======
+    exams?: ExamUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
@@ -22423,8 +24803,13 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+=======
+    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -22463,12 +24848,14 @@ export namespace Prisma {
   }
 
   export type PeriodeUpdateWithoutClassesInput = {
-    year?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    recommendationRequests?: RecommendationRequestUpdateManyWithoutPeriodeNestedInput
   }
 
   export type PeriodeUncheckedUpdateWithoutClassesInput = {
     periode_id?: IntFieldUpdateOperationsInput | number
-    year?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutPeriodeNestedInput
   }
 
   export type LevelUpsertWithoutClassesInput = {
@@ -22572,9 +24959,13 @@ export namespace Prisma {
     password: string
     join_date?: Date | string
     role: RoleCreateNestedOneWithoutUsersInput
-    reviews?: ReviewCreateNestedManyWithoutUserInput
-    exams?: ExamCreateNestedManyWithoutUserInput
     classes?: ClassCreateNestedManyWithoutMentorInput
+    exams?: ExamCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+    classes?: ClassCreateNestedManyWithoutMentorInput
+=======
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
@@ -22586,9 +24977,13 @@ export namespace Prisma {
     email: string
     password: string
     join_date?: Date | string
-    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
-    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
     classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+=======
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
@@ -22647,9 +25042,13 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
-    reviews?: ReviewUpdateManyWithoutUserNestedInput
-    exams?: ExamUpdateManyWithoutUserNestedInput
     classes?: ClassUpdateManyWithoutMentorNestedInput
+    exams?: ExamUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+=======
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
@@ -22661,9 +25060,13 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
-    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
     classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+=======
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -22814,9 +25217,13 @@ export namespace Prisma {
     password: string
     join_date?: Date | string
     role: RoleCreateNestedOneWithoutUsersInput
+    classes?: ClassCreateNestedManyWithoutMentorInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
     classes?: ClassCreateNestedManyWithoutMentorInput
+=======
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
@@ -22828,9 +25235,13 @@ export namespace Prisma {
     email: string
     password: string
     join_date?: Date | string
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
     classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+=======
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
@@ -22895,9 +25306,13 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    classes?: ClassUpdateManyWithoutMentorNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
     classes?: ClassUpdateManyWithoutMentorNestedInput
+=======
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
@@ -22909,9 +25324,13 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
     classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+=======
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -22922,9 +25341,13 @@ export namespace Prisma {
     password: string
     join_date?: Date | string
     role: RoleCreateNestedOneWithoutUsersInput
+    classes?: ClassCreateNestedManyWithoutMentorInput
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     exams?: ExamCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
     classes?: ClassCreateNestedManyWithoutMentorInput
+=======
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
@@ -22936,9 +25359,13 @@ export namespace Prisma {
     email: string
     password: string
     join_date?: Date | string
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+<<<<<<< HEAD
     classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+=======
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
     recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
@@ -22997,9 +25424,13 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    classes?: ClassUpdateManyWithoutMentorNestedInput
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     exams?: ExamUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
     classes?: ClassUpdateManyWithoutMentorNestedInput
+=======
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
@@ -23011,9 +25442,13 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
     classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+=======
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -23077,6 +25512,7 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightCreateWithoutKriteriaInput = {
     bobot: number
     request: RecommendationRequestCreateNestedOneWithoutWeightsInput
@@ -23095,6 +25531,26 @@ export namespace Prisma {
 
   export type RecommendationReqWeightCreateManyKriteriaInputEnvelope = {
     data: RecommendationReqWeightCreateManyKriteriaInput | RecommendationReqWeightCreateManyKriteriaInput[]
+=======
+  export type RequestBobotCreateWithoutKriteriaInput = {
+    bobot_req: number
+    request: RecommendationRequestCreateNestedOneWithoutWeightsInput
+  }
+
+  export type RequestBobotUncheckedCreateWithoutKriteriaInput = {
+    id_bobot?: number
+    id_recomen: number
+    bobot_req: number
+  }
+
+  export type RequestBobotCreateOrConnectWithoutKriteriaInput = {
+    where: RequestBobotWhereUniqueInput
+    create: XOR<RequestBobotCreateWithoutKriteriaInput, RequestBobotUncheckedCreateWithoutKriteriaInput>
+  }
+
+  export type RequestBobotCreateManyKriteriaInputEnvelope = {
+    data: RequestBobotCreateManyKriteriaInput | RequestBobotCreateManyKriteriaInput[]
+>>>>>>> origin/ayu
     skipDuplicates?: boolean
   }
 
@@ -23121,6 +25577,7 @@ export namespace Prisma {
     id_value?: IntFilter<"KriteriaValue"> | number
     id_kriteria?: IntFilter<"KriteriaValue"> | number
     value?: StringFilter<"KriteriaValue"> | string
+<<<<<<< HEAD
     score?: IntFilter<"KriteriaValue"> | number
   }
 
@@ -23148,6 +25605,35 @@ export namespace Prisma {
     req_id?: IntFilter<"RecommendationReqWeight"> | number
     kriteria_id?: IntFilter<"RecommendationReqWeight"> | number
     bobot?: FloatFilter<"RecommendationReqWeight"> | number
+=======
+    score?: FloatFilter<"KriteriaValue"> | number
+  }
+
+  export type RequestBobotUpsertWithWhereUniqueWithoutKriteriaInput = {
+    where: RequestBobotWhereUniqueInput
+    update: XOR<RequestBobotUpdateWithoutKriteriaInput, RequestBobotUncheckedUpdateWithoutKriteriaInput>
+    create: XOR<RequestBobotCreateWithoutKriteriaInput, RequestBobotUncheckedCreateWithoutKriteriaInput>
+  }
+
+  export type RequestBobotUpdateWithWhereUniqueWithoutKriteriaInput = {
+    where: RequestBobotWhereUniqueInput
+    data: XOR<RequestBobotUpdateWithoutKriteriaInput, RequestBobotUncheckedUpdateWithoutKriteriaInput>
+  }
+
+  export type RequestBobotUpdateManyWithWhereWithoutKriteriaInput = {
+    where: RequestBobotScalarWhereInput
+    data: XOR<RequestBobotUpdateManyMutationInput, RequestBobotUncheckedUpdateManyWithoutKriteriaInput>
+  }
+
+  export type RequestBobotScalarWhereInput = {
+    AND?: RequestBobotScalarWhereInput | RequestBobotScalarWhereInput[]
+    OR?: RequestBobotScalarWhereInput[]
+    NOT?: RequestBobotScalarWhereInput | RequestBobotScalarWhereInput[]
+    id_bobot?: IntFilter<"RequestBobot"> | number
+    id_recomen?: IntFilter<"RequestBobot"> | number
+    id_kriteria?: IntFilter<"RequestBobot"> | number
+    bobot_req?: FloatFilter<"RequestBobot"> | number
+>>>>>>> origin/ayu
   }
 
   export type KriteriaCreateWithoutValuesInput = {
@@ -23155,7 +25641,11 @@ export namespace Prisma {
     nama: string
     tipe: string
     bobot: number
+<<<<<<< HEAD
     weights?: RecommendationReqWeightCreateNestedManyWithoutKriteriaInput
+=======
+    weights?: RequestBobotCreateNestedManyWithoutKriteriaInput
+>>>>>>> origin/ayu
   }
 
   export type KriteriaUncheckedCreateWithoutValuesInput = {
@@ -23164,7 +25654,11 @@ export namespace Prisma {
     nama: string
     tipe: string
     bobot: number
+<<<<<<< HEAD
     weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutKriteriaInput
+=======
+    weights?: RequestBobotUncheckedCreateNestedManyWithoutKriteriaInput
+>>>>>>> origin/ayu
   }
 
   export type KriteriaCreateOrConnectWithoutValuesInput = {
@@ -23188,7 +25682,11 @@ export namespace Prisma {
     nama?: StringFieldUpdateOperationsInput | string
     tipe?: StringFieldUpdateOperationsInput | string
     bobot?: FloatFieldUpdateOperationsInput | number
+<<<<<<< HEAD
     weights?: RecommendationReqWeightUpdateManyWithoutKriteriaNestedInput
+=======
+    weights?: RequestBobotUpdateManyWithoutKriteriaNestedInput
+>>>>>>> origin/ayu
   }
 
   export type KriteriaUncheckedUpdateWithoutValuesInput = {
@@ -23197,7 +25695,11 @@ export namespace Prisma {
     nama?: StringFieldUpdateOperationsInput | string
     tipe?: StringFieldUpdateOperationsInput | string
     bobot?: FloatFieldUpdateOperationsInput | number
+<<<<<<< HEAD
     weights?: RecommendationReqWeightUncheckedUpdateManyWithoutKriteriaNestedInput
+=======
+    weights?: RequestBobotUncheckedUpdateManyWithoutKriteriaNestedInput
+>>>>>>> origin/ayu
   }
 
   export type UserCreateWithoutRecommendationRequestsInput = {
@@ -23206,10 +25708,17 @@ export namespace Prisma {
     password: string
     join_date?: Date | string
     role: RoleCreateNestedOneWithoutUsersInput
+<<<<<<< HEAD
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     exams?: ExamCreateNestedManyWithoutUserInput
     classes?: ClassCreateNestedManyWithoutMentorInput
+=======
+    classes?: ClassCreateNestedManyWithoutMentorInput
+    enrollments?: EnrollmentCreateNestedManyWithoutUserInput
+    exams?: ExamCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationResults?: RecommendationResultCreateNestedManyWithoutUserInput
   }
 
@@ -23220,10 +25729,17 @@ export namespace Prisma {
     email: string
     password: string
     join_date?: Date | string
+<<<<<<< HEAD
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     exams?: ExamUncheckedCreateNestedManyWithoutUserInput
     classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+=======
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
+    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationResults?: RecommendationResultUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -23248,6 +25764,7 @@ export namespace Prisma {
     create: XOR<CategoryCreateWithoutRecommendationRequestsInput, CategoryUncheckedCreateWithoutRecommendationRequestsInput>
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightCreateWithoutRequestInput = {
     bobot: number
     kriteria: KriteriaCreateNestedOneWithoutWeightsInput
@@ -23266,20 +25783,67 @@ export namespace Prisma {
 
   export type RecommendationReqWeightCreateManyRequestInputEnvelope = {
     data: RecommendationReqWeightCreateManyRequestInput | RecommendationReqWeightCreateManyRequestInput[]
+=======
+  export type PeriodeCreateWithoutRecommendationRequestsInput = {
+    year: number
+    classes?: ClassCreateNestedManyWithoutPeriodeInput
+  }
+
+  export type PeriodeUncheckedCreateWithoutRecommendationRequestsInput = {
+    periode_id?: number
+    year: number
+    classes?: ClassUncheckedCreateNestedManyWithoutPeriodeInput
+  }
+
+  export type PeriodeCreateOrConnectWithoutRecommendationRequestsInput = {
+    where: PeriodeWhereUniqueInput
+    create: XOR<PeriodeCreateWithoutRecommendationRequestsInput, PeriodeUncheckedCreateWithoutRecommendationRequestsInput>
+  }
+
+  export type RequestBobotCreateWithoutRequestInput = {
+    bobot_req: number
+    kriteria: KriteriaCreateNestedOneWithoutWeightsInput
+  }
+
+  export type RequestBobotUncheckedCreateWithoutRequestInput = {
+    id_bobot?: number
+    id_kriteria: number
+    bobot_req: number
+  }
+
+  export type RequestBobotCreateOrConnectWithoutRequestInput = {
+    where: RequestBobotWhereUniqueInput
+    create: XOR<RequestBobotCreateWithoutRequestInput, RequestBobotUncheckedCreateWithoutRequestInput>
+  }
+
+  export type RequestBobotCreateManyRequestInputEnvelope = {
+    data: RequestBobotCreateManyRequestInput | RequestBobotCreateManyRequestInput[]
+>>>>>>> origin/ayu
     skipDuplicates?: boolean
   }
 
   export type RecommendationResultCreateWithoutRequestInput = {
     score: number
+<<<<<<< HEAD
     pos: number
+=======
+    ranking: number
+>>>>>>> origin/ayu
     user: UserCreateNestedOneWithoutRecommendationResultsInput
   }
 
   export type RecommendationResultUncheckedCreateWithoutRequestInput = {
+<<<<<<< HEAD
     id?: number
     user_id: number
     score: number
     pos: number
+=======
+    id_hasil?: number
+    user_id: number
+    score: number
+    ranking: number
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultCreateOrConnectWithoutRequestInput = {
@@ -23309,10 +25873,17 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+<<<<<<< HEAD
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     exams?: ExamUpdateManyWithoutUserNestedInput
     classes?: ClassUpdateManyWithoutMentorNestedInput
+=======
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+    enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
+    exams?: ExamUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
 
@@ -23323,10 +25894,17 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
+<<<<<<< HEAD
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
     classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+=======
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -23352,6 +25930,7 @@ export namespace Prisma {
     classes?: ClassUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightUpsertWithWhereUniqueWithoutRequestInput = {
     where: RecommendationReqWeightWhereUniqueInput
     update: XOR<RecommendationReqWeightUpdateWithoutRequestInput, RecommendationReqWeightUncheckedUpdateWithoutRequestInput>
@@ -23366,6 +25945,44 @@ export namespace Prisma {
   export type RecommendationReqWeightUpdateManyWithWhereWithoutRequestInput = {
     where: RecommendationReqWeightScalarWhereInput
     data: XOR<RecommendationReqWeightUpdateManyMutationInput, RecommendationReqWeightUncheckedUpdateManyWithoutRequestInput>
+=======
+  export type PeriodeUpsertWithoutRecommendationRequestsInput = {
+    update: XOR<PeriodeUpdateWithoutRecommendationRequestsInput, PeriodeUncheckedUpdateWithoutRecommendationRequestsInput>
+    create: XOR<PeriodeCreateWithoutRecommendationRequestsInput, PeriodeUncheckedCreateWithoutRecommendationRequestsInput>
+    where?: PeriodeWhereInput
+  }
+
+  export type PeriodeUpdateToOneWithWhereWithoutRecommendationRequestsInput = {
+    where?: PeriodeWhereInput
+    data: XOR<PeriodeUpdateWithoutRecommendationRequestsInput, PeriodeUncheckedUpdateWithoutRecommendationRequestsInput>
+  }
+
+  export type PeriodeUpdateWithoutRecommendationRequestsInput = {
+    year?: IntFieldUpdateOperationsInput | number
+    classes?: ClassUpdateManyWithoutPeriodeNestedInput
+  }
+
+  export type PeriodeUncheckedUpdateWithoutRecommendationRequestsInput = {
+    periode_id?: IntFieldUpdateOperationsInput | number
+    year?: IntFieldUpdateOperationsInput | number
+    classes?: ClassUncheckedUpdateManyWithoutPeriodeNestedInput
+  }
+
+  export type RequestBobotUpsertWithWhereUniqueWithoutRequestInput = {
+    where: RequestBobotWhereUniqueInput
+    update: XOR<RequestBobotUpdateWithoutRequestInput, RequestBobotUncheckedUpdateWithoutRequestInput>
+    create: XOR<RequestBobotCreateWithoutRequestInput, RequestBobotUncheckedCreateWithoutRequestInput>
+  }
+
+  export type RequestBobotUpdateWithWhereUniqueWithoutRequestInput = {
+    where: RequestBobotWhereUniqueInput
+    data: XOR<RequestBobotUpdateWithoutRequestInput, RequestBobotUncheckedUpdateWithoutRequestInput>
+  }
+
+  export type RequestBobotUpdateManyWithWhereWithoutRequestInput = {
+    where: RequestBobotScalarWhereInput
+    data: XOR<RequestBobotUpdateManyMutationInput, RequestBobotUncheckedUpdateManyWithoutRequestInput>
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultUpsertWithWhereUniqueWithoutRequestInput = {
@@ -23387,19 +26004,34 @@ export namespace Prisma {
   export type RecommendationRequestCreateWithoutWeightsInput = {
     method: string
     created_at?: Date | string
+<<<<<<< HEAD
     updated_at?: Date | string
     user: UserCreateNestedOneWithoutRecommendationRequestsInput
     category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
+=======
+    user: UserCreateNestedOneWithoutRecommendationRequestsInput
+    category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
+    periode: PeriodeCreateNestedOneWithoutRecommendationRequestsInput
+>>>>>>> origin/ayu
     results?: RecommendationResultCreateNestedManyWithoutRequestInput
   }
 
   export type RecommendationRequestUncheckedCreateWithoutWeightsInput = {
+<<<<<<< HEAD
     id_request?: number
     user_id: number
     category_id: number
     method: string
     created_at?: Date | string
     updated_at?: Date | string
+=======
+    id_recomen?: number
+    user_id: number
+    category_id: number
+    periode_id: number
+    method: string
+    created_at?: Date | string
+>>>>>>> origin/ayu
     results?: RecommendationResultUncheckedCreateNestedManyWithoutRequestInput
   }
 
@@ -23444,19 +26076,34 @@ export namespace Prisma {
   export type RecommendationRequestUpdateWithoutWeightsInput = {
     method?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+<<<<<<< HEAD
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
     category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+=======
+    user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    periode?: PeriodeUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+>>>>>>> origin/ayu
     results?: RecommendationResultUpdateManyWithoutRequestNestedInput
   }
 
   export type RecommendationRequestUncheckedUpdateWithoutWeightsInput = {
+<<<<<<< HEAD
     id_request?: IntFieldUpdateOperationsInput | number
     user_id?: IntFieldUpdateOperationsInput | number
     category_id?: IntFieldUpdateOperationsInput | number
     method?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> origin/ayu
     results?: RecommendationResultUncheckedUpdateManyWithoutRequestNestedInput
   }
 
@@ -23491,6 +26138,7 @@ export namespace Prisma {
   export type RecommendationRequestCreateWithoutResultsInput = {
     method: string
     created_at?: Date | string
+<<<<<<< HEAD
     updated_at?: Date | string
     user: UserCreateNestedOneWithoutRecommendationRequestsInput
     category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
@@ -23505,6 +26153,22 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     weights?: RecommendationReqWeightUncheckedCreateNestedManyWithoutRequestInput
+=======
+    user: UserCreateNestedOneWithoutRecommendationRequestsInput
+    category: CategoryCreateNestedOneWithoutRecommendationRequestsInput
+    periode: PeriodeCreateNestedOneWithoutRecommendationRequestsInput
+    weights?: RequestBobotCreateNestedManyWithoutRequestInput
+  }
+
+  export type RecommendationRequestUncheckedCreateWithoutResultsInput = {
+    id_recomen?: number
+    user_id: number
+    category_id: number
+    periode_id: number
+    method: string
+    created_at?: Date | string
+    weights?: RequestBobotUncheckedCreateNestedManyWithoutRequestInput
+>>>>>>> origin/ayu
   }
 
   export type RecommendationRequestCreateOrConnectWithoutResultsInput = {
@@ -23518,10 +26182,17 @@ export namespace Prisma {
     password: string
     join_date?: Date | string
     role: RoleCreateNestedOneWithoutUsersInput
+<<<<<<< HEAD
     enrollments?: EnrollmentCreateNestedManyWithoutUserInput
     reviews?: ReviewCreateNestedManyWithoutUserInput
     exams?: ExamCreateNestedManyWithoutUserInput
     classes?: ClassCreateNestedManyWithoutMentorInput
+=======
+    classes?: ClassCreateNestedManyWithoutMentorInput
+    enrollments?: EnrollmentCreateNestedManyWithoutUserInput
+    exams?: ExamCreateNestedManyWithoutUserInput
+    reviews?: ReviewCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestCreateNestedManyWithoutUserInput
   }
 
@@ -23532,10 +26203,17 @@ export namespace Prisma {
     email: string
     password: string
     join_date?: Date | string
+<<<<<<< HEAD
     enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
     exams?: ExamUncheckedCreateNestedManyWithoutUserInput
     classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+=======
+    classes?: ClassUncheckedCreateNestedManyWithoutMentorInput
+    enrollments?: EnrollmentUncheckedCreateNestedManyWithoutUserInput
+    exams?: ExamUncheckedCreateNestedManyWithoutUserInput
+    reviews?: ReviewUncheckedCreateNestedManyWithoutUserInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -23558,6 +26236,7 @@ export namespace Prisma {
   export type RecommendationRequestUpdateWithoutResultsInput = {
     method?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+<<<<<<< HEAD
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
     category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
@@ -23572,6 +26251,22 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     weights?: RecommendationReqWeightUncheckedUpdateManyWithoutRequestNestedInput
+=======
+    user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    periode?: PeriodeUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    weights?: RequestBobotUpdateManyWithoutRequestNestedInput
+  }
+
+  export type RecommendationRequestUncheckedUpdateWithoutResultsInput = {
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    weights?: RequestBobotUncheckedUpdateManyWithoutRequestNestedInput
+>>>>>>> origin/ayu
   }
 
   export type UserUpsertWithoutRecommendationResultsInput = {
@@ -23591,10 +26286,17 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+<<<<<<< HEAD
     enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
     reviews?: ReviewUpdateManyWithoutUserNestedInput
     exams?: ExamUpdateManyWithoutUserNestedInput
     classes?: ClassUpdateManyWithoutMentorNestedInput
+=======
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+    enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
+    exams?: ExamUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
   }
 
@@ -23605,10 +26307,17 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
+<<<<<<< HEAD
     enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
     exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
     classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+=======
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -23625,10 +26334,14 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
-    reviews?: ReviewUpdateManyWithoutUserNestedInput
-    exams?: ExamUpdateManyWithoutUserNestedInput
     classes?: ClassUpdateManyWithoutMentorNestedInput
+    enrollments?: EnrollmentUpdateManyWithoutUserNestedInput
+    exams?: ExamUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+    classes?: ClassUpdateManyWithoutMentorNestedInput
+=======
+    reviews?: ReviewUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUpdateManyWithoutUserNestedInput
   }
@@ -23639,10 +26352,14 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
-    enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
-    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
-    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
     classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+    enrollments?: EnrollmentUncheckedUpdateManyWithoutUserNestedInput
+    exams?: ExamUncheckedUpdateManyWithoutUserNestedInput
+<<<<<<< HEAD
+    classes?: ClassUncheckedUpdateManyWithoutMentorNestedInput
+=======
+    reviews?: ReviewUncheckedUpdateManyWithoutUserNestedInput
+>>>>>>> origin/ayu
     recommendationRequests?: RecommendationRequestUncheckedUpdateManyWithoutUserNestedInput
     recommendationResults?: RecommendationResultUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -23655,18 +26372,21 @@ export namespace Prisma {
     join_date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ClassCreateManyMentorInput = {
+    class_id?: number
+    category_id: number
+    periode_id: number
+    level_id: number
+    title: string
+    description: string
+    is_active?: boolean
+  }
+
   export type EnrollmentCreateManyUserInput = {
     enrollment_id?: number
     class_id: number
     progress?: number
     role_in_class: string
-  }
-
-  export type ReviewCreateManyUserInput = {
-    review_id?: number
-    class_id: number
-    rating: number
-    comment: string
   }
 
   export type ExamCreateManyUserInput = {
@@ -23678,6 +26398,7 @@ export namespace Prisma {
     is_passed?: boolean
   }
 
+<<<<<<< HEAD
   export type ClassCreateManyMentorInput = {
     class_id?: number
     category_id: number
@@ -23701,72 +26422,27 @@ export namespace Prisma {
     req_id: number
     score: number
     pos: number
+=======
+  export type ReviewCreateManyUserInput = {
+    review_id?: number
+    class_id: number
+    rating: number
+    comment: string
   }
 
-  export type EnrollmentUpdateWithoutUserInput = {
-    progress?: IntFieldUpdateOperationsInput | number
-    role_in_class?: StringFieldUpdateOperationsInput | string
-    class?: ClassUpdateOneRequiredWithoutEnrollmentNestedInput
+  export type RecommendationRequestCreateManyUserInput = {
+    id_recomen?: number
+    category_id: number
+    periode_id: number
+    method: string
+    created_at?: Date | string
   }
 
-  export type EnrollmentUncheckedUpdateWithoutUserInput = {
-    enrollment_id?: IntFieldUpdateOperationsInput | number
-    class_id?: IntFieldUpdateOperationsInput | number
-    progress?: IntFieldUpdateOperationsInput | number
-    role_in_class?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type EnrollmentUncheckedUpdateManyWithoutUserInput = {
-    enrollment_id?: IntFieldUpdateOperationsInput | number
-    class_id?: IntFieldUpdateOperationsInput | number
-    progress?: IntFieldUpdateOperationsInput | number
-    role_in_class?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ReviewUpdateWithoutUserInput = {
-    rating?: IntFieldUpdateOperationsInput | number
-    comment?: StringFieldUpdateOperationsInput | string
-    class?: ClassUpdateOneRequiredWithoutReviewsNestedInput
-  }
-
-  export type ReviewUncheckedUpdateWithoutUserInput = {
-    review_id?: IntFieldUpdateOperationsInput | number
-    class_id?: IntFieldUpdateOperationsInput | number
-    rating?: IntFieldUpdateOperationsInput | number
-    comment?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ReviewUncheckedUpdateManyWithoutUserInput = {
-    review_id?: IntFieldUpdateOperationsInput | number
-    class_id?: IntFieldUpdateOperationsInput | number
-    rating?: IntFieldUpdateOperationsInput | number
-    comment?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ExamUpdateWithoutUserInput = {
-    title?: StringFieldUpdateOperationsInput | string
-    min_score?: IntFieldUpdateOperationsInput | number
-    score?: IntFieldUpdateOperationsInput | number
-    is_passed?: BoolFieldUpdateOperationsInput | boolean
-    class?: ClassUpdateOneRequiredWithoutExamsNestedInput
-  }
-
-  export type ExamUncheckedUpdateWithoutUserInput = {
-    exam_id?: IntFieldUpdateOperationsInput | number
-    class_id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    min_score?: IntFieldUpdateOperationsInput | number
-    score?: IntFieldUpdateOperationsInput | number
-    is_passed?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type ExamUncheckedUpdateManyWithoutUserInput = {
-    exam_id?: IntFieldUpdateOperationsInput | number
-    class_id?: IntFieldUpdateOperationsInput | number
-    title?: StringFieldUpdateOperationsInput | string
-    min_score?: IntFieldUpdateOperationsInput | number
-    score?: IntFieldUpdateOperationsInput | number
-    is_passed?: BoolFieldUpdateOperationsInput | boolean
+  export type RecommendationResultCreateManyUserInput = {
+    id_hasil?: number
+    id_recomen: number
+    score: number
+    ranking: number
   }
 
   export type ClassUpdateWithoutMentorInput = {
@@ -23804,42 +26480,175 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
+>>>>>>> origin/ayu
+  }
+
+  export type EnrollmentUpdateWithoutUserInput = {
+    progress?: IntFieldUpdateOperationsInput | number
+    role_in_class?: StringFieldUpdateOperationsInput | string
+    class?: ClassUpdateOneRequiredWithoutEnrollmentNestedInput
+  }
+
+  export type EnrollmentUncheckedUpdateWithoutUserInput = {
+    enrollment_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    progress?: IntFieldUpdateOperationsInput | number
+    role_in_class?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type EnrollmentUncheckedUpdateManyWithoutUserInput = {
+    enrollment_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    progress?: IntFieldUpdateOperationsInput | number
+    role_in_class?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ExamUpdateWithoutUserInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    min_score?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
+    is_passed?: BoolFieldUpdateOperationsInput | boolean
+    class?: ClassUpdateOneRequiredWithoutExamsNestedInput
+  }
+
+  export type ExamUncheckedUpdateWithoutUserInput = {
+    exam_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    min_score?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
+    is_passed?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type ExamUncheckedUpdateManyWithoutUserInput = {
+    exam_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    min_score?: IntFieldUpdateOperationsInput | number
+    score?: IntFieldUpdateOperationsInput | number
+    is_passed?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+<<<<<<< HEAD
+  export type ClassUpdateWithoutMentorInput = {
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    category?: CategoryUpdateOneRequiredWithoutClassesNestedInput
+    periode?: PeriodeUpdateOneRequiredWithoutClassesNestedInput
+    level?: LevelUpdateOneRequiredWithoutClassesNestedInput
+    materis?: MateriUpdateManyWithoutClassNestedInput
+    exams?: ExamUpdateManyWithoutClassNestedInput
+    reviews?: ReviewUpdateManyWithoutClassNestedInput
+    enrollment?: EnrollmentUpdateManyWithoutClassNestedInput
+  }
+
+  export type ClassUncheckedUpdateWithoutMentorInput = {
+    class_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    level_id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+    materis?: MateriUncheckedUpdateManyWithoutClassNestedInput
+    exams?: ExamUncheckedUpdateManyWithoutClassNestedInput
+    reviews?: ReviewUncheckedUpdateManyWithoutClassNestedInput
+    enrollment?: EnrollmentUncheckedUpdateManyWithoutClassNestedInput
+  }
+
+  export type ClassUncheckedUpdateManyWithoutMentorInput = {
+    class_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    level_id?: IntFieldUpdateOperationsInput | number
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    is_active?: BoolFieldUpdateOperationsInput | boolean
+=======
+  export type ReviewUpdateWithoutUserInput = {
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: StringFieldUpdateOperationsInput | string
+    class?: ClassUpdateOneRequiredWithoutReviewsNestedInput
+  }
+
+  export type ReviewUncheckedUpdateWithoutUserInput = {
+    review_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ReviewUncheckedUpdateManyWithoutUserInput = {
+    review_id?: IntFieldUpdateOperationsInput | number
+    class_id?: IntFieldUpdateOperationsInput | number
+    rating?: IntFieldUpdateOperationsInput | number
+    comment?: StringFieldUpdateOperationsInput | string
+>>>>>>> origin/ayu
   }
 
   export type RecommendationRequestUpdateWithoutUserInput = {
     method?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+<<<<<<< HEAD
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
     weights?: RecommendationReqWeightUpdateManyWithoutRequestNestedInput
+=======
+    category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    periode?: PeriodeUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    weights?: RequestBobotUpdateManyWithoutRequestNestedInput
+>>>>>>> origin/ayu
     results?: RecommendationResultUpdateManyWithoutRequestNestedInput
   }
 
   export type RecommendationRequestUncheckedUpdateWithoutUserInput = {
+<<<<<<< HEAD
     id_request?: IntFieldUpdateOperationsInput | number
     category_id?: IntFieldUpdateOperationsInput | number
     method?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     weights?: RecommendationReqWeightUncheckedUpdateManyWithoutRequestNestedInput
+=======
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    weights?: RequestBobotUncheckedUpdateManyWithoutRequestNestedInput
+>>>>>>> origin/ayu
     results?: RecommendationResultUncheckedUpdateManyWithoutRequestNestedInput
   }
 
   export type RecommendationRequestUncheckedUpdateManyWithoutUserInput = {
+<<<<<<< HEAD
     id_request?: IntFieldUpdateOperationsInput | number
     category_id?: IntFieldUpdateOperationsInput | number
     method?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultUpdateWithoutUserInput = {
     score?: FloatFieldUpdateOperationsInput | number
+<<<<<<< HEAD
     pos?: IntFieldUpdateOperationsInput | number
+=======
+    ranking?: IntFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
     request?: RecommendationRequestUpdateOneRequiredWithoutResultsNestedInput
   }
 
   export type RecommendationResultUncheckedUpdateWithoutUserInput = {
+<<<<<<< HEAD
     id?: IntFieldUpdateOperationsInput | number
     req_id?: IntFieldUpdateOperationsInput | number
     score?: FloatFieldUpdateOperationsInput | number
@@ -23851,6 +26660,19 @@ export namespace Prisma {
     req_id?: IntFieldUpdateOperationsInput | number
     score?: FloatFieldUpdateOperationsInput | number
     pos?: IntFieldUpdateOperationsInput | number
+=======
+    id_hasil?: IntFieldUpdateOperationsInput | number
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    ranking?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationResultUncheckedUpdateManyWithoutUserInput = {
+    id_hasil?: IntFieldUpdateOperationsInput | number
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    ranking?: IntFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
   }
 
   export type ClassCreateManyCategoryInput = {
@@ -23864,11 +26686,19 @@ export namespace Prisma {
   }
 
   export type RecommendationRequestCreateManyCategoryInput = {
+<<<<<<< HEAD
     id_request?: number
     user_id: number
     method: string
     created_at?: Date | string
     updated_at?: Date | string
+=======
+    id_recomen?: number
+    user_id: number
+    periode_id: number
+    method: string
+    created_at?: Date | string
+>>>>>>> origin/ayu
   }
 
   export type ClassUpdateWithoutCategoryInput = {
@@ -23911,28 +26741,51 @@ export namespace Prisma {
   export type RecommendationRequestUpdateWithoutCategoryInput = {
     method?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+<<<<<<< HEAD
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
     weights?: RecommendationReqWeightUpdateManyWithoutRequestNestedInput
+=======
+    user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    periode?: PeriodeUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    weights?: RequestBobotUpdateManyWithoutRequestNestedInput
+>>>>>>> origin/ayu
     results?: RecommendationResultUpdateManyWithoutRequestNestedInput
   }
 
   export type RecommendationRequestUncheckedUpdateWithoutCategoryInput = {
+<<<<<<< HEAD
     id_request?: IntFieldUpdateOperationsInput | number
     user_id?: IntFieldUpdateOperationsInput | number
     method?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     weights?: RecommendationReqWeightUncheckedUpdateManyWithoutRequestNestedInput
+=======
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    weights?: RequestBobotUncheckedUpdateManyWithoutRequestNestedInput
+>>>>>>> origin/ayu
     results?: RecommendationResultUncheckedUpdateManyWithoutRequestNestedInput
   }
 
   export type RecommendationRequestUncheckedUpdateManyWithoutCategoryInput = {
+<<<<<<< HEAD
     id_request?: IntFieldUpdateOperationsInput | number
     user_id?: IntFieldUpdateOperationsInput | number
     method?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+=======
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    periode_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+>>>>>>> origin/ayu
   }
 
   export type ClassCreateManyPeriodeInput = {
@@ -23943,6 +26796,14 @@ export namespace Prisma {
     title: string
     description: string
     is_active?: boolean
+  }
+
+  export type RecommendationRequestCreateManyPeriodeInput = {
+    id_recomen?: number
+    user_id: number
+    category_id: number
+    method: string
+    created_at?: Date | string
   }
 
   export type ClassUpdateWithoutPeriodeInput = {
@@ -23980,6 +26841,33 @@ export namespace Prisma {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     is_active?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type RecommendationRequestUpdateWithoutPeriodeInput = {
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    category?: CategoryUpdateOneRequiredWithoutRecommendationRequestsNestedInput
+    weights?: RequestBobotUpdateManyWithoutRequestNestedInput
+    results?: RecommendationResultUpdateManyWithoutRequestNestedInput
+  }
+
+  export type RecommendationRequestUncheckedUpdateWithoutPeriodeInput = {
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    weights?: RequestBobotUncheckedUpdateManyWithoutRequestNestedInput
+    results?: RecommendationResultUncheckedUpdateManyWithoutRequestNestedInput
+  }
+
+  export type RecommendationRequestUncheckedUpdateManyWithoutPeriodeInput = {
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    method?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ClassCreateManyLevelInput = {
@@ -24151,26 +27039,42 @@ export namespace Prisma {
     score: number
   }
 
+<<<<<<< HEAD
   export type RecommendationReqWeightCreateManyKriteriaInput = {
     id?: number
     req_id: number
     bobot: number
+=======
+  export type RequestBobotCreateManyKriteriaInput = {
+    id_bobot?: number
+    id_recomen: number
+    bobot_req: number
+>>>>>>> origin/ayu
   }
 
   export type KriteriaValueUpdateWithoutKriteriaInput = {
     value?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     score?: IntFieldUpdateOperationsInput | number
+=======
+    score?: FloatFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
   }
 
   export type KriteriaValueUncheckedUpdateWithoutKriteriaInput = {
     id_value?: IntFieldUpdateOperationsInput | number
     value?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     score?: IntFieldUpdateOperationsInput | number
+=======
+    score?: FloatFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
   }
 
   export type KriteriaValueUncheckedUpdateManyWithoutKriteriaInput = {
     id_value?: IntFieldUpdateOperationsInput | number
     value?: StringFieldUpdateOperationsInput | string
+<<<<<<< HEAD
     score?: IntFieldUpdateOperationsInput | number
   }
 
@@ -24219,15 +27123,70 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     kriteria_id?: IntFieldUpdateOperationsInput | number
     bobot?: FloatFieldUpdateOperationsInput | number
+=======
+    score?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RequestBobotUpdateWithoutKriteriaInput = {
+    bobot_req?: FloatFieldUpdateOperationsInput | number
+    request?: RecommendationRequestUpdateOneRequiredWithoutWeightsNestedInput
+  }
+
+  export type RequestBobotUncheckedUpdateWithoutKriteriaInput = {
+    id_bobot?: IntFieldUpdateOperationsInput | number
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    bobot_req?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RequestBobotUncheckedUpdateManyWithoutKriteriaInput = {
+    id_bobot?: IntFieldUpdateOperationsInput | number
+    id_recomen?: IntFieldUpdateOperationsInput | number
+    bobot_req?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RequestBobotCreateManyRequestInput = {
+    id_bobot?: number
+    id_kriteria: number
+    bobot_req: number
+  }
+
+  export type RecommendationResultCreateManyRequestInput = {
+    id_hasil?: number
+    user_id: number
+    score: number
+    ranking: number
+  }
+
+  export type RequestBobotUpdateWithoutRequestInput = {
+    bobot_req?: FloatFieldUpdateOperationsInput | number
+    kriteria?: KriteriaUpdateOneRequiredWithoutWeightsNestedInput
+  }
+
+  export type RequestBobotUncheckedUpdateWithoutRequestInput = {
+    id_bobot?: IntFieldUpdateOperationsInput | number
+    id_kriteria?: IntFieldUpdateOperationsInput | number
+    bobot_req?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type RequestBobotUncheckedUpdateManyWithoutRequestInput = {
+    id_bobot?: IntFieldUpdateOperationsInput | number
+    id_kriteria?: IntFieldUpdateOperationsInput | number
+    bobot_req?: FloatFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
   }
 
   export type RecommendationResultUpdateWithoutRequestInput = {
     score?: FloatFieldUpdateOperationsInput | number
+<<<<<<< HEAD
     pos?: IntFieldUpdateOperationsInput | number
+=======
+    ranking?: IntFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
     user?: UserUpdateOneRequiredWithoutRecommendationResultsNestedInput
   }
 
   export type RecommendationResultUncheckedUpdateWithoutRequestInput = {
+<<<<<<< HEAD
     id?: IntFieldUpdateOperationsInput | number
     user_id?: IntFieldUpdateOperationsInput | number
     score?: FloatFieldUpdateOperationsInput | number
@@ -24239,6 +27198,19 @@ export namespace Prisma {
     user_id?: IntFieldUpdateOperationsInput | number
     score?: FloatFieldUpdateOperationsInput | number
     pos?: IntFieldUpdateOperationsInput | number
+=======
+    id_hasil?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    ranking?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type RecommendationResultUncheckedUpdateManyWithoutRequestInput = {
+    id_hasil?: IntFieldUpdateOperationsInput | number
+    user_id?: IntFieldUpdateOperationsInput | number
+    score?: FloatFieldUpdateOperationsInput | number
+    ranking?: IntFieldUpdateOperationsInput | number
+>>>>>>> origin/ayu
   }
 
 
