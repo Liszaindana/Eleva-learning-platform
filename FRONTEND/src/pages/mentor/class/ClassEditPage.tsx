@@ -1,62 +1,66 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { PATHS } from '../../../routes/paths'; // Sesuaikan tingkat ../ kelompokmu jika beda
+import { PATHS } from '../../../routes/paths';
 import { ArrowLeft, Save, FileText, LayoutGrid, DollarSign, Loader2 } from 'lucide-react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { kelasApi } from '../../../api/kelas'; // Sesuaikan path import apiClient kamu
+import { categoryApi } from '../../../api/endpoints'; // Sesuaikan path import apiClient kamu
 
 export default function ClassEditPage() {
     const navigate = useNavigate();
-    const { id } = useParams<{ id: string }>(); // ✨ Menangkap ID kelas dari URL
+    const { id } = useParams<{ id: string }>();
+    const queryClient = useQueryClient();
 
-    const [isLoading, setIsLoading] = useState(true);
     const [formData, setFormData] = useState({
         title: '',
-        category: '',
+        category_id: '',
         price: '',
         description: '',
     });
 
-    // 🔄 Simulasi mengambil data kelas lama berdasarkan ID saat komponen dimuat
+    // 🔄 1. Ambil data kelas dari backend memakai kelasApi
+    const { data: classResponse, isLoading: isLoadingClass } = useQuery({
+        queryKey: ['classDetails', id],
+        queryFn: () => kelasApi.getById(Number(id)),
+        enabled: !!id,
+    });
+
+    // 🔄 2. Ambil semua daftar kategori untuk dropdown memakai categoryApi
+    const { data: categoriesResponse, isLoading: isLoadingCategories } = useQuery({
+        queryKey: ['allCategories'],
+        queryFn: categoryApi.getAll,
+    });
+
+    // 🔄 3. Sinkronkan data kelas ke dalam form state
     useEffect(() => {
-        const fetchClassData = async () => {
-            setIsLoading(true);
-            try {
-                // Simulasi delay API network request selama 800ms
-                await new Promise((resolve) => setTimeout(resolve, 800));
+        // Antisipasi jika data dibungkus property .data dari backend
+        const classData = (classResponse as any)?.data || classResponse;
 
-                // Data dummy yang seolah-olah didapat dari database berdasarkan ID
-                const mockDatabase: Record<string, typeof formData> = {
-                    '1': {
-                        title: 'Advanced UI Design Systems',
-                        category: 'ui-ux',
-                        price: '350000',
-                        description: 'Master the art of creating scalable design systems for modern applications. This course covers components, tokens, and documentation.',
-                    },
-                    '2': {
-                        title: 'Product Management 101',
-                        category: 'product',
-                        price: '250000',
-                        description: 'Essential skills for aspiring product managers in the digital era. Learn product lifecycle, user research, and roadmapping.',
-                    },
-                };
+        if (classData) {
+            setFormData({
+                title: classData.title || '',
+                category_id: classData.category_id?.toString() || classData.category?.toString() || '',
+                price: classData.price?.toString() || '0',
+                description: classData.description || '',
+            });
+        }
+    }, [classResponse]);
 
-                // Jika ID ditemukan di mock database, pakai datanya. Jika tidak, pakai default kosong.
-                const existingClass = mockDatabase[id || ''] || {
-                    title: `Sample Class ID ${id}`,
-                    category: 'programming',
-                    price: '199000',
-                    description: 'This is a sample description for fallback data routing test.',
-                };
-
-                setFormData(existingClass);
-            } catch (error) {
-                console.error('Failed to fetch class data', error);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-
-        fetchClassData();
-    }, [id]);
+    // 🔄 4. Mutation untuk proses simpan (update) perubahan data kelas
+    const updateClassMutation = useMutation({
+        mutationFn: (updatedData: any) => kelasApi.update(Number(id), updatedData),
+        onSuccess: () => {
+            // Segarkan cache query dashboard/kelas agar infonya langsung sinkron
+            queryClient.invalidateQueries({ queryKey: ['allenrollment'] });
+            queryClient.invalidateQueries({ queryKey: ['classDetails', id] });
+            alert('Perubahan data kelas berhasil disimpan!');
+            navigate(PATHS.MENTOR_CLASS_LIST);
+        },
+        onError: (error) => {
+            console.error('Failed to update class:', error);
+            alert('Waduh, gagal mengupdate data kelas. Coba cek koneksi backend kamu.');
+        }
+    });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -65,17 +69,29 @@ export default function ClassEditPage() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        alert(`Dummy Update! Data Kelas ID ${id} Berhasil Diubah:\n${JSON.stringify(formData, null, 2)}`);
-        // Setelah sukses update, arahkan kembali ke list kelas mentor
-        navigate(PATHS.MENTOR_CLASS_LIST);
+        
+        // Buat payload yang sesuai dengan kebutuhan backend kamu
+        const payload = {
+            title: formData.title,
+            category_id: Number(formData.category_id),
+            price: Number(formData.price),
+            description: formData.description,
+        };
+
+        updateClassMutation.mutate(payload);
     };
 
-    // State loading saat pura-pura mengambil data dari API
-    if (isLoading) {
+    // Ambil array list kategori asli (antisipasi jika dibungkus .data)
+    const categoryList = Array.isArray(categoriesResponse)
+        ? categoriesResponse
+        : (categoriesResponse as any)?.data || [];
+
+    // Tampilkan screen loading jika data kelas atau data kategori masih di-fetch
+    if (isLoadingClass || isLoadingCategories) {
         return (
             <div className="w-full h-[60vh] flex flex-col items-center justify-center gap-3 text-slate-400">
                 <Loader2 className="h-8 w-8 animate-spin text-indigo-500" />
-                <p className="text-sm font-medium">Loading class details...</p>
+                <p className="text-sm font-medium">Loading class details & categories...</p>
             </div>
         );
     }
@@ -122,23 +138,25 @@ export default function ClassEditPage() {
 
                 {/* Row Category & Price */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Category */}
+                    {/* Category Dropdown Dinamis */}
                     <div className="space-y-2">
                         <label className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
                             <LayoutGrid className="h-4 w-4 text-indigo-400" />
                             Category
                         </label>
                         <select
-                            name="category"
-                            value={formData.category}
+                            name="category_id"
+                            value={formData.category_id}
                             onChange={handleChange}
                             required
                             className="w-full bg-slate-950 border border-slate-800 text-slate-300 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer"
                         >
                             <option value="">Select a category</option>
-                            <option value="ui-ux">UI/UX Design</option>
-                            <option value="programming">Programming & Development</option>
-                            <option value="product">Product Management</option>
+                            {categoryList.map((cat: any) => (
+                                <option key={cat.category_id} value={cat.category_id}>
+                                    {cat.categories || cat.category_name || cat.name}
+                                </option>
+                            ))}
                         </select>
                     </div>
 
@@ -188,10 +206,15 @@ export default function ClassEditPage() {
                     </button>
                     <button
                         type="submit"
-                        className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-lg shadow-indigo-600/10"
+                        disabled={updateClassMutation.isPending}
+                        className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-lg shadow-indigo-600/10 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                        <Save className="h-4 w-4" />
-                        Save Changes
+                        {updateClassMutation.isPending ? (
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : (
+                            <Save className="h-4 w-4" />
+                        )}
+                        {updateClassMutation.isPending ? 'Saving...' : 'Save Changes'}
                     </button>
                 </div>
 

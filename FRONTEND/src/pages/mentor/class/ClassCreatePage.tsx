@@ -1,16 +1,26 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PATHS } from '../../../routes/paths'; // Sesuaikan tingkat ../ kelompokmu jika beda
+import { useQuery } from '@tanstack/react-query'; // Pastikan import ini sesuai setup projectmu
+import { PATHS } from '../../../routes/paths';
 import { ArrowLeft, Save, FileText, LayoutGrid, DollarSign } from 'lucide-react';
-import Button from '../../../components/ui/Button';
+import { categoryApi } from '../../../api/endpoints';
 
 export default function ClassCreatePage() {
     const navigate = useNavigate();
 
-    // State form dummy
+    // 1. Ganti fetch manual dengan TanStack Query yang kamu berikan
+    const { data: categoriesResponse, isLoading: isLoadingCategories } = useQuery({
+        queryKey: ['allCategories'],
+        queryFn: categoryApi.getAll,
+    });
+
+    const categories = categoriesResponse || categoriesResponse || [];
+
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
     const [formData, setFormData] = useState({
         title: '',
-        category: '',
+        categoryId: '',
         price: '',
         description: '',
     });
@@ -20,11 +30,33 @@ export default function ClassCreatePage() {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        alert(`Dummy Submit! Data Kelas Baru:\n${JSON.stringify(formData, null, 2)}`);
-        // Setelah sukses simpan, arahkan kembali ke list kelas mentor
-        navigate(PATHS.MENTOR_CLASS_LIST);
+        setIsSubmitting(true);
+
+        try {
+            // Selesaikan implementasi API POST kelas di sini sesuai arsitektur timmu
+            const response = await fetch('/class', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    title: formData.title,
+                    category_id: Number(formData.categoryId),
+                    price: Number(formData.price),
+                    description: formData.description,
+                }),
+            });
+
+            if (response.ok) {
+                navigate(PATHS.MENTOR_CLASS_LIST);
+            } else {
+                alert('Gagal membuat kelas');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -33,6 +65,7 @@ export default function ClassCreatePage() {
             {/* Back Button & Header */}
             <div className="flex flex-col gap-3 border-b border-slate-900 pb-6">
                 <button
+                    type="button"
                     onClick={() => navigate(PATHS.MENTOR_CLASS_LIST)}
                     className="flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-indigo-400 transition-colors bg-transparent border-none cursor-pointer self-start"
                 >
@@ -41,9 +74,7 @@ export default function ClassCreatePage() {
                 </button>
                 <div>
                     <h1 className="text-2xl font-black text-white tracking-tight">Create New Class</h1>
-                    <p className="text-slate-400 text-sm mt-1">
-                        Fill in the details below to launch your new learning program.
-                    </p>
+                    <p className="text-slate-400 text-sm mt-1">Fill in the details below to launch your new learning program.</p>
                 </div>
             </div>
 
@@ -63,29 +94,40 @@ export default function ClassCreatePage() {
                         onChange={handleChange}
                         placeholder="e.g. Advanced UI Design Systems"
                         required
-                        className="w-full bg-slate-950 border border-slate-800 text-slate-100 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                        disabled={isSubmitting}
+                        className="w-full bg-slate-950 border border-slate-800 text-slate-100 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all disabled:opacity-50"
                     />
                 </div>
 
                 {/* Row Category & Price */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Category */}
+                    {/* Category Dropdown (Memakai data dari useQuery) */}
                     <div className="space-y-2">
                         <label className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
                             <LayoutGrid className="h-4 w-4 text-indigo-400" />
                             Category
                         </label>
                         <select
-                            name="category"
-                            value={formData.category}
+                            name="categoryId"
+                            value={formData.categoryId}
                             onChange={handleChange}
                             required
-                            className="w-full bg-slate-950 border border-slate-800 text-slate-300 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer"
+                            disabled={isLoadingCategories || isSubmitting}
+                            className="w-full bg-slate-950 border border-slate-800 text-slate-300 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer disabled:opacity-50"
                         >
-                            <option value="">Select a category</option>
-                            <option value="ui-ux">UI/UX Design</option>
-                            <option value="programming">Programming & Development</option>
-                            <option value="product">Product Management</option>
+                            {isLoadingCategories ? (
+                                <option value="">Loading categories...</option>
+                            ) : (
+                                <>
+                                    <option value="">Select a category</option>
+                                    {/* Ubah cat.id -> cat.category_id & cat.name -> cat.categories */}
+                                    {Array.isArray(categories) && categories.map((cat: any) => (
+                                        <option key={cat.category_id} value={cat.category_id}>
+                                            {cat.categories}
+                                        </option>
+                                    ))}
+                                </>
+                            )}
                         </select>
                     </div>
 
@@ -102,7 +144,8 @@ export default function ClassCreatePage() {
                             onChange={handleChange}
                             placeholder="e.g. 150000"
                             required
-                            className="w-full bg-slate-950 border border-slate-800 text-slate-100 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all"
+                            disabled={isSubmitting}
+                            className="w-full bg-slate-950 border border-slate-800 text-slate-100 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all disabled:opacity-50"
                         />
                     </div>
                 </div>
@@ -120,7 +163,8 @@ export default function ClassCreatePage() {
                         rows={5}
                         placeholder="Describe what students will learn in this class..."
                         required
-                        className="w-full bg-slate-950 border border-slate-800 text-slate-100 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none"
+                        disabled={isSubmitting}
+                        className="w-full bg-slate-950 border border-slate-800 text-slate-100 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none disabled:opacity-50"
                     />
                 </div>
 
@@ -129,16 +173,18 @@ export default function ClassCreatePage() {
                     <button
                         type="button"
                         onClick={() => navigate(PATHS.MENTOR_CLASS_LIST)}
-                        className="px-5 py-2.5 bg-transparent hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-sm font-semibold rounded-xl transition-all border border-transparent hover:border-slate-700/50 cursor-pointer"
+                        disabled={isSubmitting}
+                        className="px-5 py-2.5 bg-transparent hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-sm font-semibold rounded-xl transition-all border border-transparent hover:border-slate-700/50 cursor-pointer disabled:opacity-50"
                     >
                         Cancel
                     </button>
                     <button
                         type="submit"
-                        className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-lg shadow-indigo-600/10"
+                        disabled={isSubmitting}
+                        className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-lg shadow-indigo-600/10 disabled:opacity-50"
                     >
                         <Save className="h-4 w-4" />
-                        Publish Class
+                        {isSubmitting ? 'Publishing...' : 'Publish Class'}
                     </button>
                 </div>
 

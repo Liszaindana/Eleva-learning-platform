@@ -5,7 +5,7 @@ export const PATHS = {
   KELAS: '/kelas',
   KELAS_DETAIL: '/kelas/:id',
   STUDENT_DASHBOARD: '/student/dashboard',
-  
+
   // ADMIN PATHS
   ADMIN_DASHBOARD: '/admin/dashboard',
   ADMIN_CATEGORY_LIST: '/admin/categories',
@@ -23,6 +23,8 @@ export const PATHS = {
   MENTOR_CLASS_CREATE: '/mentor/courses/create',
   MENTOR_CLASS_EDIT: '/mentor/courses/:id/edit',
   MENTOR_MATERIAL_LIST: '/mentor/materials',
+  MENTOR_MATERIAL_CREATE: '/mentor/materials/:classId/create',
+  MENTOR_MATERIAL_EDIT: '/mentor/materials/:classId/:materiId/edit',
   MENTOR_REVIEW_LIST: '/mentor/reviews',
   MENTOR_PROFILE: '/mentor/profile',
 } as const;
@@ -53,4 +55,30 @@ export function classEditPath(id: number): string {
  */
 export function mentorClassEditPath(id: number): string {
   return `/mentor/courses/${id}/edit`;
+}
+
+/**
+ * 🚀 SESUAIKAN: Arahkan ke halaman utama list materi yang baru (bukan rute /courses lagi)
+ */
+export function mentorMaterialListPath(): string {
+  return `/mentor/materials`;
+}
+
+/**
+ *  Build path untuk membuat materi baru di kelas tertentu
+ */
+export const mentorMaterialCreatePath = (classId: number | string) => 
+  `/mentor/materials/${classId}/create`;
+
+/**
+ *  Build path untuk mengedit materi spesifik berdasarkan ID Kelas dan ID Materi
+ */
+export const mentorMaterialEditPath = (classId: number | string, materiId: number | string) => 
+  `/mentor/materials/${classId}/${materiId}/edit`;
+
+/**
+ * 🚀 TAMBAHKAN: Build path untuk halaman review mentor
+ */
+export function mentorReviewListPath(): string {
+  return `/mentor/reviews`;
 }

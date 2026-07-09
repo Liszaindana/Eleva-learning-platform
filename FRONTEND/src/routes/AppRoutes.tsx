@@ -28,6 +28,11 @@ import ReviewListPage from '../pages/admin/review/ReviewListPage';
 import MentorClassListPage from '../pages/mentor/class/ClassListPage';
 import MentorClassCreatePage from '../pages/mentor/class/ClassCreatePage';
 import MentorClassEditPage from '../pages/mentor/class/ClassEditPage';
+import MateriListPage from '../pages/mentor/materi/MateriListPage';
+import MateriCreatePage from '../pages/mentor/materi/MateriCreatePage';
+import MateriEditPage from '../pages/mentor/materi/MateriEditPage';
+import MentorReview from '../pages/mentor/MentorReview';
+import MentorProfile from '../pages/mentor/MentorProfile';
 
 import { PATHS } from './paths';
 
@@ -55,6 +60,11 @@ export default function AppRoutes() {
             <Route path={PATHS.MENTOR_CLASS_LIST} element={<MentorClassListPage />} />
             <Route path={PATHS.MENTOR_CLASS_CREATE} element={<MentorClassCreatePage />} />
             <Route path={PATHS.MENTOR_CLASS_EDIT} element={<MentorClassEditPage />} />
+            <Route path={PATHS.MENTOR_MATERIAL_LIST} element={<MateriListPage />} />
+            <Route path={PATHS.MENTOR_MATERIAL_CREATE} element={<MateriCreatePage />} />
+            <Route path={PATHS.MENTOR_MATERIAL_EDIT} element={<MateriEditPage />} />
+            <Route path={PATHS.MENTOR_REVIEW_LIST} element={<MentorReview />} />
+            <Route path={PATHS.MENTOR_PROFILE} element={ <MentorProfile />} />
           </Route>
         </Route>
 

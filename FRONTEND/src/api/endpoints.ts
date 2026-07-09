@@ -91,3 +91,10 @@ export const reviewApi = {
   getAll: () => 
     apiClient.get<any[]>('/review').then((res) => res.data),
 };
+
+// ── Enrollment Endpoints ───────────────────────────────────
+
+export const enrollmentApi = {
+  getAll: () => 
+    apiClient.get<any[]>('/enrollment').then((res) => res.data),
+}

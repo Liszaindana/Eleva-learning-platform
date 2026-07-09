@@ -46,7 +46,7 @@ export default function MentorLayout() {
             <div className="h-9 w-9 rounded-xl bg-white flex items-center justify-center shadow-lg">
               <img src={logo} alt="Eleva Logo" className="h-7 w-7 object-contain" />
             </div>
-            <span className="text-xl font-bold tracking-wider bg-gradient-to-r from-white to-slate-300 bg-clip-text text-transparent">Eleva</span>
+            <span className="text-xl font-bold tracking-wider bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent">Eleva</span>
           </div>
 
           {/* Navigation Items */}
