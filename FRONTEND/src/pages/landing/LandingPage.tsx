@@ -260,6 +260,11 @@ export default function LandingPage() {
             <Link to={PATHS.KELAS} className="text-xs font-bold text-blue-600 hover:text-blue-500 transition-colors">
               View All
             </Link>
+            <Link
+              to={PATHS.RECOMMENDATION}
+              className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-white font-semibold hover:bg-blue-700 transition-colors">
+              Cari Mentor Terbaik
+              </Link>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4">

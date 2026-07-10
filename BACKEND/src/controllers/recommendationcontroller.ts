@@ -1,6 +1,7 @@
 import type { Response } from "express";
 import { prisma } from "../lib/db.js";
 import { getMetricValue, SUPPORTED_KRITERIA_KODE } from "../lib/mentorMetrics.js";
+import { convertToKriteriaScore } from "../lib/kriteriaScoring.js";
 
 type KriteriaRow = { id_kriteria: number; kode: string; nama: string; tipe: string; bobot: number };
 
@@ -118,12 +119,12 @@ export const createRecommendationRequest = async (req: any, res: Response) => {
     for (const mentorId of mentorIds) {
       const row = new Map<number, number>();
       for (const k of kriteriaList) {
-        const value = await getMetricValue(k.kode, mentorId);
-        row.set(k.id_kriteria, value);
+        const rawValue = await getMetricValue(k.kode, mentorId);
+        const score = convertToKriteriaScore(k.kode, rawValue);
+        row.set(k.id_kriteria, score);
       }
       matrix.set(mentorId, row);
     }
-
     // ---------- 8-10. HITUNG SESUAI METHOD ----------
     let scores: { user_id: number; score: number }[];
     if (method === "SAW") {

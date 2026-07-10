@@ -22,6 +22,10 @@ import ClassEditPage from '../pages/admin/class/ClassEditPage';
 import UserListPage from '../pages/admin/user/UserListPage';
 import ReviewListPage from '../pages/admin/review/ReviewListPage';
 import { PATHS } from './paths';
+import RecommendationPage from '../pages/spk/RecommendationPage';
+import DashboardLayout from '../layouts/DashboardLayout';
+import RecommendationHistoryPage from '../pages/spk/RecommendationHistoryPage';
+import RecommendationDetailPage from '../pages/spk/RecommendationDetailPage';
 
 export default function AppRoutes() {
   return (
@@ -47,6 +51,11 @@ export default function AppRoutes() {
           <Route element={<StudentLayout />}>
             <Route path={PATHS.STUDENT_DASHBOARD} element={<StudentDashboard />} />
           </Route>
+        </Route>
+        <Route element={<DashboardLayout />}>
+          <Route path={PATHS.RECOMMENDATION} element={<RecommendationPage />} />
+          <Route path={PATHS.RECOMMENDATION_HISTORY} element={<RecommendationHistoryPage />} />
+          <Route path={PATHS.RECOMMENDATION_DETAIL} element={<RecommendationDetailPage />} />
         </Route>
 
         <Route element={<RoleRoute allowedRoles={['admin']} />}>

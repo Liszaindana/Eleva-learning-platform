@@ -15,7 +15,11 @@ export const PATHS = {
   ADMIN_CLASS_EDIT: '/admin/classes/:id/edit',
   ADMIN_USER_LIST: '/admin/users',
   ADMIN_REVIEW_LIST: '/admin/reviews',
+  RECOMMENDATION: '/recommendation',
+  RECOMMENDATION_HISTORY: '/recommendation/history',
+  RECOMMENDATION_DETAIL: '/recommendation/:id',
 } as const;
+
 
 /**
  * Build a kelas detail path with a specific ID
@@ -37,3 +41,9 @@ export function categoryEditPath(id: number): string {
 export function classEditPath(id: number): string {
   return `/admin/classes/${id}/edit`;
 }
+
+export function recommendationDetailPath(id: number): string {
+  return `/recommendation/${id}`;
+}
+
+

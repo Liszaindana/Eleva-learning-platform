@@ -18534,6 +18534,7 @@ export namespace Prisma {
 
   export type KriteriaValueWhereUniqueInput = Prisma.AtLeast<{
     id_value?: number
+    id_kriteria_value?: KriteriaValueId_kriteriaValueCompoundUniqueInput
     AND?: KriteriaValueWhereInput | KriteriaValueWhereInput[]
     OR?: KriteriaValueWhereInput[]
     NOT?: KriteriaValueWhereInput | KriteriaValueWhereInput[]
@@ -18541,7 +18542,7 @@ export namespace Prisma {
     value?: StringFilter<"KriteriaValue"> | string
     score?: FloatFilter<"KriteriaValue"> | number
     kriteria?: XOR<KriteriaScalarRelationFilter, KriteriaWhereInput>
-  }, "id_value">
+  }, "id_value" | "id_kriteria_value">
 
   export type KriteriaValueOrderByWithAggregationInput = {
     id_value?: SortOrder
@@ -20255,6 +20256,11 @@ export namespace Prisma {
     fields: KriteriaValueOrderByRelevanceFieldEnum | KriteriaValueOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
+  }
+
+  export type KriteriaValueId_kriteriaValueCompoundUniqueInput = {
+    id_kriteria: number
+    value: string
   }
 
   export type KriteriaValueCountOrderByAggregateInput = {

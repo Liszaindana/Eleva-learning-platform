@@ -173,6 +173,7 @@ model KriteriaValue {
 
   kriteria Kriteria @relation(fields: [id_kriteria], references: [id_kriteria])
 
+  @@unique([id_kriteria, value])
   @@map("kriteria_value")
 }
 
