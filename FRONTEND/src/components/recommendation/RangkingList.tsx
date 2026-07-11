@@ -41,7 +41,7 @@ export default function RankingList({ results }: RankingListProps) {
                 {r.user?.name ?? `Mentor #${r.user_id}`}
               </p>
               <Badge variant={r.ranking === 1 ? 'success' : 'info'}>
-                {(r.score * 100).toFixed(1)}%
+              {r.score.toFixed(4)}
               </Badge>
             </div>
             {r.user?.email && <p className="text-xs text-slate-500">{r.user.email}</p>}
