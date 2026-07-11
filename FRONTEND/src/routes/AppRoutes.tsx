@@ -39,7 +39,6 @@ import MentorProfile from '../pages/mentor/MentorProfile';
 
 import { PATHS } from './paths';
 import RecommendationPage from '../pages/spk/RecommendationPage';
-import DashboardLayout from '../layouts/DashboardLayout';
 import RecommendationHistoryPage from '../pages/spk/RecommendationHistoryPage';
 import RecommendationDetailPage from '../pages/spk/RecommendationDetailPage';
 
@@ -64,7 +63,7 @@ export default function AppRoutes() {
           <Route element={<MentorLayout />}>
             <Route path={PATHS.MENTOR_DASHBOARD} element={<MentorDashboard />} />
             
-            {/* TAMBAHKAN RUTE MENTOR DI SINI ✨ */}
+            {/* TAMBAHKAN RUTE MENTOR DI SINI  */}
             <Route path={PATHS.MENTOR_CLASS_LIST} element={<MentorClassListPage />} />
             <Route path={PATHS.MENTOR_CLASS_CREATE} element={<MentorClassCreatePage />} />
             <Route path={PATHS.MENTOR_CLASS_EDIT} element={<MentorClassEditPage />} />
@@ -82,7 +81,7 @@ export default function AppRoutes() {
             <Route path={PATHS.STUDENT_DASHBOARD} element={<StudentDashboard />} />
           </Route>
         </Route>
-        <Route element={<DashboardLayout />}>
+        <Route element={<PublicLayout />}>
           <Route path={PATHS.RECOMMENDATION} element={<RecommendationPage />} />
           <Route path={PATHS.RECOMMENDATION_HISTORY} element={<RecommendationHistoryPage />} />
           <Route path={PATHS.RECOMMENDATION_DETAIL} element={<RecommendationDetailPage />} />

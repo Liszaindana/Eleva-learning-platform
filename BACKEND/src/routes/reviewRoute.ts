@@ -1,11 +1,13 @@
 import express from "express";
-import { createreview, getallreview, getreviewbyid, updatereview, deletereview } from "../controllers/reviewcontroller.js";
+import { getallreview, getreviewbyid, createreview, updatereview, deletereview } from "../controllers/reviewcontroller.js";
+import { authMiddleware } from "../middlewares/authMiddleware.js";
+
 const router = express.Router();
 
-router.post("/review", createreview);
 router.get("/review", getallreview);
 router.get("/review/:id", getreviewbyid);
-router.put("/review/:id", updatereview);
-router.delete("/review/:id", deletereview);
+router.post("/review", authMiddleware, createreview);
+router.put("/review/:id", authMiddleware, updatereview);
+router.delete("/review/:id", authMiddleware, deletereview);
 
 export default router;

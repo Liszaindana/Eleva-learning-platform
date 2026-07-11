@@ -14,6 +14,7 @@ const navLinks = [
   { label: 'Kelas', path: PATHS.KELAS },
 ];
 
+
 export default function PublicLayout() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();

@@ -2,14 +2,20 @@ import type { Request, Response } from 'express';
 import { prisma } from '../lib/db.js';
 
 // 1. OPERASI CREATE (Memberikan rating dan ulasan untuk kelas)
-export const createreview = async (req: Request, res: Response) => {
+export const createreview = async (req: any, res: Response) => {
     try {
-        const { user_id, class_id, rating, comment } = req.body;
+        //  user_id SEKARANG DARI TOKEN LOGIN, BUKAN DARI BODY
+        const userId = req.user?.user_id;
+        if (!userId) {
+            return res.status(401).json({ message: "Anda harus login untuk memberi ulasan." });
+        }
+
+        const { class_id, rating, comment } = req.body;
 
         // Validasi: Pastikan data wajib terisi
-        if (!user_id || !class_id || !rating || !comment) {
+        if (!class_id || !rating || !comment) {
             return res.status(400).json({ 
-                message: "Semua data (user_id, class_id, rating, comment) wajib diisi!" 
+                message: "Semua data (class_id, rating, comment) wajib diisi!" 
             });
         }
 
@@ -19,10 +25,35 @@ export const createreview = async (req: Request, res: Response) => {
             return res.status(400).json({ message: "Rating harus berada di skala 1 sampai 5!" });
         }
 
+        const classIdNumber = Number(class_id);
+
+        const kelas = await prisma.class.findUnique({ where: { class_id: classIdNumber } });
+        if (!kelas) {
+            return res.status(404).json({ message: "Kelas tidak ditemukan." });
+        }
+
+        // wajib sudah terdaftar sebagai siswa di kelas ini
+        const enrollment = await prisma.enrollment.findFirst({
+            where: { user_id: userId, class_id: classIdNumber, role_in_class: "siswa" },
+        });
+        if (!enrollment) {
+            return res.status(403).json({
+                message: "Kamu harus mengikuti kelas ini terlebih dahulu sebelum memberi ulasan.",
+            });
+        }
+
+        // wajib sudah terdaftar sebagai siswa di kelas ini
+        const existingUserReview = await prisma.review.findFirst({
+            where: { user_id: userId, class_id: classIdNumber },
+        });
+        if (existingUserReview) {
+            return res.status(409).json({ message: "Kamu sudah pernah memberi ulasan untuk kelas ini." });
+        }
+
         const newReview = await prisma.review.create({
             data: {
-                user_id: Number(user_id),
-                class_id: Number(class_id),
+                user_id: userId,
+                class_id: classIdNumber,
                 rating: ratingNumber,
                 comment
             },
@@ -45,7 +76,7 @@ export const createreview = async (req: Request, res: Response) => {
 export const getallreview = async (req: Request, res: Response) => {
     try {
         const reviews = await prisma.review.findMany({
-            orderBy: { review_id: "asc" }, // Diurutkan berdasarkan id review
+            orderBy: { review_id: "asc" },
             include: {
                 user: true,
                 class: true
@@ -60,7 +91,7 @@ export const getallreview = async (req: Request, res: Response) => {
 // 3. OPERASI READ BY ID (Mengambil ulasan spesifik lewat Int ID)
 export const getreviewbyid = async (req: Request, res: Response) => {
     try {
-        const id = Number(req.params.id); // 💡 Sekarang diconvert ke Number
+        const id = Number(req.params.id);
 
         if (isNaN(id)) {
             return res.status(400).json({ message: "ID ulasan tidak valid, harus berupa angka!" });
@@ -85,9 +116,9 @@ export const getreviewbyid = async (req: Request, res: Response) => {
 };
 
 // 4. OPERASI UPDATE (Mengubah isi review atau rating)
-export const updatereview = async (req: Request, res: Response) => {
+export const updatereview = async (req: any, res: Response) => {
     try {
-        const id = Number(req.params.id); // 💡 Sekarang diconvert ke Number
+        const id = Number(req.params.id);
 
         if (isNaN(id)) {
             return res.status(400).json({ message: "ID ulasan tidak valid, harus berupa angka!" });
@@ -99,6 +130,13 @@ export const updatereview = async (req: Request, res: Response) => {
 
         if (!existingReview) {
             return res.status(404).json({ message: "Ulasan tidak ditemukan" });
+        }
+
+        // ⬇️ BARU: cuma pemilik ulasan atau admin yang boleh edit
+        const userId = req.user?.user_id;
+        const userRole = req.user?.role;
+        if (existingReview.user_id !== userId && userRole !== "admin") {
+            return res.status(403).json({ message: "Kamu tidak berhak mengubah ulasan ini." });
         }
 
         const { rating, comment } = req.body;
@@ -133,9 +171,9 @@ export const updatereview = async (req: Request, res: Response) => {
 };
 
 // 5. OPERASI DELETE (Menghapus ulasan)
-export const deletereview = async (req: Request, res: Response) => {
+export const deletereview = async (req: any, res: Response) => {
     try {
-        const id = Number(req.params.id); // 💡 Sekarang diconvert ke Number
+        const id = Number(req.params.id);
 
         if (isNaN(id)) {
             return res.status(400).json({ message: "ID ulasan tidak valid, harus berupa angka!" });
@@ -147,6 +185,13 @@ export const deletereview = async (req: Request, res: Response) => {
 
         if (!existingReview) {
             return res.status(404).json({ message: "Ulasan tidak ditemukan" });
+        }
+
+        //  BARU: cuma pemilik ulasan atau admin yang boleh hapus
+        const userId = req.user?.user_id;
+        const userRole = req.user?.role;
+        if (existingReview.user_id !== userId && userRole !== "admin") {
+            return res.status(403).json({ message: "Kamu tidak berhak menghapus ulasan ini." });
         }
 
         await prisma.review.delete({

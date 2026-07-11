@@ -9,10 +9,13 @@ import EmptyState from '../../components/ui/EmptyState';
 import { classApi } from '../../api/endpoints';
 import { PATHS } from '../../routes/paths';
 import { averageRating } from '../../lib/utils';
+import ReviewForm from '../../components/forms/ReviewForm';
+import { useAuthStore } from '../../store/authStore'; 
 
 export default function KelasDetailPage() {
   const { id } = useParams<{ id: string }>();
   const classId = Number(id);
+  const { user, isAuthenticated } = useAuthStore(); 
 
   const { data: kelas, isLoading, isError } = useQuery({
     queryKey: ['class', classId],
@@ -37,6 +40,12 @@ export default function KelasDetailPage() {
   const rating = averageRating(kelas.reviews?.map((r) => r.rating) ?? []);
   const studentCount = kelas.enrollment?.filter((e) => e.role_in_class === 'siswa').length ?? 0;
   const materiCount = kelas.materis?.length ?? 0;
+
+  // ⬇️ BARU: cek status enrollment & review milik user yang lagi login
+  const myEnrollment = kelas.enrollment?.find(
+    (e) => e.user_id === user?.user_id && e.role_in_class === 'siswa'
+  );
+  const myReview = kelas.reviews?.find((r) => r.user_id === user?.user_id);
 
   return (
     <section className="py-8 sm:py-12">
@@ -90,9 +99,28 @@ export default function KelasDetailPage() {
             )}
 
             {/* Reviews */}
-            {(kelas.reviews?.length ?? 0) > 0 && (
-              <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <h2 className="text-lg font-semibold text-slate-900 mb-4">Ulasan</h2>
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm space-y-5">
+              <h2 className="text-lg font-semibold text-slate-900">Ulasan</h2>
+
+              {/* Form review — cuma muncul kalau login, sudah enrollment, dan belum pernah review */}
+              {isAuthenticated && myEnrollment && !myReview && <ReviewForm classId={classId} />}
+
+              {/* Sudah pernah review */}
+              {isAuthenticated && myReview && (
+                <p className="rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                  ✓ Kamu sudah memberi ulasan untuk kelas ini.
+                </p>
+              )}
+
+              {/* Login tapi belum enrollment */}
+              {isAuthenticated && !myEnrollment && !myReview && (
+                <p className="rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-500">
+                  Kamu perlu mengikuti kelas ini terlebih dahulu untuk bisa memberi ulasan.
+                </p>
+              )}
+
+              {/* Daftar review yang sudah ada */}
+              {(kelas.reviews?.length ?? 0) > 0 ? (
                 <div className="space-y-4">
                   {kelas.reviews!.map((r) => (
                     <div key={r.review_id} className="p-4 rounded-xl bg-slate-50 border border-slate-100">
@@ -108,8 +136,10 @@ export default function KelasDetailPage() {
                     </div>
                   ))}
                 </div>
-              </div>
-            )}
+              ) : (
+                <p className="text-sm text-slate-400">Belum ada ulasan untuk kelas ini.</p>
+              )}
+            </div>
           </div>
 
           {/* Sidebar */}

@@ -88,8 +88,17 @@ export const categoryApi = {
 // ── Review Endpoints ───────────────────────────────────
 
 export const reviewApi = {
-  getAll: () => 
+  getAll: () =>
     apiClient.get<any[]>('/review').then((res) => res.data),
+
+  create: (payload: { class_id: number; rating: number; comment: string }) =>
+    apiClient.post('/review', payload).then((res) => res.data),
+
+  update: (id: number, payload: { rating?: number; comment?: string }) =>
+    apiClient.put(`/review/${id}`, payload).then((res) => res.data),
+
+  remove: (id: number) =>
+    apiClient.delete(`/review/${id}`).then((res) => res.data),
 };
 
 // ── Enrollment Endpoints ───────────────────────────────────
