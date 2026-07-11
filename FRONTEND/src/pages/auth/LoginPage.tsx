@@ -19,12 +19,11 @@ export default function LoginPage() {
   const mutation = useMutation({
     mutationFn: authApi.login,
     onSuccess: (data) => {
-      login(data.token, data.user);
-      navigate(PATHS.HOME);
-    },
+    login(data.token, data.user);
+      if (data.user.role === 'admin') {navigate(PATHS.ADMIN_DASHBOARD);} else if (data.user.role === 'mentor') {
+      navigate(PATHS.MENTOR_DASHBOARD);} else {navigate(PATHS.STUDENT_DASHBOARD);}},
     onError: (err: Error) => {
-      setError(err.message);
-    },
+    setError(err.message);},
   });
 
   const handleSubmit = (e: React.FormEvent) => {

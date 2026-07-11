@@ -26,6 +26,9 @@ export const classApi = {
 
   getById: (id: number) =>
     apiClient.get<Class>(`/class/${id}`).then((res) => res.data),
+
+  getCategories: () =>
+    apiClient.get<any[]>('/category').then((res) => res.data),
 };
 
 // ── User / Auth Endpoints ───────────────────────────────────
@@ -61,3 +64,37 @@ export const userApi = {
       .get<ApiResponse<User>>(`/users/${id}`)
       .then((res) => res.data),
 };
+
+
+// ── Category Endpoints ───────────────────────────────────
+
+export const categoryApi = {
+  getAll: () => 
+    apiClient.get<any[]>('/category').then((res) => res.data),
+
+  getById: (id: number) => 
+    apiClient.get<any>(`/category/${id}`).then((res) => res.data),
+
+  create: (data: { categories: string }) => 
+    apiClient.post('/category', data).then((res) => res.data),
+
+  update: (id: number, data: { categories: string }) => 
+    apiClient.put(`/category/${id}`, data).then((res) => res.data),
+
+  delete: (id: number) => 
+    apiClient.delete(`/category/${id}`).then((res) => res.data),
+};
+
+// ── Review Endpoints ───────────────────────────────────
+
+export const reviewApi = {
+  getAll: () => 
+    apiClient.get<any[]>('/review').then((res) => res.data),
+};
+
+// ── Enrollment Endpoints ───────────────────────────────────
+
+export const enrollmentApi = {
+  getAll: () => 
+    apiClient.get<any[]>('/enrollment').then((res) => res.data),
+}

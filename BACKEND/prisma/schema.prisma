@@ -44,8 +44,7 @@ model User {
 model Category {
   category_id Int @id @default(autoincrement())
   categories  String
-  classes Class[]
-
+  classes     Class[]
   recommendationRequests RecommendationRequest[]
 
   @@map("category")

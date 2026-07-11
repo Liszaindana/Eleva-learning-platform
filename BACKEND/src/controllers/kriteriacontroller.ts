@@ -197,3 +197,83 @@ export const deleteKriteria = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const createKriteriaValue = async (req: Request, res: Response) => {
+  try {
+    const { id_kriteria, value, score } = req.body;
+    if (!id_kriteria || !value || score === undefined) {
+      return res.status(400).json({ message: "id_kriteria, value, dan score wajib diisi." });
+    }
+
+    const kriteria = await prisma.kriteria.findUnique({ where: { id_kriteria: Number(id_kriteria) } });
+    if (!kriteria) {
+      return res.status(404).json({ message: "Kriteria tidak ditemukan." });
+    }
+
+    const kv = await prisma.kriteriaValue.create({
+      data: {
+        id_kriteria: Number(id_kriteria),
+        value,
+        score: Number(score),
+      },
+    });
+
+    return res.status(201).json({ message: "Skala nilai berhasil dibuat.", data: kv });
+  } catch (error: any) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getKriteriaValuesByKriteria = async (req: Request, res: Response) => {
+  try {
+    const id_kriteria = Number(req.params.id_kriteria);
+    if (isNaN(id_kriteria)) return res.status(400).json({ message: "ID tidak valid." });
+
+    const values = await prisma.kriteriaValue.findMany({
+      where: { id_kriteria },
+      orderBy: { score: "desc" },
+    });
+
+    return res.json(values);
+  } catch (error: any) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const updateKriteriaValue = async (req: Request, res: Response) => {
+  try {
+    const id_value = Number(req.params.id_value);
+    if (isNaN(id_value)) return res.status(400).json({ message: "ID tidak valid." });
+
+    const existing = await prisma.kriteriaValue.findUnique({ where: { id_value } });
+    if (!existing) return res.status(404).json({ message: "Skala nilai tidak ditemukan." });
+
+    const { value, score } = req.body;
+    const updated = await prisma.kriteriaValue.update({
+      where: { id_value },
+      data: {
+        ...(value !== undefined && { value }),
+        ...(score !== undefined && { score: Number(score) }),
+      },
+    });
+
+    return res.json({ message: "Skala nilai berhasil diperbarui.", data: updated });
+  } catch (error: any) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const deleteKriteriaValue = async (req: Request, res: Response) => {
+  try {
+    const id_value = Number(req.params.id_value);
+    if (isNaN(id_value)) return res.status(400).json({ message: "ID tidak valid." });
+
+    const existing = await prisma.kriteriaValue.findUnique({ where: { id_value } });
+    if (!existing) return res.status(404).json({ message: "Skala nilai tidak ditemukan." });
+
+    await prisma.kriteriaValue.delete({ where: { id_value } });
+    return res.json({ message: "Skala nilai berhasil dihapus." });
+  } catch (error: any) {
+    return res.status(500).json({ message: error.message });
+  }
+};

@@ -97,6 +97,7 @@ export const getallclass = async (
         level: true,
         materis: true,
         enrollment: true,
+        mentor: true,
         reviews: {
           include: {
             user: true,

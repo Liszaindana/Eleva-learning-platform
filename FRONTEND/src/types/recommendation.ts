@@ -53,3 +53,10 @@ export interface CreateRecommendationPayload {
   method: 'SAW' | 'WP' | 'TOPSIS';
   weights?: RecommendationWeightInput[];
 }
+
+export interface KriteriaValue {
+  id_value: number;
+  id_kriteria: number;
+  value: string;
+  score: number;
+}

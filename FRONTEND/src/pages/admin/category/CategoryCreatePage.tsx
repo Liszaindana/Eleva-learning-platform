@@ -1,17 +1,40 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useMutation, useQueryClient } from '@tanstack/react-query'; // Tambahkan ini
 import { ArrowLeft } from 'lucide-react';
 import Button from '../../../components/ui/Button';
 import { PATHS } from '../../../routes/paths';
+import { categoryApi } from '../../../api/endpoints';
 
 export default function CategoryCreatePage() {
   const navigate = useNavigate();
+  const queryClient = useQueryClient();
   const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
+
+  // 1. Buat fungsi mutasi untuk menembak API POST ke backend
+  const createMutation = useMutation({
+    mutationFn: (newCategoryName: string) => {
+      // Kita kirimkan key 'categories' sesuai nama kolom database di phpMyAdmin
+      return categoryApi.create({ categories: newCategoryName });
+    },
+    onSuccess: () => {
+      // Beritahu React Query untuk me-refresh data di halaman list kategori agar data baru langsung muncul
+      queryClient.invalidateQueries({ queryKey: ['adminCategoriesList'] });
+      alert('Kategori baru berhasil ditambahkan!');
+      navigate(PATHS.ADMIN_CATEGORY_LIST); // Kembali ke halaman utama list kategori
+    },
+    onError: (error: any) => {
+      console.error(error);
+      alert('Gagal menambahkan kategori baru. Silakan coba lagi.');
+    },
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate(PATHS.ADMIN_CATEGORY_LIST);
+    if (!name.trim()) return;
+
+    // 2. Jalankan proses kirim data
+    createMutation.mutate(name);
   };
 
   return (
@@ -24,7 +47,7 @@ export default function CategoryCreatePage() {
           </Link>
           <h1 className="text-3xl font-extrabold text-slate-900 tracking-tight">Create Category</h1>
           <p className="text-slate-600 mt-1 text-sm">
-            Add a new course category
+            Add a new course category to your database
           </p>
         </div>
 
@@ -40,30 +63,19 @@ export default function CategoryCreatePage() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all"
-                placeholder="e.g. Programming"
-                required
-              />
-            </div>
-
-            <div>
-              <label htmlFor="description" className="block text-sm font-semibold text-slate-900 mb-2">
-                Description
-              </label>
-              <textarea
-                id="description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                rows={4}
-                className="w-full rounded-xl border border-slate-200 px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all resize-none"
-                placeholder="Brief description of the category"
+                placeholder="e.g. Cyber Security"
+                disabled={createMutation.isPending} // Kunci input jika sedang loading kirim data
                 required
               />
             </div>
 
             <div className="flex items-center gap-4 pt-4">
-              <Button type="submit">Create Category</Button>
+              {/* Ubah status tombol menjadi Loading jika request sedang berjalan */}
+              <Button type="submit" disabled={createMutation.isPending}>
+                {createMutation.isPending ? 'Saving...' : 'Create Category'}
+              </Button>
               <Link to={PATHS.ADMIN_CATEGORY_LIST}>
-                <Button variant="ghost">Cancel</Button>
+                <Button variant="ghost" disabled={createMutation.isPending}>Cancel</Button>
               </Link>
             </div>
           </form>
