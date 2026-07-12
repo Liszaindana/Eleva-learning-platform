@@ -1,73 +1,98 @@
-type Threshold = { min: number | null; score: number };
+import { prisma } from "./db.js";
 
-const scoringRules: Record<string, Threshold[]> = {
-  // 1. Rating (skala 0-5)
-  RATING: [
-    { min: 4.8, score: 5 }, // 4,8 - 5,0
-    { min: 4.5, score: 4 }, // 4,5 - 4,79
-    { min: 4.0, score: 3 }, // 4,0 - 4,49
-    { min: 3.5, score: 2 }, // 3,5 - 3,99
-    { min: null, score: 1 }, // < 3,5
-  ],
-
-  // 2. Jumlah Peserta
-  JUMLAH_PESERTA: [
-    { min: 26, score: 5 }, // > 25
-    { min: 20, score: 4 }, // 20 - 25
-    { min: 15, score: 3 }, // 15 - 19
-    { min: 10, score: 2 }, // 10 - 14
-    { min: null, score: 1 }, // < 10
-  ],
-
-  // 3. Jumlah Kelas (total kelas yang diajar)
-  JUMLAH_KELAS: [
-    { min: 8, score: 5 }, // > 7
-    { min: 5, score: 4 }, // 5 - 6
-    { min: 3, score: 3 }, // 3 - 4
-    { min: 2, score: 2 }, // 2
-    { min: 1, score: 1 }, // 1
-  ],
-
-  // 4. Tingkat Kelulusan (%)
-  KELULUSAN: [
-    { min: 95, score: 5 }, // 95 - 100
-    { min: 90, score: 4 }, // 90 - 94
-    { min: 80, score: 3 }, // 80 - 89
-    { min: 70, score: 2 }, // 70 - 79
-    { min: null, score: 1 }, // < 70
-  ],
-
-  // 5. Lama Mengajar (tahun, boleh desimal)
-  LAMA_MENGAJAR: [
-    { min: 5, score: 5 }, // > 5 tahun
-    { min: 4, score: 4 }, // 4 tahun
-    { min: 3, score: 3 }, // 3 tahun
-    { min: 2, score: 2 }, // 2 tahun
-    { min: null, score: 1 }, // 1 tahun (atau kurang)
-  ],
+export type KriteriaValueRow = {
+  id_value: number;
+  id_kriteria: number;
+  value: string;
+  score: number;
 };
 
 /**
- * Konversi nilai mentah menjadi skor 1-5 sesuai aturan di atas.
- * Cari threshold dengan `min` tertinggi yang masih <= rawValue.
+ * Ambil semua baris kriteria_value untuk sekumpulan id_kriteria sekaligus,
+ * dikelompokkan per id_kriteria supaya tidak query berulang-ulang (N+1).
  */
-export function convertToKriteriaScore(kode: string, rawValue: number): number {
-  const rules = scoringRules[kode];
-  if (!rules) {
-    throw new Error(`Belum ada aturan konversi skor untuk kriteria '${kode}'.`);
-  }
+export async function loadKriteriaValueMap(
+  kriteriaIds: number[]
+): Promise<Map<number, KriteriaValueRow[]>> {
+  const rows = await prisma.kriteriaValue.findMany({
+    where: { id_kriteria: { in: kriteriaIds } },
+  });
 
-  const sorted = [...rules].sort(
-    (a, b) => (a.min ?? -Infinity) - (b.min ?? -Infinity)
-  );
-
-  let matched = sorted[0]?.score ?? 1; // fallback: skor terendah
-  for (const rule of sorted) {
-    if (rule.min === null || rawValue >= rule.min) {
-      matched = rule.score;
-    }
-  }
-  return matched;
+  const map = new Map<number, KriteriaValueRow[]>();
+  rows.forEach((row) => {
+    const list = map.get(row.id_kriteria) ?? [];
+    list.push(row);
+    map.set(row.id_kriteria, list);
+  });
+  return map;
 }
 
-export const SUPPORTED_SCORING_KODE = Object.keys(scoringRules);
+/**
+ * Konversi nilai mentah (mis. rating rata-rata 4.85) menjadi skor 1-5
+ * berdasarkan tabel kriteria_value yang berlaku untuk kriteria tsb.
+ *
+ * Logikanya: pilih baris dengan skor TERTINGGI yang min_value-nya
+ * masih <= rawValue. Kalau tidak ada satupun baris yang cocok
+ * (rawValue di bawah semua batas), otomatis fallback ke skor terendah.
+ */
+export function convertToKriteriaScore(
+  rows: KriteriaValueRow[],
+  rawValue: number
+): number {
+
+  for (const row of rows) {
+
+    const value = row.value.trim();
+
+    // >5
+    if (value.startsWith(">")) {
+      const min = parseFloat(
+        value.replace(">", "").replace(" Tahun", "")
+      );
+
+      if (rawValue > min) {
+        return row.score;
+      }
+    }
+
+    // <10
+    if (value.startsWith("<")) {
+      const max = parseFloat(value.replace("<", ""));
+
+      if (rawValue < max) {
+        return row.score;
+      }
+    }
+
+    // 4,8-5,0
+    if (value.includes("-")) {
+
+      const parts = value.replace(/,/g, ".").split("-");
+
+      const min = Number(parts[0]);
+      const max = Number(parts[1]);
+
+      if (
+        !Number.isNaN(min) &&
+        !Number.isNaN(max) &&
+        rawValue >= min &&
+        rawValue <= max
+      ) {
+        return row.score;
+      }
+    }
+
+    // 4 Tahun / 3 Tahun / 2 Tahun / 1 Tahun
+    const exact = parseFloat(
+      value.replace(" Tahun", "").replace(",", ".")
+    );
+
+    if (!Number.isNaN(exact)) {
+      if (rawValue >= exact && rawValue < exact + 1) {
+        return row.score;
+      }
+    }
+  }
+
+  return 1;
+}

@@ -1,7 +1,7 @@
 import type { Response } from "express";
 import { prisma } from "../lib/db.js";
 import { getMetricValue, SUPPORTED_KRITERIA_KODE } from "../lib/mentorMetrics.js";
-
+import { convertToKriteriaScore, loadKriteriaValueMap } from "../lib/kriteriaScoring.js";
 type KriteriaRow = { id_kriteria: number; kode: string; nama: string; tipe: string; bobot: number; kepentingan: number | null };
 
 // =====================================================================
@@ -127,20 +127,56 @@ kriteriaList.forEach((k) => {
   weightMap.set(k.id_kriteria, weightMap.get(k.id_kriteria)! / totalBobot);
 });
 
-    // ---------- 6 & 7. HITUNG SKOR MENTOR (getMetricValue SUDAH RETURN SKOR 1-5) & BANGUN DECISION MATRIX ----------
-const matrix = new Map<number, Map<number, number>>();
+    
+
+    // ---------- 6 & 7. HITUNG NILAI MENTAH, KONVERSI KE SKOR 1-5, BANGUN DECISION MATRIX ----------
+    const kriteriaValueMap = await loadKriteriaValueMap(
+      kriteriaList.map((k) => k.id_kriteria)
+    );
+
+    const matrix = new Map<number, Map<number, number>>();
+    for (const mentorId of mentorIds) {
+      const row = new Map<number, number>();
+      for (const k of kriteriaList) {
+        const rawValue = await getMetricValue(k.kode, mentorId);
+        const kriteriaValueRows = kriteriaValueMap.get(k.id_kriteria) ?? [];
+
+        if (kriteriaValueRows.length === 0) {
+          return res.status(400).json({
+            message: `Belum ada skala kriteria_value untuk kriteria '${k.nama}'. Jalankan seeder kriteria_value dulu.`,
+          });
+        }
+        console.log("RAW =", rawValue);
+
+for (const row of kriteriaValueRows) {
+  console.log(row.value, row.score);
+}
+
+        const score = convertToKriteriaScore(kriteriaValueRows, rawValue);
+        row.set(k.id_kriteria, score);
+      }
+      matrix.set(mentorId, row);
+    }
+    console.log("===== SKOR HASIL KONVERSI =====");
+
 for (const mentorId of mentorIds) {
-  const row = new Map<number, number>();
+  console.log(`Mentor ${mentorId}`);
+
   for (const k of kriteriaList) {
-    const score = await getMetricValue(k.kode, mentorId); // sudah 1-5, TIDAK perlu convertToKriteriaScore lagi
-    row.set(k.id_kriteria, score);
+    console.log(
+      k.nama,
+      matrix.get(mentorId)?.get(k.id_kriteria)
+    );
   }
-  matrix.set(mentorId, row);
+
+  console.log("----------------");
 }
     // ---------- 8-10. HITUNG SESUAI METHOD ----------
     let scores: { user_id: number; score: number }[];
     if (method === "SAW") {
       scores = calculateSAW(mentorIds, kriteriaList, matrix, weightMap);
+      console.log("===== HASIL SAW =====");
+console.log(scores);
     } else if (method === "WP") {
       scores = calculateWP(mentorIds, kriteriaList, matrix, weightMap);
     } else {
