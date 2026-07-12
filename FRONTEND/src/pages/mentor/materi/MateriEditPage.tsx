@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
 import { PATHS } from '../../../routes/paths';
-import { kelasApi } from '../../../api/kelas';
+import { kelasApi } from '../../../api/class';
 import { ArrowLeft, Save, Loader2, Video, FileText } from 'lucide-react';
 
 interface MateriFormValues {

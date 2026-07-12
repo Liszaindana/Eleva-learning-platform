@@ -37,6 +37,16 @@ import MateriEditPage from '../pages/mentor/materi/MateriEditPage';
 import MentorReview from '../pages/mentor/MentorReview';
 import MentorProfile from '../pages/mentor/MentorProfile';
 
+// --- IMPORT HALAMAN STUDENT ---
+import MyCoursesPage from '../pages/student/courses/CourseCatalog.tsx';
+import CourseLearningDetailPage from '../pages/student/courses/CourseDetail.tsx';
+import MaterialVideoPage from '../pages/student/materials/MaterialList';
+import LearningProgressPage from '../pages/student/progress/LearningProgresList.tsx';
+import ExamsGradesPage from '../pages/student/exams/ExamsGradesPage';
+import ClassReviewPage from '../pages/student/reviews/CreateReview';
+import SchedulePage from '../pages/student/schedule/ScheduleList';
+import ProfilePage from '../pages/student/profile/Profile.tsx';
+
 import { PATHS } from './paths';
 import RecommendationPage from '../pages/spk/RecommendationPage';
 import RecommendationHistoryPage from '../pages/spk/RecommendationHistoryPage';
@@ -79,10 +89,16 @@ export default function AppRoutes() {
         <Route element={<RoleRoute allowedRoles={['siswa']} />}>
           <Route element={<StudentLayout />}>
             <Route path={PATHS.STUDENT_DASHBOARD} element={<StudentDashboard />} />
-            <Route path={PATHS.STUDENT_COURSES} element={<div>Halaman My Courses (Segera Hadir)</div>} />
-            <Route path={PATHS.STUDENT_EXPLORE} element={<div>Halaman Explore Classes (Segera Hadir)</div>} />
-            <Route path={PATHS.STUDENT_REVIEWS} element={<div>Halaman My Reviews (Segera Hadir)</div>} />
-            <Route path={PATHS.STUDENT_PROFILE} element={<div>Halaman Profile (Segera Hadir)</div>} />
+            <Route path={PATHS.STUDENT_COURSES} element={<MyCoursesPage />} />
+            <Route path={PATHS.STUDENT_COURSE_DETAIL} element={<CourseLearningDetailPage />} />
+            <Route path={PATHS.STUDENT_MATERIALS} element={<MaterialVideoPage />} />
+            <Route path={PATHS.STUDENT_MATERIAL_DETAIL} element={<MaterialVideoPage />} />
+            <Route path={PATHS.STUDENT_PROGRESS} element={<LearningProgressPage />} />
+            <Route path={PATHS.STUDENT_EXAMS} element={<ExamsGradesPage />} />
+            <Route path={PATHS.STUDENT_REVIEWS} element={<ClassReviewPage />} />
+            <Route path={PATHS.STUDENT_REVIEW_CREATE} element={<ClassReviewPage />} />
+            <Route path={PATHS.STUDENT_SCHEDULE} element={<SchedulePage />} />
+            <Route path={PATHS.STUDENT_PROFILE} element={<ProfilePage />} />
           </Route>
         </Route>
         <Route element={<PublicLayout />}>

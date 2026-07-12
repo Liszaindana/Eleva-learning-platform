@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import {
   BookOpen,
   Users,
@@ -20,58 +21,101 @@ import Container from '../../components/ui/Container';
 import Button from '../../components/ui/Button';
 import Badge from '../../components/ui/Badge';
 import { PATHS } from '../../routes/paths';
-import logo from '../../assets/Logo.png';
+import { categoryApi, classApi, reviewApi } from '../../api/endpoints';
+import type { Category, Class, Review } from '../../types/learning';
+import logo from '../../assets/Logo.PNG';
 
 export default function LandingPage() {
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = [
-    { name: 'Programming', count: '125 Classes', icon: Code, color: 'from-blue-600 to-cyan-500' },
-    { name: 'Design', count: '84 Classes', icon: Palette, color: 'from-blue-500 to-indigo-500' },
-    { name: 'Business', count: '92 Classes', icon: Briefcase, color: 'from-blue-400 to-sky-500' },
-    { name: 'Marketing', count: '67 Classes', icon: Megaphone, color: 'from-blue-600 to-blue-400' },
-    { name: 'Soft Skills', count: '45 Classes', icon: UserCheck, color: 'from-blue-500 to-cyan-400' },
-    { name: 'Photography', count: '38 Classes', icon: Camera, color: 'from-blue-400 to-blue-600' },
-  ];
+  const { data: categories = [], isLoading: categoriesLoading } = useQuery<Category[]>({
+    queryKey: ['landingCategories'],
+    queryFn: categoryApi.getAll,
+    staleTime: 1000 * 60 * 5,
+  });
 
-  const trendingCourses = [
-    {
-      id: 1,
-      category: 'Design',
-      title: 'Advanced UI Design Systems',
-      rating: '4.9',
-      reviewCount: 342,
-      mentorName: 'Budi Santoso',
-      mentorRole: 'Senior Mentor',
-      mentorAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      price: 'Rp 499.000',
-      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80',
-    },
-    {
-      id: 2,
-      category: 'Business',
-      title: 'Product Management 101',
-      rating: '4.8',
-      reviewCount: 215,
-      mentorName: 'Sarah Amelia',
-      mentorRole: 'Product Lead',
-      mentorAvatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      price: 'Rp 399.000',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
-    },
-    {
-      id: 3,
-      category: 'Technology',
-      title: 'Fullstack Web Development',
-      rating: '5.0',
-      reviewCount: 520,
-      mentorName: 'Ahmad Dani',
-      mentorRole: 'Tech Lead',
-      mentorAvatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      price: 'Rp 699.000',
-      image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80',
-    },
-  ];
+  const displayCategories = useMemo(() => {
+    if (!categories || categories.length === 0) {
+      return [
+        { category_id: 0, categories: 'Programming' },
+        { category_id: 1, categories: 'Design' },
+        { category_id: 2, categories: 'Business' },
+        { category_id: 3, categories: 'Marketing' },
+        { category_id: 4, categories: 'Soft Skills' },
+        { category_id: 5, categories: 'Photography' },
+      ];
+    }
+
+    return categories.map((item) => ({
+      category_id: item.category_id,
+      categories: item.categories,
+      classCount: item.classes?.length ?? 0,
+    }));
+  }, [categories]);
+
+  const { data: trendingClasses = [], isLoading: classesLoading } = useQuery<Class[]>({
+    queryKey: ['trendingClasses'],
+    queryFn: classApi.getAll,
+    staleTime: 1000 * 60 * 5,
+  });
+
+  const { data: reviews = [], isLoading: reviewsLoading } = useQuery<Review[]>({
+    queryKey: ['landingReviews'],
+    queryFn: reviewApi.getAll,
+    staleTime: 1000 * 60 * 5,
+  });
+
+  const trendingCourses = useMemo(
+    () =>
+      trendingClasses.slice(0, 3).map((kelas, index) => ({
+        id: kelas.class_id,
+        category: kelas.category?.categories ?? 'General',
+        title: kelas.title,
+        rating: kelas.reviews?.length ? (kelas.reviews.reduce((sum, r) => sum + r.rating, 0) / kelas.reviews.length).toFixed(1) : '4.8',
+        reviewCount: kelas.reviews?.length ?? 0,
+        mentorName: kelas.mentor?.name ?? 'Mentor Tidak Diketahui',
+        mentorRole: kelas.mentor?.role?.role_text ?? 'Mentor',
+        mentorAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        image: `https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80`,
+      })),
+    [trendingClasses]
+  );
+
+  const testimonials = useMemo(() => {
+    if (!reviews || reviews.length === 0) {
+      return [
+        {
+          text: 'Materi yang disampaikan sangat terstruktur dan mudah dipahami. Mentornya sangat sabar membimbing dari nol.',
+          stars: 5,
+          userName: 'Dewi Lestari',
+          userRole: 'UI/UX Designer',
+          userAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        },
+        {
+          text: 'Sangat terbantu belajar Product Management di sini. Mentornya praktisi industri aktif sehingga studi kasusnya riil.',
+          stars: 5,
+          userName: 'Andhika Roy',
+          userRole: 'Associate PM',
+          userAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        },
+        {
+          text: 'Kurikulum Fullstack-nya jempolan. Portofolio hasil project akhir sangat membantu saya lolos rekrutmen kerja.',
+          stars: 5,
+          userName: 'Rendy Kael',
+          userRole: 'Backend Developer',
+          userAvatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        },
+      ];
+    }
+
+    return reviews.slice(-3).map((review) => ({
+      text: review.comment,
+      stars: review.rating,
+      userName: review.user?.name ?? 'Alumni Eleva',
+      userRole: review.user?.role?.role_text ?? 'Pelajar',
+      userAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    }));
+  }, [reviews]);
 
   const mentors = [
     {
@@ -93,30 +137,6 @@ export default function LandingPage() {
       name: 'Ahmad Dani',
       role: 'Software Engineer',
       avatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-  ];
-
-  const testimonials = [
-    {
-      text: 'Materi yang disampaikan sangat terstruktur dan mudah dipahami. Mentornya sangat sabar membimbing dari nol.',
-      stars: 5,
-      userName: 'Dewi Lestari',
-      userRole: 'UI/UX Designer',
-      userAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-    {
-      text: 'Sangat terbantu belajar Product Management di sini. Mentornya praktisi industri aktif sehingga studi kasusnya riil.',
-      stars: 5,
-      userName: 'Andhika Roy',
-      userRole: 'Associate PM',
-      userAvatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-    {
-      text: 'Kurikulum Fullstack-nya jempolan. Portofolio hasil project akhir sangat membantu saya lolos rekrutmen kerja.',
-      stars: 5,
-      userName: 'Rendy Kael',
-      userRole: 'Backend Developer',
-      userAvatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     },
   ];
 
@@ -268,21 +288,31 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-            {categories.map((cat, i) => {
-              const Icon = cat.icon;
-              return (
+            {categoriesLoading ? (
+              Array.from({ length: 6 }).map((_, i) => (
                 <div
                   key={i}
+                  className="animate-pulse bg-white border border-slate-200 rounded-2xl p-5 h-32"
+                />
+              ))
+            ) : (
+              displayCategories.map((category) => (
+                <div
+                  key={category.category_id}
                   className="bg-white border border-slate-200 rounded-2xl p-5 text-center flex flex-col items-center justify-center group hover:border-blue-300 transition-all duration-300 cursor-pointer shadow-md hover:-translate-y-1"
                 >
-                  <div className={`h-11 w-11 rounded-xl bg-gradient-to-br ${cat.color} flex items-center justify-center mb-4 shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className="h-5 w-5 text-white" />
+                  <div className="h-11 w-11 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-4 shadow-md shadow-blue-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-white font-semibold text-sm">{category.categories.charAt(0)}</span>
                   </div>
-                  <h3 className="text-xs font-bold text-slate-900 truncate w-full">{cat.name}</h3>
-                  <p className="text-[10px] text-slate-500 mt-1">{cat.count}</p>
+                  <h3 className="text-xs font-bold text-slate-900 truncate w-full">{category.categories}</h3>
+                  <p className="text-[10px] text-slate-500 mt-1">
+                    {category.classCount
+                      ? `${category.classCount} Kelas`
+                      : 'Kelas tersedia'}
+                  </p>
                 </div>
-              );
-            })}
+              ))
+            )}
           </div>
         </Container>
       </section>
@@ -301,64 +331,68 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {trendingCourses.map((course) => (
-              <div
-                key={course.id}
-                className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-lg hover:border-blue-300 transition-all duration-300 flex flex-col group hover:-translate-y-1"
-              >
-                {/* Course Image */}
-                <div className="h-48 w-full relative overflow-hidden">
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge variant="info">
-                      {course.category}
-                    </Badge>
-                  </div>
-                </div>
-
-                {/* Course Body */}
-                <div className="p-6 flex-1 flex flex-col justify-between">
-                  <div className="space-y-2">
-                    <div className="flex items-center gap-1.5 text-xs text-amber-600 font-semibold">
-                      <Star className="h-4 w-4 fill-amber-400 text-amber-500" />
-                      <span>{course.rating}</span>
-                      <span className="text-slate-500 font-normal">({course.reviewCount} ulasan)</span>
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors line-clamp-1">
-                      {course.title}
-                    </h3>
-                  </div>
-
-                  {/* Mentor details */}
-                  <div className="mt-4 flex items-center gap-3 border-t border-slate-100 pt-4">
+            {classesLoading ? (
+              Array.from({ length: 3 }).map((_, index) => (
+                <div
+                  key={index}
+                  className="h-[420px] rounded-2xl border border-slate-200 bg-slate-100 animate-pulse"
+                />
+              ))
+            ) : (
+              trendingCourses.map((course) => (
+                <div
+                  key={course.id}
+                  className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-lg hover:border-blue-300 transition-all duration-300 flex flex-col group hover:-translate-y-1"
+                >
+                  {/* Course Image */}
+                  <div className="h-48 w-full relative overflow-hidden">
                     <img
-                      src={course.mentorAvatar}
-                      alt={course.mentorName}
-                      className="h-9 w-9 rounded-full object-cover ring-2 ring-blue-100"
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                     />
-                    <div>
-                      <p className="text-xs font-semibold text-slate-900">{course.mentorName}</p>
-                      <p className="text-[10px] text-slate-500">{course.mentorRole}</p>
+                    <div className="absolute top-4 left-4">
+                      <Badge variant="info">
+                        {course.category}
+                      </Badge>
                     </div>
                   </div>
 
-                  {/* Price & CTA Button */}
-                  <div className="mt-6 flex items-center justify-between gap-4">
-                    <div>
-                      <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">Price</p>
-                      <p className="text-base font-bold text-blue-600">{course.price}</p>
+                  {/* Course Body */}
+                  <div className="p-6 flex-1 flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-1.5 text-xs text-amber-600 font-semibold">
+                        <Star className="h-4 w-4 fill-amber-400 text-amber-500" />
+                        <span>{course.rating}</span>
+                        <span className="text-slate-500 font-normal">({course.reviewCount} ulasan)</span>
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-900 tracking-tight group-hover:text-blue-600 transition-colors line-clamp-1">
+                        {course.title}
+                      </h3>
                     </div>
-                    <Link to={PATHS.REGISTER}>
-                      <Button size="sm">Daftar Kelas</Button>
-                    </Link>
+
+                    {/* Mentor details */}
+                    <div className="mt-4 flex items-center gap-3 border-t border-slate-100 pt-4">
+                      <img
+                        src={course.mentorAvatar}
+                        alt={course.mentorName}
+                        className="h-9 w-9 rounded-full object-cover ring-2 ring-blue-100"
+                      />
+                      <div>
+                        <p className="text-xs font-semibold text-slate-900">{course.mentorName}</p>
+                        <p className="text-[10px] text-slate-500">{course.mentorRole}</p>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 flex justify-end">
+                      <Link to={PATHS.REGISTER}>
+                        <Button size="sm">Daftar Kelas</Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </Container>
       </section>
@@ -469,44 +503,50 @@ export default function LandingPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {testimonials.map((test, i) => (
-              <div
-                key={i}
-                className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-blue-300 transition-all duration-300 group hover:-translate-y-1"
-              >
-                <div>
-                  {/* Quotes Icon */}
-                  <div className="mb-4 text-blue-400">
-                    <Quote className="h-8 w-8 stroke-[1.5]" />
+            {reviewsLoading ? (
+              Array.from({ length: 3 }).map((_, index) => (
+                <div key={index} className="h-64 rounded-2xl border border-slate-200 bg-slate-100 animate-pulse" />
+              ))
+            ) : (
+              testimonials.map((test, i) => (
+                <div
+                  key={i}
+                  className="bg-white border border-slate-200 rounded-2xl p-6 shadow-lg flex flex-col justify-between hover:border-blue-300 transition-all duration-300 group hover:-translate-y-1"
+                >
+                  <div>
+                    {/* Quotes Icon */}
+                    <div className="mb-4 text-blue-400">
+                      <Quote className="h-8 w-8 stroke-[1.5]" />
+                    </div>
+                    {/* Text */}
+                    <p className="text-xs text-slate-600 leading-relaxed italic">
+                      "{test.text}"
+                    </p>
                   </div>
-                  {/* Text */}
-                  <p className="text-xs text-slate-600 leading-relaxed italic">
-                    "{test.text}"
-                  </p>
-                </div>
 
-                <div className="mt-6 space-y-4">
-                  {/* Stars */}
-                  <div className="flex items-center gap-0.5">
-                    {Array.from({ length: test.stars }).map((_, s) => (
-                      <Star key={s} className="h-3.5 w-3.5 fill-amber-400 text-amber-500" />
-                    ))}
-                  </div>
-                  {/* User Profile */}
-                  <div className="flex items-center gap-3 border-t border-slate-100 pt-4">
-                    <img
-                      src={test.userAvatar}
-                      alt={test.userName}
-                      className="h-9 w-9 rounded-full object-cover ring-2 ring-blue-100"
-                    />
-                    <div>
-                      <p className="text-xs font-semibold text-slate-900">{test.userName}</p>
-                      <p className="text-[10px] text-slate-500">{test.userRole}</p>
+                  <div className="mt-6 space-y-4">
+                    {/* Stars */}
+                    <div className="flex items-center gap-0.5">
+                      {Array.from({ length: test.stars }).map((_, s) => (
+                        <Star key={s} className="h-3.5 w-3.5 fill-amber-400 text-amber-500" />
+                      ))}
+                    </div>
+                    {/* User Profile */}
+                    <div className="flex items-center gap-3 border-t border-slate-100 pt-4">
+                      <img
+                        src={test.userAvatar}
+                        alt={test.userName}
+                        className="h-9 w-9 rounded-full object-cover ring-2 ring-blue-100"
+                      />
+                      <div>
+                        <p className="text-xs font-semibold text-slate-900">{test.userName}</p>
+                        <p className="text-[10px] text-slate-500">{test.userRole}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </Container>
       </section>

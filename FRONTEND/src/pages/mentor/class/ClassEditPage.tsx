@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { PATHS } from '../../../routes/paths';
 import { ArrowLeft, Save, FileText, LayoutGrid, DollarSign, Loader2 } from 'lucide-react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { kelasApi } from '../../../api/kelas'; // Sesuaikan path import apiClient kamu
+import { kelasApi } from '../../../api/class'; // Sesuaikan path import apiClient kamu
 import { categoryApi } from '../../../api/endpoints'; // Sesuaikan path import apiClient kamu
 
 export default function ClassEditPage() {
@@ -69,7 +69,7 @@ export default function ClassEditPage() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         // Buat payload yang sesuai dengan kebutuhan backend kamu
         const payload = {
             title: formData.title,

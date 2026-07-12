@@ -7,7 +7,7 @@ import { PATHS } from '../routes/paths';
 import { useAuthStore } from '../store/authStore';
 import { useMutation } from '@tanstack/react-query';
 import { authApi } from '../api/endpoints';
-import logo from '../assets/Logo.png';
+import logo from '../assets/Logo.PNG';
 
 const navLinks = [
   { label: 'Beranda', path: PATHS.HOME },

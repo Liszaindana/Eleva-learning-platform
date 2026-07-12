@@ -7,7 +7,7 @@ import Button from '../../components/ui/Button';
 import { PATHS } from '../../routes/paths';
 import { authApi } from '../../api/endpoints';
 import { useAuthStore } from '../../store/authStore';
-import logo from '../../assets/Logo.png';
+import logo from '../../assets/Logo.PNG';
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -20,20 +20,21 @@ export default function LoginPage() {
     mutationFn: authApi.login,
     onSuccess: (data) => {
       login(data.token, data.user);
-
-      // Cetak ke console untuk memastikan apa isi data.user.role sebenarnya
-      console.log("Role user login:", data.user.role);
-
-      if (data.user.role === 'admin') {
-        navigate(PATHS.ADMIN_DASHBOARD);
-      } else if (data.user.role === 'mentor') {
-        navigate(PATHS.MENTOR_DASHBOARD);
-      } else if (data.user.role === 'siswa') {
+      const role = String(data.user?.role || '').toLowerCase();
+      if (role === 'siswa' || role === 'student' || role === '1') {
         navigate(PATHS.STUDENT_DASHBOARD);
-      } else {
-        // Sebagai pengaman kalau role kosong atau tidak dikenali
-        navigate('/');
+        return;
       }
+      if (role === 'mentor') {
+        navigate(PATHS.MENTOR_DASHBOARD);
+        return;
+      }
+      if (role === 'admin') {
+        navigate(PATHS.ADMIN_DASHBOARD);
+        return;
+      }
+
+      navigate(PATHS.HOME);
     },
     onError: (err: Error) => {
       setError(err.message);

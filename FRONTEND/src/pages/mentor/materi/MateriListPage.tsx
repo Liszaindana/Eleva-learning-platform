@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../../store/authStore';
-import { kelasApi } from '../../../api/kelas';
+import { kelasApi } from '../../../api/class';
 import { mentorMaterialCreatePath, mentorMaterialEditPath } from '../../../routes/paths';
 import { Plus, Video, Edit, Trash2, BookOpen, Layers } from 'lucide-react';
 

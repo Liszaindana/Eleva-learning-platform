@@ -8,24 +8,24 @@ import {
 } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { adminApi } from '../../api/admin';
-import { kelasApi } from '../../api/kelas';
+import { kelasApi } from '../../api/class';
 
 export default function AdminDashboard() {
   const [timeRange, setTimeRange] = useState('Last 30 Days');
 
   // 1. Ambil data User riil menggunakan adminApi.getUsers yang sudah bener tadi
-  const { 
-    data: usersData = [], 
-    isLoading: isLoadingUsers 
+  const {
+    data: usersData = [],
+    isLoading: isLoadingUsers
   } = useQuery({
     queryKey: ['adminUsers'],
     queryFn: adminApi.getUsers, // <-- Diubah ke adminApi
   });
 
   // 2. Ambil data Kelas riil menggunakan kelasApi.getAll (sesuai nama objek kamu)
-  const { 
-    data: classesData = [], 
-    isLoading: isLoadingClasses 
+  const {
+    data: classesData = [],
+    isLoading: isLoadingClasses
   } = useQuery({
     queryKey: ['adminClasses'],
     queryFn: kelasApi.getAll, // <-- Dipastikan pakai kelasApi (huruf k)
@@ -125,8 +125,8 @@ export default function AdminDashboard() {
                 <div className="mt-4 flex items-center gap-2">
                   <span
                     className={`text-xs font-semibold px-2 py-0.5 rounded-full ${stat.trendUp
-                        ? 'bg-emerald-50 text-emerald-700'
-                        : 'bg-red-50 text-red-700'
+                      ? 'bg-emerald-50 text-emerald-700'
+                      : 'bg-red-50 text-red-700'
                       }`}
                   >
                     {stat.trend}

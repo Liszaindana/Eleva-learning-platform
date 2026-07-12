@@ -1,35 +1,31 @@
 import { Link } from 'react-router-dom';
+import Container from '../ui/Container';
 import { PATHS } from '../../routes/paths';
-import { useAuthStore } from '../../store/authStore';
-import Button from '../ui/Button';
 
 export default function Navbar() {
-  const { isAuthenticated, logout } = useAuthStore();
-
   return (
-    <header className="border-b border-slate-200 bg-white shadow-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-        <Link to={PATHS.HOME} className="text-xl font-semibold text-slate-900">
-          Eleva
-        </Link>
-        <nav className="flex items-center gap-3">
-          <Link to={PATHS.HOME} className="text-sm text-slate-600 hover:text-slate-900">
-            Beranda
+    <header className="border-b border-slate-200 bg-white">
+      <Container>
+        <div className="flex h-16 items-center justify-between">
+          <Link to={PATHS.HOME} className="text-lg font-bold text-slate-900">
+            Eleva
           </Link>
-          <Link to={PATHS.KELAS} className="text-sm text-slate-600 hover:text-slate-900">
-            Kelas
-          </Link>
-          {isAuthenticated ? (
-            <Button variant="ghost" size="sm" onClick={logout}>
-              Logout
-            </Button>
-          ) : (
-            <Link to={PATHS.LOGIN} className="text-sm text-slate-600 hover:text-slate-900">
-              Login
+          <nav className="hidden md:flex items-center gap-4 text-sm text-slate-700">
+            <Link to={PATHS.HOME} className="hover:text-blue-600">
+              Beranda
             </Link>
-          )}
-        </nav>
-      </div>
+            <Link to={PATHS.KELAS} className="hover:text-blue-600">
+              Kelas
+            </Link>
+            <Link to={PATHS.LOGIN} className="hover:text-blue-600">
+              Masuk
+            </Link>
+            <Link to={PATHS.REGISTER} className="hover:text-blue-600">
+              Daftar
+            </Link>
+          </nav>
+        </div>
+      </Container>
     </header>
   );
 }
