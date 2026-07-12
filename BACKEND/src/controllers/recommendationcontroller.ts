@@ -1,9 +1,8 @@
 import type { Response } from "express";
 import { prisma } from "../lib/db.js";
 import { getMetricValue, SUPPORTED_KRITERIA_KODE } from "../lib/mentorMetrics.js";
-import { convertToKriteriaScore } from "../lib/kriteriaScoring.js";
 
-type KriteriaRow = { id_kriteria: number; kode: string; nama: string; tipe: string; bobot: number };
+type KriteriaRow = { id_kriteria: number; kode: string; nama: string; tipe: string; bobot: number; kepentingan: number | null };
 
 // =====================================================================
 // 1. CREATE RECOMMENDATION REQUEST
@@ -86,45 +85,58 @@ export const createRecommendationRequest = async (req: any, res: Response) => {
       });
     }
 
-    // ---------- 4. BOBOT DEFAULT, OVERRIDE JIKA ADA weights DARI REQUEST ----------
-    const weightMap = new Map<number, number>();
-    kriteriaList.forEach((k) => weightMap.set(k.id_kriteria, k.bobot));
+    // ---------- 4. BOBOT: sumbernya beda tergantung metode ----------
+      const weightMap = new Map<number, number>();
 
-    if (Array.isArray(weights) && weights.length > 0) {
-      for (const w of weights) {
-        const kId = Number(w.kriteria_id);
-        const bobot = Number(w.bobot);
-        if (isNaN(kId) || isNaN(bobot) || bobot < 0) {
-          return res.status(400).json({ message: "Format weights tidak valid. Contoh: [{ kriteria_id, bobot }]." });
-        }
-        if (!weightMap.has(kId)) {
-          return res.status(400).json({ message: `kriteria_id ${kId} pada weights tidak ditemukan.` });
-        }
-        weightMap.set(kId, bobot);
-      }
-    }
-
-    // ---------- 5. NORMALISASI BOBOT (total harus = 1) ----------
-    const totalBobot = Array.from(weightMap.values()).reduce((a, b) => a + b, 0);
-    if (totalBobot <= 0) {
-      return res.status(400).json({ message: "Total bobot kriteria harus lebih besar dari 0." });
-    }
-    kriteriaList.forEach((k) => {
-      weightMap.set(k.id_kriteria, weightMap.get(k.id_kriteria)! / totalBobot);
+    if (method === "SAW") {
+  // SAW pakai kriteria.bobot langsung (mis. 0.30, 0.20, dst)
+  kriteriaList.forEach((k) => weightMap.set(k.id_kriteria, k.bobot));
+} else {
+  // WP & TOPSIS pakai nilai kepentingan (1-5), dinormalisasi dengan dibagi total
+  const missingKepentingan = kriteriaList.filter((k) => k.kepentingan == null);
+  if (missingKepentingan.length > 0) {
+    return res.status(400).json({
+      message: `Kriteria berikut belum punya nilai kepentingan (dibutuhkan untuk metode ${method}): ${missingKepentingan.map((k) => k.nama).join(", ")}`,
     });
+  }
+  const totalKepentingan = kriteriaList.reduce((sum, k) => sum + (k.kepentingan ?? 0), 0);
+  kriteriaList.forEach((k) => weightMap.set(k.id_kriteria, (k.kepentingan ?? 0) / totalKepentingan));
+}
 
-    // ---------- 6 & 7. HITUNG NILAI MENTOR VIA getMetricValue() & BANGUN DECISION MATRIX ----------
-    // matrix[mentorId][id_kriteria] = nilai mentah
-    const matrix = new Map<number, Map<number, number>>();
-    for (const mentorId of mentorIds) {
-      const row = new Map<number, number>();
-      for (const k of kriteriaList) {
-        const rawValue = await getMetricValue(k.kode, mentorId);
-        const score = convertToKriteriaScore(k.kode, rawValue);
-        row.set(k.id_kriteria, score);
-      }
-      matrix.set(mentorId, row);
+// Override manual dari request (kalau user kirim weights, ini menang di atas keduanya)
+if (Array.isArray(weights) && weights.length > 0) {
+  for (const w of weights) {
+    const kId = Number(w.kriteria_id);
+    const bobot = Number(w.bobot);
+    if (isNaN(kId) || isNaN(bobot) || bobot < 0) {
+      return res.status(400).json({ message: "Format weights tidak valid. Contoh: [{ kriteria_id, bobot }]." });
     }
+    if (!weightMap.has(kId)) {
+      return res.status(400).json({ message: `kriteria_id ${kId} pada weights tidak ditemukan.` });
+    }
+    weightMap.set(kId, bobot);
+  }
+}
+
+// ---------- 5. NORMALISASI ULANG (total bobot dipastikan = 1) ----------
+const totalBobot = Array.from(weightMap.values()).reduce((a, b) => a + b, 0);
+if (totalBobot <= 0) {
+  return res.status(400).json({ message: "Total bobot kriteria harus lebih besar dari 0." });
+}
+kriteriaList.forEach((k) => {
+  weightMap.set(k.id_kriteria, weightMap.get(k.id_kriteria)! / totalBobot);
+});
+
+    // ---------- 6 & 7. HITUNG SKOR MENTOR (getMetricValue SUDAH RETURN SKOR 1-5) & BANGUN DECISION MATRIX ----------
+const matrix = new Map<number, Map<number, number>>();
+for (const mentorId of mentorIds) {
+  const row = new Map<number, number>();
+  for (const k of kriteriaList) {
+    const score = await getMetricValue(k.kode, mentorId); // sudah 1-5, TIDAK perlu convertToKriteriaScore lagi
+    row.set(k.id_kriteria, score);
+  }
+  matrix.set(mentorId, row);
+}
     // ---------- 8-10. HITUNG SESUAI METHOD ----------
     let scores: { user_id: number; score: number }[];
     if (method === "SAW") {

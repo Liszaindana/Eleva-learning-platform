@@ -157,6 +157,7 @@ model Kriteria {
   nama String
   tipe String // benefit / cost
   bobot Float
+  kepentingan Int?
 
   values KriteriaValue[]
 
