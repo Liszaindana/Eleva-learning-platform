@@ -6,7 +6,7 @@ import Container from '../../components/ui/Container';
 import Button from '../../components/ui/Button';
 import { PATHS } from '../../routes/paths';
 import { authApi } from '../../api/endpoints';
-import logo from '../../assets/Logo.png';
+import logo from '../../assets/Logo.PNG';
 
 export default function RegisterPage() {
   const navigate = useNavigate();

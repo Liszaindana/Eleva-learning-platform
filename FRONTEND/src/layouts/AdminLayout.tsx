@@ -9,7 +9,7 @@ import {
   LogOut,
 } from 'lucide-react';
 import { PATHS } from '../routes/paths';
-import logo from '../assets/Logo.png';
+import logo from '../assets/Logo.PNG';
 import { authApi } from '../api/endpoints';
 import { useMutation } from '@tanstack/react-query';
 import { useAuthStore } from '../store/authStore';

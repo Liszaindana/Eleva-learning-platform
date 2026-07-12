@@ -13,7 +13,13 @@ export default function RoleRoute({ allowedRoles }: RoleRouteProps) {
     return <Navigate to={PATHS.LOGIN} replace />;
   }
 
-  if (!user || !allowedRoles.includes(user.role)) {
+  const normalizedRole = user?.role?.toLowerCase() ?? '';
+  const normalizedAllowed = allowedRoles.map((role) => role.toLowerCase());
+  const allowedWithAliases = normalizedAllowed.flatMap((role) =>
+    role === 'student' ? ['student', 'siswa'] : [role]
+  );
+
+  if (!user || !allowedWithAliases.includes(normalizedRole)) {
     return <Navigate to={PATHS.HOME} replace />;
   }
 

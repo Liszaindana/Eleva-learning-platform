@@ -210,29 +210,6 @@ exports.Prisma.KriteriaValueScalarFieldEnum = {
 };
 
 exports.Prisma.RecommendationRequestScalarFieldEnum = {
-<<<<<<< HEAD
-  id_request: 'id_request',
-  user_id: 'user_id',
-  category_id: 'category_id',
-  method: 'method',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-};
-
-exports.Prisma.RecommendationReqWeightScalarFieldEnum = {
-  id: 'id',
-  req_id: 'req_id',
-  kriteria_id: 'kriteria_id',
-  bobot: 'bobot'
-};
-
-exports.Prisma.RecommendationResultScalarFieldEnum = {
-  id: 'id',
-  req_id: 'req_id',
-  user_id: 'user_id',
-  score: 'score',
-  pos: 'pos'
-=======
   id_recomen: 'id_recomen',
   user_id: 'user_id',
   category_id: 'category_id',
@@ -254,7 +231,6 @@ exports.Prisma.RecommendationResultScalarFieldEnum = {
   user_id: 'user_id',
   score: 'score',
   ranking: 'ranking'
->>>>>>> origin/ayu
 };
 
 exports.Prisma.SortOrder = {
@@ -332,11 +308,7 @@ exports.Prisma.ModelName = {
   Kriteria: 'Kriteria',
   KriteriaValue: 'KriteriaValue',
   RecommendationRequest: 'RecommendationRequest',
-<<<<<<< HEAD
-  RecommendationReqWeight: 'RecommendationReqWeight',
-=======
   RequestBobot: 'RequestBobot',
->>>>>>> origin/ayu
   RecommendationResult: 'RecommendationResult'
 };
 

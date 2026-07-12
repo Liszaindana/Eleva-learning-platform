@@ -5,7 +5,7 @@ import Button from '../components/ui/Button';
 import { PATHS } from '../routes/paths';
 import { useAuthStore } from '../store/authStore'; 
 import { authApi } from '../api/endpoints'; 
-import logo from '../assets/Logo.png'; 
+import logo from '../assets/Logo.PNG'; 
 
 export default function MentorLayout() {
   const navigate = useNavigate();

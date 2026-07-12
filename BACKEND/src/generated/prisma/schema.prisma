@@ -28,13 +28,6 @@ model User {
   password  String
   join_date DateTime @default(now())
 
-<<<<<<< HEAD
-  role                   Role                    @relation(fields: [role_id], references: [role_id])
-  enrollments            Enrollment[]
-  reviews                Review[]
-  exams                  Exam[]
-  classes                Class[]
-=======
   role Role @relation(fields: [role_id], references: [role_id])
 
   classes     Class[]
@@ -42,7 +35,6 @@ model User {
   exams       Exam[]
   reviews     Review[]
 
->>>>>>> origin/ayu
   recommendationRequests RecommendationRequest[]
   recommendationResults  RecommendationResult[]
 
@@ -53,8 +45,6 @@ model Category {
   category_id            Int                     @id @default(autoincrement())
   categories             String
   classes                Class[]
-  recommendationRequests RecommendationRequest[]
-
   recommendationRequests RecommendationRequest[]
 
   @@map("category")
@@ -89,21 +79,11 @@ model Class {
   title       String
   description String @db.Text
 
-<<<<<<< HEAD
-  // Relasi ke model User (Mentor)
-  mentor User @relation(fields: [user_id], references: [user_id])
-
-  // 2. Baris @relation di bawah ini sekarang sudah aman karena kolom di atas sudah ada & tipenya match
-  category Category @relation(fields: [category_id], references: [category_id])
-  periode  Periode  @relation(fields: [periode_id], references: [periode_id])
-  level    Level    @relation(fields: [level_id], references: [level_id])
-=======
   is_active Boolean  @default(true)
   mentor    User     @relation(fields: [user_id], references: [user_id])
   category  Category @relation(fields: [category_id], references: [category_id])
   periode   Periode  @relation(fields: [periode_id], references: [periode_id])
   level     Level    @relation(fields: [level_id], references: [level_id])
->>>>>>> origin/ayu
 
   materis    Materi[]
   exams      Exam[]
@@ -177,31 +157,18 @@ model Kriteria {
   tipe        String // benefit / cost
   bobot       Float
 
-<<<<<<< HEAD
-  values  KriteriaValue[]
-  weights RecommendationReqWeight[]
-=======
   values KriteriaValue[]
 
   weights RequestBobot[]
->>>>>>> origin/ayu
 
   @@map("kriteria")
 }
 
 model KriteriaValue {
-<<<<<<< HEAD
-  id_value Int @id @default(autoincrement())
-
-  id_kriteria Int
-  value       String
-  score       Int
-=======
   id_value    Int    @id @default(autoincrement())
   id_kriteria Int
   value       String
   score       Float
->>>>>>> origin/ayu
 
   kriteria Kriteria @relation(fields: [id_kriteria], references: [id_kriteria])
 
@@ -209,22 +176,6 @@ model KriteriaValue {
 }
 
 model RecommendationRequest {
-<<<<<<< HEAD
-  id_request  Int    @id @default(autoincrement())
-  user_id     Int
-  category_id Int
-  method      String
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  user User @relation(fields: [user_id], references: [user_id])
-
-  category Category @relation(fields: [category_id], references: [category_id])
-
-  weights RecommendationReqWeight[]
-  results RecommendationResult[]
-=======
   id_recomen  Int      @id @default(autoincrement())
   user_id     Int
   category_id Int
@@ -237,38 +188,10 @@ model RecommendationRequest {
   periode  Periode                @relation(fields: [periode_id], references: [periode_id])
   weights  RequestBobot[]
   results  RecommendationResult[]
->>>>>>> origin/ayu
 
   @@map("recommendation_request")
 }
 
-<<<<<<< HEAD
-model RecommendationReqWeight {
-  id          Int   @id @default(autoincrement())
-  req_id      Int
-  kriteria_id Int
-  bobot       Float
-
-  request RecommendationRequest @relation(fields: [req_id], references: [id_request])
-
-  kriteria Kriteria @relation(fields: [kriteria_id], references: [id_kriteria])
-
-  @@map("recommendation_req_weight")
-}
-
-model RecommendationResult {
-  id      Int   @id @default(autoincrement())
-  req_id  Int
-  user_id Int
-  score   Float
-  pos     Int
-
-  request RecommendationRequest @relation(fields: [req_id], references: [id_request])
-
-  user User @relation(fields: [user_id], references: [user_id])
-
-  @@map("req_result")
-=======
 model RequestBobot {
   id_bobot    Int   @id @default(autoincrement())
   id_recomen  Int
@@ -292,5 +215,4 @@ model RecommendationResult {
   user    User                  @relation(fields: [user_id], references: [user_id])
 
   @@map("recommendation_result")
->>>>>>> origin/ayu
 }

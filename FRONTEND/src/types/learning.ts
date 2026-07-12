@@ -18,6 +18,7 @@ export interface User {
 export interface Category {
   category_id: number;
   categories: string;
+  classes?: Class[];
 }
 
 export interface Periode {

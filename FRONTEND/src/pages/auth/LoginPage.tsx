@@ -7,7 +7,7 @@ import Button from '../../components/ui/Button';
 import { PATHS } from '../../routes/paths';
 import { authApi } from '../../api/endpoints';
 import { useAuthStore } from '../../store/authStore';
-import logo from '../../assets/Logo.png';
+import logo from '../../assets/Logo.PNG';
 
 export default function LoginPage() {
   const navigate = useNavigate();

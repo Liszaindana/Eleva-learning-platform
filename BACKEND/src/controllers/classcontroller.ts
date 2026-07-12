@@ -103,7 +103,6 @@ export const getallclass = async (
             user: true,
           }
         },
-        exams: true,
       },
     });
 
@@ -149,7 +148,6 @@ export const getclassbyid = async (
             user: true,
           }
         },
-        exams: true,
       },
     });
 
