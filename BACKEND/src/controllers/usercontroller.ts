@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt'; // Untuk me-hash password sebelum disimpan
 export const getalluser = async (req: Request, res: Response) => {
     try {
         const users = await prisma.user.findMany({
-            include: { role: true },   // ⬅️ TAMBAHKAN INI
+            include: { role: true }, 
             orderBy: { user_id: "asc" }
         });
         res.json(users);

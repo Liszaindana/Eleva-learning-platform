@@ -24,10 +24,10 @@ export default function UserListPage() {
   const itemsPerPage = 10;
 
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [editForm, setEditForm] = useState({ name: '', email: '', role_id: '' });
+  const [editForm, setEditForm] = useState({ name: '', email: '', role_id: '', join_date: '' });
 
   const [showAddForm, setShowAddForm] = useState(false);
-  const [newForm, setNewForm] = useState({ name: '', email: '', password: '', role_id: '' });
+  const [newForm, setNewForm] = useState({ name: '', email: '', password: '', role_id: '', join_date: '' });
 
   const { data, isLoading, error, isError } = useQuery({
     queryKey: ['adminUsersList'],
@@ -45,11 +45,15 @@ export default function UserListPage() {
 
   const createMutation = useMutation({
     mutationFn: (payload: typeof newForm) =>
-      apiClient.post('/admin-create', { ...payload, role_id: Number(payload.role_id) }),
+      apiClient.post('/admin-create', {
+        ...payload,
+        role_id: Number(payload.role_id),
+        join_date: payload.join_date || undefined
+      }),
     onSuccess: () => {
       invalidate();
       setShowAddForm(false);
-      setNewForm({ name: '', email: '', password: '', role_id: '' });
+      setNewForm({ name: '', email: '', password: '', role_id: '', join_date: '' });
     },
   });
 
@@ -69,14 +73,24 @@ export default function UserListPage() {
 
   const startEdit = (user: any) => {
     setEditingId(user.user_id);
-    setEditForm({ name: user.name, email: user.email, role_id: String(user.role_id) });
+    setEditForm({
+      name: user.name,
+      email: user.email,
+      role_id: String(user.role_id),
+      join_date: user.join_date ? user.join_date.substring(0, 10) : ''
+    });
   };
 
   const saveEdit = (id: number) => {
     if (!editForm.name.trim() || !editForm.email.trim()) return;
     updateMutation.mutate({
       id,
-      payload: { name: editForm.name, email: editForm.email, role_id: Number(editForm.role_id) },
+      payload: {
+        name: editForm.name,
+        email: editForm.email,
+        role_id: Number(editForm.role_id),
+        join_date: editForm.join_date || undefined
+      },
     });
   };
 
@@ -165,11 +179,22 @@ export default function UserListPage() {
                   <option key={r.role_id} value={r.role_id}>{r.role_text}</option>
                 ))}
               </select>
+              {roles?.find(r => String(r.role_id) === newForm.role_id)?.role_text.toLowerCase() === 'mentor' && (
+                <input
+                  type="date"
+                  placeholder="Tanggal Bergabung"
+                  value={newForm.join_date}
+                  onChange={(e) => setNewForm((f) => ({ ...f, join_date: e.target.value }))}
+                  className="rounded-lg border border-blue-300 bg-blue-50/50 px-3 py-2 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100 sm:col-span-4 mt-2"
+                />
+              )}
             </div>
 
             {createMutation.isError && (
-              <p className="mt-3 text-sm text-red-600">
-                {(createMutation.error as any)?.response?.data?.message ?? 'Gagal membuat user.'}
+              <p className="mt-3 text-sm text-red-600 font-medium bg-red-50 border border-red-100 p-2.5 rounded-lg">
+                {(createMutation.error as any)?.response?.data?.message ||
+                  (createMutation.error as any)?.message ||
+                  'Gagal membuat user.'}
               </p>
             )}
 
@@ -227,12 +252,21 @@ export default function UserListPage() {
                             <select
                               value={editForm.role_id}
                               onChange={(e) => setEditForm((f) => ({ ...f, role_id: e.target.value }))}
-                              className="rounded-lg border border-blue-300 px-2 py-1 text-sm outline-none focus:ring-2 focus:ring-blue-100"
+                              className="rounded-lg border border-blue-300 px-2 py-1 text-sm outline-none focus:ring-2 focus:ring-blue-100 w-full"
                             >
                               {roles?.map((r) => (
                                 <option key={r.role_id} value={r.role_id}>{r.role_text}</option>
                               ))}
                             </select>
+
+                            {roles?.find(r => String(r.role_id) === editForm.role_id)?.role_text.toLowerCase() === 'mentor' && (
+                              <input
+                                type="date"
+                                value={editForm.join_date}
+                                onChange={(e) => setEditForm((f) => ({ ...f, join_date: e.target.value }))}
+                                className="mt-1.5 block w-full rounded-lg border border-blue-300 px-2 py-1 text-xs outline-none focus:ring-2 focus:ring-blue-100"
+                              />
+                            )}
                           </td>
                           <td className="px-6 py-4 text-right">
                             <div className="flex justify-end gap-1">

@@ -19,11 +19,25 @@ export default function LoginPage() {
   const mutation = useMutation({
     mutationFn: authApi.login,
     onSuccess: (data) => {
-    login(data.token, data.user);
-      if (data.user.role === 'admin') {navigate(PATHS.ADMIN_DASHBOARD);} else if (data.user.role === 'mentor') {
-      navigate(PATHS.MENTOR_DASHBOARD);} else {navigate(PATHS.STUDENT_DASHBOARD);}},
+      login(data.token, data.user);
+
+      // Cetak ke console untuk memastikan apa isi data.user.role sebenarnya
+      console.log("Role user login:", data.user.role);
+
+      if (data.user.role === 'admin') {
+        navigate(PATHS.ADMIN_DASHBOARD);
+      } else if (data.user.role === 'mentor') {
+        navigate(PATHS.MENTOR_DASHBOARD);
+      } else if (data.user.role === 'siswa') {
+        navigate(PATHS.STUDENT_DASHBOARD);
+      } else {
+        // Sebagai pengaman kalau role kosong atau tidak dikenali
+        navigate('/');
+      }
+    },
     onError: (err: Error) => {
-    setError(err.message);},
+      setError(err.message);
+    },
   });
 
   const handleSubmit = (e: React.FormEvent) => {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { Plus, Edit, Trash2, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
 import Button from '../../../components/ui/Button';
@@ -7,10 +7,10 @@ import Badge from '../../../components/ui/Badge';
 import { PATHS } from '../../../routes/paths';
 import { kelasApi } from '../../../api/kelas'; // Sesuaikan folder path kelasApi kamu
 
-
 export default function ClassListPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
+  const queryClient = useQueryClient();
 
   // 1. Ambil data asli dari endpoint /class
   const { data: courses = [], isLoading, isError } = useQuery({
@@ -18,7 +18,25 @@ export default function ClassListPage() {
     queryFn: kelasApi.getAll,
   });
 
-  // 2. Logika Pagination Frontend
+  // 2. Fungsi Mutasi untuk Menghapus Kelas
+  const deleteMutation = useMutation({
+    mutationFn: (classId: string | number) => {
+      // Pastikan fungsi ini tersedia di kelasApi kamu (misal kelasApi.delete atau kelasApi.remove)
+      // Jika namanya berbeda di backend, silakan ganti panggilannya di sini
+      return kelasApi.delete(classId);
+    },
+    onSuccess: () => {
+      alert('Kelas berhasil dihapus!');
+      // Memicu queryClient untuk mengambil data baru agar tabel otomatis ter-update
+      queryClient.invalidateQueries({ queryKey: ['adminClassesList'] });
+    },
+    onError: (error: any) => {
+      console.error('Gagal menghapus kelas:', error);
+      alert(error?.response?.data?.message || 'Gagal menghapus kelas dari database.');
+    },
+  });
+
+  // 3. Logika Pagination Frontend
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentCourses = courses.slice(indexOfFirstItem, indexOfLastItem);
@@ -81,7 +99,6 @@ export default function ClassListPage() {
                   </tr>
                 ) : (
                   currentCourses.map((course: any) => {
-                    // Ambil ID kelas secara dinamis (antisipasi jika di database namanya class_id atau id)
                     const currentClassId = course.class_id || course.id;
 
                     return (
@@ -109,18 +126,16 @@ export default function ClassListPage() {
                         <td className="px-6 py-4 text-right">
                           <div className="flex items-center justify-end gap-2">
 
-                            {/* 1. Tombol View (Melihat detail kelas / halaman belajar kelas) */}
+                            {/* 1. Tombol View */}
                             <Link
-                              to={`/class/${currentClassId}`} // Atau sesuaikan dengan rute detail kelas kelompokmu
+                              to={`/class/${currentClassId}`}
                               className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
                               title="View Class"
                             >
                               <Eye className="h-4 w-4" />
                             </Link>
-                            
-                            {/* 2. Tombol Edit (Membungkus button dengan Link menuju ClassEditPage) */}
-                            {/* Jika di PATHS.ts kamu ada bentuk fungsi seperti PATHS.ADMIN_CLASS_EDIT(id), gunakan itu. 
-                            Jika berupa string biasa, kita bisa oper lewat dynamic path atau state seperti di bawah ini: */}
+
+                            {/* 2. Tombol Edit */}
                             <Link
                               to={`/admin/classes/${currentClassId}/edit`}
                               className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
@@ -129,15 +144,15 @@ export default function ClassListPage() {
                               <Edit className="h-4 w-4" />
                             </Link>
 
-                            {/* 3. Tombol Delete */}
+                            {/* 3. Tombol Delete (Sudah Diperbaiki) */}
                             <button
                               onClick={() => {
                                 if (confirm(`Apakah kamu yakin ingin menghapus kelas "${course.title || course.name}"?`)) {
-                                  // Taruh fungsi mutasi delete API kamu di sini nanti
-                                  console.log('Menghapus kelas dengan ID:', currentClassId);
+                                  deleteMutation.mutate(currentClassId);
                                 }
                               }}
-                              className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                              disabled={deleteMutation.isPending}
+                              className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
                               title="Delete Class"
                             >
                               <Trash2 className="h-4 w-4" />

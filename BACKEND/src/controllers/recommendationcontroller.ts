@@ -86,57 +86,57 @@ export const createRecommendationRequest = async (req: any, res: Response) => {
     }
 
     // ---------- 4. BOBOT: sumbernya beda tergantung metode ----------
-      const weightMap = new Map<number, number>();
+    const weightMap = new Map<number, number>();
 
     if (method === "SAW") {
-  // SAW pakai kriteria.bobot langsung (mis. 0.30, 0.20, dst)
-  kriteriaList.forEach((k) => weightMap.set(k.id_kriteria, k.bobot));
-} else {
-  // WP & TOPSIS pakai nilai kepentingan (1-5), dinormalisasi dengan dibagi total
-  const missingKepentingan = kriteriaList.filter((k) => k.kepentingan == null);
-  if (missingKepentingan.length > 0) {
-    return res.status(400).json({
-      message: `Kriteria berikut belum punya nilai kepentingan (dibutuhkan untuk metode ${method}): ${missingKepentingan.map((k) => k.nama).join(", ")}`,
+      // SAW pakai kriteria.bobot langsung (mis. 0.30, 0.20, dst)
+      kriteriaList.forEach((k) => weightMap.set(k.id_kriteria, k.bobot));
+    } else {
+      // WP & TOPSIS pakai nilai kepentingan (1-5), dinormalisasi dengan dibagi total
+      const missingKepentingan = kriteriaList.filter((k) => k.kepentingan == null);
+      if (missingKepentingan.length > 0) {
+        return res.status(400).json({
+          message: `Kriteria berikut belum punya nilai kepentingan (dibutuhkan untuk metode ${method}): ${missingKepentingan.map((k) => k.nama).join(", ")}`,
+        });
+      }
+      const totalKepentingan = kriteriaList.reduce((sum, k) => sum + (k.kepentingan ?? 0), 0);
+      kriteriaList.forEach((k) => weightMap.set(k.id_kriteria, (k.kepentingan ?? 0) / totalKepentingan));
+    }
+
+    // Override manual dari request (kalau user kirim weights, ini menang di atas keduanya)
+    if (Array.isArray(weights) && weights.length > 0) {
+      for (const w of weights) {
+        const kId = Number(w.kriteria_id);
+        const bobot = Number(w.bobot);
+        if (isNaN(kId) || isNaN(bobot) || bobot < 0) {
+          return res.status(400).json({ message: "Format weights tidak valid. Contoh: [{ kriteria_id, bobot }]." });
+        }
+        if (!weightMap.has(kId)) {
+          return res.status(400).json({ message: `kriteria_id ${kId} pada weights tidak ditemukan.` });
+        }
+        weightMap.set(kId, bobot);
+      }
+    }
+
+    // ---------- 5. NORMALISASI ULANG (total bobot dipastikan = 1) ----------
+    const totalBobot = Array.from(weightMap.values()).reduce((a, b) => a + b, 0);
+    if (totalBobot <= 0) {
+      return res.status(400).json({ message: "Total bobot kriteria harus lebih besar dari 0." });
+    }
+    kriteriaList.forEach((k) => {
+      weightMap.set(k.id_kriteria, weightMap.get(k.id_kriteria)! / totalBobot);
     });
-  }
-  const totalKepentingan = kriteriaList.reduce((sum, k) => sum + (k.kepentingan ?? 0), 0);
-  kriteriaList.forEach((k) => weightMap.set(k.id_kriteria, (k.kepentingan ?? 0) / totalKepentingan));
-}
-
-// Override manual dari request (kalau user kirim weights, ini menang di atas keduanya)
-if (Array.isArray(weights) && weights.length > 0) {
-  for (const w of weights) {
-    const kId = Number(w.kriteria_id);
-    const bobot = Number(w.bobot);
-    if (isNaN(kId) || isNaN(bobot) || bobot < 0) {
-      return res.status(400).json({ message: "Format weights tidak valid. Contoh: [{ kriteria_id, bobot }]." });
-    }
-    if (!weightMap.has(kId)) {
-      return res.status(400).json({ message: `kriteria_id ${kId} pada weights tidak ditemukan.` });
-    }
-    weightMap.set(kId, bobot);
-  }
-}
-
-// ---------- 5. NORMALISASI ULANG (total bobot dipastikan = 1) ----------
-const totalBobot = Array.from(weightMap.values()).reduce((a, b) => a + b, 0);
-if (totalBobot <= 0) {
-  return res.status(400).json({ message: "Total bobot kriteria harus lebih besar dari 0." });
-}
-kriteriaList.forEach((k) => {
-  weightMap.set(k.id_kriteria, weightMap.get(k.id_kriteria)! / totalBobot);
-});
 
     // ---------- 6 & 7. HITUNG SKOR MENTOR (getMetricValue SUDAH RETURN SKOR 1-5) & BANGUN DECISION MATRIX ----------
-const matrix = new Map<number, Map<number, number>>();
-for (const mentorId of mentorIds) {
-  const row = new Map<number, number>();
-  for (const k of kriteriaList) {
-    const score = await getMetricValue(k.kode, mentorId); // sudah 1-5, TIDAK perlu convertToKriteriaScore lagi
-    row.set(k.id_kriteria, score);
-  }
-  matrix.set(mentorId, row);
-}
+    const matrix = new Map<number, Map<number, number>>();
+    for (const mentorId of mentorIds) {
+      const row = new Map<number, number>();
+      for (const k of kriteriaList) {
+        const score = await getMetricValue(k.kode, mentorId); // sudah 1-5, TIDAK perlu convertToKriteriaScore lagi
+        row.set(k.id_kriteria, score);
+      }
+      matrix.set(mentorId, row);
+    }
     // ---------- 8-10. HITUNG SESUAI METHOD ----------
     let scores: { user_id: number; score: number }[];
     if (method === "SAW") {
@@ -407,5 +407,37 @@ export const deleteRecommendation = async (req: any, res: Response) => {
     return res.json({ message: "Data rekomendasi berhasil dihapus." });
   } catch (error: any) {
     return res.status(500).json({ message: "Gagal menghapus data rekomendasi.", error: error.message });
+  }
+};
+
+// =====================================================================
+// 5. GET ALL RECOMMENDATIONS (FOR ADMIN)
+// =====================================================================
+export const getAllAdminRecommendations = async (req: any, res: Response) => {
+  try {
+    // Mengambil semua data rekomendasi dari database tanpa filter user_id
+    const allRecommendations = await prisma.recommendationRequest.findMany({
+      orderBy: { created_at: "desc" },
+      include: {
+        category: true,
+        periode: true,
+        user: { select: { user_id: true, name: true, email: true } }, // Menyertakan info user yang melakukan request
+        weights: { include: { kriteria: true } },
+        results: {
+          orderBy: { ranking: "asc" },
+          include: { user: { select: { user_id: true, name: true, email: true } } },
+        },
+      },
+    });
+
+    return res.json({
+      message: "Berhasil mengambil semua data rekomendasi admin.",
+      data: allRecommendations,
+    });
+  } catch (error: any) {
+    return res.status(500).json({
+      message: "Gagal mengambil data rekomendasi admin.",
+      error: error.message
+    });
   }
 };

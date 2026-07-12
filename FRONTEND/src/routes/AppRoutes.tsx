@@ -57,12 +57,12 @@ export default function AppRoutes() {
 
       {/* Protected Routes */}
       <Route element={<ProtectedRoute />}>
-        
+
         {/* ROLE MENTOR */}
         <Route element={<RoleRoute allowedRoles={['mentor']} />}>
           <Route element={<MentorLayout />}>
             <Route path={PATHS.MENTOR_DASHBOARD} element={<MentorDashboard />} />
-            
+
             {/* TAMBAHKAN RUTE MENTOR DI SINI  */}
             <Route path={PATHS.MENTOR_CLASS_LIST} element={<MentorClassListPage />} />
             <Route path={PATHS.MENTOR_CLASS_CREATE} element={<MentorClassCreatePage />} />
@@ -71,14 +71,18 @@ export default function AppRoutes() {
             <Route path={PATHS.MENTOR_MATERIAL_CREATE} element={<MateriCreatePage />} />
             <Route path={PATHS.MENTOR_MATERIAL_EDIT} element={<MateriEditPage />} />
             <Route path={PATHS.MENTOR_REVIEW_LIST} element={<MentorReview />} />
-            <Route path={PATHS.MENTOR_PROFILE} element={ <MentorProfile />} />
+            <Route path={PATHS.MENTOR_PROFILE} element={<MentorProfile />} />
           </Route>
         </Route>
 
         {/* ROLE STUDENT */}
-        <Route element={<RoleRoute allowedRoles={['student']} />}>
+        <Route element={<RoleRoute allowedRoles={['siswa']} />}>
           <Route element={<StudentLayout />}>
             <Route path={PATHS.STUDENT_DASHBOARD} element={<StudentDashboard />} />
+            <Route path={PATHS.STUDENT_COURSES} element={<div>Halaman My Courses (Segera Hadir)</div>} />
+            <Route path={PATHS.STUDENT_EXPLORE} element={<div>Halaman Explore Classes (Segera Hadir)</div>} />
+            <Route path={PATHS.STUDENT_REVIEWS} element={<div>Halaman My Reviews (Segera Hadir)</div>} />
+            <Route path={PATHS.STUDENT_PROFILE} element={<div>Halaman Profile (Segera Hadir)</div>} />
           </Route>
         </Route>
         <Route element={<PublicLayout />}>

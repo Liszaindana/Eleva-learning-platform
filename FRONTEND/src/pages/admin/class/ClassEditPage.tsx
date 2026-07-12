@@ -36,19 +36,33 @@ export default function ClassEditPage() {
   const { data: mentors = [] } = useQuery({
     queryKey: ['allMentors'],
     queryFn: userApi.getAll,
-    // ✨ Fungsi select untuk memfilter data sebelum masuk ke komponen
     select: (allUsers: any[]) => {
-      // Sesuaikan nama properti rolenya (apakah men.role_id === 2 atau men.role === '2' atau men.role === 2)
       return allUsers.filter((user: any) => Number(user.role_id || user.role) === 2);
     }
   });
 
-  // ✨ PERBAIKAN UTAMA: Sinkronisasi data dari backend ke dalam form state
+  // 4. Hubungkan ke React Query Mutation untuk Update Data Ril (PERBAIKAN UTAMA)
+  const updateMutation = useMutation({
+    mutationFn: (updatedData: any) => kelasApi.update(Number(id), updatedData),
+    onSuccess: () => {
+      alert('Kelas berhasil diperbarui!');
+      // Refresh cache data list dan detail biar langsung sinkron
+      queryClient.invalidateQueries({ queryKey: ['adminClassesList'] });
+      queryClient.invalidateQueries({ queryKey: ['adminClassDetail', id] });
+      // Redirect kembali ke halaman list kelas
+      navigate('/admin/classes');
+    },
+    onError: (error: any) => {
+      console.error('Gagal memperbarui kelas:', error);
+      alert(error?.response?.data?.message || 'Terjadi kesalahan saat menyimpan perubahan.');
+    }
+  });
+
+  // Sinkronisasi data dari backend ke dalam form state saat pertama kali dimuat
   useEffect(() => {
     if (course) {
       setTitle(course.title || '');
       setDescription(course.description || '');
-      // Sesuaikan nama properti di bawah dengan objek Class dari backend-mu (misal: category_id atau categoryId)
       setCategoryId(course.category_id || '');
       setUserId(course.user_id || '');
     }
@@ -58,15 +72,15 @@ export default function ClassEditPage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log('Mengirimkan perubahan:', {
+    const payload = {
       title,
       description,
       category_id: Number(categoryId),
       user_id: Number(userId),
-    });
+    };
 
-    // Nanti di sini tinggal jalankan mutation.mutate() untuk save ke backend
-    navigate('/admin/classes');
+    // Picu mutasi untuk menyimpan ke backend secara riil
+    updateMutation.mutate(payload);
   };
 
   if (isLoading) {
@@ -144,7 +158,6 @@ export default function ClassEditPage() {
                   required
                 >
                   <option value="">Select Category</option>
-                  {/* ✨ PERBAIKAN: Menggunakan properti .categories sesuai isi phpMyAdmin */}
                   {categories.map((cat: any) => (
                     <option key={cat.category_id} value={cat.category_id}>
                       {cat.categories}
@@ -165,7 +178,6 @@ export default function ClassEditPage() {
                   required
                 >
                   <option value="">Select Mentor</option>
-                  {/* ✨ LOOPING DATA MENTOR RIL DARI BACKEND */}
                   {mentors.map((men: any) => (
                     <option key={men.user_id} value={men.user_id}>
                       {men.name}
@@ -176,7 +188,10 @@ export default function ClassEditPage() {
             </div>
 
             <div className="flex items-center gap-4 pt-4">
-              <Button type="submit">Update Course</Button>
+              {/* ✨ Tambahkan atribut disabled saat mutasi pending agar user tidak double klik */}
+              <Button type="submit" disabled={updateMutation.isPending}>
+                {updateMutation.isPending ? 'Saving...' : 'Update Course'}
+              </Button>
               <Link to="/admin/classes">
                 <Button variant="ghost">Cancel</Button>
               </Link>

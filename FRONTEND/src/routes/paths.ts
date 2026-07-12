@@ -5,6 +5,10 @@ export const PATHS = {
   KELAS: '/kelas',
   KELAS_DETAIL: '/kelas/:id',
   STUDENT_DASHBOARD: '/student/dashboard',
+  STUDENT_COURSES: '/student/courses',             // Untuk "My Courses"
+  STUDENT_EXPLORE: '/student/explore',             // Untuk "Explore Classes"
+  STUDENT_REVIEWS: '/student/reviews',             // Untuk "My Reviews"
+  STUDENT_PROFILE: '/student/profile',             // Untuk "Profile"
 
   // ADMIN PATHS
   ADMIN_DASHBOARD: '/admin/dashboard',

@@ -106,4 +106,21 @@ export const reviewApi = {
 export const enrollmentApi = {
   getAll: () => 
     apiClient.get<any[]>('/enrollment').then((res) => res.data),
+
+  getMyEnrollment: () => 
+    apiClient.get<any[]>('/enrollment/my').then((res) => res.data),
+}
+
+// ── level Endpoints ───────────────────────────────────
+
+export const levelApi = {
+  getAll: () => 
+  apiClient.get<any[]>('/level').then((res) => res.data),
+}
+
+// ── Periode Endpoints ───────────────────────────────────
+
+export const periodeApi = {
+  getAll: () =>
+    apiClient.get<any[]>('/periode').then((res) => res.data),
 }
