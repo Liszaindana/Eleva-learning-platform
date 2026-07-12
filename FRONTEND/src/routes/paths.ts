@@ -5,6 +5,16 @@ export const PATHS = {
   KELAS: '/kelas',
   KELAS_DETAIL: '/kelas/:id',
   STUDENT_DASHBOARD: '/student/dashboard',
+  STUDENT_COURSES: '/student/courses',
+  STUDENT_COURSE_DETAIL: '/student/courses/:id',
+  STUDENT_MATERIALS: '/student/materials',
+  STUDENT_MATERIAL_DETAIL: '/student/materials/:id',
+  STUDENT_PROGRESS: '/student/progress',
+  STUDENT_EXAMS: '/student/exams',
+  STUDENT_REVIEWS: '/student/reviews',
+  STUDENT_REVIEW_CREATE: '/student/reviews/:courseId/create',
+  STUDENT_SCHEDULE: '/student/schedule',
+  STUDENT_PROFILE: '/student/profile',
 
   // ADMIN PATHS
   ADMIN_DASHBOARD: '/admin/dashboard',
@@ -81,4 +91,18 @@ export const mentorMaterialEditPath = (classId: number | string, materiId: numbe
  */
 export function mentorReviewListPath(): string {
   return `/mentor/reviews`;
+}
+
+/**
+ * Build a student course detail path
+ */
+export function studentCourseDetailPath(id: number): string {
+  return `/student/courses/${id}`;
+}
+
+/**
+ * Build a student review create path
+ */
+export function studentReviewCreatePath(courseId: number): string {
+  return `/student/reviews/${courseId}/create`;
 }

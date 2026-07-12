@@ -1,17 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft } from 'lucide-react';
 import Button from '../../../components/ui/Button';
-import { PATHS } from '../../../routes/paths';
-import { kelasApi } from '../../../api/kelas';
+import { kelasApi } from '../../../api/class';
 import { userApi } from '../../../api/endpoints';
 import { categoryApi } from '../../../api/endpoints';
 
 export default function ClassEditPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const queryClient = useQueryClient();
 
   // State untuk form input
   const [title, setTitle] = useState('');

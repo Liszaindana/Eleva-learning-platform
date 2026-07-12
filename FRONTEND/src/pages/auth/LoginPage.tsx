@@ -20,6 +20,20 @@ export default function LoginPage() {
     mutationFn: authApi.login,
     onSuccess: (data) => {
       login(data.token, data.user);
+      const role = String(data.user?.role || '').toLowerCase();
+      if (role === 'siswa' || role === 'student' || role === '1') {
+        navigate(PATHS.STUDENT_DASHBOARD);
+        return;
+      }
+      if (role === 'mentor') {
+        navigate(PATHS.MENTOR_DASHBOARD);
+        return;
+      }
+      if (role === 'admin') {
+        navigate(PATHS.ADMIN_DASHBOARD);
+        return;
+      }
+
       navigate(PATHS.HOME);
     },
     onError: (err: Error) => {

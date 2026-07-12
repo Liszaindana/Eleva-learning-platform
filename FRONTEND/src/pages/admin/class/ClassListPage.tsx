@@ -5,7 +5,7 @@ import { Plus, Edit, Trash2, Eye, ChevronLeft, ChevronRight } from 'lucide-react
 import Button from '../../../components/ui/Button';
 import Badge from '../../../components/ui/Badge';
 import { PATHS } from '../../../routes/paths';
-import { kelasApi } from '../../../api/kelas'; // Sesuaikan folder path kelasApi kamu
+import { kelasApi } from '../../../api/class'; // Sesuaikan folder path kelasApi kamu
 
 
 export default function ClassListPage() {
@@ -117,7 +117,7 @@ export default function ClassListPage() {
                             >
                               <Eye className="h-4 w-4" />
                             </Link>
-                            
+
                             {/* 2. Tombol Edit (Membungkus button dengan Link menuju ClassEditPage) */}
                             {/* Jika di PATHS.ts kamu ada bentuk fungsi seperti PATHS.ADMIN_CLASS_EDIT(id), gunakan itu. 
                             Jika berupa string biasa, kita bisa oper lewat dynamic path atau state seperti di bawah ini: */}

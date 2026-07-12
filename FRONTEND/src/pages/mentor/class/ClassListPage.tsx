@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { PATHS, mentorClassEditPath } from '../../../routes/paths';
 import { useAuthStore } from '../../../store/authStore';
-import { kelasApi } from '../../../api/kelas';
+import { kelasApi } from '../../../api/class';
 import { Plus, BookOpen, Users, Star, Edit } from 'lucide-react';
 
 export default function ClassListPage() {
@@ -17,8 +17,8 @@ export default function ClassListPage() {
 
     // 2. Normalisasi data: bungkus jadi array jika backend mengembalikan satu objek tunggal
     const classList = Array.isArray(allClasses)
-    ? allClasses.filter((cls: any) => cls.user_id === user?.user_id)
-    : [];
+        ? allClasses.filter((cls: any) => cls.user_id === user?.user_id)
+        : [];
 
     return (
         <div className="w-full p-6 md:p-10 max-w-7xl mx-auto space-y-8 text-slate-100">

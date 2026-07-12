@@ -68,7 +68,7 @@ export default function MentorDashboard() {
     enabled: !!mentorId, // Hanya jalan jika mentorId ada
   });
 
-  const { data: allReviewsResponse, isLoading: isLoadingReviews } = useQuery({
+  const { data: allReviewsResponse } = useQuery({
     queryKey: ['allReviews'],
     queryFn: reviewApi.getAll,
   });

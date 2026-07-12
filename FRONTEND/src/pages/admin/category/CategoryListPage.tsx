@@ -4,7 +4,7 @@ import { Plus, Edit, Trash2 } from 'lucide-react';
 import Button from '../../../components/ui/Button';
 import { PATHS } from '../../../routes/paths';
 import { categoryApi } from '../../../api/endpoints'; // Sesuaikan file path categoryApi kamu
-import { kelasApi } from '../../../api/kelas';
+import { kelasApi } from '../../../api/class';
 
 export default function CategoryListPage() {
   const queryClient = useQueryClient();
