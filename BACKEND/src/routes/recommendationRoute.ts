@@ -4,6 +4,7 @@ import {
   getRecommendationHistory,
   getRecommendationDetail,
   deleteRecommendation,
+  getAllRecommendations,
 } from "../controllers/recommendationcontroller.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import { authorize } from "../middlewares/authorize.js";
@@ -24,6 +25,8 @@ router.get(
   authMiddleware,
   getRecommendationHistory
 );
+
+router.get("/recommendation/admin/all", authMiddleware, authorize("admin"), getAllRecommendations)
 
 // Detail satu request rekomendasi (harus di bawah "/history" biar tidak ketimpa)
 router.get(

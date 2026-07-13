@@ -86,36 +86,42 @@ export const createRecommendationRequest = async (req: any, res: Response) => {
     }
 
     // ---------- 4. BOBOT: sumbernya beda tergantung metode ----------
-      const weightMap = new Map<number, number>();
+    
+        const weightMap = new Map<number, number>();
 
-    if (method === "SAW") {
-  // SAW pakai kriteria.bobot langsung (mis. 0.30, 0.20, dst)
-  kriteriaList.forEach((k) => weightMap.set(k.id_kriteria, k.bobot));
-} else {
-  // WP & TOPSIS pakai nilai kepentingan (1-5), dinormalisasi dengan dibagi total
-  const missingKepentingan = kriteriaList.filter((k) => k.kepentingan == null);
-  if (missingKepentingan.length > 0) {
-    return res.status(400).json({
-      message: `Kriteria berikut belum punya nilai kepentingan (dibutuhkan untuk metode ${method}): ${missingKepentingan.map((k) => k.nama).join(", ")}`,
+        switch (method) {
+      case "SAW":
+    // SAW menggunakan bobot langsung
+    kriteriaList.forEach((k) => {
+      weightMap.set(k.id_kriteria, k.bobot);
     });
-  }
-  const totalKepentingan = kriteriaList.reduce((sum, k) => sum + (k.kepentingan ?? 0), 0);
-  kriteriaList.forEach((k) => weightMap.set(k.id_kriteria, (k.kepentingan ?? 0) / totalKepentingan));
-}
+    break;
 
-// Override manual dari request (kalau user kirim weights, ini menang di atas keduanya)
-if (Array.isArray(weights) && weights.length > 0) {
-  for (const w of weights) {
-    const kId = Number(w.kriteria_id);
-    const bobot = Number(w.bobot);
-    if (isNaN(kId) || isNaN(bobot) || bobot < 0) {
-      return res.status(400).json({ message: "Format weights tidak valid. Contoh: [{ kriteria_id, bobot }]." });
+  case "WP":
+  case "TOPSIS":
+    // WP & TOPSIS menggunakan tingkat kepentingan
+    const missing = kriteriaList.filter((k) => k.kepentingan == null);
+
+    if (missing.length > 0) {
+      return res.status(400).json({
+        message:
+          "Masih ada kriteria yang belum memiliki nilai kepentingan.",
+      });
     }
-    if (!weightMap.has(kId)) {
-      return res.status(400).json({ message: `kriteria_id ${kId} pada weights tidak ditemukan.` });
-    }
-    weightMap.set(kId, bobot);
-  }
+
+    const totalKepentingan = kriteriaList.reduce(
+      (sum, k) => sum + Number(k.kepentingan),
+      0
+    );
+
+    kriteriaList.forEach((k) => {
+      weightMap.set(
+        k.id_kriteria,
+        Number(k.kepentingan) / totalKepentingan
+      );
+    });
+
+    break;
 }
 
 // ---------- 5. NORMALISASI ULANG (total bobot dipastikan = 1) ----------
@@ -146,37 +152,19 @@ kriteriaList.forEach((k) => {
             message: `Belum ada skala kriteria_value untuk kriteria '${k.nama}'. Jalankan seeder kriteria_value dulu.`,
           });
         }
-        console.log("RAW =", rawValue);
-
-for (const row of kriteriaValueRows) {
-  console.log(row.value, row.score);
-}
-
+        
         const score = convertToKriteriaScore(kriteriaValueRows, rawValue);
         row.set(k.id_kriteria, score);
       }
       matrix.set(mentorId, row);
     }
-    console.log("===== SKOR HASIL KONVERSI =====");
+    
 
-for (const mentorId of mentorIds) {
-  console.log(`Mentor ${mentorId}`);
-
-  for (const k of kriteriaList) {
-    console.log(
-      k.nama,
-      matrix.get(mentorId)?.get(k.id_kriteria)
-    );
-  }
-
-  console.log("----------------");
-}
     // ---------- 8-10. HITUNG SESUAI METHOD ----------
     let scores: { user_id: number; score: number }[];
     if (method === "SAW") {
       scores = calculateSAW(mentorIds, kriteriaList, matrix, weightMap);
-      console.log("===== HASIL SAW =====");
-console.log(scores);
+      
     } else if (method === "WP") {
       scores = calculateWP(mentorIds, kriteriaList, matrix, weightMap);
     } else {
@@ -237,6 +225,7 @@ console.log(scores);
     return res.status(500).json({ message: "Gagal membuat rekomendasi.", error: error.message });
   }
 };
+
 
 // =====================================================================
 // ALGORITMA SPK
@@ -335,7 +324,7 @@ function calculateTOPSIS(
   });
 
   // Langkah 4: jarak ke solusi ideal positif (D+) & negatif (D-)
-  // Langkah 5: nilai preferensi C = D- / (D+ + D-)
+  
   return mentorIds.map((id) => {
     let sumPos = 0;
     let sumNeg = 0;
@@ -443,5 +432,30 @@ export const deleteRecommendation = async (req: any, res: Response) => {
     return res.json({ message: "Data rekomendasi berhasil dihapus." });
   } catch (error: any) {
     return res.status(500).json({ message: "Gagal menghapus data rekomendasi.", error: error.message });
+  }
+};
+
+export const getAllRecommendations = async (_req: any, res: Response) => {
+  try {
+    const all = await prisma.recommendationRequest.findMany({
+      orderBy: { created_at: "desc" },
+      include: {
+        category: true,
+        periode: true,
+        user: { select: { user_id: true, name: true, email: true } },
+        results: {
+          orderBy: { ranking: "asc" },
+          take: 1,
+          include: { user: { select: { user_id: true, name: true } } },
+        },
+      },
+    });
+
+    return res.json({
+      message: "Berhasil mengambil semua data rekomendasi.",
+      data: all,
+    });
+  } catch (error: any) {
+    return res.status(500).json({ message: "Gagal mengambil data rekomendasi.", error: error.message });
   }
 };

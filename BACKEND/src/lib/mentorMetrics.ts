@@ -46,12 +46,12 @@ const metricGetters: Record<string, (mentorId: number) => Promise<number>> = {
       select: { join_date: true },
     });
     if (!mentor) return 0;
-      console.log(mentor);
+      
 
     const now = new Date();
     const diff = now.getTime() - mentor.join_date.getTime();
     const years = diff / (1000 * 60 * 60 * 24 * 365.25);
-    console.log("Lama:", years);
+   
     return Number(years.toFixed(2));
   },
 };

@@ -1,16 +1,31 @@
 import { Link } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import { Eye } from 'lucide-react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { Eye, Trash2 } from 'lucide-react';
 import Badge from '../../../components/ui/Badge';
 import { recommendationApi } from '../../../api/recommendation';
 import { formatDate } from '../../../lib/utils';
 import { recommendationDetailPath } from '../../../routes/paths';
 
 export default function AdminRecommendationListPage() {
+  const queryClient = useQueryClient();
+
   const { data, isLoading } = useQuery({
     queryKey: ['recommendation-all-admin'],
     queryFn: recommendationApi.getAllAdmin,
   });
+
+  const deleteMutation = useMutation({
+    mutationFn: (id: number) => recommendationApi.remove(id),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['recommendation-all-admin'] });
+    },
+  });
+
+  const handleDelete = (id: number, categoryName: string) => {
+    if (confirm(`Hapus data rekomendasi untuk kategori "${categoryName}"? Aksi ini tidak bisa dibatalkan.`)) {
+      deleteMutation.mutate(id);
+    }
+  };
 
   const list = data?.data ?? [];
 
@@ -58,13 +73,23 @@ export default function AdminRecommendationListPage() {
                       <td className="px-6 py-4 text-sm text-slate-500">{formatDate(req.created_at)}</td>
                       <td className="px-6 py-4 text-sm text-slate-700">{req.results?.[0]?.user?.name ?? '-'}</td>
                       <td className="px-6 py-4 text-right">
-                        <Link
-                          to={recommendationDetailPath(req.id_recomen)}
-                          className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium text-blue-600 hover:bg-blue-50"
-                        >
-                          <Eye className="h-4 w-4" />
-                          Detail
-                        </Link>
+                        <div className="flex items-center justify-end gap-1">
+                          <Link
+                            to={recommendationDetailPath(req.id_recomen)}
+                            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium text-blue-600 hover:bg-blue-50"
+                          >
+                            <Eye className="h-4 w-4" />
+                            Detail
+                          </Link>
+                          <button
+                            onClick={() => handleDelete(req.id_recomen, req.category?.categories ?? '-')}
+                            disabled={deleteMutation.isPending}
+                            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium text-red-600 hover:bg-red-50 disabled:opacity-50"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                            Hapus
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}
