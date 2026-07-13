@@ -26,6 +26,8 @@ import ReviewListPage from '../pages/admin/review/ReviewListPage';
 import KriteriaListPage from '../pages/admin/kriteria/KriteriaListPage';
 import KriteriaValueListPage from '../pages/admin/kriteria/KriteriaValueListPage';
 import AdminRecommendationListPage from '../pages/admin/recommendation/AdminRecommendationListPage';
+import AdminRecommendationDetailPageadmin from '../pages/admin/spkadmin/ReccomendationDetailPageadmin.tsx';
+
 
 // --- IMPORT HALAMAN MENTOR  ---
 import MentorClassListPage from '../pages/mentor/class/ClassListPage';
@@ -44,13 +46,11 @@ import MaterialVideoPage from '../pages/student/materials/MaterialList';
 import LearningProgressPage from '../pages/student/progress/LearningProgresList.tsx';
 import ExamsGradesPage from '../pages/student/exams/ExamsGradesPage';
 import ClassReviewPage from '../pages/student/reviews/CreateReview';
-import SchedulePage from '../pages/student/schedule/ScheduleList';
 import ProfilePage from '../pages/student/profile/Profile.tsx';
 
 import { PATHS } from './paths';
-import RecommendationPage from '../pages/spk/RecommendationPage';
-import RecommendationHistoryPage from '../pages/spk/RecommendationHistoryPage';
-import RecommendationDetailPage from '../pages/spk/RecommendationDetailPage';
+import RecommendationPage from '../pages/student/spkstudent/RecommendationPage.tsx';
+import RecommendationHistoryPage from '../pages/admin/spkadmin/RecommendationHistoryPage.tsx';
 
 
 export default function AppRoutes() {
@@ -97,14 +97,13 @@ export default function AppRoutes() {
             <Route path={PATHS.STUDENT_EXAMS} element={<ExamsGradesPage />} />
             <Route path={PATHS.STUDENT_REVIEWS} element={<ClassReviewPage />} />
             <Route path={PATHS.STUDENT_REVIEW_CREATE} element={<ClassReviewPage />} />
-            <Route path={PATHS.STUDENT_SCHEDULE} element={<SchedulePage />} />
             <Route path={PATHS.STUDENT_PROFILE} element={<ProfilePage />} />
+            <Route path={PATHS.RECOMMENDATION} element={<RecommendationPage />} />
+            <Route path={PATHS.RECOMMENDATION_HISTORY} element={<RecommendationHistoryPage />} />
           </Route>
         </Route>
         <Route element={<PublicLayout />}>
-          <Route path={PATHS.RECOMMENDATION} element={<RecommendationPage />} />
-          <Route path={PATHS.RECOMMENDATION_HISTORY} element={<RecommendationHistoryPage />} />
-          <Route path={PATHS.RECOMMENDATION_DETAIL} element={<RecommendationDetailPage />} />
+
         </Route>
 
         {/* ROLE ADMIN */}
@@ -122,6 +121,8 @@ export default function AppRoutes() {
             <Route path={PATHS.ADMIN_KRITERIA} element={<KriteriaListPage />} />
             <Route path={PATHS.ADMIN_KRITERIA_VALUES} element={<KriteriaValueListPage />} />
             <Route path={PATHS.ADMIN_RECOMMENDATION_ALL} element={<AdminRecommendationListPage />} />
+            <Route path={PATHS.RECOMMENDATION} element={<RecommendationPage />} />
+            <Route path={PATHS.RECOMMENDATION_DETAIL} element={<AdminRecommendationDetailPageadmin />} />
           </Route>
         </Route>
       </Route>

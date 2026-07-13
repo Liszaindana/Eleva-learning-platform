@@ -9,12 +9,6 @@ import {
   Sparkles,
   Star,
   Search,
-  Code,
-  Palette,
-  Briefcase,
-  Megaphone,
-  UserCheck,
-  Camera,
   Quote,
 } from 'lucide-react';
 import Container from '../../components/ui/Container';
@@ -24,9 +18,11 @@ import { PATHS } from '../../routes/paths';
 import { categoryApi, classApi, reviewApi } from '../../api/endpoints';
 import type { Category, Class, Review } from '../../types/learning';
 import logo from '../../assets/Logo.PNG';
+import { useNavigate } from 'react-router-dom';
 
 export default function LandingPage() {
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
 
   const { data: categories = [], isLoading: categoriesLoading } = useQuery<Category[]>({
     queryKey: ['landingCategories'],
@@ -37,12 +33,12 @@ export default function LandingPage() {
   const displayCategories = useMemo(() => {
     if (!categories || categories.length === 0) {
       return [
-        { category_id: 0, categories: 'Programming' },
-        { category_id: 1, categories: 'Design' },
-        { category_id: 2, categories: 'Business' },
-        { category_id: 3, categories: 'Marketing' },
-        { category_id: 4, categories: 'Soft Skills' },
-        { category_id: 5, categories: 'Photography' },
+        { category_id: 0, categories: 'Programming', classCount: 0 },
+        { category_id: 1, categories: 'Design', classCount: 0 },
+        { category_id: 2, categories: 'Business', classCount: 0 },
+        { category_id: 3, categories: 'Marketing', classCount: 0 },
+        { category_id: 4, categories: 'Soft Skills', classCount: 0 },
+        { category_id: 5, categories: 'Photography', classCount: 0 },
       ];
     }
 
@@ -117,28 +113,57 @@ export default function LandingPage() {
     }));
   }, [reviews]);
 
-  const mentors = [
-    {
-      name: 'Sarah Amelia',
-      role: 'Product Lead at Tokopedia',
-      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-    {
-      name: 'Yudi Prastio',
-      role: 'Frontend Lead at Gojek',
-      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-    {
-      name: 'Budi Santoso',
-      role: 'UI/UX Director',
-      avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-    {
-      name: 'Ahmad Dani',
-      role: 'Software Engineer',
-      avatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-  ];
+  const displayMentors = useMemo(() => {
+    const seen = new Set();
+    const list: Array<{ name: string; role: string; avatar: string }> = [];
+    const suffixes = ['Expert', 'Specialist', 'Senior Instructor', 'Master', 'Professional', 'Guru'];
+
+    const sourceCourses = trendingCourses || [];
+
+    sourceCourses.forEach((course: any, index: number) => {
+      const mentorName = course.mentorName;
+
+      const categoryName = course.category && course.category !== 'General' ? course.category : 'Edu';
+
+      // Gabungkan menjadi gelar dinamis
+      const assignedRole = `${categoryName} ${suffixes[index % suffixes.length]}`;
+
+      const mentorAvatar = `https://images.unsplash.com/photo-${index % 2 === 0 ? '1472099645785-5658abf4ff4e' : '1494790108377-be9c29b29330'
+        }?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80`;
+
+      if (mentorName && mentorName !== 'Mentor Tidak Diketahui' && !seen.has(mentorName)) {
+        seen.add(mentorName);
+        list.push({
+          name: mentorName,
+          role: assignedRole,
+          avatar: mentorAvatar,
+        });
+      }
+    });
+
+    if (list.length === 0) {
+      return [
+        { name: 'Sarah Amelia', role: 'Design Specialist', avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' },
+        { name: 'Yudi Prastio', role: 'Programming Senior Instructor', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' },
+        { name: 'Budi Santoso', role: 'Business Master', avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' },
+        { name: 'Ahmad Dani', role: 'Technology Professional', avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80' },
+      ];
+    }
+
+    return list.slice(0, 4);
+  }, [trendingCourses]); // Cukup bergantung pada trendingCourses saja
+
+  const handleSearchSubmit = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+
+    if (searchQuery.trim()) {
+      // Arahkan ke halaman kelas membawa parameter pencarian
+      navigate(`${PATHS.KELAS}?search=${encodeURIComponent(searchQuery.trim())}`);
+    } else {
+      // Jika kosong, langsung arahkan ke halaman kelas biasa
+      navigate(PATHS.KELAS);
+    }
+  };
 
   return (
     <div className="space-y-24 pb-20">
@@ -233,12 +258,12 @@ export default function LandingPage() {
       <section className="px-4">
         <Container>
           <div className="relative rounded-3xl border border-slate-200 bg-white p-8 max-w-4xl mx-auto shadow-lg shadow-slate-200/50 overflow-hidden">
-            {/* Soft inner glow */}
             <div className="absolute inset-0 bg-blue-50/50 -z-10" />
             <div className="text-center space-y-5 max-w-xl mx-auto">
               <h2 className="text-xl font-bold text-slate-900">What do you need to learn today?</h2>
 
-              <div className="relative">
+              {/* 🟢 Ubah div menjadi form agar bisa di-submit pakai tombol Enter */}
+              <form onSubmit={handleSearchSubmit} className="relative">
                 <input
                   type="text"
                   placeholder="Cari materi, judul kelas, atau nama mentor..."
@@ -246,18 +271,27 @@ export default function LandingPage() {
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-3.5 pr-14 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none transition-all"
                 />
-                <button className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition-all shadow-sm shadow-blue-500/20 cursor-pointer">
+                {/* 🟢 Menggunakan type="submit" */}
+                <button
+                  type="submit"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 p-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl transition-all shadow-sm shadow-blue-500/20 cursor-pointer"
+                >
                   <Search className="h-4.5 w-4.5" />
                 </button>
-              </div>
+              </form>
 
               {/* Popular tags list */}
               <div className="flex flex-wrap items-center justify-center gap-2 pt-1 text-xs">
                 <span className="text-slate-500 font-semibold uppercase tracking-wider mr-1">Popular:</span>
-                {['Design', 'Marketing', 'Technology', 'Business'].map((tag) => (
+                {['Frontend', 'Backend', 'UI/UX Design', 'Data Science'].map((tag) => (
                   <button
                     key={tag}
-                    onClick={() => setSearchQuery(tag)}
+                    type="button"
+                    onClick={() => {
+                      setSearchQuery(tag);
+                      // 🟢 Langsung cari begitu tag populer diklik
+                      navigate(`${PATHS.KELAS}?search=${encodeURIComponent(tag)}`);
+                    }}
                     className="px-3.5 py-1.5 rounded-lg border border-slate-200 bg-slate-50 text-slate-700 hover:text-blue-700 hover:bg-blue-50 hover:border-blue-200 transition-all font-medium cursor-pointer"
                   >
                     {tag}
@@ -280,11 +314,6 @@ export default function LandingPage() {
             <Link to={PATHS.KELAS} className="text-xs font-bold text-blue-600 hover:text-blue-500 transition-colors">
               View All
             </Link>
-            <Link
-              to={PATHS.RECOMMENDATION}
-              className="inline-flex items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-white font-semibold hover:bg-blue-700 transition-colors">
-              Cari Mentor Terbaik
-              </Link>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
@@ -407,9 +436,11 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {mentors.map((mentor, i) => (
-              <div key={i} className="text-center space-y-4 group">
+          {/* 🟢 Mengubah grid menjadi flexbox agar konten otomatis rata tengah (justify-center) */}
+          <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 max-w-4xl mx-auto">
+            {displayMentors.map((mentor, i) => (
+              // 🟢 Menambahkan w-40 atau min-w-[150px] agar ukuran tiap kartu mentor tetap konsisten dan rapi
+              <div key={i} className="text-center space-y-4 group w-36 md:w-44 flex-shrink-0">
                 <div className="relative mx-auto h-28 w-28 rounded-full overflow-hidden border-2 border-blue-200 group-hover:border-blue-400 shadow-lg transition-all duration-300">
                   <img
                     src={mentor.avatar}
@@ -418,8 +449,12 @@ export default function LandingPage() {
                   />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{mentor.name}</h3>
-                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">{mentor.role}</p>
+                  <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    {mentor.name}
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-1 leading-relaxed">
+                    {mentor.role}
+                  </p>
                 </div>
               </div>
             ))}

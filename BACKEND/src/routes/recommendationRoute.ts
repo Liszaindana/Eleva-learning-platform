@@ -11,38 +11,19 @@ import { authorize } from "../middlewares/authorize.js";
 
 const router = express.Router();
 
-// Buat rekomendasi mentor baru (SAW/WP/TOPSIS)
-router.post(
-  "/recommendation",
-  authMiddleware,
-  authorize("admin", "siswa"),
-  createRecommendationRequest
-);
+// 1. Buat rekomendasi mentor baru (Akses: POST /recommendation)
+router.post("/", authMiddleware, authorize("admin", "siswa"), createRecommendationRequest);
 
-// Riwayat semua request rekomendasi milik user yang sedang login
-router.get(
-  "/recommendation/history",
-  authMiddleware,
-  getRecommendationHistory
-);
+// 2. Semua Admin Recommendations (Taruh di atas agar kata 'admin' tidak dianggap sebagai :id)
+router.get("/admin/all", authMiddleware, getAllAdminRecommendations);
 
-router.get("/admin/all", 
-  authMiddleware, 
-  getAllAdminRecommendations);
+// 3. Riwayat request milik user login (Akses: GET /recommendation/history)
+router.get("/history", authMiddleware, getRecommendationHistory);
 
-// Detail satu request rekomendasi (harus di bawah "/history" biar tidak ketimpa)
-router.get(
-  "/recommendation/:id",
-  authMiddleware,
-  getRecommendationDetail
-);
+// 4. Detail satu request (Akses: GET /recommendation/:id)
+router.get("/:id", authMiddleware, getRecommendationDetail);
 
-// Hapus satu request rekomendasi (khusus admin)
-router.delete(
-  "/recommendation/:id",
-  authMiddleware,
-  authorize("admin"),
-  deleteRecommendation
-);
+// 5. Hapus (Akses: DELETE /recommendation/:id)
+router.delete("/:id", authMiddleware, authorize("admin"), deleteRecommendation);
 
 export default router;

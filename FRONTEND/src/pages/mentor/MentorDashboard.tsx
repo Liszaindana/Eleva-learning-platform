@@ -55,12 +55,12 @@ export default function MentorDashboard() {
   });
 
   const [ratingBreakdown, setRatingBreakdown] = useState([
-  { stars: 5, percentage: 0 },
-  { stars: 4, percentage: 0 },
-  { stars: 3, percentage: 0 },
-  { stars: 2, percentage: 0 },
-  { stars: 1, percentage: 0 },
-]);
+    { stars: 5, percentage: 0 },
+    { stars: 4, percentage: 0 },
+    { stars: 3, percentage: 0 },
+    { stars: 2, percentage: 0 },
+    { stars: 1, percentage: 0 },
+  ]);
 
   const { data: mentorProfileResponse, isLoading: isLoadingProfile } = useQuery({
     queryKey: ['mentorProfile', mentorId],
@@ -244,136 +244,299 @@ export default function MentorDashboard() {
   ];
 
   return (
-    <div className="w-full p-6 md:p-10 max-w-7xl mx-auto space-y-8">
-      {/* HEADER AREA */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div className="mx-auto w-full max-w-7xl space-y-8 p-6 md:p-10">
+
+      {/* HEADER */}
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-extrabold text-white tracking-tight">Mentor Dashboard</h1>
-          <p className="text-slate-400 mt-1 text-sm">
-            Welcome back, {user?.name || "Mentor"}. Here's what's happening with your students.
+          <h1 className="text-3xl font-bold text-slate-900">
+            Mentor Dashboard
+          </h1>
+
+          <p className="mt-2 text-sm text-slate-600">
+            Welcome back, <span className="font-semibold">{user?.name || "Mentor"}</span>.
+            Here's what's happening with your students.
           </p>
         </div>
 
         <div className="flex items-center gap-3">
+
           <div className="relative">
             <select
               value={timeRange}
               onChange={(e) => setTimeRange(e.target.value)}
-              className="appearance-none bg-slate-900 border border-slate-800 text-slate-300 px-4 py-2.5 pr-10 rounded-xl text-sm font-semibold focus:outline-none focus:border-indigo-500 cursor-pointer"
+              className="appearance-none rounded-xl border border-slate-300 bg-white px-4 py-2.5 pr-10 text-sm font-medium text-slate-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
             >
               <option>Last 30 Days</option>
               <option>Last 3 Months</option>
               <option>This Year</option>
             </select>
-            <Calendar className="absolute right-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+
+            <Calendar className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-500" />
           </div>
+
           <Button className="flex items-center gap-2">
             <Download className="h-4 w-4" />
             Generate Report
           </Button>
+
         </div>
       </div>
 
-      {/* STATS GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* STATS */}
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
         {stats.map((stat, idx) => {
           const Icon = stat.icon;
+
           return (
-            <div key={idx} className="bg-slate-900/50 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 shadow-xl group hover:border-slate-700/80 transition-all duration-300">
+            <div
+              key={idx}
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl"
+            >
               <div className="flex items-start justify-between">
+
                 <div>
-                  <p className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">{stat.title}</p>
-                  <h3 className="text-3xl font-black text-white tracking-tight group-hover:text-indigo-400 transition-colors">{stat.value}</h3>
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                    {stat.title}
+                  </p>
+
+                  <h3 className="text-3xl font-bold text-slate-900">
+                    {stat.value}
+                  </h3>
                 </div>
-                <div className={`p-3 rounded-xl ${stat.iconColor}`}>
+
+                <div className={`rounded-xl p-3 ${stat.iconColor}`}>
                   <Icon className="h-6 w-6" />
                 </div>
+
               </div>
 
-              <div className="mt-4 flex items-center gap-2">
+              <div className="mt-5">
+
                 {stat.progress !== undefined ? (
-                  <div className="w-full">
-                    <div className="flex justify-between items-center mb-1 text-xs text-slate-400">
+
+                  <div>
+
+                    <div className="mb-2 flex justify-between text-xs text-slate-500">
                       <span>Completion</span>
-                      <span className="font-semibold text-indigo-400">{stat.progress}%</span>
+                      <span className="font-semibold text-indigo-600">
+                        {stat.progress}%
+                      </span>
                     </div>
-                    <div className="h-1.5 w-full bg-slate-800 rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-indigo-500 to-violet-500 rounded-full" style={{ width: `${stat.progress}%` }} />
+
+                    <div className="h-2 overflow-hidden rounded-full bg-slate-200">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+                        style={{ width: `${stat.progress}%` }}
+                      />
                     </div>
+
                   </div>
+
                 ) : (
-                  <>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400">{stat.trend}</span>
-                    <span className="text-xs text-slate-500 font-medium">{stat.subText}</span>
-                  </>
+
+                  <div className="flex items-center gap-2">
+
+                    <span className="rounded-full bg-emerald-100 px-2 py-1 text-xs font-semibold text-emerald-700">
+                      {stat.trend}
+                    </span>
+
+                    <span className="text-xs text-slate-500">
+                      {stat.subText}
+                    </span>
+
+                  </div>
+
                 )}
+
               </div>
+
             </div>
           );
         })}
+
       </div>
 
-      {/* GRAPH ROW */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-slate-900/50 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h3 className="text-lg font-bold text-white">Student Growth</h3>
-              <p className="text-xs text-slate-400">Monthly student acquisition</p>
-            </div>
+      {/* ANALYTICS */}
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+
+        {/* Student Growth */}
+
+        <div className="lg:col-span-2 rounded-2xl border border-slate-200 bg-white p-6 shadow-md">
+
+          <div className="mb-6">
+
+            <h3 className="text-lg font-semibold text-slate-900">
+              Student Growth
+            </h3>
+
+            <p className="text-sm text-slate-500">
+              Monthly student acquisition
+            </p>
+
           </div>
-          <div className="h-64 w-full flex items-end">
-            <span className="text-slate-600 text-xs m-auto">Growth Chart Visualized</span>
+
+          <div className="flex h-64 items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50">
+            <span className="text-sm text-slate-500">
+              Growth Chart Visualized
+            </span>
           </div>
+
         </div>
 
-        <div className="bg-slate-900/50 backdrop-blur-xl border border-slate-800/80 rounded-2xl p-6 shadow-xl flex flex-col justify-between">
-          <h3 className="text-lg font-bold text-white mb-4">Rating Breakdown</h3>
-          <div className="space-y-4">
+        {/* Rating */}
+
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md">
+
+          <h3 className="mb-6 text-lg font-semibold text-slate-900">
+            Rating Breakdown
+          </h3>
+
+          <div className="space-y-5">
+
             {ratingBreakdown.map((row) => (
-              <div key={row.stars} className="flex items-center gap-3">
-                <span className="text-xs font-semibold text-slate-300 w-12">{row.stars} Stars</span>
-                <div className="h-2 flex-1 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-amber-400 to-amber-500 rounded-full" style={{ width: `${row.percentage}%` }} />
+
+              <div
+                key={row.stars}
+                className="flex items-center gap-3"
+              >
+
+                <span className="w-12 text-sm font-medium text-slate-600">
+                  {row.stars}★
+                </span>
+
+                <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-200">
+
+                  <div
+                    className="h-full rounded-full bg-gradient-to-r from-amber-400 to-amber-500"
+                    style={{
+                      width: `${row.percentage}%`,
+                    }}
+                  />
+
                 </div>
-                <span className="text-xs font-semibold text-slate-400 w-10 text-right">{row.percentage}%</span>
+
+                <span className="w-10 text-right text-sm font-semibold text-slate-600">
+                  {row.percentage}%
+                </span>
+
               </div>
+
             ))}
+
           </div>
+
         </div>
+
       </div>
 
       {/* ACTIVE COURSES */}
       <div>
-        <h2 className="text-xl font-bold text-white mb-6">Active Courses</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mb-6 flex items-center justify-between">
+          <h2 className="text-2xl font-bold text-slate-900">
+            Active Courses
+          </h2>
+
+          <span className="text-sm text-slate-500">
+            {myUniqueCourses.length} Courses
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+
           {myUniqueCourses.map((course) => (
-            <div key={course.id} className="bg-slate-900/50 backdrop-blur-xl border border-slate-800/80 rounded-2xl overflow-hidden shadow-xl flex flex-col group">
-              <div className="h-44 w-full relative overflow-hidden">
-                <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
+
+            <div
+              key={course.id}
+              className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl"
+            >
+
+              {/* Cover */}
+              <div className="relative h-44 overflow-hidden">
+
+                <img
+                  src={course.image}
+                  alt={course.title}
+                  className="h-full w-full object-cover transition duration-500 hover:scale-105"
+                />
+
               </div>
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+
+              {/* Content */}
+              <div className="flex h-[210px] flex-col justify-between p-5">
+
                 <div>
-                  <h3 className="text-base font-bold text-white line-clamp-1 group-hover:text-indigo-400 transition-colors">{course.title}</h3>
-                  <p className="text-xs text-slate-400 mt-1.5 line-clamp-2">{course.description}</p>
+
+                  <h3 className="line-clamp-2 text-lg font-bold text-slate-900">
+                    {course.title}
+                  </h3>
+
+                  <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-slate-600">
+                    {course.description}
+                  </p>
+
                 </div>
-                <div className="flex items-center justify-between text-xs text-slate-400 border-t border-slate-800/60 pt-4">
-                  <span>Students: <strong>{course.students}</strong></span>
-                  <span className="text-amber-400 font-semibold">★ {course.rating}</span>
+
+                <div>
+
+                  <div className="mb-4 flex items-center justify-between border-t border-slate-200 pt-4">
+
+                    <div className="text-sm text-slate-600">
+                      Students
+                      <div className="font-semibold text-slate-900">
+                        {course.students}
+                      </div>
+                    </div>
+
+                    <div className="rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-700">
+                      ★ {course.rating}
+                    </div>
+
+                  </div>
+
+                  <button
+                    onClick={() =>
+                      navigate(mentorClassEditPath(course.id))
+                    }
+                    className="w-full rounded-xl bg-indigo-600 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500"
+                  >
+                    Edit Course
+                  </button>
+
                 </div>
-                <button onClick={() => navigate(mentorClassEditPath(course.id))} className="w-full py-2 bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 rounded-xl transition-all">
-                  Edit Course
-                </button>
+
               </div>
+
             </div>
+
           ))}
 
-          <div onClick={() => navigate(PATHS.MENTOR_CLASS_CREATE)} className="border-2 border-dashed border-slate-800 hover:border-indigo-500/40 rounded-2xl flex flex-col items-center justify-center p-8 text-center bg-slate-900/10 hover:bg-indigo-500/[0.02] cursor-pointer transition-all">
-            <Plus className="h-6 w-6 text-slate-500 mb-2" />
-            <h3 className="text-sm font-bold text-slate-200">Create New Course</h3>
+          {/* Create New */}
+
+          <div
+            onClick={() => navigate(PATHS.MENTOR_CLASS_CREATE)}
+            className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-8 text-center transition hover:border-indigo-400 hover:bg-indigo-50"
+          >
+
+            <div className="mb-4 rounded-full bg-indigo-100 p-4">
+              <Plus className="h-7 w-7 text-indigo-600" />
+            </div>
+
+            <h3 className="text-lg font-semibold text-slate-900">
+              Create New Course
+            </h3>
+
+            <p className="mt-2 text-sm text-slate-600">
+              Start building a new learning experience for your students.
+            </p>
+
           </div>
+
         </div>
+
       </div>
+
     </div>
   );
 } // <--- KURUNG KURAWAL PENUTUP UTAMA DI SINI SEKARANG!

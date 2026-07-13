@@ -43,7 +43,7 @@ app.use(roleRoute);
 app.use(userRoute);
 app.use('/auth', authRoute);
 app.use(kriteriaRoute);
-app.use(recommendationRoute);
+app.use('/recommendation', recommendationRoute);
 
 app.listen(PORT, () => {
     console.log(`🚀 Server Prisma 7 + Laragon sukses berjalan di http://localhost:${PORT}`);

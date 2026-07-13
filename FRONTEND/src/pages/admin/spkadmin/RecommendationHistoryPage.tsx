@@ -1,14 +1,14 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Eye, History } from 'lucide-react';
-import Container from '../../components/ui/Container';
-import SectionHeader from '../../components/ui/SectionHeader';
-import LoadingState from '../../components/ui/LoadingState';
-import EmptyState from '../../components/ui/EmptyState';
-import Badge from '../../components/ui/Badge';
-import { recommendationApi } from '../../api/recommendation';
-import { formatDate } from '../../lib/utils';
-import { recommendationDetailPath } from '../../routes/paths';
+import Container from '../../../components/ui/Container';
+import SectionHeader from '../../../components/ui/SectionHeader';
+import LoadingState from '../../../components/ui/LoadingState';
+import EmptyState from '../../../components/ui/EmptyState';
+import Badge from '../../../components/ui/Badge';
+import { recommendationApi } from '../../../api/recommendation';
+import { formatDate } from '../../../lib/utils';
+import { recommendationDetailPath } from '../../../routes/paths';
 
 export default function RecommendationHistoryPage() {
   const { data, isLoading } = useQuery({

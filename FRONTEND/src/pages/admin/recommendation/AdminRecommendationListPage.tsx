@@ -4,7 +4,7 @@ import { Eye } from 'lucide-react';
 import Badge from '../../../components/ui/Badge';
 import { recommendationApi } from '../../../api/recommendation';
 import { formatDate } from '../../../lib/utils';
-import { recommendationDetailPath } from '../../../routes/paths';
+import { adminRecommendationDetailPath } from '../../../routes/paths';
 
 export default function AdminRecommendationListPage() {
   const { data, isLoading } = useQuery({
@@ -18,7 +18,7 @@ export default function AdminRecommendationListPage() {
     <div className="min-h-screen bg-slate-50">
       <div className="mx-auto max-w-7xl p-6 md:p-10">
         <div className="mb-8">
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">Semua Rekomendasi</h1>
+          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">Histori Semua Rekomendasi</h1>
           <p className="mt-1 text-sm text-slate-600">
             Riwayat perhitungan rekomendasi mentor dari seluruh pengguna
           </p>
@@ -59,7 +59,7 @@ export default function AdminRecommendationListPage() {
                       <td className="px-6 py-4 text-sm text-slate-700">{req.results?.[0]?.user?.name ?? '-'}</td>
                       <td className="px-6 py-4 text-right">
                         <Link
-                          to={recommendationDetailPath(req.id_recomen)}
+                          to={adminRecommendationDetailPath(req.id_recomen)}
                           className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm font-medium text-blue-600 hover:bg-blue-50"
                         >
                           <Eye className="h-4 w-4" />

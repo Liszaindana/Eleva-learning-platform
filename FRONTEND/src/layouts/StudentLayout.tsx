@@ -1,23 +1,39 @@
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { LayoutDashboard, BookOpen, Award, FileText, Calendar, User, HelpCircle, LogOut } from 'lucide-react';
+// Tambahkan ikon Star (atau ikon lain sesuai seleramu) untuk menu SPK
+import { LayoutDashboard, BookOpen, Award, FileText, Calendar, User, HelpCircle, LogOut, Star } from 'lucide-react';
 import Button from '../components/ui/Button';
 import { useAuthStore } from '../store/authStore';
+import { PATHS } from '../routes/paths'; // Sesuaikan lokasi path importmu jika perlu
 
 export default function StudentLayout() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useAuthStore();
+  const { user, logout } = useAuthStore();
 
   const sidebarItems = [
     { id: 'dashboard', label: 'Dashboard', path: '/student/dashboard', icon: LayoutDashboard },
     { id: 'my-courses', label: 'My Courses', path: '/student/courses', icon: BookOpen },
-    { id: 'learning-progress', label: 'Learning Progress', path: '/student/progress', icon: Award },
+    { id: 'learning-progress', label: 'Learning Progress', path: '/student/progress', icon: Award },    
     { id: 'profile', label: 'Profile', path: '/student/profile', icon: User },
     { id: 'assignments', label: 'Assignments', path: '/student/exams', icon: FileText },
-    { id: 'schedule', label: 'Schedule', path: '/student/schedule', icon: Calendar },
+    { id: 'recommendation', label: 'Rekomendasi Mentor', path: PATHS.RECOMMENDATION, icon: Star },
   ];
 
-  const isActive = (path: string) => location.pathname.startsWith(path);
+  const isActive = (path: string) => location.pathname === path || location.pathname.startsWith(path + '/');
+
+  const handleLogout = async () => {
+    try {
+      // Jalankan fungsi logout untuk hapus token/state user
+      await logout(); 
+      
+      // Arahkan ke halaman login (atau PATHS.LOGIN jika menggunakan objek paths)
+      navigate('/login'); 
+    } catch (error) {
+      console.error("Gagal logout:", error);
+      // Fallback jika terjadi kendala pada async action store
+      navigate('/login');
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col md:flex-row">
@@ -81,7 +97,7 @@ export default function StudentLayout() {
             </button>
             <button
               type="button"
-              onClick={() => navigate('/')}
+              onClick={handleLogout}
               className="flex w-full items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50"
             >
               <LogOut className="h-4 w-4" />

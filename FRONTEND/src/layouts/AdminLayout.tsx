@@ -8,7 +8,7 @@ import {
   HelpCircle,
   LogOut,
   Sliders,     
-  ListChecks,
+  Clock,
 } from 'lucide-react';
 import { PATHS } from '../routes/paths';
 import logo from '../assets/Logo.PNG';
@@ -29,7 +29,7 @@ export default function AdminLayout() {
     { id: 'categories', label: 'Categories', icon: FileText, path: PATHS.ADMIN_CATEGORY_LIST },
     { id: 'reviews', label: 'Reviews', icon: Star, path: PATHS.ADMIN_REVIEW_LIST },
     { id: 'kriteria', label: 'Kriteria SPK', icon: Sliders, path: PATHS.ADMIN_KRITERIA },          
-    { id: 'recommendation', label: 'Rekomendasi', icon: ListChecks, path: PATHS.ADMIN_RECOMMENDATION_ALL },
+    { id: 'histori', label: 'Histori', icon: Clock, path: PATHS.ADMIN_RECOMMENDATION_ALL },
   ];
 
   const logoutMutation = useMutation({

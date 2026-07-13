@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { PATHS, mentorClassEditPath } from '../../../routes/paths';
 import { useAuthStore } from '../../../store/authStore';
 import { kelasApi } from '../../../api/class';
-import { Plus, BookOpen, Users, Star, Edit } from 'lucide-react';
+import { Plus, BookOpen, Users, Star, Edit, Loader2 } from 'lucide-react';
 
 export default function ClassListPage() {
     const navigate = useNavigate();
@@ -15,89 +15,131 @@ export default function ClassListPage() {
         queryFn: kelasApi.getAll,
     });
 
-    // 2. Normalisasi data: bungkus jadi array jika backend mengembalikan satu objek tunggal
-    const classList = Array.isArray(allClasses)
-        ? allClasses.filter((cls: any) => cls.user_id === user?.user_id)
+    // 🛠️ FIX BUG: Ekstrak properti .data jika respon backend dibungkus objek Axios/Custom
+    const rawClasses = Array.isArray(allClasses)
+        ? allClasses
+        : (allClasses as any)?.data || [];
+
+    // 2. Filter kelas milik mentor yang sedang login
+    const classList = Array.isArray(rawClasses)
+        ? rawClasses.filter((cls: any) => cls.user_id === user?.user_id)
         : [];
 
     return (
-        <div className="w-full p-6 md:p-10 max-w-7xl mx-auto space-y-8 text-slate-100">
-            {/* Top Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-900 pb-6">
+        <div className="mx-auto w-full max-w-7xl space-y-8 p-6 md:p-10">
+
+            {/* Header */}
+            <div className="flex flex-col gap-4 border-b border-slate-200 pb-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <h1 className="text-2xl font-black text-white tracking-tight">My Class List</h1>
-                    <p className="text-slate-400 text-sm mt-1">
+                    <h1 className="text-3xl font-bold text-slate-900">
+                        My Class List
+                    </h1>
+
+                    <p className="mt-2 text-sm text-slate-600">
                         Manage your created classes and monitor student progress.
                     </p>
                 </div>
+
                 <button
                     onClick={() => navigate(PATHS.MENTOR_CLASS_CREATE)}
-                    className="flex items-center justify-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-lg shadow-indigo-600/10"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 font-semibold text-white shadow-lg transition hover:bg-indigo-500"
                 >
                     <Plus className="h-4 w-4" />
                     Create New Class
                 </button>
             </div>
 
-            {/* Grid List & Status Loading / Empty */}
             {isLoading ? (
-                <div className="text-slate-400 text-sm text-center py-12">Loading classes...</div>
+                <div className="flex h-[40vh] flex-col items-center justify-center gap-3">
+                    <Loader2 className="h-8 w-8 animate-spin text-indigo-600" />
+                    <p className="text-sm text-slate-600">
+                        Loading classes...
+                    </p>
+                </div>
             ) : classList.length === 0 ? (
-                <div className="text-slate-500 text-sm text-center py-12 border border-dashed border-slate-800 rounded-2xl">
-                    You haven't created any classes yet.
+                <div className="rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 py-16 text-center">
+                    <BookOpen className="mx-auto mb-4 h-10 w-10 text-slate-400" />
+                    <p className="font-medium text-slate-600">
+                        You haven't created any classes yet.
+                    </p>
                 </div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                     {classList.map((cls: any) => {
-                        // Hitung jumlah siswa dari array enrollment
-                        const totalStudents = Array.isArray(cls.enrollment) ? cls.enrollment.length : 0;
+                        const totalStudents = Array.isArray(cls.enrollment)
+                            ? cls.enrollment.length
+                            : 0;
 
-                        // Hitung rata-rata rating dari array reviews
                         let averageRating = "0.0";
+
                         if (Array.isArray(cls.reviews) && cls.reviews.length > 0) {
-                            const totalRating = cls.reviews.reduce((sum: number, rev: any) => sum + (rev.rating || 0), 0);
-                            averageRating = (totalRating / cls.reviews.length).toFixed(1);
+                            const totalRating = cls.reviews.reduce(
+                                (sum: number, rev: any) => sum + (rev.rating || 0),
+                                0
+                            );
+
+                            averageRating = (
+                                totalRating / cls.reviews.length
+                            ).toFixed(1);
                         }
 
                         return (
                             <div
                                 key={cls.class_id}
-                                className="p-6 bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl flex flex-col justify-between hover:border-slate-700 transition-all duration-300 group"
+                                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl"
                             >
                                 <div>
-                                    <div className="flex items-center gap-2 mb-3">
-                                        <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400">
-                                            <BookOpen className="h-5 w-5" />
+                                    <div className="mb-4 flex items-center gap-3">
+                                        <div className="rounded-lg bg-indigo-100 p-2">
+                                            <BookOpen className="h-5 w-5 text-indigo-600" />
                                         </div>
-                                        <span className="text-xs font-semibold text-slate-500">
-                                            {cls.category?.categories || 'Active Course'}
+
+                                        <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-600">
+                                            {cls.category?.categories ||
+                                                cls.category?.category_name ||
+                                                "Active Course"}
                                         </span>
                                     </div>
-                                    <h3 className="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors line-clamp-2">
+
+                                    <h3 className="line-clamp-2 text-xl font-bold text-slate-900">
                                         {cls.title}
                                     </h3>
-                                    <p className="text-xs text-slate-400 mt-2 line-clamp-2">
+
+                                    <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-slate-600">
                                         {cls.description}
                                     </p>
                                 </div>
 
-                                <div className="mt-6 pt-4 border-t border-slate-800/60 flex items-center justify-between">
-                                    <div className="flex items-center gap-4 text-xs text-slate-400">
-                                        <span className="flex items-center gap-1">
-                                            <Users className="h-4 w-4 text-indigo-400" />
-                                            <strong>{totalStudents}</strong> Students
-                                        </span>
-                                        <span className="flex items-center gap-1 text-amber-400 font-semibold">
-                                            <Star className="h-4 w-4 fill-amber-400" />
+                                <div className="mt-6 flex items-center justify-between border-t border-slate-200 pt-5">
+
+                                    <div className="flex items-center gap-5">
+
+                                        <div className="flex items-center gap-2 text-sm text-slate-600">
+                                            <Users className="h-4 w-4 text-indigo-600" />
+                                            <span>
+                                                <strong className="text-slate-900">
+                                                    {totalStudents}
+                                                </strong>{" "}
+                                                Students
+                                            </span>
+                                        </div>
+
+                                        <div className="flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-700">
+                                            <Star className="h-4 w-4 fill-amber-500 text-amber-500" />
                                             {averageRating}
-                                        </span>
+                                        </div>
+
                                     </div>
 
                                     <button
-                                        onClick={() => navigate(mentorClassEditPath(cls.class_id))}
-                                        className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg border border-slate-700/50 transition-colors cursor-pointer"
+                                        onClick={() =>
+                                            navigate(
+                                                mentorClassEditPath(cls.class_id)
+                                            )
+                                        }
+                                        className="flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-600 transition hover:bg-indigo-100"
                                     >
-                                        <Edit className="h-3.5 w-3.5" />
+                                        <Edit className="h-4 w-4" />
                                         Edit
                                     </button>
                                 </div>

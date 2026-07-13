@@ -83,116 +83,206 @@ export default function ReviewListPage() {
     }
 
     return (
-        <div className="w-full p-6 md:p-10 max-w-5xl mx-auto space-y-8 text-slate-100">
+        <div className="mx-auto w-full max-w-5xl space-y-8 p-6 md:p-10">
+
             {/* Header */}
-            <div className="border-b border-slate-900 pb-6">
-                <h1 className="text-2xl font-black text-white tracking-tight">Student Reviews</h1>
-                <p className="text-slate-400 text-sm mt-1">
-                    Monitor performance metrics, course ratings, and detailed textual feedback from your students.
+            <div className="border-b border-slate-200 pb-6">
+                <h1 className="text-3xl font-bold text-slate-900">
+                    Student Reviews
+                </h1>
+
+                <p className="mt-2 text-sm text-slate-600">
+                    Monitor course ratings and feedback from your students.
                 </p>
             </div>
 
-            {/* Ringkasan Dashboard Rating */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {/* Rata-rata Rating */}
-                <div className="p-6 bg-slate-900/40 border border-slate-800 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
-                    <div className="space-y-2">
-                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Average Rating</span>
-                        <div className="flex items-baseline gap-2">
-                            <span className="text-4xl font-black text-white tracking-tight">{averageRating}</span>
-                            <span className="text-sm text-slate-500">/ 5.0</span>
-                        </div>
+            {/* Summary */}
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+
+                {/* Average Rating */}
+                <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                        Average Rating
+                    </span>
+
+                    <div className="mt-3 flex items-end gap-2">
+                        <span className="text-4xl font-bold text-slate-900">
+                            {averageRating}
+                        </span>
+
+                        <span className="text-slate-500">
+                            / 5.0
+                        </span>
                     </div>
-                    <div className="flex items-center gap-1 mt-4">
+
+                    <div className="mt-4 flex gap-1">
                         {[...Array(5)].map((_, i) => (
-                            <Star 
-                                key={i} 
-                                className={`h-5 w-5 ${i < Math.round(Number(averageRating)) ? 'text-amber-400 fill-amber-400' : 'text-slate-700'}`} 
+                            <Star
+                                key={i}
+                                className={`h-5 w-5 ${i < Math.round(Number(averageRating))
+                                        ? "fill-amber-400 text-amber-400"
+                                        : "text-slate-300"
+                                    }`}
                             />
                         ))}
                     </div>
-                    <Award className="absolute right-4 top-4 h-12 w-12 text-slate-800/40 group-hover:text-indigo-500/10 transition-colors" />
+
+                    <Award className="absolute right-5 top-5 h-10 w-10 text-indigo-100" />
+
                 </div>
 
-                {/* Total Ulasan */}
-                <div className="p-6 bg-slate-900/40 border border-slate-800 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
-                    <div className="space-y-2">
-                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Feedback</span>
-                        <h2 className="text-4xl font-black text-white tracking-tight">{totalReviews}</h2>
+                {/* Total Review */}
+                <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+
+                    <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
+                        Total Reviews
+                    </span>
+
+                    <h2 className="mt-3 text-4xl font-bold text-slate-900">
+                        {totalReviews}
+                    </h2>
+
+                    <div className="mt-4 flex items-center gap-2 text-sm text-slate-600">
+                        <Users className="h-4 w-4 text-indigo-600" />
+                        Active student feedback
                     </div>
-                    <p className="text-xs text-slate-400 mt-4 flex items-center gap-1.5">
-                        <Users className="h-3.5 w-3.5 text-indigo-400" /> Active student responses
-                    </p>
-                    <MessageSquare className="absolute right-4 top-4 h-12 w-12 text-slate-800/40 group-hover:text-indigo-500/10 transition-colors" />
+
+                    <MessageSquare className="absolute right-5 top-5 h-10 w-10 text-indigo-100" />
+
                 </div>
 
-                {/* Progress Bar Sebaran Bintang */}
-                <div className="p-6 bg-slate-900/40 border border-slate-800 rounded-2xl space-y-2">
-                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">Rating Breakdown</span>
-                    <div className="space-y-1.5 pt-1">
+                {/* Rating Breakdown */}
+                <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-lg">
+
+                    <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-slate-700">
+                        Rating Breakdown
+                    </h3>
+
+                    <div className="space-y-3">
+
                         {ratingDistribution.map((dist) => (
-                            <div key={dist.stars} className="flex items-center gap-3 text-xs text-slate-400">
-                                <span className="w-3 font-semibold text-slate-300 text-right">{dist.stars}</span>
-                                <Star className="h-3.5 w-3.5 text-amber-500 fill-amber-500 shrink-0" />
-                                <div className="flex-1 h-2 bg-slate-950 rounded-full overflow-hidden border border-slate-800/40">
-                                    <div 
-                                        className="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-all duration-500" 
-                                        style={{ width: `${dist.percentage}%` }}
-                                    />
-                                </div>
-                                <span className="w-8 text-slate-500 text-right font-medium">{dist.count}</span>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
 
-            {/* List Review Masuk */}
-            <div className="space-y-4">
-                <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wider">Detailed Feedbacks</h3>
-                
-                {mentorReviews.length === 0 ? (
-                    <div className="text-slate-500 text-sm text-center py-20 border border-dashed border-slate-800 rounded-2xl flex flex-col items-center justify-center gap-3 bg-slate-900/10">
-                        <MessageSquare className="h-8 w-8 text-slate-600" />
-                        <p>No student reviews received yet for your courses.</p>
-                    </div>
-                ) : (
-                    <div className="grid grid-cols-1 gap-4">
-                        {mentorReviews.map((review) => (
-                            <div 
-                                key={review.review_id} 
-                                className="p-5 bg-slate-900/30 border border-slate-800 rounded-2xl space-y-4 hover:border-slate-700/60 transition-colors"
+                            <div
+                                key={dist.stars}
+                                className="flex items-center gap-3"
                             >
-                                {/* Atas: Info Siswa & Bintang */}
-                                <div className="flex flex-wrap items-start justify-between gap-2">
-                                    <div>
-                                        <h4 className="text-sm font-bold text-white">
-                                            {review.user?.name || `Student #${review.user_id}`}
-                                        </h4>
-                                        <p className="text-[11px] text-indigo-400 font-semibold mt-0.5">
-                                            Course: <span className="text-slate-300 font-medium">{review.class?.title || 'Unknown Course'}</span>
-                                        </p>
-                                    </div>
-                                    <div className="flex items-center gap-0.5 bg-slate-950 border border-slate-800 px-2.5 py-1 rounded-xl">
-                                        {[...Array(5)].map((_, i) => (
-                                            <Star 
-                                                key={i} 
-                                                className={`h-3 w-3 ${i < review.rating ? 'text-amber-400 fill-amber-400' : 'text-slate-800'}`} 
-                                            />
-                                        ))}
-                                        <span className="text-xs font-bold text-white ml-1.5">{review.rating}.0</span>
-                                    </div>
+
+                                <span className="w-3 text-sm font-semibold text-slate-700">
+                                    {dist.stars}
+                                </span>
+
+                                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+
+                                <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-200">
+
+                                    <div
+                                        className="h-full rounded-full bg-gradient-to-r from-amber-400 to-orange-500"
+                                        style={{
+                                            width: `${dist.percentage}%`,
+                                        }}
+                                    />
+
                                 </div>
 
-                                {/* Tengah: Isi Komentar */}
-                                <p className="text-sm text-slate-300 leading-relaxed bg-slate-950/40 p-3.5 border border-slate-900 rounded-xl">
-                                    "{review.comment}"
-                                </p>
+                                <span className="w-8 text-right text-sm text-slate-500">
+                                    {dist.count}
+                                </span>
+
                             </div>
+
                         ))}
+
                     </div>
-                )}
+
+                </div>
+
             </div>
+
+            {/* Review List */}
+            <div className="space-y-5">
+
+                <h2 className="text-lg font-semibold text-slate-900">
+                    Student Feedback
+                </h2>
+
+                {mentorReviews.length === 0 ? (
+
+                    <div className="flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 py-20">
+
+                        <MessageSquare className="mb-3 h-10 w-10 text-slate-400" />
+
+                        <p className="text-slate-600">
+                            No reviews yet.
+                        </p>
+
+                    </div>
+
+                ) : (
+
+                    <div className="space-y-4">
+
+                        {mentorReviews.map((review) => (
+
+                            <div
+                                key={review.review_id}
+                                className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition hover:shadow-lg"
+                            >
+
+                                <div className="flex flex-wrap items-start justify-between gap-3">
+
+                                    <div>
+
+                                        <h3 className="font-semibold text-slate-900">
+                                            {review.user?.name || `Student #${review.user_id}`}
+                                        </h3>
+
+                                        <p className="mt-1 text-sm text-indigo-600">
+                                            {review.class?.title || "Unknown Course"}
+                                        </p>
+
+                                    </div>
+
+                                    <div className="flex items-center gap-1 rounded-xl bg-amber-50 px-3 py-1.5">
+
+                                        {[...Array(5)].map((_, i) => (
+
+                                            <Star
+                                                key={i}
+                                                className={`h-4 w-4 ${i < review.rating
+                                                        ? "fill-amber-400 text-amber-400"
+                                                        : "text-slate-300"
+                                                    }`}
+                                            />
+
+                                        ))}
+
+                                        <span className="ml-2 text-sm font-semibold text-slate-700">
+                                            {review.rating}.0
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                                <div className="mt-5 rounded-xl bg-slate-50 p-4">
+
+                                    <p className="leading-relaxed text-slate-700">
+                                        "{review.comment}"
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        ))}
+
+                    </div>
+
+                )}
+
+            </div>
+
         </div>
     );
 }

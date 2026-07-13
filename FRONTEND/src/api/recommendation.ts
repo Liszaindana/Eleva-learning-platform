@@ -8,15 +8,23 @@ import type {
   KriteriaValue,
 } from '../types/recommendation';
 
+// 📄 File: api/endpoints.ts (Frontend)
 export const recommendationApi = {
   create: (payload: CreateRecommendationPayload) =>
     apiClient
       .post<ApiResponse<RecommendationRequest>>('/recommendation', payload)
       .then((res) => res.data),
 
+  // 💡 Hapus '/recommendation' di tengah karena di backend cukup '/history'
   getHistory: () =>
     apiClient
       .get<ApiResponse<RecommendationRequest[]>>('/recommendation/history')
+      .then((res) => res.data),
+
+  // 💡 Cukup /recommendation/admin/all
+  getAllAdmin: () =>
+    apiClient
+      .get<ApiResponse<RecommendationRequest[]>>('/recommendation/admin/all')
       .then((res) => res.data),
 
   getDetail: (id: number) =>
@@ -26,12 +34,6 @@ export const recommendationApi = {
 
   remove: (id: number) =>
     apiClient.delete(`/recommendation/${id}`).then((res) => res.data),
-
-
-    getAllAdmin: () =>
-    apiClient
-      .get<ApiResponse<RecommendationRequest[]>>('/recommendation/admin/all')
-      .then((res) => res.data),
 };
 
 export const kriteriaApi = {

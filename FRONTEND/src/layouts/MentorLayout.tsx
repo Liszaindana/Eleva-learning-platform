@@ -10,7 +10,7 @@ import logo from '../assets/Logo.PNG';
 export default function MentorLayout() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, logout } = useAuthStore(); // Ambil state user saat ini dan fungsi logout
+  const { user, logout } = useAuthStore();
 
   // Daftarkan path asli dari PATHS rute kamu agar tombol sidebar tahu harus pindah ke mana
   const sidebarItems = [
@@ -39,31 +39,31 @@ export default function MentorLayout() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col md:flex-row">
-      <aside className="w-full md:w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between shrink-0">
+      {/* SIDEBAR BOX - SEBELAH KIRI (TEMA PUTIH) */}
+      <aside className="w-full md:w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 md:h-screen md:sticky md:top-0">
         <div className="p-6">
           {/* Logo / App Name */}
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-9 w-9 rounded-xl bg-white flex items-center justify-center shadow-lg">
+            <div className="h-9 w-9 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg">
               <img src={logo} alt="Eleva Logo" className="h-7 w-7 object-contain" />
             </div>
-            <span className="text-xl font-bold tracking-wider bg-linear-to-r from-white to-slate-300 bg-clip-text text-transparent">Eleva</span>
+            <span className="text-xl font-bold tracking-wider text-slate-900">Eleva Mentor</span>
           </div>
 
           {/* Navigation Items */}
           <nav className="space-y-1">
             {sidebarItems.map((item) => {
               const Icon = item.icon;
-              // ✨ Cek keaktifan tab berdasarkan rute URL saat ini (Lebih akurat daripada local state)
               const isActive = location.pathname === item.path;
 
               return (
                 <button
                   key={item.id}
-                  onClick={() => navigate(item.path)} // ✨ Beneran pindah rute/halaman
+                  onClick={() => navigate(item.path)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                     isActive
-                      ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/20'
-                      : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                      ? 'bg-slate-900 text-white shadow-md'
+                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                   }`}
                 >
                   <Icon className="h-5 w-5" />
@@ -75,15 +75,15 @@ export default function MentorLayout() {
         </div>
 
         {/* Sidebar Footer Area */}
-        <div className="p-6 border-t border-slate-800 space-y-6">
-          {/* Pro Plan Card */}
-          <div className="rounded-xl border border-indigo-500/20 bg-indigo-500/5 p-4 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-500/10 rounded-full blur-xl -mr-8 -mt-8" />
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-indigo-400 mb-1">Pro Plan</h4>
-            <p className="text-xs text-slate-400 mb-3 leading-relaxed">
+        <div className="p-6 border-t border-slate-200 space-y-6">
+          {/* Pro Plan Card - Disesuaikan agar tetap pop-out tapi masuk ke tema putih */}
+          <div className="rounded-xl border border-indigo-100 bg-indigo-50/50 p-4 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-200/20 rounded-full blur-xl -mr-8 -mt-8" />
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-1">Pro Plan</h4>
+            <p className="text-xs text-slate-500 mb-3 leading-relaxed">
               Unlock advanced analytics and tools.
             </p>
-            <Button size="sm" className="w-full text-xs font-semibold py-1.5">
+            <Button size="sm" className="w-full text-xs font-semibold py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white border-none">
               Upgrade to Pro
             </Button>
           </div>
@@ -91,15 +91,12 @@ export default function MentorLayout() {
           {/* User Profile */}
           <div className="flex items-center gap-3">
             <img
-              src={
-                "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              }
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt="Mentor Avatar"
-              className="h-10 w-10 rounded-xl object-cover ring-2 ring-indigo-500/20"
+              className="h-10 w-10 rounded-xl object-cover ring-2 ring-slate-200"
             />
             <div className="flex-1 min-w-0">
-              {/* ✨ Menampilkan nama mentor dinamis dari database */}
-              <p className="text-sm font-semibold text-white truncate">
+              <p className="text-sm font-semibold text-slate-900 truncate">
                 {user?.name || "Mentor User"}
               </p>
               <p className="text-xs text-slate-500 truncate">Mentor</p>
@@ -108,14 +105,14 @@ export default function MentorLayout() {
 
           {/* Help Center & Logout */}
           <div className="space-y-1 pt-1">
-            <a href="#" className="flex items-center gap-3 px-2 py-2 text-xs font-medium text-slate-400 hover:text-white rounded-lg transition-colors">
+            <a href="#" className="flex items-center gap-3 px-2 py-2 text-xs font-medium text-slate-500 hover:text-slate-700 rounded-lg transition-colors">
               <HelpCircle className="h-4 w-4" />
               Help Center
             </a>
             <button
               onClick={handleLogout}
               disabled={logoutMutation.isPending}
-              className="w-full flex items-center gap-3 px-2 py-2 text-xs font-medium text-red-400 hover:text-red-300 rounded-lg hover:bg-red-500/5 transition-colors disabled:opacity-50"
+              className="w-full flex items-center gap-3 px-2 py-2 text-xs font-medium text-red-600 hover:text-red-700 rounded-lg hover:bg-red-50 transition-colors disabled:opacity-50"
             >
               <LogOut className="h-4 w-4" />
               {logoutMutation.isPending ? 'Logging out...' : 'Logout'}
@@ -124,8 +121,8 @@ export default function MentorLayout() {
         </div>
       </aside>
       
-      {/* Container utama untuk merender komponen halaman di sebelah kanan */}
-      <main className="flex-1 bg-slate-950 overflow-y-auto">
+      {/* KONTEN HALAMAN UTAMA - SEBELAH KANAN (TEMA BERSIH) */}
+      <main className="flex-1 p-6 md:p-10 max-w-7xl mx-auto w-full overflow-y-auto">
         <Outlet />
       </main>
     </div>

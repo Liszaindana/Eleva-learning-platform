@@ -60,31 +60,31 @@ export default function ClassCreatePage() {
     };
 
     return (
-        <div className="w-full p-6 md:p-10 max-w-4xl mx-auto space-y-8 text-slate-100">
+        <div className="w-full p-6 md:p-10 max-w-4xl mx-auto space-y-8 text-slate-900">
 
             {/* Back Button & Header */}
-            <div className="flex flex-col gap-3 border-b border-slate-900 pb-6">
+            <div className="flex flex-col gap-3 border-b border-slate-200 pb-6">
                 <button
                     type="button"
                     onClick={() => navigate(PATHS.MENTOR_CLASS_LIST)}
-                    className="flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-indigo-400 transition-colors bg-transparent border-none cursor-pointer self-start"
+                    className="flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-indigo-600 transition-colors bg-transparent border-none cursor-pointer self-start"
                 >
                     <ArrowLeft className="h-4 w-4" />
                     Back to Class List
                 </button>
                 <div>
-                    <h1 className="text-2xl font-black text-white tracking-tight">Create New Class</h1>
-                    <p className="text-slate-400 text-sm mt-1">Fill in the details below to launch your new learning program.</p>
+                    <h1 className="text-2xl font-black text-slate-900 tracking-tight">Create New Class</h1>
+                    <p className="text-slate-500 text-sm mt-1">Fill in the details below to launch your new learning program.</p>
                 </div>
             </div>
 
             {/* Form Card */}
-            <form onSubmit={handleSubmit} className="bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-2xl p-6 md:p-8 shadow-xl space-y-6">
+            <form onSubmit={handleSubmit} className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-6">
 
                 {/* Class Title */}
                 <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                        <FileText className="h-4 w-4 text-indigo-400" />
+                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                        <FileText className="h-4 w-4 text-indigo-600" />
                         Class Title
                     </label>
                     <input
@@ -95,7 +95,7 @@ export default function ClassCreatePage() {
                         placeholder="e.g. Advanced UI Design Systems"
                         required
                         disabled={isSubmitting}
-                        className="w-full bg-slate-950 border border-slate-800 text-slate-100 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all disabled:opacity-50"
+                        className="w-full bg-slate-50 border border-slate-200 text-slate-900 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all disabled:opacity-50"
                     />
                 </div>
 
@@ -103,8 +103,8 @@ export default function ClassCreatePage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Category Dropdown (Memakai data dari useQuery) */}
                     <div className="space-y-2">
-                        <label className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                            <LayoutGrid className="h-4 w-4 text-indigo-400" />
+                        <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                            <LayoutGrid className="h-4 w-4 text-indigo-600" />
                             Category
                         </label>
                         <select
@@ -113,7 +113,7 @@ export default function ClassCreatePage() {
                             onChange={handleChange}
                             required
                             disabled={isLoadingCategories || isSubmitting}
-                            className="w-full bg-slate-950 border border-slate-800 text-slate-300 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer disabled:opacity-50"
+                            className="w-full bg-slate-50 border border-slate-200 text-slate-700 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all cursor-pointer disabled:opacity-50"
                         >
                             {isLoadingCategories ? (
                                 <option value="">Loading categories...</option>
@@ -133,8 +133,8 @@ export default function ClassCreatePage() {
 
                     {/* Price */}
                     <div className="space-y-2">
-                        <label className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                            <DollarSign className="h-4 w-4 text-indigo-400" />
+                        <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                            <DollarSign className="h-4 w-4 text-indigo-600" />
                             Price (IDR)
                         </label>
                         <input
@@ -145,15 +145,15 @@ export default function ClassCreatePage() {
                             placeholder="e.g. 150000"
                             required
                             disabled={isSubmitting}
-                            className="w-full bg-slate-950 border border-slate-800 text-slate-100 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all disabled:opacity-50"
+                            className="w-full bg-slate-50 border border-slate-200 text-slate-900 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all disabled:opacity-50"
                         />
                     </div>
                 </div>
 
                 {/* Description */}
                 <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
-                        <FileText className="h-4 w-4 text-indigo-400" />
+                    <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                        <FileText className="h-4 w-4 text-indigo-600" />
                         Class Description
                     </label>
                     <textarea
@@ -164,24 +164,24 @@ export default function ClassCreatePage() {
                         placeholder="Describe what students will learn in this class..."
                         required
                         disabled={isSubmitting}
-                        className="w-full bg-slate-950 border border-slate-800 text-slate-100 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none disabled:opacity-50"
+                        className="w-full bg-slate-50 border border-slate-200 text-slate-900 px-4 py-3 rounded-xl text-sm focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20 transition-all resize-none disabled:opacity-50"
                     />
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-center justify-end gap-4 pt-4 border-t border-slate-800/60">
+                <div className="flex items-center justify-end gap-4 pt-4 border-t border-slate-100">
                     <button
                         type="button"
                         onClick={() => navigate(PATHS.MENTOR_CLASS_LIST)}
                         disabled={isSubmitting}
-                        className="px-5 py-2.5 bg-transparent hover:bg-slate-800 text-slate-400 hover:text-slate-200 text-sm font-semibold rounded-xl transition-all border border-transparent hover:border-slate-700/50 cursor-pointer disabled:opacity-50"
+                        className="px-5 py-2.5 bg-transparent hover:bg-slate-100 text-slate-500 hover:text-slate-700 text-sm font-semibold rounded-xl transition-all cursor-pointer disabled:opacity-50"
                     >
                         Cancel
                     </button>
                     <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-lg shadow-indigo-600/10 disabled:opacity-50"
+                        className="flex items-center gap-2 px-5 py-2.5 bg-slate-900 hover:bg-slate-800 active:scale-[0.98] text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-md disabled:opacity-50"
                     >
                         <Save className="h-4 w-4" />
                         {isSubmitting ? 'Publishing...' : 'Publish Class'}

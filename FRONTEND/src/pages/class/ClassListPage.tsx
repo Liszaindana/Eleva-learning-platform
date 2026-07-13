@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { BookOpen, Users, Star, Search, Filter } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // 🟢 Tambahkan useEffect di sini
 import Container from '../../components/ui/Container';
 import SectionHeader from '../../components/ui/SectionHeader';
 import Badge from '../../components/ui/Badge';
@@ -11,17 +11,33 @@ import { classApi } from '../../api/endpoints';
 import { kelasDetailPath } from '../../routes/paths';
 import { truncate, averageRating } from '../../lib/utils';
 import type { Class } from '../../types/learning';
+import { useSearchParams } from 'react-router-dom';
 
 export default function KelasListPage() {
-  const [search, setSearch] = useState('');
+  const [searchParams] = useSearchParams();
+  const initialSearch = searchParams.get('search') || '';
+  const [search, setSearch] = useState(initialSearch);
+
+  useEffect(() => {
+    setSearch(initialSearch);
+  }, [initialSearch]);
+
   const { data: classes, isLoading, isError } = useQuery({
     queryKey: ['classes'],
     queryFn: classApi.getAll,
   });
 
-  const filtered = (classes ?? []).filter((c: Class) =>
-    c.title.toLowerCase().includes(search.toLowerCase())
-  );
+  const filtered = (classes ?? []).filter((c: Class) => {
+    if (!search) return true;
+    const query = search.toLowerCase().trim();
+
+    const matchTitle = c.title?.toLowerCase().includes(query);
+    const matchDescription = c.description?.toLowerCase().includes(query);
+    const matchCategory = c.category?.categories?.toLowerCase().includes(query);
+    const matchLevel = c.level?.level_info?.toLowerCase().includes(query);
+
+    return !!(matchTitle || matchDescription || matchCategory || matchLevel);
+  });
 
   return (
     <section className="py-12 sm:py-16">

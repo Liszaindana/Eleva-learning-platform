@@ -1,14 +1,14 @@
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { ArrowLeft } from 'lucide-react';
-import Container from '../../components/ui/Container';
-import LoadingState from '../../components/ui/LoadingState';
-import EmptyState from '../../components/ui/EmptyState';
-import Badge from '../../components/ui/Badge';
-import { recommendationApi } from '../../api/recommendation';
-import { formatDate } from '../../lib/utils';
-import { PATHS } from '../../routes/paths';
-import RankingList from '../../components/recommendation/RangkingList';
+import Container from '../../../components/ui/Container';
+import LoadingState from '../../../components/ui/LoadingState';
+import EmptyState from '../../../components/ui/EmptyState';
+import Badge from '../../../components/ui/Badge';
+import { recommendationApi } from '../../../api/recommendation';
+import { formatDate } from '../../../lib/utils';
+import { PATHS } from '../../../routes/paths';
+import RankingList from '../../../components/recommendation/RangkingList';
 
 export default function RecommendationDetailPage() {
   const { id } = useParams<{ id: string }>();

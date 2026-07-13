@@ -1,18 +1,18 @@
 import { useState, type FormEvent } from 'react';
 import { useQuery, useMutation } from '@tanstack/react-query';
 import { Sparkles, RotateCcw } from 'lucide-react';
-import Container from '../../components/ui/Container';
-import SectionHeader from '../../components/ui/SectionHeader';
-import Button from '../../components/ui/Button';
-import LoadingState from '../../components/ui/LoadingState';
-import EmptyState from '../../components/ui/EmptyState';
-import WeightInput from '../../components/recommendation/WeightInput';
-import RankingList from '../../components/recommendation/RangkingList';
-import { recommendationApi, kriteriaApi, referenceApi } from '../../api/recommendation';
-import type { RecommendationRequest } from '../../types/recommendation';
+import Container from '../../../components/ui/Container';
+import SectionHeader from '../../../components/ui/SectionHeader';
+import Button from '../../../components/ui/Button';
+import LoadingState from '../../../components/ui/LoadingState';
+import EmptyState from '../../../components/ui/EmptyState';
+import WeightInput from '../../../components/recommendation/WeightInput';
+import RankingList from '../../../components/recommendation/RangkingList';
+import { recommendationApi, kriteriaApi, referenceApi } from '../../../api/recommendation';
+import type { RecommendationRequest } from '../../../types/recommendation';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { PATHS } from '../../routes/paths';
+import { PATHS } from '../../../routes/paths';
 
 const METHODS = [
   { value: 'SAW', label: 'SAW', desc: 'Simple Additive Weighting' },
@@ -82,9 +82,9 @@ export default function RecommendationPage() {
     <div className="min-h-screen bg-slate-50">
       <Container className="py-10">
         <Link
-            to={PATHS.HOME}
+            to={PATHS.STUDENT_DASHBOARD}
             className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-blue-600">
-            <ArrowLeft className="h-4 w-4" /> Kembali ke Beranda
+            <ArrowLeft className="h-4 w-4" /> Kembali ke Dashboard
         </Link>
         <SectionHeader
           title="Rekomendasi Mentor Terbaik"

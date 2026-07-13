@@ -47,20 +47,26 @@ export default function MateriListPage() {
     };
 
     return (
-        <div className="w-full p-6 md:p-10 max-w-5xl mx-auto space-y-8 text-slate-100">
+        <div className="mx-auto w-full max-w-5xl space-y-8 p-6 md:p-10">
+
             {/* Header */}
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-900 pb-6">
+            <div className="flex flex-col gap-4 border-b border-slate-200 pb-6 sm:flex-row sm:items-center sm:justify-between">
                 <div>
-                    <h1 className="text-2xl font-black text-white tracking-tight">Course Materials Management</h1>
-                    <p className="text-slate-400 text-sm mt-1">
-                        Select a course below to manage its modules and attachments.
+                    <h1 className="text-3xl font-bold text-slate-900">
+                        Course Materials
+                    </h1>
+
+                    <p className="mt-2 text-sm text-slate-600">
+                        Select one of your classes to manage learning materials.
                     </p>
                 </div>
-                {/* 🚀 AMAN: Hanya render tombol jika selectedClassId bernilai truthy (bukan null) */}
+
                 {selectedClassId && (
                     <button
-                        onClick={() => navigate(mentorMaterialCreatePath(selectedClassId))}
-                        className="flex items-center justify-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-500 active:scale-[0.98] text-white text-sm font-semibold rounded-xl transition-all cursor-pointer shadow-lg shadow-indigo-600/10"
+                        onClick={() =>
+                            navigate(mentorMaterialCreatePath(selectedClassId))
+                        }
+                        className="flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 font-semibold text-white shadow-lg transition hover:bg-indigo-500"
                     >
                         <Plus className="h-4 w-4" />
                         Add New Material
@@ -68,25 +74,38 @@ export default function MateriListPage() {
                 )}
             </div>
 
-            {/* Selector Kelas */}
-            <div className="p-5 bg-slate-900/30 border border-slate-800 rounded-2xl flex flex-col gap-2">
-                <label className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
-                    <Layers className="h-4 w-4 text-indigo-400" /> Choose Class To Manage
+            {/* Class Selector */}
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md">
+                <label className="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-700">
+                    <Layers className="h-4 w-4 text-indigo-600" />
+                    Choose Class
                 </label>
+
                 {isLoadingClasses ? (
-                    <div className="text-sm text-slate-500 animate-pulse">Loading your courses...</div>
+                    <p className="text-sm text-slate-500">
+                        Loading your classes...
+                    </p>
                 ) : mentorClasses.length === 0 ? (
-                    <div className="text-sm text-amber-400">You don't have any classes created yet. Please create a class first.</div>
+                    <div className="rounded-xl bg-amber-50 p-4 text-sm text-amber-700">
+                        You don't have any classes yet. Create a class first.
+                    </div>
                 ) : (
                     <select
-                        value={selectedClassId || ''}
-                        onChange={(e) => setSelectedClassId(Number(e.target.value))}
-                        className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer"
+                        value={selectedClassId || ""}
+                        onChange={(e) =>
+                            setSelectedClassId(Number(e.target.value))
+                        }
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
                     >
-                        {/* 🚀 AMAN: Berikan option kosong sebagai inisiasi awal jika data belum sinkron */}
-                        {!selectedClassId && <option value="">-- Select a Class --</option>}
+                        {!selectedClassId && (
+                            <option value="">Select a Class</option>
+                        )}
+
                         {mentorClasses.map((cls: any) => (
-                            <option key={cls.class_id} value={cls.class_id}>
+                            <option
+                                key={cls.class_id}
+                                value={cls.class_id}
+                            >
                                 {cls.title}
                             </option>
                         ))}
@@ -94,56 +113,81 @@ export default function MateriListPage() {
                 )}
             </div>
 
-            {/* List Materi */}
+            {/* Material List */}
             {isLoadingMateri ? (
-                <div className="text-slate-400 text-sm text-center py-12">Loading course materials...</div>
+                <div className="flex justify-center py-20">
+                    <p className="text-slate-500">
+                        Loading course materials...
+                    </p>
+                </div>
             ) : !selectedClassId || materiList.length === 0 ? (
-                <div className="text-slate-500 text-sm text-center py-16 border border-dashed border-slate-800 rounded-2xl flex flex-col items-center justify-center gap-3 bg-slate-900/10">
-                    <BookOpen className="h-8 w-8 text-slate-600" />
-                    <p>No learning materials added to this class yet.</p>
+                <div className="rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 py-16 text-center">
+                    <BookOpen className="mx-auto mb-4 h-10 w-10 text-slate-400" />
+
+                    <p className="font-medium text-slate-600">
+                        No learning materials added yet.
+                    </p>
                 </div>
             ) : (
-                <div className="space-y-4">
+                <div className="space-y-5">
                     {materiList.map((materi: any, index: number) => (
                         <div
                             key={materi.materi_id}
-                            className="p-5 bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-slate-700/80 transition-all duration-300 group"
+                            className="flex flex-col justify-between gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl sm:flex-row sm:items-center"
                         >
                             <div className="flex items-start gap-4">
-                                <div className="text-sm font-black text-slate-600 bg-slate-950 border border-slate-800 h-8 w-8 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-                                    {String(index + 1).padStart(2, '0')}
+
+                                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 font-bold text-indigo-600">
+                                    {String(index + 1).padStart(2, "0")}
                                 </div>
-                                <div className="space-y-1">
-                                    <h3 className="text-base font-bold text-white group-hover:text-indigo-400 transition-colors">
+
+                                <div>
+
+                                    <h3 className="text-lg font-semibold text-slate-900">
                                         {materi.title}
                                     </h3>
-                                    <p className="text-xs text-slate-400 line-clamp-2 max-w-2xl">
+
+                                    <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-slate-600">
                                         {materi.content}
                                     </p>
+
                                     {materi.video_url && (
-                                        <div className="flex items-center gap-1.5 text-[11px] font-medium text-rose-400 bg-rose-500/5 border border-rose-500/10 px-2 py-0.5 rounded-md mt-2 w-max">
-                                            <Video className="h-3 w-3" />
-                                            <span>Video Attachment Linked</span>
+                                        <div className="mt-3 flex w-max items-center gap-2 rounded-full bg-red-100 px-3 py-1 text-xs font-semibold text-red-700">
+                                            <Video className="h-3.5 w-3.5" />
+                                            Video Attached
                                         </div>
                                     )}
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-2 self-end sm:self-center border-t border-slate-800/40 sm:border-none pt-3 sm:pt-0 w-full sm:w-auto justify-end">
+                            <div className="flex gap-3">
+
                                 <button
-                                    onClick={() => selectedClassId && navigate(mentorMaterialEditPath(selectedClassId, materi.materi_id))}
-                                    className="flex items-center gap-1 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-lg border border-slate-700/50 transition-colors cursor-pointer"
+                                    onClick={() =>
+                                        selectedClassId &&
+                                        navigate(
+                                            mentorMaterialEditPath(
+                                                selectedClassId,
+                                                materi.materi_id
+                                            )
+                                        )
+                                    }
+                                    className="flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-600 transition hover:bg-indigo-100"
                                 >
-                                    <Edit className="h-3.5 w-3.5 text-indigo-400" />
+                                    <Edit className="h-4 w-4" />
                                     Edit
                                 </button>
+
                                 <button
-                                    onClick={() => handleDelete(materi.materi_id)}
-                                    className="flex items-center gap-1 px-3 py-1.5 bg-slate-950 hover:bg-rose-950/30 text-slate-400 hover:text-rose-400 text-xs font-semibold rounded-lg border border-slate-800 hover:border-rose-900/50 transition-colors cursor-pointer"
+                                    onClick={() =>
+                                        handleDelete(materi.materi_id)
+                                    }
+                                    className="flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-4 py-2 text-sm font-semibold text-red-600 transition hover:bg-red-100"
                                 >
-                                    <Trash2 className="h-3.5 w-3.5" />
+                                    <Trash2 className="h-4 w-4" />
                                     Delete
                                 </button>
+
                             </div>
                         </div>
                     ))}

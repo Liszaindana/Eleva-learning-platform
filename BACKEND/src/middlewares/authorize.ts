@@ -10,7 +10,11 @@ export const authorize = (...roles: string[]) => {
       });
     }
 
-    if (!roles.includes(user.role)) {
+    // 💡 Ubah role dari JWT dan array roles tujuan menjadi huruf kecil semua
+    const userRole = String(user.role || '').toLowerCase();
+    const allowedRoles = roles.map(r => r.toLowerCase());
+
+    if (!allowedRoles.includes(userRole)) {
       return res.status(403).json({
         message: "Forbidden. Anda tidak memiliki hak akses.",
       });

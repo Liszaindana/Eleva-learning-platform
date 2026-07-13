@@ -28,10 +28,10 @@ export const PATHS = {
   ADMIN_REVIEW_LIST: '/admin/reviews',
   ADMIN_KRITERIA: '/admin/kriteria',
   ADMIN_KRITERIA_VALUES: '/admin/kriteria/:id/values',
-  ADMIN_RECOMMENDATION_ALL: '/admin/recommendation',
+  ADMIN_RECOMMENDATION_ALL: '/admin/recommendations-list',
   RECOMMENDATION: '/recommendation',
-  RECOMMENDATION_HISTORY: '/recommendation/history',
-  RECOMMENDATION_DETAIL: '/recommendation/:id',
+  RECOMMENDATION_HISTORY: '/admin/recommendation/history',
+  RECOMMENDATION_DETAIL: '/admin/recommendations/:id',
 
   // MENTOR PATHS 
   MENTOR_DASHBOARD: '/mentor/dashboard',
@@ -65,6 +65,10 @@ export function categoryEditPath(id: number): string {
  */
 export function classEditPath(id: number): string {
   return `/admin/classes/${id}/edit`;
+}
+
+export function kriteriaValueDetailPath(id: number): string {
+  return `/admin/kriteria/${id}/values`;
 }
 
 export function recommendationDetailPath(id: number): string {
@@ -118,3 +122,7 @@ export function studentCourseDetailPath(id: number): string {
 export function studentReviewCreatePath(courseId: number): string {
   return `/student/reviews/${courseId}/create`;
 }
+
+// Di dalam file paths.ts (di luar objek PATHS)
+export const adminRecommendationDetailPath = (id: number | string) => 
+  `/admin/recommendations/${id}`;

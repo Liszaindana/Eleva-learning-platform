@@ -15,7 +15,7 @@ import { useAuthStore } from '../../store/authStore';
 export default function KelasDetailPage() {
   const { id } = useParams<{ id: string }>();
   const classId = Number(id);
-  const { user, isAuthenticated } = useAuthStore(); 
+  const { user, isAuthenticate } = useAuthStore(); 
 
   const { data: kelas, isLoading, isError } = useQuery({
     queryKey: ['class', classId],
@@ -103,17 +103,17 @@ export default function KelasDetailPage() {
               <h2 className="text-lg font-semibold text-slate-900">Ulasan</h2>
 
               {/* Form review — cuma muncul kalau login, sudah enrollment, dan belum pernah review */}
-              {isAuthenticated && myEnrollment && !myReview && <ReviewForm classId={classId} />}
+              {isAuthenticate && myEnrollment && !myReview && <ReviewForm classId={classId} />}
 
               {/* Sudah pernah review */}
-              {isAuthenticated && myReview && (
+              {isAuthenticate && myReview && (
                 <p className="rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
                   ✓ Kamu sudah memberi ulasan untuk kelas ini.
                 </p>
               )}
 
               {/* Login tapi belum enrollment */}
-              {isAuthenticated && !myEnrollment && !myReview && (
+              {isAuthenticate && !myEnrollment && !myReview && (
                 <p className="rounded-xl bg-slate-50 px-4 py-3 text-sm text-slate-500">
                   Kamu perlu mengikuti kelas ini terlebih dahulu untuk bisa memberi ulasan.
                 </p>
