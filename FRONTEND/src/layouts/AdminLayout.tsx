@@ -7,7 +7,7 @@ import {
   Star,
   HelpCircle,
   LogOut,
-  Sliders,     
+  Sliders,
   Clock,
 } from 'lucide-react';
 import { PATHS } from '../routes/paths';
@@ -28,14 +28,14 @@ export default function AdminLayout() {
     { id: 'courses', label: 'Courses', icon: BookOpen, path: PATHS.ADMIN_CLASS_LIST },
     { id: 'categories', label: 'Categories', icon: FileText, path: PATHS.ADMIN_CATEGORY_LIST },
     { id: 'reviews', label: 'Reviews', icon: Star, path: PATHS.ADMIN_REVIEW_LIST },
-    { id: 'kriteria', label: 'Kriteria SPK', icon: Sliders, path: PATHS.ADMIN_KRITERIA },          
+    { id: 'kriteria', label: 'Kriteria SPK', icon: Sliders, path: PATHS.ADMIN_KRITERIA },
     { id: 'histori', label: 'Histori', icon: Clock, path: PATHS.ADMIN_RECOMMENDATION_ALL },
   ];
 
   const logoutMutation = useMutation({
     mutationFn: authApi.logout,
     onSuccess: () => {
-      logout(); 
+      logout();
       navigate(PATHS.HOME);
     },
     onError: (error) => {
@@ -55,7 +55,7 @@ export default function AdminLayout() {
       <aside className="w-full md:w-64 bg-white border-r border-slate-200 flex flex-col justify-between shrink-0 md:h-screen md:sticky md:top-0">
         <div className="p-6">
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-9 w-9 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg">
+            <div className="h-9 w-9 rounded-xl bg-white flex items-center justify-center shadow-lg">
               <img src={logo} alt="Eleva Logo" className="h-7 w-7 object-contain" />
             </div>
             <span className="text-xl font-bold tracking-wider text-slate-900">Eleva Admin</span>
@@ -72,8 +72,8 @@ export default function AdminLayout() {
                   key={item.id}
                   onClick={() => navigate(item.path)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive
-                    ? 'bg-slate-900 text-white'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
+                    ? 'bg-blue-600 text-white shadow-md shadow-blue-200'
+                    : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
                     }`}
                 >
                   <Icon className="h-5 w-5" />

@@ -3,9 +3,9 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { useMutation } from '@tanstack/react-query';
 import Button from '../components/ui/Button';
 import { PATHS } from '../routes/paths';
-import { useAuthStore } from '../store/authStore'; 
-import { authApi } from '../api/endpoints'; 
-import logo from '../assets/Logo.PNG'; 
+import { useAuthStore } from '../store/authStore';
+import { authApi } from '../api/endpoints';
+import logo from '../assets/Logo.PNG';
 
 export default function MentorLayout() {
   const navigate = useNavigate();
@@ -24,8 +24,8 @@ export default function MentorLayout() {
   const logoutMutation = useMutation({
     mutationFn: authApi.logout,
     onSuccess: () => {
-      logout(); 
-      navigate(PATHS.HOME); 
+      logout();
+      navigate(PATHS.HOME);
     },
     onError: () => {
       logout();
@@ -44,7 +44,7 @@ export default function MentorLayout() {
         <div className="p-6">
           {/* Logo / App Name */}
           <div className="flex items-center gap-3 mb-8">
-            <div className="h-9 w-9 rounded-xl bg-slate-900 flex items-center justify-center shadow-lg">
+            <div className="h-9 w-9 rounded-xl bg-white flex items-center justify-center shadow-lg">
               <img src={logo} alt="Eleva Logo" className="h-7 w-7 object-contain" />
             </div>
             <span className="text-xl font-bold tracking-wider text-slate-900">Eleva Mentor</span>
@@ -60,11 +60,10 @@ export default function MentorLayout() {
                 <button
                   key={item.id}
                   onClick={() => navigate(item.path)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                    isActive
-                      ? 'bg-slate-900 text-white shadow-md'
-                      : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
-                  }`}
+                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive
+                      ? 'bg-blue-600 text-white shadow-md shadow-blue-200'
+                      : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
+                    }`}
                 >
                   <Icon className="h-5 w-5" />
                   {item.label}
@@ -120,7 +119,7 @@ export default function MentorLayout() {
           </div>
         </div>
       </aside>
-      
+
       {/* KONTEN HALAMAN UTAMA - SEBELAH KANAN (TEMA BERSIH) */}
       <main className="flex-1 p-6 md:p-10 max-w-7xl mx-auto w-full overflow-y-auto">
         <Outlet />

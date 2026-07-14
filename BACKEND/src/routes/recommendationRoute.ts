@@ -4,7 +4,7 @@ import {
   getRecommendationHistory,
   getRecommendationDetail,
   deleteRecommendation,
-  getAllAdminRecommendations,
+  getAllRecommendations,
 } from "../controllers/recommendationcontroller.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 import { authorize } from "../middlewares/authorize.js";
@@ -15,7 +15,7 @@ const router = express.Router();
 router.post("/", authMiddleware, authorize("admin", "siswa"), createRecommendationRequest);
 
 // 2. Semua Admin Recommendations (Taruh di atas agar kata 'admin' tidak dianggap sebagai :id)
-router.get("/admin/all", authMiddleware, getAllAdminRecommendations);
+router.get("/admin/all", authMiddleware, getAllRecommendations);
 
 // 3. Riwayat request milik user login (Akses: GET /recommendation/history)
 router.get("/history", authMiddleware, getRecommendationHistory);

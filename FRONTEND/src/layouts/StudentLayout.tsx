@@ -4,6 +4,7 @@ import { LayoutDashboard, BookOpen, Award, FileText, Calendar, User, HelpCircle,
 import Button from '../components/ui/Button';
 import { useAuthStore } from '../store/authStore';
 import { PATHS } from '../routes/paths'; // Sesuaikan lokasi path importmu jika perlu
+import logo from '../assets/Logo.PNG';
 
 export default function StudentLayout() {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ export default function StudentLayout() {
   const sidebarItems = [
     { id: 'dashboard', label: 'Dashboard', path: '/student/dashboard', icon: LayoutDashboard },
     { id: 'my-courses', label: 'My Courses', path: '/student/courses', icon: BookOpen },
-    { id: 'learning-progress', label: 'Learning Progress', path: '/student/progress', icon: Award },    
+    { id: 'learning-progress', label: 'Learning Progress', path: '/student/progress', icon: Award },
     { id: 'profile', label: 'Profile', path: '/student/profile', icon: User },
     { id: 'assignments', label: 'Assignments', path: '/student/exams', icon: FileText },
     { id: 'recommendation', label: 'Rekomendasi Mentor', path: PATHS.RECOMMENDATION, icon: Star },
@@ -24,10 +25,10 @@ export default function StudentLayout() {
   const handleLogout = async () => {
     try {
       // Jalankan fungsi logout untuk hapus token/state user
-      await logout(); 
-      
+      await logout();
+
       // Arahkan ke halaman login (atau PATHS.LOGIN jika menggunakan objek paths)
-      navigate('/login'); 
+      navigate('/login');
     } catch (error) {
       console.error("Gagal logout:", error);
       // Fallback jika terjadi kendala pada async action store
@@ -41,8 +42,10 @@ export default function StudentLayout() {
         <div className="flex flex-col justify-between h-full p-6">
           <div>
             <div className="flex items-center gap-3 mb-8">
-              <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-blue-600 text-white text-lg font-bold">E</div>
-              <span className="text-xl font-semibold tracking-wide text-slate-900">Eleva</span>
+              <div className="h-9 w-9 rounded-xl bg-white flex items-center justify-center shadow-lg">
+                <img src={logo} alt="Eleva Logo" className="h-7 w-7 object-contain" />
+              </div>
+              <span className="text-xl font-bold tracking-wider text-slate-900">Eleva Admin</span>
             </div>
 
             <div className="flex items-center gap-3 rounded-3xl bg-slate-100 p-4 mb-8">
@@ -65,11 +68,10 @@ export default function StudentLayout() {
                   <button
                     key={item.id}
                     onClick={() => navigate(item.path)}
-                    className={`w-full flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold transition-all ${
-                      active
+                    className={`w-full flex items-center gap-3 rounded-2xl px-4 py-3 text-sm font-semibold transition-all ${active
                         ? 'bg-blue-600 text-white shadow-md shadow-blue-200'
                         : 'text-slate-700 hover:text-blue-600 hover:bg-blue-50'
-                    }`}
+                      }`}
                   >
                     <Icon className="h-5 w-5" />
                     {item.label}
