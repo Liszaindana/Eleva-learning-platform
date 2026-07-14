@@ -87,7 +87,7 @@ export default function AdminLayout() {
         <div className="p-6 border-t border-slate-200 space-y-6">
           <div className="flex items-center gap-3">
             <img
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              src="https://images.unsplash.com/photo-1654110455429-cf322b40a906?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aXQlMjBndXklMjBwcm9maWxlfGVufDB8fDB8fHww"
               alt="Admin Avatar"
               className="h-10 w-10 rounded-xl object-cover ring-2 ring-slate-200"
             />

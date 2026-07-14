@@ -84,7 +84,7 @@ export default function LearningProgressPage() {
             <p className="text-3xl font-bold text-slate-900">{completedCourses}</p>
             <p className="text-xs text-slate-400">dari {totalCourses} total kelas yang diambil</p>
           </div>
-          <div className="p-3 bg-indigo-50 text-indigo-600 rounded-xl">
+          <div className="p-3 bg-blue-50 text-blue-700 rounded-xl">
             <CheckCircle className="h-6 w-6" />
           </div>
         </div>

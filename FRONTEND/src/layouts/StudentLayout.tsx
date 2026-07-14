@@ -38,19 +38,19 @@ export default function StudentLayout() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col md:flex-row">
-      <aside className="w-full md:w-72 bg-white border-r border-slate-200 flex flex-col shrink-0 h-screen sticky top-0">
+      <aside className="w-full md:w-72 bg-white border-b md:border-b-0 md:border-r border-slate-200 flex flex-col shrink-0 md:h-screen md:sticky md:top-0 overflow-y-auto scrollbar-none">
         <div className="flex flex-col justify-between h-full p-6">
           <div>
             <div className="flex items-center gap-3 mb-8">
               <div className="h-9 w-9 rounded-xl bg-white flex items-center justify-center shadow-lg">
                 <img src={logo} alt="Eleva Logo" className="h-7 w-7 object-contain" />
               </div>
-              <span className="text-xl font-bold tracking-wider text-slate-900">Eleva Admin</span>
+              <span className="text-xl font-bold tracking-wider text-slate-900">Eleva Student</span>
             </div>
 
             <div className="flex items-center gap-3 rounded-3xl bg-slate-100 p-4 mb-8">
               <img
-                src="https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudCUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D"
                 alt="User Avatar"
                 className="h-14 w-14 rounded-full object-cover"
               />
@@ -60,7 +60,7 @@ export default function StudentLayout() {
               </div>
             </div>
 
-            <nav className="space-y-3">
+            <nav className="space-y-3 flex-1 overflow-y-auto pr-1 scrollbar-thin">
               {sidebarItems.map((item) => {
                 const Icon = item.icon;
                 const active = isActive(item.path);

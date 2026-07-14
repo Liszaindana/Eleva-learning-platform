@@ -86,7 +86,7 @@ export default function StudentDashboard() {
 
         {/* SECTION 1: Lanjutkan Belajar (Prioritas Utama) */}
         {lastAccessedCourse && (
-          <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-6 text-white shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-6 text-white shadow-md flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="space-y-2">
               <span className="bg-blue-500/30 text-blue-100 text-xs px-2.5 py-1 rounded-full font-medium uppercase tracking-wider">
                 Terakhir Diakses

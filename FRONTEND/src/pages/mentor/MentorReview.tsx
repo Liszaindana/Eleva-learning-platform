@@ -76,7 +76,7 @@ export default function ReviewListPage() {
     if (isLoadingReviews) {
         return (
             <div className="w-full text-slate-400 text-sm text-center py-24 flex items-center justify-center gap-2">
-                <Loader2 className="h-5 w-5 animate-spin text-indigo-500" />
+                <Loader2 className="h-5 w-5 animate-spin text-blue-500" />
                 Aggregating student feedback...
             </div>
         );
@@ -128,7 +128,7 @@ export default function ReviewListPage() {
                         ))}
                     </div>
 
-                    <Award className="absolute right-5 top-5 h-10 w-10 text-indigo-100" />
+                    <Award className="absolute right-5 top-5 h-10 w-10 text-blue-100" />
 
                 </div>
 
@@ -144,11 +144,11 @@ export default function ReviewListPage() {
                     </h2>
 
                     <div className="mt-4 flex items-center gap-2 text-sm text-slate-600">
-                        <Users className="h-4 w-4 text-indigo-600" />
+                        <Users className="h-4 w-4 text-blue-700" />
                         Active student feedback
                     </div>
 
-                    <MessageSquare className="absolute right-5 top-5 h-10 w-10 text-indigo-100" />
+                    <MessageSquare className="absolute right-5 top-5 h-10 w-10 text-blue-100" />
 
                 </div>
 
@@ -237,7 +237,7 @@ export default function ReviewListPage() {
                                             {review.user?.name || `Student #${review.user_id}`}
                                         </h3>
 
-                                        <p className="mt-1 text-sm text-indigo-600">
+                                        <p className="mt-1 text-sm text-blue-700">
                                             {review.class?.title || "Unknown Course"}
                                         </p>
 

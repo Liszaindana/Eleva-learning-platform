@@ -16,6 +16,7 @@ import { PATHS, mentorClassEditPath } from '../../routes/paths';
 import { useAuthStore } from '../../store/authStore';
 import { enrollmentApi, reviewApi, userApi } from '../../api/endpoints';
 import { useQuery } from '@tanstack/react-query';
+import { kelasApi } from '../../api/kelas';
 
 interface EnrollmentData {
   enrollment_id: number;
@@ -52,6 +53,11 @@ export default function MentorDashboard() {
   const { data: enrollment = [], isLoading: isLoadingEnroll, isError: isErrorEnroll } = useQuery<EnrollmentData[]>({
     queryKey: ['allenrollment'],
     queryFn: enrollmentApi.getAll,
+  });
+
+  const { data: allClasses, isLoading: isLoadingClasses } = useQuery({
+    queryKey: ['allClasses'],
+    queryFn: kelasApi.getAll,
   });
 
   const [ratingBreakdown, setRatingBreakdown] = useState([
@@ -127,25 +133,22 @@ export default function MentorDashboard() {
       teachingPeriod,
     });
 
-    const courseMap: Record<number, any> = {};
-    myStudents.forEach((item) => {
-      const c = item.class;
-      if (!c) return;
+    const rawClasses = Array.isArray(allClasses) ? allClasses : (allClasses as any)?.data || [];
+    const myOwnedClasses = rawClasses.filter((cls: any) => Number(cls.user_id) === Number(mentorId));
+    const mappedCourses = myOwnedClasses.map((c: any) => {
+      const studentCount = myStudents.filter(item => item.class?.class_id === c.class_id).length;
 
-      if (!courseMap[c.class_id]) {
-        courseMap[c.class_id] = {
-          id: c.class_id,
-          title: c.title,
-          description: c.description,
-          students: 0,
-          rating: 4.9,
-          image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
-        };
-      }
-      courseMap[c.class_id].students += 1;
+      return {
+        id: c.class_id,
+        title: c.title,
+        description: c.description,
+        students: studentCount, // Otomatis 0 jika belum ada yang daftar
+        rating: 5.0, // Default fallback rating kelas
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80',
+      };
     });
 
-    setMyUniqueCourses(Object.values(courseMap));
+    setMyUniqueCourses(Object.values(mappedCourses));
 
     const reviewList = Array.isArray(allReviewsResponse)
       ? allReviewsResponse
@@ -183,12 +186,12 @@ export default function MentorDashboard() {
       ]);
     }
 
-  }, [enrollment, user, mentorProfileResponse, allReviewsResponse]);
+  }, [enrollment, user, mentorProfileResponse, allReviewsResponse, allClasses]);
 
-  if (isLoadingEnroll || isLoadingProfile) {
+  if (isLoadingEnroll || isLoadingProfile || isLoadingClasses) {
     return (
       <div className="w-full h-[60vh] flex flex-col items-center justify-center gap-3 text-slate-400">
-        <Loader2 className="h-8 w-8 animate-spin text-indigo-500" />
+        <Loader2 className="h-8 w-8 animate-spin text-blue-700" />
         <p className="text-sm font-medium">Fetching dashboard analytics...</p>
       </div>
     );
@@ -211,7 +214,7 @@ export default function MentorDashboard() {
       trendUp: true,
       subText: 'active data',
       icon: GraduationCap,
-      iconColor: 'text-indigo-400 bg-indigo-500/10',
+      iconColor: 'text-blue-400 bg-blue-500/10',
     },
     {
       title: 'Average Rating',
@@ -265,7 +268,7 @@ export default function MentorDashboard() {
             <select
               value={timeRange}
               onChange={(e) => setTimeRange(e.target.value)}
-              className="appearance-none rounded-xl border border-slate-300 bg-white px-4 py-2.5 pr-10 text-sm font-medium text-slate-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+              className="appearance-none rounded-xl border border-slate-300 bg-white px-4 py-2.5 pr-10 text-sm font-medium text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
             >
               <option>Last 30 Days</option>
               <option>Last 3 Months</option>
@@ -292,7 +295,7 @@ export default function MentorDashboard() {
           return (
             <div
               key={idx}
-              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl"
+              className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl"
             >
               <div className="flex items-start justify-between">
 
@@ -320,14 +323,14 @@ export default function MentorDashboard() {
 
                     <div className="mb-2 flex justify-between text-xs text-slate-500">
                       <span>Completion</span>
-                      <span className="font-semibold text-indigo-600">
+                      <span className="font-semibold text-blue-700">
                         {stat.progress}%
                       </span>
                     </div>
 
                     <div className="h-2 overflow-hidden rounded-full bg-slate-200">
                       <div
-                        className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-violet-500"
+                        className="h-full rounded-full bg-gradient-to-r from-blue-500 to-blue-200"
                         style={{ width: `${stat.progress}%` }}
                       />
                     </div>
@@ -449,7 +452,7 @@ export default function MentorDashboard() {
 
             <div
               key={course.id}
-              className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl"
+              className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl"
             >
 
               {/* Cover */}
@@ -499,7 +502,7 @@ export default function MentorDashboard() {
                     onClick={() =>
                       navigate(mentorClassEditPath(course.id))
                     }
-                    className="w-full rounded-xl bg-indigo-600 py-2.5 text-sm font-semibold text-white transition hover:bg-indigo-500"
+                    className="w-full rounded-xl px-5 py-2.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-md shadow-blue-500/20 hover:shadow-blue-500/30 hover:from-blue-500 hover:to-blue-400 active:scale-[0.98]"
                   >
                     Edit Course
                   </button>
@@ -516,11 +519,11 @@ export default function MentorDashboard() {
 
           <div
             onClick={() => navigate(PATHS.MENTOR_CLASS_CREATE)}
-            className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-8 text-center transition hover:border-indigo-400 hover:bg-indigo-50"
+            className="flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-8 text-center transition hover:border-blue-700 hover:bg-blue-50"
           >
 
-            <div className="mb-4 rounded-full bg-indigo-100 p-4">
-              <Plus className="h-7 w-7 text-indigo-600" />
+            <div className="mb-4 rounded-full bg-blue-100 p-4">
+              <Plus className="h-7 w-7 text-blue-700" />
             </div>
 
             <h3 className="text-lg font-semibold text-slate-900">

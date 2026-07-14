@@ -58,7 +58,7 @@ export default function AdminDashboard() {
       trendUp: true,
       subText: 'vs last month',
       icon: TrendingUp,
-      iconColor: 'text-indigo-400 bg-indigo-500/10',
+      iconColor: 'text-blue-400 bg-blue-500/10',
     },
     {
       title: 'Avg. Rating',

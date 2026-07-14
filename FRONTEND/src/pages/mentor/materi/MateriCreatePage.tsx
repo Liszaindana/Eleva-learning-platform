@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { PATHS } from '../../../routes/paths';
 import { kelasApi } from '../../../api/class';
 import { ArrowLeft, PlusCircle, Loader2, Video, FileText } from 'lucide-react';
+import { materiApi } from '../../../api/endpoints';
 
 interface MaterialCreateFormValues {
     title: string;
@@ -28,24 +29,11 @@ export default function MateriCreatePage() {
     // 2. Setup Mutation untuk menambahkan materi baru ke dalam kelas
     const createMutation = useMutation({
         mutationFn: (newMateriForm: MaterialCreateFormValues) => {
-            const oldMateris = Array.isArray(classData?.materis) ? classData.materis : [];
-
-            // Membuat ID tiruan berbasis timestamp agar unik di front-end sementara waktu
-            const mockMateriId = Math.floor(Date.now() + Math.random());
-
-            const newMateriPayload = {
-                materi_id: mockMateriId,
+            return materiApi.create({
                 class_id: Number(classId),
-                ...newMateriForm
-            };
-
-            // Gabungkan materi lama dengan materi yang baru dibuat
-            const updatedMateris = [...oldMateris, newMateriPayload];
-
-            // Kirim seluruh payload kelas yang diperbarui ke backend
-            return kelasApi.update(Number(classId), {
-                ...classData,
-                materis: updatedMateris
+                title: newMateriForm.title,
+                content: newMateriForm.content,
+                video_url: newMateriForm.video_url || null, // Ubah string kosong jadi null
             });
         },
         onSuccess: () => {
@@ -67,7 +55,7 @@ export default function MateriCreatePage() {
     if (isLoadingClass) {
         return (
             <div className="text-slate-400 text-sm text-center py-12 flex items-center justify-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin text-indigo-500" />
+                <Loader2 className="h-4 w-4 animate-spin text-blue-700" />
                 Loading class configuration...
             </div>
         );
@@ -81,7 +69,7 @@ export default function MateriCreatePage() {
                 <button
                     type="button"
                     onClick={() => navigate(PATHS.MENTOR_MATERIAL_LIST)}
-                    className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-600 transition hover:text-indigo-600"
+                    className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-600 transition hover:text-blue-700"
                 >
                     <ArrowLeft className="h-4 w-4" />
                     Back to Materials
@@ -93,7 +81,7 @@ export default function MateriCreatePage() {
 
                 <p className="mt-2 text-sm text-slate-600">
                     Add learning material to
-                    <span className="ml-1 font-semibold text-indigo-600">
+                    <span className="ml-1 font-semibold text-blue-700">
                         {classData?.title}
                     </span>
                 </p>
@@ -108,7 +96,7 @@ export default function MateriCreatePage() {
                 {/* Title */}
                 <div className="space-y-2">
                     <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                        <FileText className="h-4 w-4 text-indigo-600" />
+                        <FileText className="h-4 w-4 text-blue-700" />
                         Material Title
                     </label>
 
@@ -118,7 +106,7 @@ export default function MateriCreatePage() {
                         {...register('title', {
                             required: 'Material title is required',
                         })}
-                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                     />
 
                     {errors.title && (
@@ -131,7 +119,7 @@ export default function MateriCreatePage() {
                 {/* Content */}
                 <div className="space-y-2">
                     <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                        <FileText className="h-4 w-4 text-indigo-600" />
+                        <FileText className="h-4 w-4 text-blue-700" />
                         Study Material
                     </label>
 
@@ -141,7 +129,7 @@ export default function MateriCreatePage() {
                         {...register('content', {
                             required: 'Content is required',
                         })}
-                        className="w-full resize-y rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                        className="w-full resize-y rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                     />
 
                     {errors.content && (
@@ -162,7 +150,7 @@ export default function MateriCreatePage() {
                         type="url"
                         placeholder="https://youtube.com/watch?v=..."
                         {...register('video_url')}
-                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                     />
                 </div>
 
@@ -180,7 +168,7 @@ export default function MateriCreatePage() {
                     <button
                         type="submit"
                         disabled={createMutation.isPending}
-                        className="flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 font-semibold text-white shadow-lg transition hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-60"
+                        className="flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 font-semibold text-white shadow-lg transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
                     >
                         {createMutation.isPending ? (
                             <>

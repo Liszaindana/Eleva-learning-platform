@@ -18,6 +18,13 @@ export interface LoginResponse {
   };
 }
 
+export interface MaterialPayload {
+    class_id: number;
+    title: string;
+    content: string;
+    video_url?: string | null;
+}
+
 // ── Class Endpoints ─────────────────────────────────────────
 
 export const classApi = {
@@ -63,6 +70,13 @@ export const userApi = {
     apiClient
       .get<ApiResponse<User>>(`/users/${id}`)
       .then((res) => res.data),
+
+  getMentors: () =>
+    apiClient
+      .get<User[]>('/users')
+      .then((res) => {
+        return res.data.filter((user: any) => user.role_id === 2 || user.role === 2);
+      }),
 };
 
 
@@ -124,3 +138,16 @@ export const periodeApi = {
   getAll: () =>
     apiClient.get<any[]>('/periode').then((res) => res.data),
 }
+
+// ── Materi Endpoints ───────────────────────────────────
+
+export const materiApi = {
+    create: (payload: MaterialPayload) =>
+        apiClient.post<any>('/materi', payload).then((res) => res.data),
+
+    getAll: () =>
+        apiClient.get<any[]>('/materi').then((res) => res.data),
+
+    update: (materiId: number, payload: { title: string; content: string; video_url?: string | null }) =>
+        apiClient.put(`/materi/${materiId}`, payload).then((res) => res.data),
+};

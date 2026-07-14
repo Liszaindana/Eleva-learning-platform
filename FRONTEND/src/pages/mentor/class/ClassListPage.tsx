@@ -42,7 +42,7 @@ export default function ClassListPage() {
 
                 <button
                     onClick={() => navigate(PATHS.MENTOR_CLASS_CREATE)}
-                    className="flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 font-semibold text-white shadow-lg transition hover:bg-indigo-500"
+                    className="flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-md shadow-blue-500/20 hover:shadow-blue-500/30 hover:from-blue-500 hover:to-blue-400 active:scale-[0.98]"
                 >
                     <Plus className="h-4 w-4" />
                     Create New Class
@@ -51,7 +51,7 @@ export default function ClassListPage() {
 
             {isLoading ? (
                 <div className="flex h-[40vh] flex-col items-center justify-center gap-3">
-                    <Loader2 className="h-8 w-8 animate-spin text-indigo-600" />
+                    <Loader2 className="h-8 w-8 animate-spin text-blue-700" />
                     <p className="text-sm text-slate-600">
                         Loading classes...
                     </p>
@@ -86,15 +86,15 @@ export default function ClassListPage() {
                         return (
                             <div
                                 key={cls.class_id}
-                                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl"
+                                className="flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl"
                             >
                                 <div>
                                     <div className="mb-4 flex items-center gap-3">
-                                        <div className="rounded-lg bg-indigo-100 p-2">
-                                            <BookOpen className="h-5 w-5 text-indigo-600" />
+                                        <div className="rounded-lg bg-blue-100 p-2">
+                                            <BookOpen className="h-5 w-5 text-blue-700" />
                                         </div>
 
-                                        <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-semibold text-indigo-600">
+                                        <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold text-blue-700">
                                             {cls.category?.categories ||
                                                 cls.category?.category_name ||
                                                 "Active Course"}
@@ -115,7 +115,7 @@ export default function ClassListPage() {
                                     <div className="flex items-center gap-5">
 
                                         <div className="flex items-center gap-2 text-sm text-slate-600">
-                                            <Users className="h-4 w-4 text-indigo-600" />
+                                            <Users className="h-4 w-4 text-blue-700" />
                                             <span>
                                                 <strong className="text-slate-900">
                                                     {totalStudents}
@@ -137,7 +137,7 @@ export default function ClassListPage() {
                                                 mentorClassEditPath(cls.class_id)
                                             )
                                         }
-                                        className="flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-600 transition hover:bg-indigo-100"
+                                        className="flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100"
                                     >
                                         <Edit className="h-4 w-4" />
                                         Edit

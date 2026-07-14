@@ -71,7 +71,7 @@ export default function LandingPage() {
         reviewCount: kelas.reviews?.length ?? 0,
         mentorName: kelas.mentor?.name ?? 'Mentor Tidak Diketahui',
         mentorRole: kelas.mentor?.role?.role_text ?? 'Mentor',
-        mentorAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+        mentorAvatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fG11a2F8ZW58MHx8MHx8fDA%3D',
         image: `https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80`,
       })),
     [trendingClasses]
@@ -109,7 +109,7 @@ export default function LandingPage() {
       stars: review.rating,
       userName: review.user?.name ?? 'Alumni Eleva',
       userRole: review.user?.role?.role_text ?? 'Pelajar',
-      userAvatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+      userAvatar: 'https://images.unsplash.com/photo-1698510047345-ff32de8a3b74?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjEwfHxtdWthfGVufDB8fDB8fHww',
     }));
   }, [reviews]);
 
@@ -128,8 +128,7 @@ export default function LandingPage() {
       // Gabungkan menjadi gelar dinamis
       const assignedRole = `${categoryName} ${suffixes[index % suffixes.length]}`;
 
-      const mentorAvatar = `https://images.unsplash.com/photo-${index % 2 === 0 ? '1472099645785-5658abf4ff4e' : '1494790108377-be9c29b29330'
-        }?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80`;
+      const mentorAvatar = `https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fG11a2F8ZW58MHx8MHx8fDA%3D`;
 
       if (mentorName && mentorName !== 'Mentor Tidak Diketahui' && !seen.has(mentorName)) {
         seen.add(mentorName);
@@ -237,7 +236,7 @@ export default function LandingPage() {
             <div className="flex-1 relative w-full max-w-lg lg:max-w-none">
               <div className="relative rounded-3xl overflow-hidden border border-slate-200 shadow-xl shadow-slate-200/50 aspect-[4/3] group">
                 <img
-                  src="/hero_learning_scene.png"
+                  src="/Academy.jpeg"
                   alt="Students Studying"
                   className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
                 />
@@ -316,9 +315,9 @@ export default function LandingPage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             {categoriesLoading ? (
-              Array.from({ length: 6 }).map((_, i) => (
+              Array.from({ length: 5 }).map((_, i) => (
                 <div
                   key={i}
                   className="animate-pulse bg-white border border-slate-200 rounded-2xl p-5 h-32"

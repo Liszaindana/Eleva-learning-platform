@@ -1,14 +1,16 @@
 import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Link } from 'react-router-dom';
-import { Plus, Edit, Trash2, Eye, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Plus, Edit, Trash2, ChevronLeft, ChevronRight } from 'lucide-react';
 import Button from '../../../components/ui/Button';
 import Badge from '../../../components/ui/Badge';
-import { PATHS } from '../../../routes/paths';
-import { kelasApi } from '../../../api/class'; // Sesuaikan folder path kelasApi kamu
+import { classEditPath, PATHS } from '../../../routes/paths';
+import { kelasApi } from '../../../api/class';
+
 
 export default function ClassListPage() {
   const [currentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
   const itemsPerPage = 10;
   const queryClient = useQueryClient();
 
@@ -23,7 +25,7 @@ export default function ClassListPage() {
     mutationFn: (classId: string | number) => {
       // Pastikan fungsi ini tersedia di kelasApi kamu (misal kelasApi.delete atau kelasApi.remove)
       // Jika namanya berbeda di backend, silakan ganti panggilannya di sini
-      return kelasApi.delete(classId);
+      return kelasApi.delete(Number(classId));
     },
     onSuccess: () => {
       alert('Kelas berhasil dihapus!');
@@ -126,27 +128,16 @@ export default function ClassListPage() {
                         <td className="px-6 py-4 text-right">
                           <div className="flex items-center justify-end gap-2">
 
-                            {/* 1. Tombol View */}
+                            {/* 1. Tombol Edit (Membungkus button dengan Link menuju ClassEditPage) */}
                             <Link
-                              to={`/class/${currentClassId}`}
-                              className="p-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
-                              title="View Class"
-                            >
-                              <Eye className="h-4 w-4" />
-                            </Link>
-
-                            {/* 2. Tombol Edit (Membungkus button dengan Link menuju ClassEditPage) */}
-                            {/* Jika di PATHS.ts kamu ada bentuk fungsi seperti PATHS.ADMIN_CLASS_EDIT(id), gunakan itu. 
-                            Jika berupa string biasa, kita bisa oper lewat dynamic path atau state seperti di bawah ini: */}
-                            <Link
-                              to={`/admin/classes/${currentClassId}/edit`}
+                              to={classEditPath(currentClassId)}
                               className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                               title="Edit Class"
                             >
                               <Edit className="h-4 w-4" />
                             </Link>
 
-                            {/* 3. Tombol Delete (Sudah Diperbaiki) */}
+                            {/* 2. Tombol Delete*/}
                             <button
                               onClick={() => {
                                 if (confirm(`Apakah kamu yakin ingin menghapus kelas "${course.title || course.name}"?`)) {

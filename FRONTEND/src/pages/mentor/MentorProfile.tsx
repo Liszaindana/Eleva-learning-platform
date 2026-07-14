@@ -66,7 +66,7 @@ export default function ProfilePage() {
     if (isLoading) {
         return (
             <div className="w-full text-slate-400 text-sm text-center py-24 flex items-center justify-center gap-2">
-                <Loader2 className="h-5 w-5 animate-spin text-indigo-500" />
+                <Loader2 className="h-5 w-5 animate-spin text-blue-700" />
                 Retrieving secure profile credentials...
             </div>
         );
@@ -96,7 +96,7 @@ export default function ProfilePage() {
                     </p>
                 </div>
 
-                <div className="flex items-center gap-2 rounded-xl border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-700">
+                <div className="flex items-center gap-2 rounded-xl border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700">
                     <Shield className="h-4 w-4" />
                     {roleName}
                 </div>
@@ -109,7 +109,7 @@ export default function ProfilePage() {
                 {/* Avatar */}
                 <div className="mb-8 flex items-center gap-5 border-b border-slate-200 pb-8">
 
-                    <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 shadow-lg">
+                    <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-300 shadow-lg">
                         <User className="h-10 w-10 text-white" />
                     </div>
 

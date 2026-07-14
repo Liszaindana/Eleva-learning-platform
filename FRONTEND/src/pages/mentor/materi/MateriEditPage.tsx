@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { PATHS } from '../../../routes/paths';
 import { kelasApi } from '../../../api/class';
 import { ArrowLeft, Save, Loader2, Video, FileText } from 'lucide-react';
+import { materiApi } from '../../../api/endpoints';
 
 interface MateriFormValues {
     title: string;
@@ -19,17 +20,14 @@ export default function MateriEditPage() {
 
     const { register, handleSubmit, setValue, formState: { errors } } = useForm<MateriFormValues>();
 
-    // 1. Ambil data detail kelas untuk mencari objek materi yang mau diedit
     const { data: classData, isLoading: isLoadingClass } = useQuery({
         queryKey: ['classDetail', classId],
         queryFn: () => kelasApi.getById(Number(classId)),
         enabled: !!classId,
     });
 
-    // Cari materi spesifik di dalam array "materis"
     const currentMateri = classData?.materis?.find((m: any) => m.materi_id === Number(materiId));
 
-    // 2. Set default value ke form setelah data materi ditemukan
     useEffect(() => {
         if (currentMateri) {
             setValue('title', currentMateri.title);
@@ -38,31 +36,22 @@ export default function MateriEditPage() {
         }
     }, [currentMateri, setValue]);
 
-    // 3. Setup Mutation untuk Update Data
-    // Catatan: Karena endpoint parsial materi belum ada di backend, kita menggunakan kelasApi.update
     const updateMutation = useMutation({
         mutationFn: (updatedForm: MateriFormValues) => {
-            // 🚀 Solusi: Berikan fallback || [] agar TypeScript tahu ini pasti sebuah Array
-            const oldMateris = Array.isArray(classData?.materis) ? classData.materis : [];
-
-            const updatedMateris = oldMateris.map((m: any) =>
-                m.materi_id === Number(materiId) ? { ...m, ...updatedForm } : m
-            );
-
-            // Kirim seluruh payload kelas kembali ke backend
-            return kelasApi.update(Number(classId), {
-                ...classData,
-                materis: updatedMateris
+            return materiApi.update(Number(materiId), {
+                title: updatedForm.title,
+                content: updatedForm.content,
+                video_url: updatedForm.video_url || null, 
             });
         },
         onSuccess: () => {
-            // Reset cache query agar data di halaman list otomatis ter-update terbaru
-            queryClient.invalidateQueries({ queryKey: ['classDetail', classId] }); // 👈 Pastikan key ini menggunakan classId dari useParams
+            queryClient.invalidateQueries({ queryKey: ['classDetail', classId] }); 
+            
             alert('Material updated successfully!');
             navigate(PATHS.MENTOR_MATERIAL_LIST);
         },
         onError: (error) => {
-            console.error(error);
+            console.error("Error updating material:", error);
             alert('Failed to update material. Please try again.');
         }
     });
@@ -74,7 +63,7 @@ export default function MateriEditPage() {
     if (isLoadingClass) {
         return (
             <div className="text-slate-400 text-sm text-center py-12 flex items-center justify-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin text-indigo-500" />
+                <Loader2 className="h-4 w-4 animate-spin text-blue-700" />
                 Loading material data...
             </div>
         );
@@ -96,7 +85,7 @@ export default function MateriEditPage() {
                 <button
                     type="button"
                     onClick={() => navigate(PATHS.MENTOR_MATERIAL_LIST)}
-                    className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-600 transition hover:text-indigo-600"
+                    className="mb-4 flex items-center gap-2 text-sm font-semibold text-slate-600 transition hover:text-blue-700"
                 >
                     <ArrowLeft className="h-4 w-4" />
                     Back to Materials
@@ -108,7 +97,7 @@ export default function MateriEditPage() {
 
                 <p className="mt-2 text-sm text-slate-600">
                     Editing material from
-                    <span className="ml-1 font-semibold text-indigo-600">
+                    <span className="ml-1 font-semibold text-blue-700">
                         {classData?.title}
                     </span>
                 </p>
@@ -123,7 +112,7 @@ export default function MateriEditPage() {
                 {/* Material Title */}
                 <div className="space-y-2">
                     <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                        <FileText className="h-4 w-4 text-indigo-600" />
+                        <FileText className="h-4 w-4 text-blue-700" />
                         Material Title
                     </label>
 
@@ -133,7 +122,7 @@ export default function MateriEditPage() {
                         {...register('title', {
                             required: 'Title is required',
                         })}
-                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                     />
 
                     {errors.title && (
@@ -146,7 +135,7 @@ export default function MateriEditPage() {
                 {/* Content */}
                 <div className="space-y-2">
                     <label className="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                        <FileText className="h-4 w-4 text-indigo-600" />
+                        <FileText className="h-4 w-4 text-blue-700" />
                         Material Content
                     </label>
 
@@ -156,7 +145,7 @@ export default function MateriEditPage() {
                         {...register('content', {
                             required: 'Content is required',
                         })}
-                        className="w-full resize-y rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                        className="w-full resize-y rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                     />
 
                     {errors.content && (
@@ -177,7 +166,7 @@ export default function MateriEditPage() {
                         type="url"
                         placeholder="https://youtube.com/watch?v=..."
                         {...register('video_url')}
-                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 transition focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                     />
                 </div>
 
@@ -195,7 +184,7 @@ export default function MateriEditPage() {
                     <button
                         type="submit"
                         disabled={updateMutation.isPending}
-                        className="flex items-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 font-semibold text-white shadow-lg transition hover:bg-indigo-500 disabled:cursor-not-allowed disabled:opacity-60"
+                        className="flex items-center gap-2 rounded-xl bg-blue-700 px-5 py-2.5 font-semibold text-white shadow-lg transition hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
                     >
                         {updateMutation.isPending ? (
                             <>

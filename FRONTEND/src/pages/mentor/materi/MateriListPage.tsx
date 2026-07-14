@@ -66,7 +66,7 @@ export default function MateriListPage() {
                         onClick={() =>
                             navigate(mentorMaterialCreatePath(selectedClassId))
                         }
-                        className="flex items-center justify-center gap-2 rounded-xl bg-indigo-600 px-5 py-2.5 font-semibold text-white shadow-lg transition hover:bg-indigo-500"
+                        className="flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 font-semibold text-white shadow-lg transition hover:bg-blue-500"
                     >
                         <Plus className="h-4 w-4" />
                         Add New Material
@@ -77,7 +77,7 @@ export default function MateriListPage() {
             {/* Class Selector */}
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-md">
                 <label className="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-700">
-                    <Layers className="h-4 w-4 text-indigo-600" />
+                    <Layers className="h-4 w-4 text-blue-700" />
                     Choose Class
                 </label>
 
@@ -95,7 +95,7 @@ export default function MateriListPage() {
                         onChange={(e) =>
                             setSelectedClassId(Number(e.target.value))
                         }
-                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+                        className="w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                     >
                         {!selectedClassId && (
                             <option value="">Select a Class</option>
@@ -133,11 +133,11 @@ export default function MateriListPage() {
                     {materiList.map((materi: any, index: number) => (
                         <div
                             key={materi.materi_id}
-                            className="flex flex-col justify-between gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl sm:flex-row sm:items-center"
+                            className="flex flex-col justify-between gap-5 rounded-2xl border border-slate-200 bg-white p-6 shadow-md transition-all hover:-translate-y-1 hover:border-blue-300 hover:shadow-xl sm:flex-row sm:items-center"
                         >
                             <div className="flex items-start gap-4">
 
-                                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-100 font-bold text-indigo-600">
+                                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-100 font-bold text-blue-700">
                                     {String(index + 1).padStart(2, "0")}
                                 </div>
 
@@ -172,7 +172,7 @@ export default function MateriListPage() {
                                             )
                                         )
                                     }
-                                    className="flex items-center gap-2 rounded-lg border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-semibold text-indigo-600 transition hover:bg-indigo-100"
+                                    className="flex items-center gap-2 rounded-lg border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100"
                                 >
                                     <Edit className="h-4 w-4" />
                                     Edit

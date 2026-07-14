@@ -76,13 +76,13 @@ export default function MentorLayout() {
         {/* Sidebar Footer Area */}
         <div className="p-6 border-t border-slate-200 space-y-6">
           {/* Pro Plan Card - Disesuaikan agar tetap pop-out tapi masuk ke tema putih */}
-          <div className="rounded-xl border border-indigo-100 bg-indigo-50/50 p-4 relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-24 h-24 bg-indigo-200/20 rounded-full blur-xl -mr-8 -mt-8" />
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-indigo-600 mb-1">Pro Plan</h4>
+          <div className="rounded-xl border border-blue-100 bg-blue-50 p-5 shadow-sm relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-blue-200/20 rounded-full blur-xl -mr-8 -mt-8" />
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-blue-700 mb-1">Pro Plan</h4>
             <p className="text-xs text-slate-500 mb-3 leading-relaxed">
               Unlock advanced analytics and tools.
             </p>
-            <Button size="sm" className="w-full text-xs font-semibold py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white border-none">
+            <Button size="sm" className="w-full text-xs font-semibold py-1.5 bg-blue-700 hover:bg-blue-100 text-white border-none">
               Upgrade to Pro
             </Button>
           </div>
@@ -90,7 +90,7 @@ export default function MentorLayout() {
           {/* User Profile */}
           <div className="flex items-center gap-3">
             <img
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+              src="https://images.unsplash.com/photo-1758685847967-c598c3b176b0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGxlY3R1cmVyJTIwcHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"
               alt="Mentor Avatar"
               className="h-10 w-10 rounded-xl object-cover ring-2 ring-slate-200"
             />
