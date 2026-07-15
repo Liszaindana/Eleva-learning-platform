@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import {
   Users,
   BookOpen,
@@ -9,34 +9,52 @@ import {
 import { useQuery } from '@tanstack/react-query';
 import { adminApi } from '../../api/admin';
 import { kelasApi } from '../../api/class';
+import { enrollmentApi } from '../../api/enrollment';
+import { reviewApi } from '../../api/review';
 
 export default function AdminDashboard() {
   const [timeRange, setTimeRange] = useState('Last 30 Days');
 
-  // 1. Ambil data User riil menggunakan adminApi.getUsers yang sudah bener tadi
-  const {
-    data: usersData = [],
-    isLoading: isLoadingUsers
-  } = useQuery({
+  // 1. Ambil data User
+  const { data: usersData = [], isLoading: isLoadingUsers } = useQuery({
     queryKey: ['adminUsers'],
-    queryFn: adminApi.getUsers, // <-- Diubah ke adminApi
+    queryFn: adminApi.getUsers,
   });
 
-  // 2. Ambil data Kelas riil menggunakan kelasApi.getAll (sesuai nama objek kamu)
-  const {
-    data: classesData = [],
-    isLoading: isLoadingClasses
-  } = useQuery({
+  // 2. Ambil data Kelas
+  const { data: classesData = [], isLoading: isLoadingClasses } = useQuery({
     queryKey: ['adminClasses'],
-    queryFn: kelasApi.getAll, // <-- Dipastikan pakai kelasApi (huruf k)
+    queryFn: kelasApi.getAll,
   });
 
-  // 3. Masukkan jumlah array (.length) ke stats card
+  // 3. Ambil data Enrollment
+  const { data: enrollmentsData = [], isLoading: isLoadingEnrollments } = useQuery({
+    queryKey: ['adminEnrollments'],
+    queryFn: enrollmentApi.getAll,
+  });
+
+  // 4. Ambil data Review (Rating)
+  const { data: reviewsData = [], isLoading: isLoadingReviews } = useQuery({
+    queryKey: ['adminReviews'],
+    queryFn: reviewApi.getAll,
+  });
+
+  // 5. Kalkulasi Rata-rata Rating menggunakan useMemo agar performa tetap ringan
+  const averageRating = useMemo(() => {
+    if (!reviewsData || reviewsData.length === 0) return '0.0';
+    
+    // Jumlahkan semua rating, pastikan diubah ke Number
+    const totalScore = reviewsData.reduce((sum, review) => sum + Number(review.rating || 0), 0);
+    // Bagi dengan jumlah review, lalu format ke 1 angka di belakang koma (misal: 4.8)
+    return (totalScore / reviewsData.length).toFixed(1);
+  }, [reviewsData]);
+
+  // 6. Masukkan data ke stats card
   const stats = [
     {
       title: 'Total Users',
       value: isLoadingUsers ? '...' : usersData.length.toLocaleString(),
-      trend: '+12%',
+      trend: '+12%', // Note: trend masih statis
       trendUp: true,
       subText: 'vs last month',
       icon: Users,
@@ -53,7 +71,7 @@ export default function AdminDashboard() {
     },
     {
       title: 'Total Enrollments',
-      value: '3,521', // Dummy dulu, sesuaikan nanti jika sudah ada api enrollment
+      value: isLoadingEnrollments ? '...' : enrollmentsData.length.toLocaleString(), // <-- Real Data
       trend: '+18%',
       trendUp: true,
       subText: 'vs last month',
@@ -62,7 +80,7 @@ export default function AdminDashboard() {
     },
     {
       title: 'Avg. Rating',
-      value: '4.8', // Dummy dulu, sesuaikan nanti jika sudah ada api review
+      value: isLoadingReviews ? '...' : averageRating, // <-- Real Data hasil kalkulasi
       trend: '0.1',
       trendUp: true,
       subText: 'this month',
@@ -99,7 +117,6 @@ export default function AdminDashboard() {
         </div>
 
         {/* GRID STATS */}
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {stats.map((stat, idx) => {
             const Icon = stat.icon;
